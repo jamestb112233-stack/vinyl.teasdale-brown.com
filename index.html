@@ -60,7 +60,7 @@ body::before{
 }
 
 .header-left label{
-  font-size:18px;
+  font-size:20px;
   font-weight:800;
   color:#f0f0f0;
   letter-spacing:.02em;
@@ -80,22 +80,22 @@ body::before{
 .app-header img{
   height:62px;
   object-fit:contain;
-  margin-right:0;
   filter:drop-shadow(0 4px 10px rgba(0,0,0,.7));
 }
 
 .container{
-  padding:118px 50px 60px;
-  max-width:1120px;
+  padding:118px 28px 60px;
+  max-width:1420px;
   margin:0 auto;
   box-sizing:border-box;
 }
 
 .artist-panels{
   display:grid;
-  grid-template-columns:1.1fr 1fr 1fr;
+  grid-template-columns:260px minmax(260px, 1fr) minmax(260px, 1fr);
   gap:20px;
-  margin-bottom:34px;
+  margin-bottom:18px;
+  align-items:stretch;
 }
 
 .panel{
@@ -106,7 +106,33 @@ body::before{
     0 12px 28px rgba(0,0,0,.42),
     0 3px 6px rgba(0,0,0,.28);
   backdrop-filter:blur(4px);
-  min-height:150px;
+}
+
+.artist-image-panel{
+  padding:12px;
+}
+
+.artist-image,
+.artist-image-placeholder{
+  width:100%;
+  aspect-ratio:1 / 1;
+  border-radius:10px;
+}
+
+.artist-image{
+  display:block;
+  object-fit:cover;
+  background:rgba(255,255,255,.04);
+}
+
+.artist-image-placeholder{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:rgba(255,255,255,.05);
+  color:#cfcfcf;
+  font-size:14px;
 }
 
 .panel-title{
@@ -118,7 +144,7 @@ body::before{
 .meta-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px 14px;
+  gap:12px 16px;
 }
 
 .meta-item{
@@ -133,9 +159,32 @@ body::before{
   margin-bottom:3px;
 }
 
+.meta-value{
+  display:block;
+  font-size:13px;
+}
+
+.meta-value a{
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.meta-value a:hover{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
 .panel-text{
   font-size:14px;
   line-height:1.5;
+  white-space:pre-wrap;
+  max-height:165px;
+  overflow-y:auto;
+  padding-right:6px;
+}
+
+.news-panel{
+  margin-bottom:34px;
 }
 
 .section-title{
@@ -169,6 +218,8 @@ body::before{
   height:200px;
   object-fit:cover;
   border-radius:8px;
+  display:block;
+  background:rgba(255,255,255,.05);
 }
 
 .year-line{
@@ -253,6 +304,12 @@ body::before{
   font-style:italic;
 }
 
+@media (max-width: 1280px){
+  .artist-panels{
+    grid-template-columns:240px 1fr 1fr;
+  }
+}
+
 @media (max-width: 980px){
   .artist-panels{
     grid-template-columns:1fr;
@@ -297,80 +354,26 @@ body::before{
 </div>
 
 <script>
-fetch("library.json")
+fetch("./library.json?v=" + Date.now())
   .then(function(r){ return r.json(); })
-  .then(function(raw){
+  .then(function(data){
 
-    let data = raw;
-
-    if (!Array.isArray(raw) && raw && Array.isArray(raw.rows) && Array.isArray(raw.columns)) {
-      const keys = raw.columns.map(function(col){
-        return col.displayName || col.name;
-      });
-
-      data = raw.rows.map(function(row){
-        const obj = {};
-        keys.forEach(function(key, i){
-          obj[key] = row[i];
-        });
-        return obj;
-      });
+    function present(value){
+      return value !== null && value !== undefined && String(value).trim() !== "";
     }
 
-    const artists = {};
-
-    data.forEach(function(row){
-      const name = row.artist_name || "Unknown Artist";
-
-      if(!artists[name]){
-        artists[name] = {
-          curated: [],
-          reference: [],
-          info: row
-        };
-      }
-
-      const hasCuratedAlbumId =
-        row.album_id !== null &&
-        row.album_id !== undefined &&
-        String(row.album_id).trim() !== "";
-
-      const hasReferenceTitle =
-        row.ref_title !== null &&
-        row.ref_title !== undefined &&
-        String(row.ref_title).trim() !== "";
-
-      if(hasCuratedAlbumId){
-        artists[name].curated.push(row);
-      } else if(hasReferenceTitle){
-        artists[name].reference.push(row);
-      }
-    });
-
-    const artistNames = Object.keys(artists).sort();
-    const select = document.getElementById("artistSelect");
-    const container = document.getElementById("library");
-
-    select.innerHTML = "";
-
-    artistNames.forEach(function(name){
-      const option = document.createElement("option");
-      option.value = name;
-      option.textContent = name;
-      select.appendChild(option);
-    });
-
     function safe(value){
-      if(value === null || value === undefined || value === ""){
-        return "—";
-      }
-      return String(value);
+      return present(value) ? String(value) : "—";
     }
 
     function coverSrc(path){
-      if(!path) return "";
-      const filename = String(path).split("/").pop();
-      return "media/covers/" + filename;
+      if(!present(path)) return "";
+      return "media/covers/" + String(path).split("/").pop();
+    }
+
+    function artistImageSrc(path){
+      if(!present(path)) return "";
+      return "media/artists/" + String(path).split("/").pop();
     }
 
     function isOwned(value){
@@ -382,40 +385,145 @@ fetch("library.json")
       );
     }
 
-    function render(name){
-      const artist = artists[name];
+    function cleanProfile(text){
+      if(!present(text)) return "";
+      return String(text).replace(/\r\n/g, "\n").trim();
+    }
+
+    var artists = {};
+
+    data.forEach(function(row){
+      var key = String(row.artist_id || row.artist_name || "unknown");
+
+      if(!artists[key]){
+        artists[key] = {
+          artist_id: row.artist_id,
+          artist_name: row.artist_name || "Unknown Artist",
+          info: {},
+          curated: [],
+          reference: []
+        };
+      }
+
+      var info = artists[key].info;
+
+      if(present(row.artist_name) && !present(info.artist_name)) info.artist_name = row.artist_name;
+      if(present(row.sort_name) && !present(info.sort_name)) info.sort_name = row.sort_name;
+      if(present(row.genre) && !present(info.genre)) info.genre = row.genre;
+      if(present(row.artist_type) && !present(info.artist_type)) info.artist_type = row.artist_type;
+      if(present(row.area) && !present(info.area)) info.area = row.area;
+      if(present(row.born) && !present(info.born)) info.born = row.born;
+      if(present(row.ended) && !present(info.ended)) info.ended = row.ended;
+      if(present(row.description) && !present(info.description)) info.description = row.description;
+      if(present(row.image_path) && !present(info.image_path)) info.image_path = row.image_path;
+      if(present(row.discogs_artist_id)) info.discogs_artist_id = row.discogs_artist_id;
+
+      var hasCuratedAlbumId =
+        row.album_id !== null &&
+        row.album_id !== undefined &&
+        String(row.album_id).trim() !== "";
+
+      var hasReferenceTitle =
+        row.ref_title !== null &&
+        row.ref_title !== undefined &&
+        String(row.ref_title).trim() !== "";
+
+      if(hasCuratedAlbumId){
+        artists[key].curated.push(row);
+      } else if(hasReferenceTitle){
+        artists[key].reference.push(row);
+      }
+    });
+
+    var artistList = Object.keys(artists)
+      .map(function(key){ return artists[key]; })
+      .sort(function(a, b){
+        return a.artist_name.localeCompare(b.artist_name);
+      });
+
+    var select = document.getElementById("artistSelect");
+    var container = document.getElementById("library");
+
+    select.innerHTML = "";
+
+    artistList.forEach(function(artist){
+      var option = document.createElement("option");
+      option.value = String(artist.artist_id);
+      option.textContent = artist.artist_name;
+      select.appendChild(option);
+    });
+
+    function render(artistId){
+      var artist = artistList.find(function(item){
+        return String(item.artist_id) === String(artistId);
+      });
+
+      if(!artist) return;
+
       container.innerHTML = "";
 
-      const panels = document.createElement("div");
+      var panels = document.createElement("div");
       panels.className = "artist-panels";
 
-      const meta = document.createElement("div");
+      var imagePanel = document.createElement("div");
+      imagePanel.className = "panel artist-image-panel";
+
+      var imagePath = artistImageSrc(artist.info.image_path);
+
+      if(present(imagePath)){
+        var artistImg = document.createElement("img");
+        artistImg.className = "artist-image";
+        artistImg.src = imagePath;
+        artistImg.alt = safe(artist.artist_name);
+        artistImg.onerror = function(){
+          imagePanel.innerHTML = "<div class='artist-image-placeholder'>No artist image</div>";
+        };
+        imagePanel.appendChild(artistImg);
+      } else {
+        imagePanel.innerHTML = "<div class='artist-image-placeholder'>No artist image</div>";
+      }
+
+      var meta = document.createElement("div");
       meta.className = "panel";
       meta.innerHTML = "<div class='panel-title'>Metadata</div>";
 
-      const grid = document.createElement("div");
+      var grid = document.createElement("div");
       grid.className = "meta-grid";
 
-      const metaFields = [
-        ["Name", artist.info.artist_name],
+      [
         ["Sort", artist.info.sort_name],
-        ["Genre", artist.info.artist_type],
+        ["Genre", artist.info.genre],
+        ["Type", artist.info.artist_type],
         ["Area", artist.info.area],
         ["Born", artist.info.born],
-        ["Died", artist.info.ended],
-        ["Born In", artist.info.born_in]
-      ];
-
-      metaFields.forEach(function(pair){
-        const item = document.createElement("div");
+        ["Disbanded/Died", artist.info.ended],
+        ["Source", artist.info.discogs_artist_id]
+      ].forEach(function(pair){
+        var item = document.createElement("div");
         item.className = "meta-item";
 
-        const label = document.createElement("span");
+        var label = document.createElement("span");
         label.className = "meta-label";
         label.textContent = pair[0];
 
-        const value = document.createElement("span");
-        value.textContent = safe(pair[1]);
+        var value = document.createElement("span");
+        value.className = "meta-value";
+
+        if(pair[0] === "Source" && present(pair[1])){
+          var a = document.createElement("a");
+          a.href = "https://www.discogs.com/artist/" + pair[1];
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = "Discogs";
+
+          var span = document.createElement("span");
+          span.textContent = " (data)";
+
+          value.appendChild(a);
+          value.appendChild(span);
+        } else {
+          value.textContent = safe(pair[1]);
+        }
 
         item.appendChild(label);
         item.appendChild(value);
@@ -424,94 +532,114 @@ fetch("library.json")
 
       meta.appendChild(grid);
 
-      const desc = document.createElement("div");
-      desc.className = "panel";
-      desc.innerHTML = "<div class='panel-title'>Description</div><div class='panel-text'>Placeholder</div>";
+      var profile = document.createElement("div");
+      profile.className = "panel";
+      profile.innerHTML =
+        "<div class='panel-title'>Profile</div>" +
+        "<div class='panel-text'>" + safe(cleanProfile(artist.info.description)) + "</div>";
 
-      const news = document.createElement("div");
-      news.className = "panel";
-      news.innerHTML = "<div class='panel-title'>News</div><div class='panel-text'>Placeholder</div>";
+      var news = document.createElement("div");
+      news.className = "panel news-panel";
+      news.innerHTML =
+        "<div class='panel-title'>News</div>" +
+        "<div class='panel-text'>Placeholder</div>";
 
+      panels.appendChild(imagePanel);
       panels.appendChild(meta);
-      panels.appendChild(desc);
-      panels.appendChild(news);
+      panels.appendChild(profile);
+
       container.appendChild(panels);
+      container.appendChild(news);
 
-      const title = document.createElement("div");
-      title.className = "section-title";
-      title.textContent = "Recommended Albums";
-      container.appendChild(title);
+      var curatedTitle = document.createElement("div");
+      curatedTitle.className = "section-title";
+      curatedTitle.textContent = "Recommended Albums";
+      container.appendChild(curatedTitle);
 
-      const albums = document.createElement("div");
+      var albums = document.createElement("div");
       albums.className = "albums";
 
-      artist.curated.forEach(function(album){
-        const card = document.createElement("div");
-        card.className = "card";
+      artist.curated
+        .sort(function(a, b){
+          var ay = present(a.year) ? Number(a.year) : 9999;
+          var by = present(b.year) ? Number(b.year) : 9999;
+          if(ay !== by) return ay - by;
+          return String(a.album_title || "").localeCompare(String(b.album_title || ""));
+        })
+        .forEach(function(album){
+          var card = document.createElement("div");
+          card.className = "card";
 
-        const img = document.createElement("img");
-        img.src = coverSrc(album.cover_path);
-        img.alt = safe(album.album_title);
+          var img = document.createElement("img");
+          img.src = coverSrc(album.cover_path);
+          img.alt = safe(album.album_title);
 
-        const year = document.createElement("div");
-        year.className = "year-line";
-        year.textContent = safe(album.year);
+          var year = document.createElement("div");
+          year.className = "year-line";
+          year.textContent = safe(album.year);
 
-        const albumTitle = document.createElement("div");
-        albumTitle.className = "album-title";
-        albumTitle.textContent = safe(album.album_title);
+          var albumTitle = document.createElement("div");
+          albumTitle.className = "album-title";
+          albumTitle.textContent = safe(album.album_title);
 
-        const collectionLine = document.createElement("div");
-        collectionLine.className = "collection-line";
+          var collectionLine = document.createElement("div");
+          collectionLine.className = "collection-line";
 
-        const priority = document.createElement("span");
-        priority.className = "priority-mark";
-        priority.textContent = safe(album.buy_priority);
+          var priority = document.createElement("span");
+          priority.className = "priority-mark";
+          priority.textContent = safe(album.buy_priority);
 
-        const owned = document.createElement("span");
-        owned.className = "collection-mark";
-        owned.textContent = isOwned(album.owned) ? "✓ Owned" : "";
+          var owned = document.createElement("span");
+          owned.className = "collection-mark";
+          owned.textContent = isOwned(album.owned) ? "✓ Owned" : "";
 
-        collectionLine.appendChild(priority);
-        collectionLine.appendChild(owned);
+          var hover = document.createElement("div");
+          hover.className = "hover-detail";
+          hover.textContent = safe(album.album_title);
 
-        const hover = document.createElement("div");
-        hover.className = "hover-detail";
-        hover.textContent = safe(album.album_title);
+          collectionLine.appendChild(priority);
+          collectionLine.appendChild(owned);
 
-        card.appendChild(img);
-        card.appendChild(year);
-        card.appendChild(albumTitle);
-        card.appendChild(collectionLine);
-        card.appendChild(hover);
+          card.appendChild(img);
+          card.appendChild(year);
+          card.appendChild(albumTitle);
+          card.appendChild(collectionLine);
+          card.appendChild(hover);
 
-        albums.appendChild(card);
-      });
+          albums.appendChild(card);
+        });
 
       container.appendChild(albums);
 
-      const referenceBlock = document.createElement("div");
+      var referenceBlock = document.createElement("div");
       referenceBlock.className = "reference-block";
 
-      const referenceTitle = document.createElement("div");
+      var referenceTitle = document.createElement("div");
       referenceTitle.className = "section-title";
       referenceTitle.textContent = "Other Studio Albums";
       referenceBlock.appendChild(referenceTitle);
 
       if(artist.reference.length){
-        const referenceList = document.createElement("div");
+        var referenceList = document.createElement("div");
         referenceList.className = "reference-list";
 
-        artist.reference.forEach(function(refAlbum){
-          const item = document.createElement("div");
-          item.className = "reference-item";
-          item.textContent = safe(refAlbum.ref_title);
-          referenceList.appendChild(item);
-        });
+        artist.reference
+          .sort(function(a, b){
+            var ay = present(a.year) ? Number(a.year) : 9999;
+            var by = present(b.year) ? Number(b.year) : 9999;
+            if(ay !== by) return ay - by;
+            return String(a.ref_title || "").localeCompare(String(b.ref_title || ""));
+          })
+          .forEach(function(refAlbum){
+            var item = document.createElement("div");
+            item.className = "reference-item";
+            item.textContent = safe(refAlbum.ref_title);
+            referenceList.appendChild(item);
+          });
 
         referenceBlock.appendChild(referenceList);
       } else {
-        const empty = document.createElement("div");
+        var empty = document.createElement("div");
         empty.className = "reference-empty";
         empty.textContent = "Reference album data not yet present in current JSON.";
         referenceBlock.appendChild(empty);
@@ -524,10 +652,11 @@ fetch("library.json")
       render(select.value);
     };
 
-    if(artistNames.length){
-      render(artistNames[0]);
+    if(artistList.length){
+      render(artistList[0].artist_id);
     } else {
-      container.innerHTML = "<div class='panel'><div class='panel-text'>No artist data found.</div></div>";
+      container.innerHTML =
+        "<div class='panel'><div class='panel-title'>Error</div><div class='panel-text'>No artist data found.</div></div>";
     }
   })
   .catch(function(err){
