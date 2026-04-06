@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta charset="utf-8">
+<title>Album Detail</title>
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;
+  color:#eee;
+}
+
+body.dark-default{ background-image:url("../backgrounds/dark-default.png"); }
+body.dark-muted{ background-image:url("../backgrounds/dark-muted.png"); }
+body.dark-ultra{ background-image:url("../backgrounds/dark-ultra.png"); }
+
+body{
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:-1;
+}
+
+.app-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:84px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding:0 28px;
+  z-index:100;
+  box-sizing:border-box;
+}
+
+.header-brand{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+  padding-top:11px;
+}
+
+.back-link{
+  color:#f0f0f0;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.back-link:hover{
+  text-decoration:underline;
+}
+
+.app-header img{
+  height:62px;
+  object-fit:contain;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.7));
+}
+
+.container{
+  padding:118px 28px 60px;
+  max-width:1420px;
+  margin:0 auto;
+  box-sizing:border-box;
+}
+
+.album-header{
+  display:grid;
+  grid-template-rows:minmax(34px, auto) auto;
+  gap:12px;
+  margin:0 0 18px;
+}
+
+.page-title{
+  font-size:28px;
+  font-weight:800;
+  margin:0;
+  line-height:1.2;
+  min-height:34px;
+}
+
+.album-nav{
+  display:flex;
+  align-items:center;
+}
+
+.album-nav select{
+  width:360px;
+  max-width:100%;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(28,28,28,.88);
+  color:#f0f0f0;
+  font-size:15px;
+  outline:none;
+}
+
+.artist-panels{
+  display:grid;
+  grid-template-columns:260px minmax(260px, 1fr);
+  gap:20px;
+  margin-bottom:18px;
+  align-items:stretch;
+}
+
+.panel{
+  background:rgba(20,20,20,.52);
+  border-radius:14px;
+  padding:18px;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.42),
+    0 3px 6px rgba(0,0,0,.28);
+  backdrop-filter:blur(4px);
+}
+
+.artist-image-panel{
+  padding:12px;
+}
+
+.album-cover{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:8px;
+  display:block;
+  background:rgba(255,255,255,.05);
+}
+
+.artist-image-placeholder{
+  width:100%;
+  height:200px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:rgba(255,255,255,.05);
+  color:#cfcfcf;
+  font-size:14px;
+  border-radius:8px;
+}
+
+.card{
+  position:relative;
+  width:200px;
+  background:rgba(20,20,20,.58);
+  border-radius:12px;
+  padding:12px;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.7),
+    0 3px 6px rgba(0,0,0,.6);
+  backdrop-filter:blur(4px);
+  overflow:hidden;
+}
+
+.panel-title{
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+.meta-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:8px;
+}
+
+.meta-item{
+  font-size:13px;
+}
+
+.meta-label{
+  display:block;
+  font-size:11px;
+  text-transform:uppercase;
+  color:#bbb;
+  margin-bottom:3px;
+}
+
+.meta-value{
+  display:block;
+  font-size:13px;
+  white-space:pre-wrap;
+}
+
+.meta-value a{
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.meta-value a:hover{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
+.panel-text{
+  font-size:14px;
+  line-height:1.5;
+  white-space:pre-wrap;
+  max-height:165px;
+  overflow-y:auto;
+  padding-right:6px;
+}
+
+.panel-text-full{
+  max-height:none;
+  overflow:visible;
+  padding-right:0;
+}
+
+.description-panel{
+  margin-bottom:20px;
+}
+
+.section-title{
+  font-size:28px;
+  font-weight:800;
+  margin:0 0 18px;
+}
+
+.hover-track-line{
+  font-size:12px;
+  line-height:1.35;
+  color:#e8e8e8;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:10px;
+  align-items:start;
+}
+
+.hover-track-line + .hover-track-line{
+  margin-top:8px;
+}
+
+.hover-track-position{
+  color:#cfcfcf;
+  white-space:nowrap;
+}
+
+.hover-track-title{
+  min-width:0;
+}
+
+.hover-track-duration{
+  color:#cfcfcf;
+  white-space:nowrap;
+}
+
+.stack{
+  display:grid;
+  gap:18px;
+}
+
+.right-stack{
+  display:grid;
+  grid-template-columns:minmax(280px, 320px) minmax(0, 1fr);
+  gap:18px;
+  align-items:start;
+}
+
+.metadata-panel{
+  width:100%;
+}
+
+.tracklist-panel{
+  min-width:0;
+}
+
+.year-line{
+  margin-top:10px;
+  font-size:12px;
+  color:#cfcfcf;
+  letter-spacing:.04em;
+}
+
+.album-title{
+  margin-top:4px;
+  font-size:15px;
+  font-weight:600;
+  line-height:1.35;
+}
+
+.collection-line{
+  margin-top:8px;
+  font-size:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.priority-mark{
+  color:#ddd;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.collection-mark{
+  font-weight:700;
+  letter-spacing:.02em;
+  color:#8fdc8f;
+  flex-shrink:0;
+  white-space:nowrap;
+}
+
+.app-footer{
+  margin-top:60px;
+  padding:18px 24px;
+  font-size:12px;
+  line-height:1.6;
+  color:#cfcfcf;
+  text-align:center;
+  background:rgba(18,18,18,.6);
+  border-top:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(4px);
+  border-radius:10px;
+}
+
+.app-footer a{
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.app-footer a:hover{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
+@media (max-width: 760px){
+  .album-nav{
+    width:100%;
+  }
+
+  .album-nav select{
+    width:100%;
+  }
+
+  .artist-panels{
+    grid-template-columns:1fr;
+  }
+
+  .app-header{
+    height:auto;
+    padding:14px 18px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .container{
+    padding:138px 22px 40px;
+  }
+}
+</style>
+</head>
+
+<body class="dark-default">
+
+<div class="app-header">
+  <div class="header-brand">
+    <img src="../backgrounds/banner.png" alt="Requisite Vinyl Album Collection">
+    <a class="back-link" href="../index.html">Back to Artists</a>
+  </div>
+</div>
+
+<div class="container">
+  <div id="albumView"></div>
+</div>
+
+<script>
+function fetchAlbumExport(){
+  return fetch("../data/albums/albums_export.json?v=" + Date.now()).then(function(r){
+    if(!r.ok) throw new Error("Failed to load ../data/albums/albums_export.json");
+    return r.json();
+  });
+}
+
+fetchAlbumExport()
+  .then(function(data){
+    var params = new URLSearchParams(window.location.search);
+    var albumId = String(params.get("id") || "").trim();
+    var item = (data || []).find(function(entry){
+      return entry && entry.album && String(entry.album.album_id).trim() === albumId;
+    });
+
+    var root = document.getElementById("albumView");
+
+    function present(value){
+      return value !== null && value !== undefined && String(value).trim() !== "";
+    }
+
+    function safe(value){
+      return present(value) ? String(value) : "—";
+    }
+
+    function coverSrc(path){
+      if(!present(path)) return "";
+      return "../media/covers/" + String(path).split("/").pop();
+    }
+
+    function trackPosition(track){
+      if(present(track.position_raw)) return String(track.position_raw).trim();
+      if(present(track.side) && present(track.track_number)){
+        return String(track.side).trim() + String(track.track_number).trim();
+      }
+      if(present(track.track_number)) return String(track.track_number).trim();
+      return "";
+    }
+
+    if(!item){
+      root.innerHTML =
+        "<div class='panel'><div class='panel-title'>Error</div><div class='panel-text'>Album not found.</div></div>";
+      return;
+    }
+
+    var album = item.album || {};
+    var tracks = Array.isArray(item.tracks) ? item.tracks : [];
+    var backLink = document.querySelector(".back-link");
+    if(backLink && present(album.artist_id)){
+      backLink.href = "../index.html?artist_id=" + encodeURIComponent(album.artist_id);
+    }
+
+    var sameArtistAlbums = (data || [])
+      .filter(function(entry){
+        return entry && entry.album && String(entry.album.artist_id).trim() === String(album.artist_id).trim();
+      })
+      .sort(function(a, b){
+        var ay = present(a.album.year) ? Number(a.album.year) : 9999;
+        var by = present(b.album.year) ? Number(b.album.year) : 9999;
+        if(ay !== by) return ay - by;
+        return String(a.album.album_title || "").localeCompare(String(b.album.album_title || ""));
+      });
+
+    var header = document.createElement("div");
+    header.className = "album-header";
+
+    var pageTitle = document.createElement("div");
+    pageTitle.className = "page-title";
+    pageTitle.textContent = safe(album.artist_name) + " — " + safe(album.album_title);
+
+    var albumNav = document.createElement("div");
+    albumNav.className = "album-nav";
+
+    var albumSelect = document.createElement("select");
+    sameArtistAlbums.forEach(function(entry){
+      var option = document.createElement("option");
+      option.value = String(entry.album.album_id);
+      option.textContent = present(entry.album.year)
+        ? String(entry.album.year) + " — " + String(entry.album.album_title)
+        : String(entry.album.album_title);
+      if(String(entry.album.album_id).trim() === String(album.album_id).trim()){
+        option.selected = true;
+      }
+      albumSelect.appendChild(option);
+    });
+    albumSelect.addEventListener("change", function(){
+      window.location.href = "album.html?id=" + encodeURIComponent(albumSelect.value);
+    });
+
+    header.appendChild(pageTitle);
+    albumNav.appendChild(albumSelect);
+    header.appendChild(albumNav);
+    root.appendChild(header);
+
+    if(present(album.album_description)){
+      var descriptionPanel = document.createElement("div");
+      descriptionPanel.className = "panel description-panel";
+      descriptionPanel.innerHTML =
+        "<div class='panel-title'>Profile</div>" +
+        "<div class='panel-text panel-text-full'>" + album.album_description + "</div>";
+      root.appendChild(descriptionPanel);
+    }
+
+    var top = document.createElement("div");
+    top.className = "artist-panels";
+
+    var left = document.createElement("div");
+    left.className = "stack";
+
+    var coverCard = document.createElement("div");
+    coverCard.className = "card";
+
+    var coverPath = coverSrc(album.cover_path);
+    if(present(coverPath)){
+      var img = document.createElement("img");
+      img.className = "album-cover";
+      img.src = coverPath;
+      img.alt = safe(album.album_title);
+      img.onerror = function(){
+        coverCard.innerHTML = "<div class='artist-image-placeholder'>No album cover</div>";
+      };
+      coverCard.appendChild(img);
+    } else {
+      coverCard.innerHTML = "<div class='artist-image-placeholder'>No album cover</div>";
+    }
+
+    var year = document.createElement("div");
+    year.className = "year-line";
+    year.textContent = safe(album.year);
+
+    var albumTitle = document.createElement("div");
+    albumTitle.className = "album-title";
+    albumTitle.textContent = safe(album.album_title);
+
+    var collectionLine = document.createElement("div");
+    collectionLine.className = "collection-line";
+
+    var priority = document.createElement("span");
+    priority.className = "priority-mark";
+    priority.textContent = safe(album.buy_priority);
+
+    var owned = document.createElement("span");
+    owned.className = "collection-mark";
+    owned.textContent = album.owned ? "✓ Owned" : "";
+
+    collectionLine.appendChild(priority);
+    collectionLine.appendChild(owned);
+
+    coverCard.appendChild(year);
+    coverCard.appendChild(albumTitle);
+    coverCard.appendChild(collectionLine);
+
+    left.appendChild(coverCard);
+
+    var right = document.createElement("div");
+    right.className = "right-stack";
+
+    var metaPanel = document.createElement("div");
+    metaPanel.className = "panel metadata-panel";
+    metaPanel.innerHTML = "<div class='panel-title'>Metadata</div>";
+
+    var metaGrid = document.createElement("div");
+    metaGrid.className = "meta-grid";
+
+    [
+      ["First Release", album.first_release_date],
+      ["Genre", album.album_genre],
+      ["Era", album.era],
+      ["Label", album.label],
+      ["Country", album.pressing_country],
+      ["Discogs", album.discogs_url],
+      ["Source", album.source]
+    ].forEach(function(pair){
+      if(!present(pair[1])) return;
+      var item = document.createElement("div");
+      item.className = "meta-item";
+
+      var label = document.createElement("span");
+      label.className = "meta-label";
+      label.textContent = pair[0];
+
+      var value = document.createElement("span");
+      value.className = "meta-value";
+
+      if((pair[0] === "Discogs" || pair[0] === "Source") && present(pair[1])){
+        var link = document.createElement("a");
+        link.href = String(pair[1]);
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = pair[0] === "Discogs" ? "Open" : "Open";
+        value.appendChild(link);
+      } else {
+        value.textContent = String(pair[1]);
+      }
+
+      item.appendChild(label);
+      item.appendChild(value);
+      metaGrid.appendChild(item);
+    });
+
+    metaPanel.appendChild(metaGrid);
+
+    top.appendChild(left);
+    right.appendChild(metaPanel);
+
+    var trackPanel = document.createElement("div");
+    trackPanel.className = "panel tracklist-panel";
+
+    var trackTitle = document.createElement("div");
+    trackTitle.className = "panel-title";
+    trackTitle.textContent = "Tracklist";
+    trackPanel.appendChild(trackTitle);
+
+    tracks.forEach(function(track){
+      var line = document.createElement("div");
+      line.className = "hover-track-line";
+
+      var position = document.createElement("span");
+      position.className = "hover-track-position";
+      position.textContent = trackPosition(track);
+
+      var title = document.createElement("span");
+      title.className = "hover-track-title";
+      title.textContent = safe(track.track_title);
+
+      line.appendChild(position);
+      line.appendChild(title);
+
+      if(present(track.duration)){
+        var duration = document.createElement("span");
+        duration.className = "hover-track-duration";
+        duration.textContent = String(track.duration);
+        line.appendChild(duration);
+      }
+
+      trackPanel.appendChild(line);
+    });
+
+    right.appendChild(trackPanel);
+
+    top.appendChild(right);
+    root.appendChild(top);
+
+    [
+      ["Highlights", album.highlights_text],
+      ["Release Notes", album.release_notes],
+      ["Major Contributors", album.major_contributors]
+    ].forEach(function(section){
+      if(!present(section[1])) return;
+      var panel = document.createElement("div");
+      panel.className = "panel";
+      panel.innerHTML =
+        "<div class='panel-title'>" + section[0] + "</div>" +
+        "<div class='panel-text'>" + section[1] + "</div>";
+      root.appendChild(panel);
+    });
+
+    // Placeholder for future same-artist navigation.
+
+    var footer = document.createElement("div");
+    footer.className = "app-footer";
+    footer.innerHTML =
+      'Data sources: ' +
+      '<a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer">Discogs</a>, ' +
+      '<a href="https://musicbrainz.org" target="_blank" rel="noopener noreferrer">MusicBrainz</a>, ' +
+      '<a href="https://www.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>. ' +
+      'Metadata, images and reference information remain the property of their respective sources.';
+    root.appendChild(footer);
+  })
+  .catch(function(err){
+    console.error(err);
+    document.getElementById("albumView").innerHTML =
+      "<div class='panel'><div class='panel-title'>Error</div><div class='panel-text'>Failed to load album data.</div></div>";
+  });
+</script>
+
+</body>
+</html>
