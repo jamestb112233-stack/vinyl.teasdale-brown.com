@@ -272,10 +272,49 @@ body::before{
   opacity:0;
   transition:opacity .2s;
   overflow:auto;
+  pointer-events:none;
 }
 
-.card:hover .hover-detail{
+.hover-detail.is-empty{
+  display:none;
+}
+
+.card:hover .hover-detail,
+.card:focus-visible .hover-detail{
   opacity:1;
+}
+
+.card:focus-visible{
+  outline:2px solid rgba(255,255,255,.75);
+  outline-offset:2px;
+}
+
+.hover-track-line{
+  font-size:12px;
+  line-height:1.35;
+  color:#e8e8e8;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:10px;
+  align-items:start;
+}
+
+.hover-track-line + .hover-track-line{
+  margin-top:8px;
+}
+
+.hover-track-position{
+  color:#cfcfcf;
+  white-space:nowrap;
+}
+
+.hover-track-title{
+  min-width:0;
+}
+
+.hover-track-duration{
+  color:#cfcfcf;
+  white-space:nowrap;
 }
 
 .reference-block{
@@ -513,9 +552,30 @@ window.addEventListener("load", function(){
 </script>
 
 <script>
-fetch("./library.json?v=" + Date.now())
-  .then(function(r){ return r.json(); })
-  .then(function(data){
+function fetchAlbumTrackExport(){
+  var path = "./data/albums/albums_export.json";
+  console.info("[album-hover] using albums export path:", path);
+  return fetch(path + "?v=" + Date.now())
+    .then(function(r){
+      console.info("[album-hover] fetch status for", path, "=", r.status);
+      if(!r.ok) return [];
+      return r.json();
+    })
+    .catch(function(err){
+      console.warn("[album-hover] fetch error for", path, err);
+      return [];
+    });
+}
+
+Promise.all([
+  fetch("./library.json?v=" + Date.now()).then(function(r){ return r.json(); }),
+  // Track-detail hover data comes only from the full consolidated export.
+  // Do not use albums_export.sample.json for runtime logic.
+  fetchAlbumTrackExport()
+])
+  .then(function(results){
+    var data = results[0] || [];
+    var albumExport = results[1] || [];
 
     function present(value){
       return value !== null && value !== undefined && String(value).trim() !== "";
@@ -547,6 +607,66 @@ fetch("./library.json?v=" + Date.now())
     function cleanProfile(text){
       if(!present(text)) return "";
       return String(text).replace(/\r\n/g, "\n").trim();
+    }
+
+    var albumTrackLookup = {};
+    albumExport.forEach(function(item){
+      if(!item || !item.album) return;
+      var key = String(item.album.album_id || "").trim();
+      if(!present(key)) return;
+      albumTrackLookup[key] = Array.isArray(item.tracks) ? item.tracks : [];
+    });
+
+    console.info(
+      "[album-hover] lookup sizes | library rows:",
+      data.length,
+      "| export albums:",
+      albumExport.length,
+      "| lookup keys:",
+      Object.keys(albumTrackLookup).length
+    );
+
+    var sampleAlbum = data.find(function(row){
+      return row.album_id !== null && row.album_id !== undefined && String(row.album_id).trim() !== "";
+    });
+    if(sampleAlbum){
+      var sampleKey = String(sampleAlbum.album_id).trim();
+      var sampleTracks = albumTrackLookup[sampleKey] || [];
+      console.info(
+        "[album-hover] sample join | album_id:",
+        sampleKey,
+        "| album_title:",
+        sampleAlbum.album_title,
+        "| matched tracks:",
+        sampleTracks.length
+      );
+    }
+
+    function trackPreviewLines(album){
+      if(!album || !present(album.album_id)) return [];
+
+      var tracks = albumTrackLookup[String(album.album_id).trim()] || [];
+
+      return tracks
+        .map(function(track){
+          if(!track || !present(track.track_title || track.title)) return null;
+
+          var position = "";
+          if(present(track.position_raw)){
+            position = String(track.position_raw).trim();
+          } else if(present(track.side) && present(track.track_number)){
+            position = String(track.side).trim() + String(track.track_number).trim();
+          } else if(present(track.track_number)){
+            position = String(track.track_number).trim();
+          }
+
+          return {
+            position: position,
+            title: String(track.track_title || track.title).trim(),
+            duration: present(track.duration) ? String(track.duration).trim() : ""
+          };
+        })
+        .filter(Boolean);
     }
 
     var artists = {};
@@ -602,6 +722,8 @@ fetch("./library.json?v=" + Date.now())
 
     var select = document.getElementById("artistSelect");
     var container = document.getElementById("library");
+    var params = new URLSearchParams(window.location.search);
+    var requestedArtistId = String(params.get("artist_id") || "").trim();
 
     select.innerHTML = "";
 
@@ -728,6 +850,10 @@ fetch("./library.json?v=" + Date.now())
         .forEach(function(album){
           var card = document.createElement("div");
           card.className = "card";
+          card.tabIndex = 0;
+          card.setAttribute("role", "link");
+
+          var albumHref = "albums/album.html?id=" + encodeURIComponent(album.album_id);
 
           var img = document.createElement("img");
           img.src = coverSrc(album.cover_path);
@@ -754,7 +880,55 @@ fetch("./library.json?v=" + Date.now())
 
           var hover = document.createElement("div");
           hover.className = "hover-detail";
-          hover.textContent = safe(album.album_title);
+          var previewLines = trackPreviewLines(album);
+
+          if(previewLines.length){
+            previewLines.forEach(function(track){
+              var line = document.createElement("div");
+              line.className = "hover-track-line";
+
+              var position = document.createElement("span");
+              position.className = "hover-track-position";
+              position.textContent = track.position;
+
+              var title = document.createElement("span");
+              title.className = "hover-track-title";
+              title.textContent = track.title;
+
+              line.appendChild(position);
+              line.appendChild(title);
+
+              if(present(track.duration)){
+                var duration = document.createElement("span");
+                duration.className = "hover-track-duration";
+                duration.textContent = track.duration;
+                line.appendChild(duration);
+              }
+
+              hover.appendChild(line);
+            });
+          } else {
+            var fallback = document.createElement("div");
+            fallback.className = "hover-track-line";
+
+            var fallbackTitle = document.createElement("span");
+            fallbackTitle.className = "hover-track-title";
+            fallbackTitle.textContent = "Track detail not yet available";
+            fallbackTitle.style.gridColumn = "1 / -1";
+
+            fallback.appendChild(fallbackTitle);
+            hover.appendChild(fallback);
+          }
+
+          card.addEventListener("click", function(){
+            window.location.href = albumHref;
+          });
+          card.addEventListener("keydown", function(event){
+            if(event.key === "Enter" || event.key === " "){
+              event.preventDefault();
+              window.location.href = albumHref;
+            }
+          });
 
           collectionLine.appendChild(priority);
           collectionLine.appendChild(owned);
@@ -822,7 +996,18 @@ fetch("./library.json?v=" + Date.now())
     };
 
     if(artistList.length){
-      render(artistList[0].artist_id);
+      var initialArtist = artistList.find(function(item){
+        return String(item.artist_id).trim() === requestedArtistId;
+      });
+      if(initialArtist){
+        select.value = String(initialArtist.artist_id);
+        render(initialArtist.artist_id);
+        var cleanUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, "", cleanUrl);
+      } else {
+        select.value = String(artistList[0].artist_id);
+        render(artistList[0].artist_id);
+      }
     } else {
       container.innerHTML =
         "<div class='panel'><div class='panel-title'>Error</div><div class='panel-text'>No artist data found.</div></div>";
