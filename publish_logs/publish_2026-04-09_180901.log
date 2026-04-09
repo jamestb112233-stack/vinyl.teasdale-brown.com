@@ -1,0 +1,21 @@
+Timestamp: 2026-04-09T18:09:01
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 2
+CHANGED: 3
+DELETED: 2
+
+New Files
+/publish_repo/albums/index.html
+/publish_repo/artist.html
+
+Changed Files
+/publish_repo/albums/album.html
+/publish_repo/backgrounds/banner.png
+/publish_repo/data/albums/albums_export.json
+
+Deleted Files
+/publish_repo/backgrounds/dark-muted.png
+/publish_repo/backgrounds/dark-ultra.png

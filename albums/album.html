@@ -7,16 +7,34 @@
 <meta charset="utf-8">
 <title>Album Detail</title>
 
+<script>
+(function(){
+  function detectTouchDevice(){
+    var coarsePointer =
+      window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    var touchPoints = navigator.maxTouchPoints > 0;
+    var ipadLikeMac = navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
+    return coarsePointer || touchPoints || ipadLikeMac;
+  }
+
+  if(detectTouchDevice()){
+    document.addEventListener("DOMContentLoaded", function(){
+      document.body.classList.add("touch-mode");
+    });
+  }
+})();
+</script>
+
 <style>
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;
-  color:#eee;
+  color:#ddd5ca;
 }
 
-body.dark-default{ background-image:url("../backgrounds/dark-default.png"); }
-body.dark-muted{ background-image:url("../backgrounds/dark-muted.png"); }
-body.dark-ultra{ background-image:url("../backgrounds/dark-ultra.png"); }
+body.dark-default{ background-image:url("../backgrounds/rac.jpg"); }
+body.dark-muted{ background-image:url("../backgrounds/rac.jpg"); }
+body.dark-ultra{ background-image:url("../backgrounds/rac.jpg"); }
 
 body{
   background-size:cover;
@@ -28,8 +46,12 @@ body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.45);
+  background:rgba(0,0,0,.58);
   z-index:-1;
+}
+
+body::after{
+  content:none;
 }
 
 .app-header{
@@ -55,21 +77,24 @@ body::before{
 }
 
 .back-link{
-  color:#f0f0f0;
+  color:#cfe3ff;
   text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
   font-size:14px;
   font-weight:700;
   letter-spacing:.02em;
 }
 
 .back-link:hover{
-  text-decoration:underline;
+  border-bottom-color:rgba(207,227,255,.8);
 }
 
 .app-header img{
-  height:62px;
+  height:68px;
   object-fit:contain;
-  filter:drop-shadow(0 4px 10px rgba(0,0,0,.7));
+  border-radius:10px;
+  opacity:.96;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.55)) saturate(.98) brightness(.99);
 }
 
 .container{
@@ -92,6 +117,7 @@ body::before{
   margin:0;
   line-height:1.2;
   min-height:34px;
+  color:#e2dacd;
 }
 
 .album-nav{
@@ -150,7 +176,7 @@ body::before{
   justify-content:center;
   text-align:center;
   background:rgba(255,255,255,.05);
-  color:#cfcfcf;
+  color:#c7c1b8;
   font-size:14px;
   border-radius:8px;
 }
@@ -172,6 +198,7 @@ body::before{
   font-size:16px;
   font-weight:700;
   margin-bottom:14px;
+  color:#e2dacd;
 }
 
 .meta-grid{
@@ -188,7 +215,7 @@ body::before{
   display:block;
   font-size:11px;
   text-transform:uppercase;
-  color:#bbb;
+  color:#a9a297;
   margin-bottom:3px;
 }
 
@@ -196,6 +223,7 @@ body::before{
   display:block;
   font-size:13px;
   white-space:pre-wrap;
+  color:#cbc5bb;
 }
 
 .meta-value a{
@@ -208,6 +236,14 @@ body::before{
   border-bottom-color:rgba(207,227,255,.8);
 }
 
+.meta-note{
+  margin-top:4px;
+  font-size:12px;
+  line-height:1.45;
+  color:#c6c0b6;
+  white-space:pre-wrap;
+}
+
 .panel-text{
   font-size:14px;
   line-height:1.5;
@@ -215,6 +251,7 @@ body::before{
   max-height:165px;
   overflow-y:auto;
   padding-right:6px;
+  color:#cbc6bd;
 }
 
 .panel-text-full{
@@ -231,12 +268,13 @@ body::before{
   font-size:28px;
   font-weight:800;
   margin:0 0 18px;
+  color:#e2dacd;
 }
 
 .hover-track-line{
   font-size:12px;
   line-height:1.35;
-  color:#e8e8e8;
+  color:#dbd3c7;
   display:grid;
   grid-template-columns:auto 1fr auto;
   gap:10px;
@@ -248,7 +286,7 @@ body::before{
 }
 
 .hover-track-position{
-  color:#cfcfcf;
+  color:#c2bcb2;
   white-space:nowrap;
 }
 
@@ -257,8 +295,30 @@ body::before{
 }
 
 .hover-track-duration{
-  color:#cfcfcf;
+  color:#c2bcb2;
   white-space:nowrap;
+}
+
+.track-entry + .track-entry{
+  margin-top:14px;
+}
+
+.track-detail-list{
+  margin:6px 0 0;
+  display:grid;
+  gap:4px;
+}
+
+.track-detail{
+  font-size:12px;
+  line-height:1.45;
+  color:#c6c0b6;
+  white-space:pre-wrap;
+}
+
+.track-detail strong{
+  color:#dfd7cb;
+  font-weight:700;
 }
 
 .stack{
@@ -279,12 +339,14 @@ body::before{
 
 .tracklist-panel{
   min-width:0;
+  max-height:520px;
+  overflow-y:auto;
 }
 
 .year-line{
   margin-top:10px;
   font-size:12px;
-  color:#cfcfcf;
+  color:#c6c0b6;
   letter-spacing:.04em;
 }
 
@@ -293,6 +355,7 @@ body::before{
   font-size:15px;
   font-weight:600;
   line-height:1.35;
+  color:#ddd5ca;
 }
 
 .collection-line{
@@ -305,7 +368,7 @@ body::before{
 }
 
 .priority-mark{
-  color:#ddd;
+  color:#cfc8bc;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
@@ -324,7 +387,7 @@ body::before{
   padding:18px 24px;
   font-size:12px;
   line-height:1.6;
-  color:#cfcfcf;
+  color:#c6c0b7;
   text-align:center;
   background:rgba(18,18,18,.6);
   border-top:1px solid rgba(255,255,255,.08);
@@ -340,6 +403,48 @@ body::before{
 
 .app-footer a:hover{
   border-bottom-color:rgba(207,227,255,.8);
+}
+
+@media (max-width: 1180px){
+  .app-header{
+    height:74px;
+    padding:0 22px;
+  }
+
+  .header-brand{
+    gap:6px;
+    padding-top:8px;
+  }
+
+  .app-header img{
+    height:54px;
+  }
+
+  .container{
+    padding:106px 22px 52px;
+  }
+
+  .album-header{
+    gap:10px;
+    margin-bottom:16px;
+  }
+
+  .page-title,
+  .section-title{
+    font-size:24px;
+  }
+
+  .artist-panels{
+    gap:16px;
+  }
+
+  .panel{
+    padding:16px;
+  }
+
+  .right-stack{
+    gap:16px;
+  }
 }
 
 @media (max-width: 760px){
@@ -367,6 +472,73 @@ body::before{
     padding:138px 22px 40px;
   }
 }
+
+body.touch-mode{
+  background-attachment:scroll !important;
+  background-image:none !important;
+  background-color:#000 !important;
+}
+
+body.touch-mode.dark-default,
+body.touch-mode.dark-muted,
+body.touch-mode.dark-ultra{
+  background-attachment:scroll !important;
+}
+
+body.touch-mode::before{
+  content:"" !important;
+  display:block !important;
+  position:fixed !important;
+  inset:0 !important;
+  z-index:-2 !important;
+  background-image:url("../backgrounds/rac.jpg") !important;
+  background-size:cover !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  pointer-events:none !important;
+  background-color:transparent !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+  filter:none !important;
+}
+
+body.touch-mode::after{
+  content:"" !important;
+  display:block !important;
+  position:fixed !important;
+  inset:0 !important;
+  z-index:-1 !important;
+  background:rgba(0,0,0,.45) !important;
+  pointer-events:none !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+  filter:none !important;
+}
+
+body.touch-mode .app-header,
+body.touch-mode .header-brand,
+body.touch-mode .panel,
+body.touch-mode .card,
+body.touch-mode .app-footer{
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+  filter:none !important;
+}
+
+body.touch-mode .panel,
+body.touch-mode .card{
+  background:rgba(20,20,20,.13) !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.14),
+    0 2px 4px rgba(0,0,0,.08) !important;
+}
+
+body.touch-mode .app-footer{
+  background:rgba(20,20,20,.10) !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.12),
+    0 2px 4px rgba(0,0,0,.07) !important;
+}
 </style>
 </head>
 
@@ -374,8 +546,8 @@ body::before{
 
 <div class="app-header">
   <div class="header-brand">
-    <img src="../backgrounds/banner.png" alt="Requisite Vinyl Album Collection">
-    <a class="back-link" href="../index.html">Back to Artists</a>
+    <img src="../backgrounds/banner.png?v=20260409" alt="Requisite Vinyl Album Collection">
+    <a class="back-link" href="../index.html">Back to Artist</a>
   </div>
 </div>
 
@@ -409,6 +581,15 @@ fetchAlbumExport()
       return present(value) ? String(value) : "—";
     }
 
+    function isOwned(value){
+      return (
+        value === 1 ||
+        value === "1" ||
+        value === true ||
+        String(value).toLowerCase() === "true"
+      );
+    }
+
     function coverSrc(path){
       if(!present(path)) return "";
       return "../media/covers/" + String(path).split("/").pop();
@@ -433,7 +614,7 @@ fetchAlbumExport()
     var tracks = Array.isArray(item.tracks) ? item.tracks : [];
     var backLink = document.querySelector(".back-link");
     if(backLink && present(album.artist_id)){
-      backLink.href = "../index.html?artist_id=" + encodeURIComponent(album.artist_id);
+      backLink.href = "../artist.html?artist_id=" + encodeURIComponent(album.artist_id);
     }
 
     var sameArtistAlbums = (data || [])
@@ -527,7 +708,7 @@ fetchAlbumExport()
 
     var owned = document.createElement("span");
     owned.className = "collection-mark";
-    owned.textContent = album.owned ? "✓ Owned" : "";
+    owned.textContent = isOwned(album.owned) ? "✓ Owned" : "";
 
     collectionLine.appendChild(priority);
     collectionLine.appendChild(owned);
@@ -555,7 +736,9 @@ fetchAlbumExport()
       ["Label", album.label],
       ["Country", album.pressing_country],
       ["Discogs", album.discogs_url],
-      ["Source", album.source]
+      ["Source", album.source],
+      ["Album Sales", album.album_sales],
+      ["Cover Source", album.cover_source_url]
     ].forEach(function(pair){
       if(!present(pair[1])) return;
       var item = document.createElement("div");
@@ -568,7 +751,7 @@ fetchAlbumExport()
       var value = document.createElement("span");
       value.className = "meta-value";
 
-      if((pair[0] === "Discogs" || pair[0] === "Source") && present(pair[1])){
+      if((pair[0] === "Discogs" || pair[0] === "Source" || pair[0] === "Cover Source") && present(pair[1])){
         var link = document.createElement("a");
         link.href = String(pair[1]);
         link.target = "_blank";
@@ -589,6 +772,43 @@ fetchAlbumExport()
     top.appendChild(left);
     right.appendChild(metaPanel);
 
+    if(isOwned(album.owned)){
+      var collectorFields = [
+        ["Media Condition", album.media_condition],
+        ["Sleeve Condition", album.sleeve_condition],
+        ["Source", album.source],
+        ["Price Paid", album.price_paid],
+        ["Notes", album.notes]
+      ];
+
+      var collectorPanel = document.createElement("div");
+      collectorPanel.className = "panel metadata-panel";
+      collectorPanel.innerHTML = "<div class='panel-title'>Collector Details</div>";
+
+      var collectorGrid = document.createElement("div");
+      collectorGrid.className = "meta-grid";
+
+      collectorFields.forEach(function(pair){
+        var item = document.createElement("div");
+        item.className = "meta-item";
+
+        var label = document.createElement("span");
+        label.className = "meta-label";
+        label.textContent = pair[0];
+
+        var value = document.createElement("span");
+        value.className = "meta-value";
+        value.textContent = present(pair[1]) ? String(pair[1]) : "—";
+
+        item.appendChild(label);
+        item.appendChild(value);
+        collectorGrid.appendChild(item);
+      });
+
+      collectorPanel.appendChild(collectorGrid);
+      left.appendChild(collectorPanel);
+    }
+
     var trackPanel = document.createElement("div");
     trackPanel.className = "panel tracklist-panel";
 
@@ -598,6 +818,9 @@ fetchAlbumExport()
     trackPanel.appendChild(trackTitle);
 
     tracks.forEach(function(track){
+      var entry = document.createElement("div");
+      entry.className = "track-entry";
+
       var line = document.createElement("div");
       line.className = "hover-track-line";
 
@@ -619,7 +842,32 @@ fetchAlbumExport()
         line.appendChild(duration);
       }
 
-      trackPanel.appendChild(line);
+      entry.appendChild(line);
+
+      var details = [
+        ["Bonus Track", (String(track.is_bonus) === "1" || String(track.is_bonus).toLowerCase() === "true") ? "Yes" : ""],
+        ["Written By", track.written_by],
+        ["Major Contributor", track.major_contributing_artist],
+        ["Track Notes", track.track_notes]
+      ].filter(function(pair){
+        return present(pair[1]);
+      });
+
+      if(details.length){
+        var detailList = document.createElement("div");
+        detailList.className = "track-detail-list";
+
+        details.forEach(function(pair){
+          var detail = document.createElement("div");
+          detail.className = "track-detail";
+          detail.innerHTML = "<strong>" + pair[0] + ":</strong> " + String(pair[1]);
+          detailList.appendChild(detail);
+        });
+
+        entry.appendChild(detailList);
+      }
+
+      trackPanel.appendChild(entry);
     });
 
     right.appendChild(trackPanel);
@@ -630,6 +878,7 @@ fetchAlbumExport()
     [
       ["Highlights", album.highlights_text],
       ["Release Notes", album.release_notes],
+      ["Pressing Notes", album.pressing_notes],
       ["Major Contributors", album.major_contributors]
     ].forEach(function(section){
       if(!present(section[1])) return;

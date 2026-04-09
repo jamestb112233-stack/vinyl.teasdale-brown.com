@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta charset="utf-8">
+<title>Album Browser</title>
+
+<script>
+(function(){
+  function detectTouchDevice(){
+    var coarsePointer =
+      window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    var touchPoints = navigator.maxTouchPoints > 0;
+    var ipadLikeMac = navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
+    return coarsePointer || touchPoints || ipadLikeMac;
+  }
+
+  if(detectTouchDevice()){
+    document.addEventListener("DOMContentLoaded", function(){
+      document.body.classList.add("touch-mode");
+    });
+  }
+})();
+</script>
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;
+  color:#ddd5ca;
+}
+
+body.dark-default{ background-image:url("../backgrounds/rac.jpg"); }
+body.dark-muted{ background-image:url("../backgrounds/rac.jpg"); }
+body.dark-ultra{ background-image:url("../backgrounds/rac.jpg"); }
+
+body{
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.58);
+  z-index:-1;
+}
+
+body::after{
+  content:none;
+}
+
+.app-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:84px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding:0 28px;
+  z-index:120;
+  box-sizing:border-box;
+}
+
+.header-brand{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+  padding-top:11px;
+}
+
+.header-copy{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.page-kicker{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:#c2bcb2;
+}
+
+.page-heading{
+  font-size:20px;
+  font-weight:800;
+  color:#e0d8cc;
+  letter-spacing:.02em;
+}
+
+.back-link{
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.back-link:hover{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
+.app-header img{
+  height:68px;
+  object-fit:contain;
+  border-radius:10px;
+  opacity:.96;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.55)) saturate(.98) brightness(.99);
+}
+
+.filter-bar{
+  position:fixed;
+  top:84px;
+  left:0;
+  width:100%;
+  z-index:110;
+  box-sizing:border-box;
+  padding:14px 28px 0;
+  transition:padding .22s ease, opacity .22s ease, transform .22s ease;
+}
+
+.filter-shell{
+  max-width:1420px;
+  margin:0 auto;
+  padding:14px 16px;
+  border-radius:14px;
+  background:rgba(18,18,18,.58);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.42),
+    0 3px 6px rgba(0,0,0,.28);
+  backdrop-filter:blur(6px);
+}
+
+.filter-grid{
+  display:grid;
+  grid-template-columns:minmax(240px, 1.4fr) repeat(4, minmax(140px, 1fr)) auto;
+  gap:12px;
+  align-items:end;
+}
+
+.filter-group{
+  display:grid;
+  gap:6px;
+}
+
+.filter-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#b8b1a7;
+}
+
+.filter-group select{
+  width:100%;
+  min-width:0;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(28,28,28,.88);
+  color:#f0f0f0;
+  font-size:15px;
+  outline:none;
+}
+
+.filter-actions{
+  display:flex;
+  align-items:end;
+}
+
+.reset-button{
+  min-height:42px;
+  padding:0 16px;
+  border:none;
+  border-radius:10px;
+  background:rgba(70,70,70,.95);
+  color:#fff;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.02em;
+  cursor:pointer;
+}
+
+.reset-button:hover{
+  background:rgba(90,90,90,.95);
+}
+
+.container{
+  padding:220px 28px 60px;
+  max-width:1420px;
+  margin:0 auto;
+  box-sizing:border-box;
+  transition:padding-top .22s ease;
+}
+
+.hero-panel{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:22px;
+  background:rgba(20,20,20,.52);
+  border-radius:14px;
+  padding:18px;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.42),
+    0 3px 6px rgba(0,0,0,.28);
+  backdrop-filter:blur(4px);
+  transition:padding .22s ease, margin-bottom .22s ease;
+}
+
+body.scrolled .container{
+  padding-top:178px;
+}
+
+body.scrolled .hero-panel{
+  padding:14px 18px;
+  margin-bottom:18px;
+}
+
+body.filter-hidden .filter-bar{
+  opacity:0;
+  transform:translateY(-22px);
+  pointer-events:none;
+}
+
+body.filter-hidden .container{
+  padding-top:108px;
+}
+
+.hero-copy{
+  min-width:0;
+}
+
+.section-title{
+  font-size:28px;
+  font-weight:800;
+  margin:0 0 6px;
+  color:#e2dacd;
+}
+
+.section-subtitle{
+  font-size:14px;
+  line-height:1.5;
+  color:#cbc6bd;
+}
+
+.result-count{
+  flex-shrink:0;
+  font-size:13px;
+  font-weight:700;
+  color:#ded6ca;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.albums{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+  gap:24px;
+}
+
+.card{
+  position:relative;
+  display:block;
+  background:rgba(20,20,20,.58);
+  border-radius:12px;
+  padding:12px;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.7),
+    0 3px 6px rgba(0,0,0,.6);
+  backdrop-filter:blur(4px);
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+
+.hover-detail{
+  position:absolute;
+  left:12px;
+  right:12px;
+  top:12px;
+  bottom:12px;
+  padding:14px;
+  border-radius:8px;
+  background:rgba(0,0,0,.88);
+  opacity:0;
+  transition:opacity .2s;
+  overflow:auto;
+  pointer-events:none;
+}
+
+.hover-detail.is-empty{
+  display:none;
+}
+
+.card:focus-visible{
+  transform:translateY(-3px);
+  box-shadow:
+    0 16px 34px rgba(0,0,0,.72),
+    0 5px 10px rgba(0,0,0,.58);
+}
+
+.card:focus-visible .hover-detail{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.card.preview-open{
+  transform:translateY(-3px);
+  box-shadow:
+    0 16px 34px rgba(0,0,0,.72),
+    0 5px 10px rgba(0,0,0,.58);
+}
+
+.card.preview-open .hover-detail{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.card:focus-visible{
+  outline:2px solid rgba(255,255,255,.75);
+  outline-offset:2px;
+}
+
+.hover-track-line{
+  font-size:12px;
+  line-height:1.35;
+  color:#dbd3c7;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:10px;
+  align-items:start;
+}
+
+.hover-track-line + .hover-track-line{
+  margin-top:8px;
+}
+
+.hover-track-position{
+  color:#c2bcb2;
+  white-space:nowrap;
+}
+
+.hover-track-title{
+  min-width:0;
+}
+
+.hover-actions{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+
+.hover-album-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:0 12px;
+  border-radius:8px;
+  background:rgba(207,227,255,.14);
+  color:#f3f7ff;
+  text-decoration:none;
+  border:1px solid rgba(207,227,255,.22);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.03em;
+}
+
+.hover-album-link:hover,
+.hover-album-link:focus-visible{
+  background:rgba(207,227,255,.22);
+  border-color:rgba(207,227,255,.38);
+}
+
+.hover-album-link:focus-visible{
+  outline:1px solid rgba(255,255,255,.45);
+  outline-offset:1px;
+}
+
+.hover-track-duration{
+  color:#cfcfcf;
+  white-space:nowrap;
+}
+
+.card img{
+  width:100%;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  border-radius:8px;
+  display:block;
+  background:rgba(255,255,255,.05);
+}
+
+.card-cover-placeholder{
+  width:100%;
+  aspect-ratio:1 / 1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border-radius:8px;
+  background:rgba(255,255,255,.05);
+  color:#cfcfcf;
+  font-size:14px;
+}
+
+.year-line{
+  margin-top:10px;
+  font-size:12px;
+  color:#c6c0b6;
+  letter-spacing:.04em;
+}
+
+.album-title{
+  margin-top:4px;
+  font-size:15px;
+  font-weight:600;
+  line-height:1.35;
+  color:#ddd5ca;
+}
+
+.artist-name{
+  margin-top:6px;
+  font-size:13px;
+  color:#cac5bc;
+  line-height:1.3;
+}
+
+.collection-line{
+  margin-top:10px;
+  font-size:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.priority-mark{
+  color:#cfc8bc;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.collection-mark{
+  font-weight:700;
+  letter-spacing:.02em;
+  color:#8fdc8f;
+  flex-shrink:0;
+  white-space:nowrap;
+}
+
+.empty-state{
+  background:rgba(20,20,20,.52);
+  border-radius:14px;
+  padding:28px;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.42),
+    0 3px 6px rgba(0,0,0,.28);
+  backdrop-filter:blur(4px);
+  font-size:15px;
+  line-height:1.6;
+  color:#cbc6bd;
+}
+
+.app-footer{
+  margin-top:60px;
+  padding:18px 24px;
+  font-size:12px;
+  line-height:1.6;
+  color:#c6c0b7;
+  text-align:center;
+  background:rgba(18,18,18,.6);
+  border-top:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(4px);
+  border-radius:10px;
+}
+
+.app-footer a{
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.app-footer a:hover{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
+@media (hover: hover) and (pointer: fine){
+  .card:hover{
+    transform:translateY(-3px);
+    box-shadow:
+      0 16px 34px rgba(0,0,0,.72),
+      0 5px 10px rgba(0,0,0,.58);
+  }
+
+  .card:hover .hover-detail{
+    opacity:1;
+    pointer-events:auto;
+  }
+}
+
+@media (max-width: 1180px){
+  .app-header{
+    height:74px;
+    padding:0 22px;
+  }
+
+  .header-brand{
+    gap:6px;
+    padding-top:8px;
+  }
+
+  .app-header img{
+    height:54px;
+  }
+
+  .filter-bar{
+    top:74px;
+    padding:10px 22px 0;
+  }
+
+  .filter-shell{
+    padding:12px 14px;
+  }
+
+  .filter-grid{
+    grid-template-columns:minmax(180px, 1.25fr) repeat(4, minmax(108px, 1fr)) auto;
+    gap:8px;
+  }
+
+  .filter-group{
+    gap:3px;
+  }
+
+  .filter-group select{
+    padding:8px 11px;
+    font-size:14px;
+  }
+
+  .filter-label{
+    font-size:10px;
+    line-height:1.1;
+  }
+
+  .reset-button{
+    min-height:36px;
+    padding:0 14px;
+    font-size:13px;
+  }
+
+  .container{
+    padding:184px 22px 52px;
+  }
+
+  body.scrolled .container{
+    padding-top:146px;
+  }
+
+  body.filter-hidden .container{
+    padding-top:106px;
+  }
+
+  .hero-panel{
+    gap:12px;
+    margin-bottom:14px;
+    padding:14px;
+  }
+
+  .section-title{
+    font-size:22px;
+  }
+
+  .section-subtitle{
+    font-size:12px;
+    line-height:1.35;
+  }
+}
+
+@media (max-width: 900px){
+  .filter-grid{
+    grid-template-columns:repeat(3, minmax(160px, 1fr));
+  }
+
+  .filter-actions{
+    grid-column:span 3;
+  }
+}
+
+@media (max-width: 760px){
+  .app-header{
+    height:auto;
+    padding:14px 18px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .filter-bar{
+    top:122px;
+    padding:12px 18px 0;
+  }
+
+  .filter-grid{
+    grid-template-columns:1fr;
+  }
+
+  .filter-actions{
+    grid-column:auto;
+  }
+
+  .container{
+    padding:372px 22px 40px;
+  }
+
+  body.scrolled .container{
+    padding-top:330px;
+  }
+
+  body.filter-hidden .container{
+    padding-top:260px;
+  }
+
+  .hero-panel{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+body.touch-mode{
+  background-attachment:scroll !important;
+  background-image:none !important;
+  background-color:#000 !important;
+}
+
+body.touch-mode.dark-default,
+body.touch-mode.dark-muted,
+body.touch-mode.dark-ultra{
+  background-attachment:scroll !important;
+}
+
+body.touch-mode::before{
+  content:"" !important;
+  display:block !important;
+  position:fixed !important;
+  inset:0 !important;
+  z-index:-2 !important;
+  background-image:url("../backgrounds/rac.jpg") !important;
+  background-size:cover !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  pointer-events:none !important;
+  background-color:transparent !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+  filter:none !important;
+}
+
+body.touch-mode::after{
+  content:"" !important;
+  display:block !important;
+  position:fixed !important;
+  inset:0 !important;
+  z-index:-1 !important;
+  background:rgba(0,0,0,.45) !important;
+  pointer-events:none !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+  filter:none !important;
+}
+
+body.touch-mode .app-header,
+body.touch-mode .header-brand,
+body.touch-mode .filter-bar,
+body.touch-mode .filter-shell,
+body.touch-mode .hero-panel,
+body.touch-mode .card,
+body.touch-mode .hover-detail,
+body.touch-mode .empty-state,
+body.touch-mode .app-footer{
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+  filter:none !important;
+}
+
+body.touch-mode .filter-shell{
+  background:rgba(18,18,18,.15) !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.14),
+    0 2px 4px rgba(0,0,0,.08) !important;
+}
+
+body.touch-mode .hero-panel,
+body.touch-mode .card{
+  background:rgba(20,20,20,.13) !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.14),
+    0 2px 4px rgba(0,0,0,.08) !important;
+}
+
+body.touch-mode .empty-state,
+body.touch-mode .app-footer{
+  background:rgba(20,20,20,.10) !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.12),
+    0 2px 4px rgba(0,0,0,.07) !important;
+}
+
+body.touch-mode .hover-detail{
+  background:rgba(0,0,0,.34) !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.16),
+    0 2px 4px rgba(0,0,0,.09) !important;
+}
+</style>
+</head>
+
+<body class="dark-default">
+
+<div class="app-header">
+  <div class="header-brand">
+    <img src="../backgrounds/banner.png?v=20260409" alt="Requisite Vinyl Album Collection">
+    <a id="backToArtistsLink" class="back-link" href="../index.html">Back to Artists</a>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-shell">
+    <div class="filter-grid">
+      <div class="filter-group">
+        <label class="filter-label" for="artistFilter">Artist</label>
+        <select id="artistFilter"></select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="priorityFilter">Buying Priority</label>
+        <select id="priorityFilter">
+          <option value="">All</option>
+          <option value="ESSENTIAL">ESSENTIAL</option>
+          <option value="STRONG BUY">STRONG BUY</option>
+          <option value="OPTIONAL">OPTIONAL</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="ownedFilter">Owned</label>
+        <select id="ownedFilter">
+          <option value="">All</option>
+          <option value="owned">Owned</option>
+          <option value="wanted">Wanted</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="genreFilter">Genre</label>
+        <select id="genreFilter"></select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="eraFilter">Era</label>
+        <select id="eraFilter"></select>
+      </div>
+      <div class="filter-actions">
+        <button id="resetFilters" class="reset-button" type="button">Reset</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="hero-panel">
+    <div class="hero-copy">
+      <h1 class="section-title">Browse Albums</h1>
+      <div class="section-subtitle">Explore the curated collection as album-first cards, then jump into the existing detail page for the record you want.</div>
+    </div>
+    <div id="resultCount" class="result-count">0 Albums</div>
+  </div>
+
+  <div id="albumGrid" class="albums"></div>
+
+  <div class="app-footer">
+    Data sources:
+    <a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer">Discogs</a>,
+    <a href="https://musicbrainz.org" target="_blank" rel="noopener noreferrer">MusicBrainz</a>,
+    <a href="https://www.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>.
+    Metadata, images and reference information remain the property of their respective sources.
+  </div>
+</div>
+
+<script>
+function syncScrollState(){
+  document.body.classList.toggle("scrolled", window.scrollY > 48);
+}
+
+var lastScrollY = 0;
+
+function syncBrowserChrome(){
+  var currentScrollY = window.scrollY;
+  var nearTop = currentScrollY <= 24;
+  var browsingDepth = currentScrollY > 120;
+  var scrollingDown = currentScrollY > lastScrollY;
+
+  syncScrollState();
+
+  if(nearTop){
+    document.body.classList.remove("filter-hidden");
+  } else if(browsingDepth && scrollingDown){
+    document.body.classList.add("filter-hidden");
+  } else if(!scrollingDown){
+    document.body.classList.remove("filter-hidden");
+  }
+
+  lastScrollY = currentScrollY;
+}
+
+window.addEventListener("scroll", syncBrowserChrome, { passive: true });
+window.addEventListener("load", syncScrollState);
+window.addEventListener("load", syncBrowserChrome);
+
+function fetchAlbumExport(){
+  return fetch("../data/albums/albums_export.json?v=" + Date.now()).then(function(r){
+    if(!r.ok) throw new Error("Failed to load ../data/albums/albums_export.json");
+    return r.json();
+  });
+}
+
+fetchAlbumExport()
+  .then(function(data){
+    var items = Array.isArray(data) ? data : [];
+    var albums = items
+      .map(function(item){ return item && item.album ? item.album : null; })
+      .filter(Boolean);
+
+    var params = new URLSearchParams(window.location.search);
+
+    var filters = {
+      artist: document.getElementById("artistFilter"),
+      priority: document.getElementById("priorityFilter"),
+      owned: document.getElementById("ownedFilter"),
+      genre: document.getElementById("genreFilter"),
+      era: document.getElementById("eraFilter"),
+      reset: document.getElementById("resetFilters")
+    };
+
+    var albumGrid = document.getElementById("albumGrid");
+    var resultCount = document.getElementById("resultCount");
+    var backToArtistsLink = document.getElementById("backToArtistsLink");
+    var activePreviewCard = null;
+
+    function isTouchPreviewMode(){
+      return document.body.classList.contains("touch-mode");
+    }
+
+    function closeActivePreview(){
+      if(!activePreviewCard) return;
+      activePreviewCard.classList.remove("preview-open");
+      activePreviewCard = null;
+    }
+
+    function openPreview(card){
+      if(activePreviewCard && activePreviewCard !== card){
+        closeActivePreview();
+      }
+      activePreviewCard = card;
+      card.classList.add("preview-open");
+    }
+
+    function present(value){
+      return value !== null && value !== undefined && String(value).trim() !== "";
+    }
+
+    function safe(value){
+      return present(value) ? String(value) : "—";
+    }
+
+    function isOwned(value){
+      return (
+        value === 1 ||
+        value === "1" ||
+        value === true ||
+        String(value).toLowerCase() === "true"
+      );
+    }
+
+    function coverSrc(path){
+      if(!present(path)) return "";
+      return "../media/covers/" + String(path).split("/").pop();
+    }
+
+    function trackPreviewLines(item){
+      var tracks = Array.isArray(item && item.tracks) ? item.tracks : [];
+
+      return tracks
+        .map(function(track){
+          if(!track || !present(track.track_title || track.title)) return null;
+
+          var position = "";
+          if(present(track.position_raw)){
+            position = String(track.position_raw).trim();
+          } else if(present(track.side) && present(track.track_number)){
+            position = String(track.side).trim() + String(track.track_number).trim();
+          } else if(present(track.track_number)){
+            position = String(track.track_number).trim();
+          }
+
+          return {
+            position: position,
+            title: String(track.track_title || track.title).trim(),
+            duration: present(track.duration) ? String(track.duration).trim() : ""
+          };
+        })
+        .filter(Boolean);
+    }
+
+    function compareText(a, b){
+      return String(a || "").localeCompare(String(b || ""));
+    }
+
+    function compareAlbums(a, b){
+      var ay = present(a.year) ? Number(a.year) : 9999;
+      var by = present(b.year) ? Number(b.year) : 9999;
+      if(ay !== by) return ay - by;
+
+      var artistCompare = compareText(a.artist_name, b.artist_name);
+      if(artistCompare !== 0) return artistCompare;
+
+      return compareText(a.album_title, b.album_title);
+    }
+
+    function buildUniqueOptions(key){
+      return albums
+        .map(function(album){ return present(album[key]) ? String(album[key]).trim() : ""; })
+        .filter(function(value, index, list){
+          return value && list.indexOf(value) === index;
+        })
+        .sort(function(a, b){ return a.localeCompare(b); });
+    }
+
+    function setOptions(select, items, valueKey, labelKey){
+      select.innerHTML = "";
+
+      var defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = "All";
+      select.appendChild(defaultOption);
+
+      items.forEach(function(item){
+        var option = document.createElement("option");
+        if(typeof item === "object"){
+          option.value = String(item[valueKey]);
+          option.textContent = String(item[labelKey]);
+        } else {
+          option.value = String(item);
+          option.textContent = String(item);
+        }
+        select.appendChild(option);
+      });
+    }
+
+    var artistOptions = albums
+      .reduce(function(list, album){
+        if(!present(album.artist_id) || !present(album.artist_name)) return list;
+
+        var key = String(album.artist_id).trim();
+        if(list.some(function(item){ return item.artist_id === key; })) return list;
+
+        list.push({
+          artist_id: key,
+          artist_name: String(album.artist_name).trim()
+        });
+        return list;
+      }, [])
+      .sort(function(a, b){
+        return a.artist_name.localeCompare(b.artist_name);
+      });
+
+    setOptions(filters.artist, artistOptions, "artist_id", "artist_name");
+    setOptions(filters.genre, buildUniqueOptions("album_genre"));
+    setOptions(filters.era, buildUniqueOptions("era"));
+
+    var initialArtistId = String(params.get("artist_id") || "").trim();
+    var initialPriority = String(params.get("buy_priority") || "").trim();
+    var initialOwned = String(params.get("owned") || "").trim().toLowerCase();
+    var initialGenre = String(params.get("genre") || "").trim();
+    var initialEra = String(params.get("era") || "").trim();
+
+    if(initialArtistId) filters.artist.value = initialArtistId;
+    if(initialPriority) filters.priority.value = initialPriority;
+    if(initialOwned) filters.owned.value = initialOwned;
+    if(initialGenre) filters.genre.value = initialGenre;
+    if(initialEra) filters.era.value = initialEra;
+
+    function updateUrl(){
+      var next = new URLSearchParams();
+
+      if(filters.artist.value) next.set("artist_id", filters.artist.value);
+      if(filters.priority.value) next.set("buy_priority", filters.priority.value);
+      if(filters.owned.value) next.set("owned", filters.owned.value);
+      if(filters.genre.value) next.set("genre", filters.genre.value);
+      if(filters.era.value) next.set("era", filters.era.value);
+
+      var query = next.toString();
+      var url = window.location.pathname + (query ? "?" + query : "") + window.location.hash;
+      window.history.replaceState({}, "", url);
+    }
+
+    function updateBackLink(){
+      if(filters.artist.value){
+        backToArtistsLink.href = "../artist.html?artist_id=" + encodeURIComponent(filters.artist.value);
+      } else {
+        backToArtistsLink.href = "../index.html";
+      }
+    }
+
+    function currentFilters(){
+      return {
+        artistId: String(filters.artist.value || "").trim(),
+        priority: String(filters.priority.value || "").trim(),
+        owned: String(filters.owned.value || "").trim(),
+        genre: String(filters.genre.value || "").trim(),
+        era: String(filters.era.value || "").trim()
+      };
+    }
+
+    function filteredAlbums(){
+      var state = currentFilters();
+
+      return albums.filter(function(album){
+        if(state.artistId && String(album.artist_id).trim() !== state.artistId) return false;
+        if(state.priority && String(album.buy_priority || "").trim() !== state.priority) return false;
+        if(state.genre && String(album.album_genre || "").trim() !== state.genre) return false;
+        if(state.era && String(album.era || "").trim() !== state.era) return false;
+
+        if(state.owned === "owned" && !isOwned(album.owned)) return false;
+        if(state.owned === "wanted" && isOwned(album.owned)) return false;
+
+        return true;
+      }).sort(compareAlbums);
+    }
+
+    function renderAlbums(){
+      var visibleAlbums = filteredAlbums();
+      closeActivePreview();
+      updateUrl();
+      updateBackLink();
+
+      resultCount.textContent = visibleAlbums.length + (visibleAlbums.length === 1 ? " Album" : " Albums");
+      albumGrid.innerHTML = "";
+
+      if(!visibleAlbums.length){
+        albumGrid.innerHTML =
+          "<div class='empty-state'>No albums match the current filters. Reset the filters to return to the full browser.</div>";
+        return;
+      }
+
+      visibleAlbums.forEach(function(album){
+        var item = items.find(function(entry){
+          return entry && entry.album && String(entry.album.album_id).trim() === String(album.album_id).trim();
+        });
+        var card = document.createElement("a");
+        card.className = "card";
+        card.href = "album.html?id=" + encodeURIComponent(album.album_id);
+
+        var coverPath = coverSrc(album.cover_path);
+        if(coverPath){
+          var img = document.createElement("img");
+          img.src = coverPath;
+          img.alt = safe(album.album_title);
+          img.onerror = function(){
+            img.replaceWith(createCoverFallback());
+          };
+          card.appendChild(img);
+        } else {
+          card.appendChild(createCoverFallback());
+        }
+
+        var year = document.createElement("div");
+        year.className = "year-line";
+        year.textContent = safe(album.year);
+
+        var title = document.createElement("div");
+        title.className = "album-title";
+        title.textContent = safe(album.album_title);
+
+        var artist = document.createElement("div");
+        artist.className = "artist-name";
+        artist.textContent = safe(album.artist_name);
+
+        var collectionLine = document.createElement("div");
+        collectionLine.className = "collection-line";
+
+        var priority = document.createElement("span");
+        priority.className = "priority-mark";
+        priority.textContent = safe(album.buy_priority);
+
+        var owned = document.createElement("span");
+        owned.className = "collection-mark";
+        owned.textContent = isOwned(album.owned) ? "✓ Owned" : "";
+
+        var hover = document.createElement("div");
+        hover.className = "hover-detail";
+        var previewLines = trackPreviewLines(item);
+
+        if(previewLines.length){
+          previewLines.forEach(function(track){
+            var line = document.createElement("div");
+            line.className = "hover-track-line";
+
+            var position = document.createElement("span");
+            position.className = "hover-track-position";
+            position.textContent = track.position;
+
+            var hoverTitle = document.createElement("span");
+            hoverTitle.className = "hover-track-title";
+            hoverTitle.textContent = track.title;
+
+            line.appendChild(position);
+            line.appendChild(hoverTitle);
+
+            if(present(track.duration)){
+              var duration = document.createElement("span");
+              duration.className = "hover-track-duration";
+              duration.textContent = track.duration;
+              line.appendChild(duration);
+            }
+
+            hover.appendChild(line);
+          });
+        } else {
+          var fallback = document.createElement("div");
+          fallback.className = "hover-track-line";
+
+          var fallbackTitle = document.createElement("span");
+          fallbackTitle.className = "hover-track-title";
+          fallbackTitle.textContent = "Track detail not yet available";
+          fallbackTitle.style.gridColumn = "1 / -1";
+
+          fallback.appendChild(fallbackTitle);
+          hover.appendChild(fallback);
+        }
+
+        var hoverActions = document.createElement("div");
+        hoverActions.className = "hover-actions";
+
+        var albumLink = document.createElement("a");
+        albumLink.className = "hover-album-link";
+        albumLink.href = card.href;
+        albumLink.textContent = "Open album page";
+        albumLink.addEventListener("click", function(event){
+          event.preventDefault();
+          event.stopPropagation();
+          window.location.href = card.href;
+        });
+        hoverActions.appendChild(albumLink);
+        hover.appendChild(hoverActions);
+
+        collectionLine.appendChild(priority);
+        collectionLine.appendChild(owned);
+
+        card.appendChild(year);
+        card.appendChild(title);
+        card.appendChild(artist);
+        card.appendChild(collectionLine);
+        card.appendChild(hover);
+
+        card.addEventListener("click", function(event){
+          if(isTouchPreviewMode()){
+            event.preventDefault();
+            event.stopPropagation();
+            if(activePreviewCard === card){
+              return;
+            }
+            openPreview(card);
+          }
+        });
+
+        albumGrid.appendChild(card);
+      });
+    }
+
+    function createCoverFallback(){
+      var fallback = document.createElement("div");
+      fallback.className = "card-cover-placeholder";
+      fallback.textContent = "No album cover";
+      return fallback;
+    }
+
+    [filters.artist, filters.priority, filters.owned, filters.genre, filters.era].forEach(function(select){
+      select.addEventListener("change", renderAlbums);
+    });
+
+    filters.reset.addEventListener("click", function(){
+      filters.artist.value = "";
+      filters.priority.value = "";
+      filters.owned.value = "";
+      filters.genre.value = "";
+      filters.era.value = "";
+      renderAlbums();
+    });
+
+    document.addEventListener("pointerdown", function(event){
+      if(!isTouchPreviewMode() || !activePreviewCard) return;
+      if(activePreviewCard.contains(event.target)) return;
+      closeActivePreview();
+    });
+
+    window.addEventListener("resize", function(){
+      if(!isTouchPreviewMode()){
+        closeActivePreview();
+      }
+    });
+
+    window.addEventListener("scroll", function(){
+      if(isTouchPreviewMode()){
+        closeActivePreview();
+      }
+    }, { passive: true });
+
+    renderAlbums();
+  })
+  .catch(function(err){
+    console.error(err);
+    document.getElementById("albumGrid").innerHTML =
+      "<div class='empty-state'>Failed to load album data.</div>";
+  });
+</script>
+
+</body>
+</html>
