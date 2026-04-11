@@ -294,7 +294,9 @@ body.filter-hidden .container{
   background:rgba(0,0,0,.88);
   opacity:0;
   transition:opacity .2s;
-  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
   pointer-events:none;
 }
 
@@ -355,9 +357,19 @@ body.filter-hidden .container{
 }
 
 .hover-actions{
-  margin-top:14px;
-  padding-top:12px;
-  border-top:1px solid rgba(255,255,255,.12);
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  flex-shrink:0;
+  margin:0 0 10px;
+  padding:0 0 10px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.hover-content{
+  min-height:0;
+  overflow:auto;
+  padding-top:2px;
 }
 
 .hover-album-link{
@@ -458,6 +470,44 @@ body.filter-hidden .container{
   color:#8fdc8f;
   flex-shrink:0;
   white-space:nowrap;
+}
+
+.card-links{
+  margin-top:8px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+.card-link{
+  flex-shrink:0;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.03em;
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.card-link:hover,
+.card-link:focus-visible{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
+.spotify-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.spotify-link::before{
+  content:"";
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#1db954;
+  box-shadow:0 0 0 1px rgba(29,185,84,.18);
+  flex-shrink:0;
 }
 
 .empty-state{
@@ -893,6 +943,18 @@ fetchAlbumExport()
       return "../media/covers/" + String(path).split("/").pop();
     }
 
+    function spotifyAlbumUrl(spotifyAlbumId){
+      if(!present(spotifyAlbumId)) return "";
+      return "https://open.spotify.com/album/" + encodeURIComponent(String(spotifyAlbumId).trim());
+    }
+
+    function applySpotifyLabel(node, label){
+      if(!node) return node;
+      node.classList.add("spotify-link");
+      node.textContent = label || "Play on Spotify";
+      return node;
+    }
+
     function trackPreviewLines(item){
       var tracks = Array.isArray(item && item.tracks) ? item.tracks : [];
 
@@ -1103,8 +1165,69 @@ fetchAlbumExport()
         owned.className = "collection-mark";
         owned.textContent = isOwned(album.owned) ? "✓ Owned" : "";
 
+        var spotifyHref = spotifyAlbumUrl(album.spotify_album_id);
+        var cardLinks = null;
+        if(spotifyHref){
+          cardLinks = document.createElement("div");
+          cardLinks.className = "card-links";
+
+          var visibleSpotifyLink = document.createElement("span");
+          visibleSpotifyLink.className = "card-link";
+          applySpotifyLabel(visibleSpotifyLink, "Play on Spotify");
+          visibleSpotifyLink.setAttribute("role", "link");
+          visibleSpotifyLink.tabIndex = 0;
+
+          var openSpotify = function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            window.open(spotifyHref, "_blank", "noopener,noreferrer");
+          };
+
+          visibleSpotifyLink.addEventListener("click", openSpotify);
+          visibleSpotifyLink.addEventListener("keydown", function(event){
+            if(event.key === "Enter" || event.key === " "){
+              openSpotify(event);
+            }
+          });
+
+          cardLinks.appendChild(visibleSpotifyLink);
+        }
+
         var hover = document.createElement("div");
         hover.className = "hover-detail";
+
+        var hoverActions = document.createElement("div");
+        hoverActions.className = "hover-actions";
+
+        var albumLink = document.createElement("a");
+        albumLink.className = "hover-album-link";
+        albumLink.href = card.href;
+        albumLink.textContent = "Open album page";
+        albumLink.addEventListener("click", function(event){
+          event.preventDefault();
+          event.stopPropagation();
+          window.location.href = card.href;
+        });
+        hoverActions.appendChild(albumLink);
+
+        if(spotifyHref){
+          var spotifyLink = document.createElement("a");
+          spotifyLink.className = "hover-album-link";
+          spotifyLink.href = spotifyHref;
+          spotifyLink.target = "_blank";
+          spotifyLink.rel = "noopener noreferrer";
+          applySpotifyLabel(spotifyLink, "Play on Spotify");
+          spotifyLink.addEventListener("click", function(event){
+            event.stopPropagation();
+          });
+          hoverActions.appendChild(spotifyLink);
+        }
+
+        hover.appendChild(hoverActions);
+        var hoverContent = document.createElement("div");
+        hoverContent.className = "hover-content";
+        hover.appendChild(hoverContent);
+
         var previewLines = trackPreviewLines(item);
 
         if(previewLines.length){
@@ -1130,7 +1253,7 @@ fetchAlbumExport()
               line.appendChild(duration);
             }
 
-            hover.appendChild(line);
+            hoverContent.appendChild(line);
           });
         } else {
           var fallback = document.createElement("div");
@@ -1142,23 +1265,8 @@ fetchAlbumExport()
           fallbackTitle.style.gridColumn = "1 / -1";
 
           fallback.appendChild(fallbackTitle);
-          hover.appendChild(fallback);
+          hoverContent.appendChild(fallback);
         }
-
-        var hoverActions = document.createElement("div");
-        hoverActions.className = "hover-actions";
-
-        var albumLink = document.createElement("a");
-        albumLink.className = "hover-album-link";
-        albumLink.href = card.href;
-        albumLink.textContent = "Open album page";
-        albumLink.addEventListener("click", function(event){
-          event.preventDefault();
-          event.stopPropagation();
-          window.location.href = card.href;
-        });
-        hoverActions.appendChild(albumLink);
-        hover.appendChild(hoverActions);
 
         collectionLine.appendChild(priority);
         collectionLine.appendChild(owned);
@@ -1167,6 +1275,9 @@ fetchAlbumExport()
         card.appendChild(title);
         card.appendChild(artist);
         card.appendChild(collectionLine);
+        if(cardLinks){
+          card.appendChild(cardLinks);
+        }
         card.appendChild(hover);
 
         card.addEventListener("click", function(event){

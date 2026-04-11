@@ -315,6 +315,44 @@ body::after{
   white-space:nowrap;
 }
 
+.card-links{
+  margin-top:8px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+.card-link{
+  flex-shrink:0;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.03em;
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.card-link:hover,
+.card-link:focus-visible{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
+.spotify-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.spotify-link::before{
+  content:"";
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#1db954;
+  box-shadow:0 0 0 1px rgba(29,185,84,.18);
+  flex-shrink:0;
+}
+
 .hover-detail{
   position:absolute;
   left:12px;
@@ -326,7 +364,9 @@ body::after{
   background:rgba(0,0,0,.88);
   opacity:0;
   transition:opacity .2s;
-  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
   pointer-events:none;
 }
 
@@ -378,9 +418,19 @@ body::after{
 }
 
 .hover-actions{
-  margin-top:14px;
-  padding-top:12px;
-  border-top:1px solid rgba(255,255,255,.12);
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  flex-shrink:0;
+  margin:0 0 10px;
+  padding:0 0 10px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.hover-content{
+  min-height:0;
+  overflow:auto;
+  padding-top:2px;
 }
 
 .hover-album-link{
@@ -420,6 +470,10 @@ body::after{
 }
 
 .reference-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
   font-size:18px;
   padding:12px 14px;
   background:rgba(20,20,20,.42);
@@ -427,6 +481,25 @@ body::after{
   box-shadow:
     0 8px 18px rgba(0,0,0,.28),
     0 2px 4px rgba(0,0,0,.2);
+}
+
+.reference-title{
+  min-width:0;
+}
+
+.reference-link{
+  flex-shrink:0;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.03em;
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.reference-link:hover,
+.reference-link:focus-visible{
+  border-bottom-color:rgba(207,227,255,.8);
 }
 
 .reference-empty{
@@ -694,6 +767,18 @@ Promise.all([
     function artistImageSrc(path){
       if(!present(path)) return "";
       return "media/artists/" + String(path).split("/").pop();
+    }
+
+    function spotifyAlbumUrl(spotifyAlbumId){
+      if(!present(spotifyAlbumId)) return "";
+      return "https://open.spotify.com/album/" + encodeURIComponent(String(spotifyAlbumId).trim());
+    }
+
+    function applySpotifyLabel(link, label){
+      if(!link) return link;
+      link.classList.add("spotify-link");
+      link.textContent = label || "Play on Spotify";
+      return link;
     }
 
     function isOwned(value){
@@ -979,8 +1064,59 @@ Promise.all([
           owned.className = "collection-mark";
           owned.textContent = isOwned(album.owned) ? "✓ Owned" : "";
 
+          var spotifyHref = spotifyAlbumUrl(album.spotify_album_id);
+          var cardLinks = null;
+          if(spotifyHref){
+            cardLinks = document.createElement("div");
+            cardLinks.className = "card-links";
+
+            var visibleSpotifyLink = document.createElement("a");
+            visibleSpotifyLink.className = "card-link";
+            visibleSpotifyLink.href = spotifyHref;
+            visibleSpotifyLink.target = "_blank";
+            visibleSpotifyLink.rel = "noopener noreferrer";
+            applySpotifyLabel(visibleSpotifyLink, "Play on Spotify");
+            visibleSpotifyLink.addEventListener("click", function(event){
+              event.stopPropagation();
+            });
+            cardLinks.appendChild(visibleSpotifyLink);
+          }
+
           var hover = document.createElement("div");
           hover.className = "hover-detail";
+
+          var hoverActions = document.createElement("div");
+          hoverActions.className = "hover-actions";
+
+          var albumLink = document.createElement("a");
+          albumLink.className = "hover-album-link";
+          albumLink.href = albumHref;
+          albumLink.textContent = "Open album page";
+          albumLink.addEventListener("click", function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            window.location.href = albumHref;
+          });
+          hoverActions.appendChild(albumLink);
+
+          if(spotifyHref){
+            var spotifyLink = document.createElement("a");
+            spotifyLink.className = "hover-album-link";
+            spotifyLink.href = spotifyHref;
+            spotifyLink.target = "_blank";
+            spotifyLink.rel = "noopener noreferrer";
+            applySpotifyLabel(spotifyLink, "Play on Spotify");
+            spotifyLink.addEventListener("click", function(event){
+              event.stopPropagation();
+            });
+            hoverActions.appendChild(spotifyLink);
+          }
+
+          hover.appendChild(hoverActions);
+          var hoverContent = document.createElement("div");
+          hoverContent.className = "hover-content";
+          hover.appendChild(hoverContent);
+
           var previewLines = trackPreviewLines(album);
 
           if(previewLines.length){
@@ -1006,7 +1142,7 @@ Promise.all([
                 line.appendChild(duration);
               }
 
-              hover.appendChild(line);
+              hoverContent.appendChild(line);
             });
           } else {
             var fallback = document.createElement("div");
@@ -1018,23 +1154,8 @@ Promise.all([
             fallbackTitle.style.gridColumn = "1 / -1";
 
             fallback.appendChild(fallbackTitle);
-            hover.appendChild(fallback);
+            hoverContent.appendChild(fallback);
           }
-
-          var hoverActions = document.createElement("div");
-          hoverActions.className = "hover-actions";
-
-          var albumLink = document.createElement("a");
-          albumLink.className = "hover-album-link";
-          albumLink.href = albumHref;
-          albumLink.textContent = "Open album page";
-          albumLink.addEventListener("click", function(event){
-            event.preventDefault();
-            event.stopPropagation();
-            window.location.href = albumHref;
-          });
-          hoverActions.appendChild(albumLink);
-          hover.appendChild(hoverActions);
 
           card.addEventListener("click", function(event){
             if(isTouchPreviewMode()){
@@ -1062,6 +1183,9 @@ Promise.all([
           card.appendChild(year);
           card.appendChild(albumTitle);
           card.appendChild(collectionLine);
+          if(cardLinks){
+            card.appendChild(cardLinks);
+          }
           card.appendChild(hover);
 
           albums.appendChild(card);
@@ -1091,7 +1215,23 @@ Promise.all([
           .forEach(function(refAlbum){
             var item = document.createElement("div");
             item.className = "reference-item";
-            item.textContent = safe(refAlbum.ref_title);
+
+            var title = document.createElement("span");
+            title.className = "reference-title";
+            title.textContent = safe(refAlbum.ref_title);
+            item.appendChild(title);
+
+            var spotifyHref = spotifyAlbumUrl(refAlbum.spotify_album_id);
+            if(spotifyHref){
+              var spotifyLink = document.createElement("a");
+              spotifyLink.className = "reference-link";
+              spotifyLink.href = spotifyHref;
+              spotifyLink.target = "_blank";
+              spotifyLink.rel = "noopener noreferrer";
+              applySpotifyLabel(spotifyLink, "Play on Spotify");
+              item.appendChild(spotifyLink);
+            }
+
             referenceList.appendChild(item);
           });
 

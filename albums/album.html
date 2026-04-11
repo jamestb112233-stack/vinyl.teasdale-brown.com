@@ -235,6 +235,22 @@ body::after{
   border-bottom-color:rgba(207,227,255,.8);
 }
 
+.spotify-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.spotify-link::before{
+  content:"";
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#1db954;
+  box-shadow:0 0 0 1px rgba(29,185,84,.18);
+  flex-shrink:0;
+}
+
 .meta-note{
   margin-top:4px;
   font-size:12px;
@@ -379,6 +395,28 @@ body::after{
   color:#8fdc8f;
   flex-shrink:0;
   white-space:nowrap;
+}
+
+.card-links{
+  margin-top:8px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+.card-link{
+  flex-shrink:0;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.03em;
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.card-link:hover,
+.card-link:focus-visible{
+  border-bottom-color:rgba(207,227,255,.8);
 }
 
 .app-footer{
@@ -594,6 +632,18 @@ fetchAlbumExport()
       return "../media/covers/" + String(path).split("/").pop();
     }
 
+    function spotifyAlbumUrl(spotifyAlbumId){
+      if(!present(spotifyAlbumId)) return "";
+      return "https://open.spotify.com/album/" + encodeURIComponent(String(spotifyAlbumId).trim());
+    }
+
+    function applySpotifyLabel(link, label){
+      if(!link) return link;
+      link.classList.add("spotify-link");
+      link.textContent = label || "Play on Spotify";
+      return link;
+    }
+
     function trackPosition(track){
       if(present(track.position_raw)) return String(track.position_raw).trim();
       if(present(track.side) && present(track.track_number)){
@@ -709,12 +759,30 @@ fetchAlbumExport()
     owned.className = "collection-mark";
     owned.textContent = isOwned(album.owned) ? "✓ Owned" : "";
 
+    var spotifyHref = spotifyAlbumUrl(album.spotify_album_id);
+    var cardLinks = null;
+    if(spotifyHref){
+      cardLinks = document.createElement("div");
+      cardLinks.className = "card-links";
+
+      var spotifyLink = document.createElement("a");
+      spotifyLink.className = "card-link";
+      spotifyLink.href = spotifyHref;
+      spotifyLink.target = "_blank";
+      spotifyLink.rel = "noopener noreferrer";
+      applySpotifyLabel(spotifyLink, "Play on Spotify");
+      cardLinks.appendChild(spotifyLink);
+    }
+
     collectionLine.appendChild(priority);
     collectionLine.appendChild(owned);
 
     coverCard.appendChild(year);
     coverCard.appendChild(albumTitle);
     coverCard.appendChild(collectionLine);
+    if(cardLinks){
+      coverCard.appendChild(cardLinks);
+    }
 
     left.appendChild(coverCard);
 
@@ -729,36 +797,36 @@ fetchAlbumExport()
     metaGrid.className = "meta-grid";
 
     [
-      ["First Release", album.first_release_date],
-      ["Genre", album.album_genre],
-      ["Era", album.era],
-      ["Label", album.label],
-      ["Country", album.pressing_country],
-      ["Discogs", album.discogs_url],
-      ["Source", album.source],
-      ["Album Sales", album.album_sales],
-      ["Cover Source", album.cover_source_url]
-    ].forEach(function(pair){
-      if(!present(pair[1])) return;
+      { label: "First Release", value: album.first_release_date },
+      { label: "Genre", value: album.album_genre },
+      { label: "Era", value: album.era },
+      { label: "Label", value: album.label },
+      { label: "Country", value: album.pressing_country },
+      { label: "Discogs", value: album.discogs_url, href: album.discogs_url },
+      { label: "Source", value: album.source, href: album.source },
+      { label: "Album Sales", value: album.album_sales },
+      { label: "Cover Source", value: album.cover_source_url, href: album.cover_source_url }
+    ].forEach(function(entry){
+      if(!present(entry.value)) return;
       var item = document.createElement("div");
       item.className = "meta-item";
 
       var label = document.createElement("span");
       label.className = "meta-label";
-      label.textContent = pair[0];
+      label.textContent = entry.label;
 
       var value = document.createElement("span");
       value.className = "meta-value";
 
-      if((pair[0] === "Discogs" || pair[0] === "Source" || pair[0] === "Cover Source") && present(pair[1])){
+      if(present(entry.href)){
         var link = document.createElement("a");
-        link.href = String(pair[1]);
+        link.href = String(entry.href);
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.textContent = pair[0] === "Discogs" ? "Open" : "Open";
+        link.textContent = "Open";
         value.appendChild(link);
       } else {
-        value.textContent = String(pair[1]);
+        value.textContent = String(entry.value);
       }
 
       item.appendChild(label);

@@ -28,6 +28,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4vWxauP6oFowwSQeBnFwRW",
       "notes": null,
       "cover_path": "covers/ff_28459114_0_SpecialForces.webp",
       "cover_source_url": null,
@@ -38,7 +39,7 @@
       "album_sales": null,
       "major_contributors": "Co-written with Jim Peterik",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -252,6 +253,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6mUdeDZCsExyJLMdAfDuwh",
       "notes": null,
       "cover_path": "covers/79_13634364_0_BackInBlack.webp",
       "cover_source_url": null,
@@ -262,7 +264,7 @@
       "album_sales": null,
       "major_contributors": "Features Brian Johnson (lead singer)",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -496,6 +498,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6fe6GcNZ2D06QhULBgmgJa",
       "notes": null,
       "cover_path": "covers/AC-DC - Powerage.jpg",
       "cover_source_url": null,
@@ -506,7 +509,7 @@
       "album_sales": null,
       "major_contributors": "Features Cliff Williams (bass guitar)",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -720,6 +723,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2a4WCF5N6W1rm2Fm3L0eEm",
       "notes": null,
       "cover_path": "covers/AC-DC - Highway to Hell.jpg",
       "cover_source_url": null,
@@ -730,7 +734,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Robert John \"Mutt\" Lange",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -964,6 +968,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3JwFNl80WWeXPiKEjIFbqa",
       "notes": null,
       "cover_path": "covers/download.jpg",
       "cover_source_url": null,
@@ -974,7 +979,7 @@
       "album_sales": null,
       "major_contributors": "Features Mark Evans (bass)",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -1168,6 +1173,7 @@
       "source": "https://en.wikipedia.org/wiki/High_Voltage_%281975_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7kiDg4OA7AgE7FErRjMvvJ",
       "notes": null,
       "cover_path": "covers/AC-DC - High Voltage.jpg",
       "cover_source_url": null,
@@ -1178,7 +1184,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-11 11:01:23"
     },
     "tracks": [
       {
@@ -1372,6 +1378,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "76mvVgXOde87B9aOzLXCOI",
       "notes": null,
       "cover_path": "covers/bb_423442_0_ACDCDirtyDeedsDoneDirtCheap.webp",
       "cover_source_url": null,
@@ -1382,7 +1389,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -1596,6 +1603,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5Uv5LmSKTT9okGkr3l9MjR",
       "notes": null,
       "cover_path": "covers/f6_34754990_0_Rocks.webp",
       "cover_source_url": null,
@@ -1606,7 +1614,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -1820,6 +1828,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "792SNee67NvAFZbsip969c",
       "notes": null,
       "cover_path": "covers/53_34754933_0_DrawTheLine.webp",
       "cover_source_url": null,
@@ -1830,7 +1839,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -2044,6 +2053,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6As5aOEQjfxLIChIB3fQRD",
       "notes": null,
       "cover_path": "covers/92_34754975_0_ToysInTheAttic.webp",
       "cover_source_url": null,
@@ -2054,7 +2064,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-11 15:08:30"
     },
     "tracks": [
       {
@@ -2268,6 +2278,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6ts9DsFiEy3H9yIYiggLdq",
       "notes": null,
       "cover_path": "covers/d3_34754906_0_GetYourWings.webp",
       "cover_source_url": null,
@@ -2278,7 +2289,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Jack Douglas",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -2472,6 +2483,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "09AwlP99cHfKVNKv4FC8VW",
       "notes": null,
       "cover_path": "covers/83_4576388_0_JaggedLittlePill.webp",
       "cover_source_url": null,
@@ -2482,7 +2494,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -2756,6 +2768,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "64sDz3NRE1xYuaIZWAyu4N",
       "notes": null,
       "cover_path": "covers/26_25583515_0_HistoryAmericasGreatestHits.webp",
       "cover_source_url": null,
@@ -2766,7 +2779,7 @@
       "album_sales": null,
       "major_contributors": "Produced by George Martin",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-11 15:08:30"
     },
     "tracks": [
       {
@@ -3040,6 +3053,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4uL3yn9nCDNOr0Dj4ycdqn",
       "notes": null,
       "cover_path": "covers/54_9911057_0_AngelWitch.webp",
       "cover_source_url": null,
@@ -3050,7 +3064,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-11 14:59:50"
     },
     "tracks": [
       {
@@ -3284,6 +3298,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1H6UavEu5ZiRwybDHo9vCd",
       "notes": null,
       "cover_path": "covers/64_1054165_0_AsiaAsia.webp",
       "cover_source_url": null,
@@ -3294,7 +3309,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -3508,6 +3523,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4vWbvwBYgwtDUVMVx5DtNe",
       "notes": null,
       "cover_path": "covers/ab_5430742_0_Astra.webp",
       "cover_source_url": null,
@@ -3518,7 +3534,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -3752,6 +3768,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/cc_10382783_0_Alpha.webp",
       "cover_source_url": null,
@@ -3996,6 +4013,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/c1_8806554_0_BadCompany.webp",
       "cover_source_url": null,
@@ -4200,6 +4218,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1pdb09RJTwX1b0CPODdNT0",
       "notes": null,
       "cover_path": "covers/53_25719109_0_StraightShooter.webp",
       "cover_source_url": null,
@@ -4210,7 +4229,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -4404,6 +4423,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3IILMjMMnoN2sKzgesX8KV",
       "notes": null,
       "cover_path": "covers/9e_7366921_0_TheStranger.webp",
       "cover_source_url": null,
@@ -4414,7 +4434,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Phil Ramone",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -4628,6 +4648,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5sztejERqpktXEdemlUvU5",
       "notes": null,
       "cover_path": "covers/dd_12848366_0_GlassHouses.webp",
       "cover_source_url": null,
@@ -4638,7 +4659,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -4872,6 +4893,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1HmCO8VK98AU6EXPOjGYyI",
       "notes": null,
       "cover_path": "covers/7d_5954519_0_BillyJoel52ndStreet.webp",
       "cover_source_url": null,
@@ -4882,7 +4904,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -5096,6 +5118,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 1.jpg",
       "cover_source_url": null,
@@ -5300,6 +5323,7 @@
       "source": "https://en.wikipedia.org/wiki/Paranoid_%28album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/8b_9027996_0_Paranoid.webp",
       "cover_source_url": null,
@@ -5504,6 +5528,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2xlljcaxcJxmnGO4xJq7YZ",
       "notes": null,
       "cover_path": "covers/77_6972324_0_HeavenAndHell.webp",
       "cover_source_url": null,
@@ -5514,7 +5539,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Martin Birch",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -5708,6 +5733,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6DbV9aEOPxY5hxJOObyxzU",
       "notes": null,
       "cover_path": "covers/45_434020_1_BlindFaithBlindFaith.webp",
       "cover_source_url": null,
@@ -5718,7 +5744,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -5872,6 +5898,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "23SYuUFygqOTPAhLjaSMa9",
       "notes": null,
       "cover_path": "covers/62_6732543_0_AgentsOfFortune.webp",
       "cover_source_url": null,
@@ -5882,7 +5909,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -6116,6 +6143,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3OYw8rWF5RDCeVMWffMNHP",
       "notes": null,
       "cover_path": "covers/ff_8052184_0_Spectres.webp",
       "cover_source_url": null,
@@ -6126,7 +6154,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -6360,6 +6388,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "74fyfECdTUBoJYbcr7tCxo",
       "notes": null,
       "cover_path": "covers/ba_6867471_0_Uprising.webp",
       "cover_source_url": null,
@@ -6370,7 +6399,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -6604,6 +6633,7 @@
       "source": "https://en.wikipedia.org/wiki/Exodus_%28Bob_Marley_and_the_Wailers_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 3.jpg",
       "cover_source_url": null,
@@ -6848,6 +6878,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2sjqgdbvLYmvpC3CL8kkyK",
       "notes": null,
       "cover_path": "covers/09_15208964_0_Kaya.webp",
       "cover_source_url": null,
@@ -6858,7 +6889,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -7092,6 +7123,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/9a_15091735_0_LegendofBobMarleyTheWailers.webp",
       "cover_source_url": null,
@@ -7416,6 +7448,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "01OahkTPRCleDjobtRk7ST",
       "notes": null,
       "cover_path": "covers/b6_8314222_0_Boston.webp",
       "cover_source_url": null,
@@ -7426,7 +7459,7 @@
       "album_sales": null,
       "major_contributors": "Produced by band guitarist Tom Scholz",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -7620,6 +7653,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/01_12734053_0_DontLookBack.webp",
       "cover_source_url": null,
@@ -7824,6 +7858,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7LPkGn9WJkguua8oZtaHxa",
       "notes": null,
       "cover_path": "covers/47_9871706_0_Reckless.webp",
       "cover_source_url": null,
@@ -7834,7 +7869,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Adams",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -8068,6 +8103,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/2f_1639086_0_BuddyHollyTheChirpingCrickets.webp",
       "cover_source_url": null,
@@ -8812,6 +8848,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/9d_6978514_0_TheSnowGoose.webp",
       "cover_source_url": null,
@@ -9176,6 +9213,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2DZEwt8Lhz6PuqxsJWF7Ap",
       "notes": null,
       "cover_path": "covers/98_3751281_0_CamelMirage.webp",
       "cover_source_url": null,
@@ -9186,7 +9224,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -9320,6 +9358,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/58_15149658_0_Tapestry.webp",
       "cover_source_url": null,
@@ -9604,6 +9643,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/2a_7990012_0_DreamPolice.webp",
       "cover_source_url": null,
@@ -9828,6 +9868,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5ttDbNMKXczvp0Z8QRgKs6",
       "notes": null,
       "cover_path": "covers/2a_3298588_0_AtBudokan.webp",
       "cover_source_url": null,
@@ -9838,7 +9879,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -10072,6 +10113,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6ng47hft8dJO3VhgrnIqps",
       "notes": null,
       "cover_path": "covers/b7_741662_0_Auberge.webp",
       "cover_source_url": null,
@@ -10082,7 +10124,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -10356,6 +10398,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/50_8354534_0_TheRoadToHell.webp",
       "cover_source_url": null,
@@ -10600,6 +10643,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/ec_11030369_0_OnTheBeach.webp",
       "cover_source_url": null,
@@ -10844,6 +10888,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/b1_10491064_0_TheGreatTwentyEight.webp",
       "cover_source_url": null,
@@ -11448,6 +11493,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/66_9076503_0_DisraeliGears.webp",
       "cover_source_url": null,
@@ -11712,6 +11758,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/3c_16133762_0_WheelsOfFire.webp",
       "cover_source_url": null,
@@ -12016,6 +12063,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/a1_24904460_0_CosmosFactory.webp",
       "cover_source_url": null,
@@ -12280,6 +12328,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/bd_952639_0_CreedenceClearwaterRevivalGree.webp",
       "cover_source_url": null,
@@ -12504,6 +12553,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2RE7a9nXiFL5mwnKIkFLzY",
       "notes": null,
       "cover_path": "covers/d7_701268_0_CreedenceClearwaterRevivalWill.webp",
       "cover_source_url": null,
@@ -12514,7 +12564,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -12748,6 +12798,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/48_26191751_0_Chronicle.webp",
       "cover_source_url": null,
@@ -13592,6 +13643,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1QSoW668F9DVj8Rk9azF7h",
       "notes": null,
       "cover_path": "covers/03_9322374_0_Woodface.webp",
       "cover_source_url": null,
@@ -13602,7 +13654,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Mitchell Froom",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -13916,6 +13968,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "0Vw2BOifLhBx5mvnepOGVf",
       "notes": null,
       "cover_path": "covers/b5_2035236_0_CrowdedHouseCrowdedHouse.webp",
       "cover_source_url": null,
@@ -13926,7 +13979,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Mitchell Froom",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -14160,6 +14213,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "48D1hRORqJq52qsnUYZX56",
       "notes": null,
       "cover_path": "covers/a7_632758_0_DavidBowieTheRiseAndFallOfZigg.webp",
       "cover_source_url": null,
@@ -14170,7 +14224,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Bowie",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -14424,6 +14478,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/6f_26804957_0_HunkyDory.webp",
       "cover_source_url": null,
@@ -14688,6 +14743,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/fc_20895085_0_LetsDance.webp",
       "cover_source_url": null,
@@ -14892,6 +14948,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3HZKOk1knxrUU3y5ZIOdbz",
       "notes": null,
       "cover_path": "covers/30_8002694_0_AladdinSane.webp",
       "cover_source_url": null,
@@ -14902,7 +14959,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Bowie",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -15136,6 +15193,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5mImvIZcP7Pc23RhSZajsC",
       "notes": null,
       "cover_path": "covers/e1_6548941_0_Burn.webp",
       "cover_source_url": null,
@@ -15146,7 +15204,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -15340,6 +15398,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/1d_7984162_0_DeepPurpleInRock.webp",
       "cover_source_url": null,
@@ -15524,6 +15583,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1EK3a0Yctg4d3nGQzE4Uty",
       "notes": null,
       "cover_path": "covers/download 4.jpg",
       "cover_source_url": null,
@@ -15534,7 +15594,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 17:04:40"
     },
     "tracks": [
       {
@@ -15708,6 +15768,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/a9_1726146_0_DeepPurpleMadeInJapan.webp",
       "cover_source_url": null,
@@ -15892,6 +15953,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "028GpIPQmx26LrI3nJHTnK",
       "notes": null,
       "cover_path": "covers/dd_23896184_0_Hysteria.webp",
       "cover_source_url": null,
@@ -15902,7 +15964,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Robert John \"Mutt\" Lange",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -16176,6 +16238,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 5.jpg",
       "cover_source_url": null,
@@ -16440,6 +16503,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 6.jpg",
       "cover_source_url": null,
@@ -16684,6 +16748,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/29_2317371_0_DefLeppardHighNDry.webp",
       "cover_source_url": null,
@@ -16928,6 +16993,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 7.jpg",
       "cover_source_url": null,
@@ -17112,6 +17178,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2thaV3YkqjK7f2AL8LC4xF",
       "notes": null,
       "cover_path": "covers/download 8.jpg",
       "cover_source_url": null,
@@ -17122,7 +17189,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -17316,6 +17383,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/82_9943538_0_DireStraits.webp",
       "cover_source_url": null,
@@ -17540,6 +17608,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4sVMaNrLbkffVgd0CMSibC",
       "notes": null,
       "cover_path": "covers/ea_1001249_0_DireStraitsLoveOverGold.webp",
       "cover_source_url": null,
@@ -17550,7 +17619,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -17684,6 +17753,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1NF8WUbdC632SIwixiWrLh",
       "notes": null,
       "cover_path": "covers/download 9.jpg",
       "cover_source_url": null,
@@ -17694,7 +17764,7 @@
       "album_sales": null,
       "major_contributors": "Produced by bandleader Mark Knopfler",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -17908,6 +17978,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/c5_1531627_0_DireStraitsCommuniqu.webp",
       "cover_source_url": null,
@@ -18132,6 +18203,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "10jsW2NYd9blCrDITMh2zS",
       "notes": null,
       "cover_path": "covers/05_9405108_0_AmericanPie.webp",
       "cover_source_url": null,
@@ -18142,7 +18214,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -18376,6 +18448,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "0vndiSM8xxlb8CQFOMMO9h",
       "notes": null,
       "cover_path": "covers/45_15270241_0_Rio.webp",
       "cover_source_url": null,
@@ -18386,7 +18459,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Colin Thurston",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -18600,6 +18673,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4RLVTxnuVN5ZWZqBFnaaQt",
       "notes": null,
       "cover_path": "covers/00_1752531_0_WindFireEarthIAm.webp",
       "cover_source_url": null,
@@ -18610,7 +18684,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -18824,6 +18898,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2qd7QaBMaK15aNWo7mdWMH",
       "notes": null,
       "cover_path": "covers/96_5703658_0_OutOfTheBlue.webp",
       "cover_source_url": null,
@@ -18834,7 +18909,7 @@
       "album_sales": null,
       "major_contributors": "Produced by ELO frontman Jeff Lynne",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -19248,6 +19323,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1UemL2I4XI64YjYv2ScucA",
       "notes": null,
       "cover_path": "covers/9a_2199944_0_ElectricLightOrchestraANewWorl.webp",
       "cover_source_url": null,
@@ -19258,7 +19334,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -19472,6 +19548,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/00_15835769_0_Discovery.webp",
       "cover_source_url": null,
@@ -19696,6 +19773,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/30_7583582_0_GreatestHits.webp",
       "cover_source_url": null,
@@ -20220,6 +20298,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/69_1566673_0_ElectricLightOrchestraTime.webp",
       "cover_source_url": null,
@@ -20524,6 +20603,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5WupqgR68HfuHt3BMJtgun",
       "notes": null,
       "cover_path": "covers/3c_21435850_0_GoodbyeYellowBrickRoad.webp",
       "cover_source_url": null,
@@ -20534,7 +20614,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -20908,6 +20988,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4UcpKa4yD9AA3iEHI8MFSF",
       "notes": null,
       "cover_path": "covers/bf_16598295_0_CaptainFantasticAndTheBrownDir.webp",
       "cover_source_url": null,
@@ -20918,7 +20999,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -21152,6 +21233,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/7d_23593262_0_MadmanAcrossTheWater.webp",
       "cover_source_url": null,
@@ -21376,6 +21458,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6MeZQmdd5TO3vdtyFCFNBe",
       "notes": null,
       "cover_path": "covers/2b_11443518_0_DontShootMeImOnlythePianoPlaye.webp",
       "cover_source_url": null,
@@ -21386,7 +21469,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -21620,6 +21703,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2ei2X6ghPnw7YRwQtAH075",
       "notes": null,
       "cover_path": "covers/17_881054_0_EltonJohnHonkyChteau.webp",
       "cover_source_url": null,
@@ -21630,7 +21714,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -21864,6 +21948,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 10.jpg",
       "cover_source_url": null,
@@ -22188,6 +22273,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 11.jpg",
       "cover_source_url": null,
@@ -22472,6 +22558,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/82_9624181_0_BrainSaladSurgery.webp",
       "cover_source_url": null,
@@ -22676,6 +22763,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4A1vePlqDJtLjSqyWl2lLB",
       "notes": null,
       "cover_path": "covers/bc_14352024_0_EmersonLakePalmer.webp",
       "cover_source_url": null,
@@ -22686,7 +22774,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -22820,6 +22908,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1GQCluFc8ODQis5kvcDVKF",
       "notes": null,
       "cover_path": "covers/21_23253320_0_Unplugged.webp",
       "cover_source_url": null,
@@ -22830,7 +22919,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -23144,6 +23233,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/34_4944248_1_Penguin.webp",
       "cover_source_url": null,
@@ -23368,6 +23458,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 12.jpg",
       "cover_source_url": null,
@@ -23652,6 +23743,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/2b_3762353_0_FleetwoodMacHeroesAreHardToFin.webp",
       "cover_source_url": null,
@@ -23916,6 +24008,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "63k57x0qOkUWEMR0dkMivh",
       "notes": null,
       "cover_path": "covers/48_12054791_0_Rumours.webp",
       "cover_source_url": null,
@@ -23926,7 +24019,7 @@
       "album_sales": null,
       "major_contributors": "Produced by the band with Ken Caillat",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -24180,6 +24273,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 14.jpg",
       "cover_source_url": null,
@@ -24624,6 +24718,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "70MrKoi2AdCFBxKqeXDPHZ",
       "notes": null,
       "cover_path": "covers/3c_12653199_0_TheDance.webp",
       "cover_source_url": null,
@@ -24634,7 +24729,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -25008,6 +25103,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/00_3071511_0_FleetwoodMacBareTrees.webp",
       "cover_source_url": null,
@@ -25252,6 +25348,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 15.jpg",
       "cover_source_url": null,
@@ -25536,6 +25633,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1dZNgJ3Gh3wp6ohzk29JUG",
       "notes": null,
       "cover_path": "covers/4c_1747500_0_FleetwoodMacMirage.webp",
       "cover_source_url": null,
@@ -25546,7 +25644,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -25820,6 +25918,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/58_23805953_0_FleetwoodMac.webp",
       "cover_source_url": null,
@@ -26084,6 +26183,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2Pw51hAGvWpTA3AYl2WVuu",
       "notes": null,
       "cover_path": "covers/b3_2675120_0_4.webp",
       "cover_source_url": null,
@@ -26094,7 +26194,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -26328,6 +26428,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6lu6DYE0eHHp1gd3QGUYhu",
       "notes": null,
       "cover_path": "covers/80_32134611_0_DoubleVision.webp",
       "cover_source_url": null,
@@ -26338,7 +26439,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Keith Olsen",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -26572,6 +26673,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4oQhDQDKMeI6IMlwpXt3j8",
       "notes": null,
       "cover_path": "covers/c7_10509166_0_AgentProvocateur.webp",
       "cover_source_url": null,
@@ -26582,7 +26684,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -26856,6 +26958,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1OU7zJvUfgxxPHgkTClt1M",
       "notes": null,
       "cover_path": "covers/66_28802848_1_Foreigner.webp",
       "cover_source_url": null,
@@ -26866,7 +26969,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -27100,6 +27203,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1hgW1wQNsca8iXUEmTFAUY",
       "notes": null,
       "cover_path": "covers/2a_4742076_0_FireAndWater.webp",
       "cover_source_url": null,
@@ -27110,7 +27214,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -27284,6 +27388,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6ZQYdIbYfTfXj5oNMy8JxY",
       "notes": null,
       "cover_path": "covers/d5_2334858_0_GaryMooreDirtyFingers.webp",
       "cover_source_url": null,
@@ -27294,7 +27399,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -27528,6 +27633,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/27_4978223_0_GaryMooreBackOnTheStreets.webp",
       "cover_source_url": null,
@@ -27732,6 +27838,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7HSONsw7mumBE5q0e7KJW2",
       "notes": null,
       "cover_path": "covers/download 16.jpg",
       "cover_source_url": null,
@@ -27742,7 +27849,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -27996,6 +28103,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5BDGtXKMQ6k267KX4PoGhP",
       "notes": null,
       "cover_path": "covers/07_7248200_0_InvisibleTouch.webp",
       "cover_source_url": null,
@@ -28006,7 +28114,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -28200,6 +28308,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/6b_4258845_0_Duke.webp",
       "cover_source_url": null,
@@ -28484,6 +28593,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/d0_10174306_0_HitAndRun.webp",
       "cover_source_url": null,
@@ -28748,6 +28858,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 17.jpg",
       "cover_source_url": null,
@@ -28972,6 +29083,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6q5MEna6Fg46powSoeZJe3",
       "notes": null,
       "cover_path": "covers/dd_6907606_0_TheNumberOfTheBeast.webp",
       "cover_source_url": null,
@@ -28982,7 +29094,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -29176,6 +29288,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4hFcwazEjeg3gJEu0AuxM7",
       "notes": null,
       "cover_path": "covers/a4_3577654_0_Powerslave.webp",
       "cover_source_url": null,
@@ -29186,7 +29299,7 @@
       "album_sales": null,
       "major_contributors": "Features the same personnel (their previous studio release)",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -29380,6 +29493,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5J5fnu7PEwhgzdkiBBtblw",
       "notes": null,
       "cover_path": "covers/download 18.jpg",
       "cover_source_url": null,
@@ -29390,7 +29504,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 17:04:40"
     },
     "tracks": [
       {
@@ -29584,6 +29698,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/d1_5079066_0_PieceOfMind.webp",
       "cover_source_url": null,
@@ -29728,6 +29843,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5jerDBRhUh7bfuSXW1Lfgt",
       "notes": null,
       "cover_path": "covers/download 19.jpg",
       "cover_source_url": null,
@@ -29738,7 +29854,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -30112,6 +30228,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1pEuH3pCpd42YGAmxEkSkM",
       "notes": null,
       "cover_path": "covers/cf_4129455_0_IronMaidenKillers.webp",
       "cover_source_url": null,
@@ -30122,7 +30239,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -30376,6 +30493,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/6a_3104460_0_AnthologyAllKillerNoFillerCD2.webp",
       "cover_source_url": null,
@@ -31260,6 +31378,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "0NGM3Ftwjw0dLNpAowmz3x",
       "notes": null,
       "cover_path": "covers/a2_5236330_0_Aqualung.webp",
       "cover_source_url": null,
@@ -31270,7 +31389,7 @@
       "album_sales": null,
       "major_contributors": "Features Clive Bunker (drums)",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -31524,6 +31643,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1ZxChDw03SUFGUz0RC8A8M",
       "notes": null,
       "cover_path": "covers/26_25347985_0_ThickAsABrick.webp",
       "cover_source_url": null,
@@ -31534,7 +31654,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -31608,6 +31728,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/ac_6259811_0_WithALittleHelpFromMyFriends.webp",
       "cover_source_url": null,
@@ -31852,6 +31973,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/33_11895475_0_AtFolsomPrison.webp",
       "cover_source_url": null,
@@ -32216,6 +32338,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4d0hGUPxdtL2V2vhHSLCK0",
       "notes": null,
       "cover_path": "covers/25_1956605_0_JohnnyCashAmericanRecordings.webp",
       "cover_source_url": null,
@@ -32226,7 +32349,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -32520,6 +32643,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7K4Nk5fHkCuzNm5A6mdo2U",
       "notes": null,
       "cover_path": "covers/14_3153376_0_JourneyInfinity.webp",
       "cover_source_url": null,
@@ -32530,7 +32654,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -32764,6 +32888,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6Ds9R88wvu2XrlqrRad4kD",
       "notes": null,
       "cover_path": "covers/f2_14418961_0_Escape.webp",
       "cover_source_url": null,
@@ -32774,7 +32899,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -33008,6 +33133,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3pZ6D15onAaT2YyiTbcHmh",
       "notes": null,
       "cover_path": "covers/73_28721836_0_Frontiers.webp",
       "cover_source_url": null,
@@ -33018,7 +33144,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -33252,6 +33378,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "0V7mTTzioHiYIjfM8ATZBI",
       "notes": null,
       "cover_path": "covers/download 20.jpg",
       "cover_source_url": null,
@@ -33262,7 +33389,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -33496,6 +33623,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 21.jpg",
       "cover_source_url": null,
@@ -33780,6 +33908,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5bqtZRbUZUxUps8mrO9tGY",
       "notes": null,
       "cover_path": "covers/e2_15149430_0_BritishSteel.webp",
       "cover_source_url": null,
@@ -33790,7 +33919,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 17:04:40"
     },
     "tracks": [
       {
@@ -34004,6 +34133,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/60_2109483_0_JudasPriestSadWingsOfDestiny.webp",
       "cover_source_url": null,
@@ -34228,6 +34358,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "0v6FGuCgvRotTNL1KoX297",
       "notes": null,
       "cover_path": "covers/d8_6020500_0_StainedClass.webp",
       "cover_source_url": null,
@@ -34238,7 +34369,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -34452,6 +34583,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6oU298pdPTCQnMx1PYwyUA",
       "notes": null,
       "cover_path": "covers/4f_10185265_0_PointOfKnowReturn.webp",
       "cover_source_url": null,
@@ -34462,7 +34594,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -34696,6 +34828,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/dc_3041776_0_KansasLeftoverture.webp",
       "cover_source_url": null,
@@ -34880,6 +35013,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "77opKywcxPnBu5aBMASS2b",
       "notes": null,
       "cover_path": "covers/21_4883578_0_LoveGun.webp",
       "cover_source_url": null,
@@ -34890,7 +35024,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -35164,6 +35298,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6TRmLIsPKSPS71Cnq8FiMc",
       "notes": null,
       "cover_path": "covers/download 22.jpg",
       "cover_source_url": null,
@@ -35174,7 +35309,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -35528,6 +35663,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/a0_2565849_0_KissRockAndRollOver.webp",
       "cover_source_url": null,
@@ -35772,6 +35908,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 23.jpg",
       "cover_source_url": null,
@@ -36036,6 +36173,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "58N1RPC3B4mRkjBaug4u3X",
       "notes": null,
       "cover_path": "covers/ca_5942308_0_LedZeppelinII.webp",
       "cover_source_url": null,
@@ -36046,7 +36184,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -36260,6 +36398,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/3a_24335690_0_PhysicalGraffiti.webp",
       "cover_source_url": null,
@@ -36604,6 +36743,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 24.jpg",
       "cover_source_url": null,
@@ -36808,6 +36948,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/7e_6256268_1_HousesOfTheHoly.webp",
       "cover_source_url": null,
@@ -37012,6 +37153,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5U0NU0T1JKIJwgq2ZDWb2T",
       "notes": null,
       "cover_path": "covers/e7_1930046_0_LionelRichieCantSlowDownDeluxe.webp",
       "cover_source_url": null,
@@ -37022,7 +37164,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -37216,6 +37358,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6mwRcKeUwVpI4WkdYEGreS",
       "notes": null,
       "cover_path": "covers/a7_16244803_0_HeresLittleRichard.webp",
       "cover_source_url": null,
@@ -37226,7 +37369,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Robert Bumps Blackwell",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -37500,6 +37643,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2zXk4S0XW1SFWljU0KCsgw",
       "notes": null,
       "cover_path": "covers/download 26.jpg",
       "cover_source_url": null,
@@ -37510,7 +37654,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -37704,6 +37848,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/03_15702306_0_StreetSurvivors.webp",
       "cover_source_url": null,
@@ -37908,6 +38053,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5hmua0CkhMOchJZQDBvmjI",
       "notes": null,
       "cover_path": "covers/bb_4220846_0_LynyrdSkynyrdSecondHelping.webp",
       "cover_source_url": null,
@@ -37918,7 +38064,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -38112,6 +38258,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/6f_499347_0_MarillionMisplacedChildhood.webp",
       "cover_source_url": null,
@@ -38356,6 +38503,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/f8_23888714_0_WhatsGoingOn.webp",
       "cover_source_url": null,
@@ -38580,6 +38728,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/ef_18394591_0_Thriller.webp",
       "cover_source_url": null,
@@ -38804,6 +38953,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2ZytN2cY4Zjrr9ukb2rqTP",
       "notes": null,
       "cover_path": "covers/56_11775233_0_OffTheWall.webp",
       "cover_source_url": null,
@@ -38814,7 +38964,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Quincy Jones",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -39048,6 +39198,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7cNiOClQZsNQKUfKSi6QN3",
       "notes": null,
       "cover_path": "covers/5c_15259330_0_MollyHatchet.webp",
       "cover_source_url": null,
@@ -39058,7 +39209,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -39272,6 +39423,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/e6_2577382_0_Overkill.webp",
       "cover_source_url": null,
@@ -39516,6 +39668,7 @@
       "source": "https://en.wikipedia.org/wiki/Ace_of_Spades_%28Mot%C3%B6rhead_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/4c_5207359_0_AceOfSpades.webp",
       "cover_source_url": null,
@@ -39800,6 +39953,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/e3_7025882_0_IronFist.webp",
       "cover_source_url": null,
@@ -40084,6 +40238,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/1e_6596060_0_Bomber.webp",
       "cover_source_url": null,
@@ -40328,6 +40483,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3LdlOZcV0dp7ePBXe2KAGa",
       "notes": null,
       "cover_path": "covers/58_5711584_0_AllTheYoungDudes.webp",
       "cover_source_url": null,
@@ -40338,7 +40494,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 17:04:40"
     },
     "tracks": [
       {
@@ -40552,6 +40708,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1q2tD1XJGxzLbBwlW8bxXy",
       "notes": null,
       "cover_path": "covers/download 27.jpg",
       "cover_source_url": null,
@@ -40562,7 +40719,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -40796,6 +40953,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/b5_3137917_0_NeilDiamondBeautifulNoise.webp",
       "cover_source_url": null,
@@ -41060,6 +41218,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1EuJPvOg83OE37wz6bRgOy",
       "notes": null,
       "cover_path": "covers/25_16095363_0_HotAugustNight.webp",
       "cover_source_url": null,
@@ -41070,7 +41229,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -41584,6 +41743,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 28.jpg",
       "cover_source_url": null,
@@ -41828,6 +41988,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2uEf3r9i2bnxwJQsxQ0xQ7",
       "notes": null,
       "cover_path": "covers/download 29.jpg",
       "cover_source_url": null,
@@ -41838,7 +41999,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Butch Vig",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -42112,6 +42273,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4wXjHwpYza7sCw1vKKSfOm",
       "notes": null,
       "cover_path": "covers/48_2991978_0_OasisDefinitelyMaybe.webp",
       "cover_source_url": null,
@@ -42122,7 +42284,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -42376,6 +42538,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/fc_12781718_0_WhatsTheStoryMorningGlory.webp",
       "cover_source_url": null,
@@ -42680,6 +42843,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "537qKeG5gbEvKJpQ4Qmszn",
       "notes": null,
       "cover_path": "covers/15_25116985_0_BarkAtTheMoon.webp",
       "cover_source_url": null,
@@ -42690,7 +42854,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -42884,6 +43048,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/1b_15975935_0_DiaryOfAMadman.webp",
       "cover_source_url": null,
@@ -43088,6 +43253,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5FxbYXWhCbyQkUaVzj6hlo",
       "notes": null,
       "cover_path": "covers/25_9335068_0_BlizzardOfOzz.webp",
       "cover_source_url": null,
@@ -43098,7 +43264,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -43292,6 +43458,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6WgGWYw6XXQyLTsWt7tXky",
       "notes": null,
       "cover_path": "covers/download 30.jpg",
       "cover_source_url": null,
@@ -43302,7 +43469,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Simon",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -43556,6 +43723,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "029dnuRwPEn8biaR5QC59w",
       "notes": null,
       "cover_path": "covers/download 31.jpg",
       "cover_source_url": null,
@@ -43566,7 +43734,7 @@
       "album_sales": null,
       "major_contributors": "Features Matt Cameron (drums)",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -44000,6 +44168,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6NuXor1nnxUMgx4rF592Js",
       "notes": null,
       "cover_path": "covers/download 32.jpg",
       "cover_source_url": null,
@@ -44010,7 +44179,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -44224,6 +44393,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/0a_3329522_0_FleetwoodMacFleetwoodMac.webp",
       "cover_source_url": null,
@@ -44588,6 +44758,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/3b_2439690_0_PhilCollinsNoJacketRequired.webp",
       "cover_source_url": null,
@@ -44832,6 +45003,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "0z6C9U8FscvTVyFXo4Zza3",
       "notes": null,
       "cover_path": "covers/download 33.jpg",
       "cover_source_url": null,
@@ -44842,7 +45014,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -45116,6 +45288,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/54_5283807_0_TimeTellsNoLies.webp",
       "cover_source_url": null,
@@ -45340,6 +45513,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 34.jpg",
       "cover_source_url": null,
@@ -45684,6 +45858,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1GbtB4zTqAsyfZEsm1RZfx",
       "notes": null,
       "cover_path": "covers/download 35.jpg",
       "cover_source_url": null,
@@ -45694,7 +45869,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Roy Thomas Baker",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -45968,6 +46143,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6Di4m5k1BtMJ0R44bWNutu",
       "notes": null,
       "cover_path": "covers/download 36.jpg",
       "cover_source_url": null,
@@ -45978,7 +46154,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -46252,6 +46428,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3VWrUk4vBznMYXGMPc7dRB",
       "notes": null,
       "cover_path": "covers/download 37.jpg",
       "cover_source_url": null,
@@ -46262,7 +46439,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-11 11:01:23"
     },
     "tracks": [
       {
@@ -46636,6 +46813,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5jLOYFZn7yaG88TJi54MNu",
       "notes": null,
       "cover_path": "covers/download 38.jpg",
       "cover_source_url": null,
@@ -46646,7 +46824,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -46880,6 +47058,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/77_8412654_0_OutOfTime.webp",
       "cover_source_url": null,
@@ -47144,6 +47323,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/b4_8037481_0_AutomaticForThePeople.webp",
       "cover_source_url": null,
@@ -47428,6 +47608,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 39.jpg",
       "cover_source_url": null,
@@ -47712,6 +47893,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 40.jpg",
       "cover_source_url": null,
@@ -47996,6 +48178,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "0RsJGRspEXnzwNMBAdrV3u",
       "notes": null,
       "cover_path": "covers/44_7434453_0_RitchieBlackmoresRainbow.webp",
       "cover_source_url": null,
@@ -48006,7 +48189,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -48220,6 +48403,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 41.jpg",
       "cover_source_url": null,
@@ -48384,6 +48568,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/1a_5037931_0_OnStage.webp",
       "cover_source_url": null,
@@ -48588,6 +48773,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/ab_4389978_0_RainbowLongLiveRockNRoll.webp",
       "cover_source_url": null,
@@ -48792,6 +48978,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/2a_3153614_0_RockUntilYouDrop.webp",
       "cover_source_url": null,
@@ -49056,6 +49243,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7yvlmAcOx3Ru6hDzJx1TWh",
       "notes": null,
       "cover_path": "covers/6b_889998_0_REOSpeedwagonHiInfidelity.webp",
       "cover_source_url": null,
@@ -49066,7 +49254,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -49300,6 +49488,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 42.jpg",
       "cover_source_url": null,
@@ -49544,6 +49733,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2ZFCR4pxXNKfPFUzzMw8X1",
       "notes": null,
       "cover_path": "covers/e5_4740945_0_RodStewartGasolineAlley.webp",
       "cover_source_url": null,
@@ -49554,7 +49744,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -49768,6 +49958,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/c1_12237313_0_MysteryGirl.webp",
       "cover_source_url": null,
@@ -50012,6 +50203,7 @@
       "source": "https://en.wikipedia.org/wiki/The_All-Time_Greatest_Hits_of_Roy_Orbison",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/e5_14147544_1_TheAllTimeGreatestHits.webp",
       "cover_source_url": null,
@@ -50456,6 +50648,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/95_1499888_0_SadeDiamondLife.webp",
       "cover_source_url": null,
@@ -50680,6 +50873,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/51_10464924_0_ShockTactics.webp",
       "cover_source_url": null,
@@ -50904,6 +51098,7 @@
       "source": "https://en.wikipedia.org/wiki/Abraxas_%28album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 43.jpg",
       "cover_source_url": null,
@@ -51128,6 +51323,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/46_30735187_0_Santana.webp",
       "cover_source_url": null,
@@ -51352,6 +51548,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6EGEGr4oY0PsV6yGBxeQ8J",
       "notes": null,
       "cover_path": "covers/download 44.jpg",
       "cover_source_url": null,
@@ -51362,7 +51559,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -51576,6 +51773,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 45.jpg",
       "cover_source_url": null,
@@ -51800,6 +51998,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 46.jpg",
       "cover_source_url": null,
@@ -52004,6 +52203,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6d4dgGamepehj0WwsYXTKi",
       "notes": null,
       "cover_path": "covers/fb_12477255_0_LoveAtFirstSting.webp",
       "cover_source_url": null,
@@ -52014,7 +52214,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -52228,6 +52428,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7aIgGWlHdcPXOfONtXVliK",
       "notes": null,
       "cover_path": "covers/download 47.jpg",
       "cover_source_url": null,
@@ -52238,7 +52439,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -52432,6 +52633,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3OPlpf0FMNoSD6FtO3o7BE",
       "notes": null,
       "cover_path": "covers/16_18763081_0_AnimalMagnetism.webp",
       "cover_source_url": null,
@@ -52442,7 +52644,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -52656,6 +52858,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/97_2914526_0_ScorpionsBlackout.webp",
       "cover_source_url": null,
@@ -52880,6 +53083,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 48.jpg",
       "cover_source_url": null,
@@ -53324,6 +53528,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "0JwHz5SSvpYWuuCNbtYZoV",
       "notes": null,
       "cover_path": "covers/download 49.jpg",
       "cover_source_url": null,
@@ -53334,7 +53539,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -53588,6 +53793,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5Q74XTJr0l3sVQXprBeoT1",
       "notes": null,
       "cover_path": "covers/f2_1511823_0_SimpleMindsOnceUponATime.webp",
       "cover_source_url": null,
@@ -53598,7 +53804,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -53792,6 +53998,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/bc_8932177_0_NewGoldDream81828384.webp",
       "cover_source_url": null,
@@ -54016,6 +54223,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/f0_14201377_0_OldNewBorrowedAndBlue.webp",
       "cover_source_url": null,
@@ -54300,6 +54508,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/a4_25165249_0_Slayed.webp",
       "cover_source_url": null,
@@ -54544,6 +54753,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2iGwIUZh0tNkhOtqoo812B",
       "notes": null,
       "cover_path": "covers/66_2866531_0_True.webp",
       "cover_source_url": null,
@@ -54554,7 +54764,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -54748,6 +54958,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6sE9xagbayC2Xa1tXlZxtC",
       "notes": null,
       "cover_path": "covers/ca_8339038_0_Hello.webp",
       "cover_source_url": null,
@@ -54758,7 +54969,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -54952,6 +55163,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/0e_8022148_1_Piledriver.webp",
       "cover_source_url": null,
@@ -55156,6 +55368,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3iqReiy2IaPI2N9sdLywER",
       "notes": null,
       "cover_path": "covers/21_10194333_1_FlyLikeAnEagle.webp",
       "cover_source_url": null,
@@ -55166,7 +55379,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -55440,6 +55653,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 50.jpg",
       "cover_source_url": null,
@@ -55724,6 +55938,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/19_7050602_0_BackInTheHighLife.webp",
       "cover_source_url": null,
@@ -55928,6 +56143,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5jgI8Eminx9MmLBontDWq8",
       "notes": null,
       "cover_path": "covers/download 51.jpg",
       "cover_source_url": null,
@@ -55938,7 +56154,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -56152,6 +56368,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/25_556456_0_StevieWonderSongsInTheKeyOfLif.webp",
       "cover_source_url": null,
@@ -56616,6 +56833,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/ee_4217100_0_StyxTheGrandIllusion.webp",
       "cover_source_url": null,
@@ -56820,6 +57038,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/56_1906699_0_StyxPiecesOfEight.webp",
       "cover_source_url": null,
@@ -57064,6 +57283,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "18TiCDixtBNarD55Yw2aTU",
       "notes": null,
       "cover_path": "covers/09_3169735_0_EvenintheQuietestMoments.webp",
       "cover_source_url": null,
@@ -57074,7 +57294,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -57248,6 +57468,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3Fv4TJQ9iQ0DCLHv02122Z",
       "notes": null,
       "cover_path": "covers/91_6398036_0_SupertrampCrimeOfTheCentury.webp",
       "cover_source_url": null,
@@ -57258,7 +57479,7 @@
       "album_sales": null,
       "major_contributors": "Features drummer Bob Siebenberg (at the time credited (Bob C)",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -57452,6 +57673,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/93_7332530_0_BreakfastInAmerica.webp",
       "cover_source_url": null,
@@ -57696,6 +57918,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/ce_20252689_0_EyeOfTheTiger.webp",
       "cover_source_url": null,
@@ -57920,6 +58143,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/6e_4127109_0_SensationalSweetChapterOneTheW.webp",
       "cover_source_url": null,
@@ -58144,6 +58368,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 52.jpg",
       "cover_source_url": null,
@@ -58348,6 +58573,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "70V1kL7w7Q9pDU4I6zDjYE",
       "notes": null,
       "cover_path": "covers/5f_854636_0_TalkTalkTheColourOfSpring.webp",
       "cover_source_url": null,
@@ -58358,7 +58584,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -58552,6 +58778,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 53.jpg",
       "cover_source_url": null,
@@ -58796,6 +59023,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4vFkxr4zAZoRMTdFsm4Onp",
       "notes": null,
       "cover_path": "covers/5b_31007593_0_SongsFromTheBigChair.webp",
       "cover_source_url": null,
@@ -58806,7 +59034,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -59020,6 +59248,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/16_20450989_0_TheBand.webp",
       "cover_source_url": null,
@@ -59304,6 +59533,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "0ky5kdvfPxSmSpj03hpSAE",
       "notes": null,
       "cover_path": "covers/6a_3655429_0_TheBandMusicFromBigPink.webp",
       "cover_source_url": null,
@@ -59314,7 +59544,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -59568,6 +59798,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2CNEkSE8TADXRT2AzcEt1b",
       "notes": null,
       "cover_path": "covers/9a_13759608_0_PetSounds.webp",
       "cover_source_url": null,
@@ -59578,7 +59809,7 @@
       "album_sales": null,
       "major_contributors": "Guest lyricist Tony Asher",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -59872,6 +60103,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "05J8PFXdYKeYNb8YjqqJYr",
       "notes": null,
       "cover_path": "covers/8c_13544657_0_EndlessSummer.webp",
       "cover_source_url": null,
@@ -59882,7 +60114,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -60316,6 +60548,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/c7_1392579_0_CommodoresGreatestHits.webp",
       "cover_source_url": null,
@@ -60560,6 +60793,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5GugLrmYMl5VRoe2zNgLGp",
       "notes": null,
       "cover_path": "covers/download 54.jpg",
       "cover_source_url": null,
@@ -60570,7 +60804,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -60864,6 +61098,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "0M2KWMbvY5x1sUnIKNpyUt",
       "notes": null,
       "cover_path": "covers/0b_1469242_0_TheDoobieBrothersTheCaptainAnd.webp",
       "cover_source_url": null,
@@ -60874,7 +61109,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -61128,6 +61363,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6yXfAEtkB6MUyhRkiGg5X2",
       "notes": null,
       "cover_path": "covers/4b_2065109_0_TheDoobieBrothersTakinItToTheS.webp",
       "cover_source_url": null,
@@ -61138,7 +61374,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -61352,6 +61588,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1jWmEhn3ggaL6isoyLfwBn",
       "notes": null,
       "cover_path": "covers/ab_10108218_0_TheDoors.webp",
       "cover_source_url": null,
@@ -61362,7 +61599,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 17:04:40"
     },
     "tracks": [
       {
@@ -61616,6 +61853,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6v5IVMmY1IvWtbfnQoiFSf",
       "notes": null,
       "cover_path": "covers/2e_4948011_0_StrangeDays.webp",
       "cover_source_url": null,
@@ -61626,7 +61864,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -61860,6 +62098,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7IKUTIc9UWuVngyGPtqNHS",
       "notes": null,
       "cover_path": "covers/download 55.jpg",
       "cover_source_url": null,
@@ -61870,7 +62109,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -62104,17 +62343,18 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "09WBxbis5Sixt01FVMs8UM",
       "notes": null,
       "cover_path": "covers/55_3422056_0_Desperado.webp",
       "cover_source_url": null,
-      "mb_releasegroup_id": null,
+      "mb_releasegroup_id": "9e7b49bb-b4bd-3583-87ba-f516f793eff2",
       "album_description": "Desperado is an album by The Eagles, released in 1973.",
       "release_notes": null,
       "highlights_text": null,
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-11 11:50:58"
     },
     "tracks": [
       {
@@ -62368,6 +62608,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/c3_3513004_0_HotelCalifornia.webp",
       "cover_source_url": null,
@@ -62592,6 +62833,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/1e_2301724_0_TheirGreatestHits19711975.webp",
       "cover_source_url": null,
@@ -62836,6 +63078,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/05_2083395_0_OneOfTheseNights.webp",
       "cover_source_url": null,
@@ -63060,6 +63303,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/00_3530609_0_Eagles.webp",
       "cover_source_url": null,
@@ -63704,6 +63948,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/e7_23865773_0_OnTheBorder.webp",
       "cover_source_url": null,
@@ -63948,6 +64193,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/ce_14588850_0_GreatestHits.webp",
       "cover_source_url": null,
@@ -64352,6 +64598,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4Nro0nGcWVybv8cZXmSU4P",
       "notes": null,
       "cover_path": "covers/de_3922122_0_ADateWithTheEverlyBrothers.webp",
       "cover_source_url": null,
@@ -64362,7 +64609,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -64636,6 +64883,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/f0_3990274_0_ANodIsAsGoodAWinkToABlindHorse.webp",
       "cover_source_url": null,
@@ -64860,6 +65108,7 @@
       "source": "https://en.wikipedia.org/wiki/Dare_%28album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/c6_27729_0_TheHumanLeagueDare.webp",
       "cover_source_url": null,
@@ -65104,6 +65353,7 @@
       "source": "https://en.wikipedia.org/wiki/Muswell_Hillbillies",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/fa_24496118_0_MuswellHillbillies.webp",
       "cover_source_url": null,
@@ -65388,6 +65638,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/27_9767377_0_LolaVersusPowermanAndTheMoneyg.webp",
       "cover_source_url": null,
@@ -65692,6 +65943,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": null,
       "cover_source_url": null,
@@ -65976,6 +66228,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/91_11128204_0_DaysOfFuturePassed.webp",
       "cover_source_url": null,
@@ -66160,6 +66413,7 @@
       "source": "https://en.wikipedia.org/wiki/Seventh_Sojourn",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2v46G6QPCLJLOs0MJJGKka",
       "notes": null,
       "cover_path": "covers/34_19892518_0_SeventhSojourn.webp",
       "cover_source_url": null,
@@ -66170,7 +66424,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -66364,6 +66618,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/03_10559319_0_OnTheThresholdOfADream.webp",
       "cover_source_url": null,
@@ -66668,6 +66923,7 @@
       "source": "https://en.wikipedia.org/wiki/Reggatta_de_Blanc",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "2EpuND32cO7CX0gXZl2NB6",
       "notes": null,
       "cover_path": "covers/53_14627100_0_ReggattaDeBlanc.webp",
       "cover_source_url": null,
@@ -66678,7 +66934,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -66932,6 +67188,7 @@
       "source": "https://en.wikipedia.org/wiki/Synchronicity_%28The_Police_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/49_31318551_1_Synchronicity.webp",
       "cover_source_url": null,
@@ -67176,6 +67433,7 @@
       "source": "https://en.wikipedia.org/wiki/Outlandos_d%27Amour",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1H9g6j4Wwj6wh6p8YHVtkf",
       "notes": null,
       "cover_path": "covers/bf_18548305_0_OutlandosDAmour.webp",
       "cover_source_url": null,
@@ -67186,7 +67444,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -67420,6 +67678,7 @@
       "source": "https://en.wikipedia.org/wiki/Exile_on_Main_St.",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5U4dnRZsfW8NmwBBkELFPh",
       "notes": null,
       "cover_path": "covers/74_2341318_0_TheRollingStonesExileOnMainSt.webp",
       "cover_source_url": null,
@@ -67430,7 +67689,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -67824,6 +68083,7 @@
       "source": "https://en.wikipedia.org/wiki/Some_Girls",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6FjXxl9VLURGuubdXUn2J3",
       "notes": null,
       "cover_path": "covers/download 56.jpg",
       "cover_source_url": null,
@@ -67834,7 +68094,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -68068,6 +68328,7 @@
       "source": "https://en.wikipedia.org/wiki/Black_and_Blue",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 57.jpg",
       "cover_source_url": null,
@@ -68272,6 +68533,7 @@
       "source": "https://en.wikipedia.org/wiki/Sticky_Fingers",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "192SXTtkShFKcmAIZGkSBY",
       "notes": null,
       "cover_path": "covers/download 58.jpg",
       "cover_source_url": null,
@@ -68282,7 +68544,7 @@
       "album_sales": "It was the band's first album to reach number one on both the UK albums and US albums charts, and has since achieved triple platinum certification in the US.",
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -68516,6 +68778,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/38_2319587_0_Vol412.webp",
       "cover_source_url": null,
@@ -68760,6 +69023,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5U1ZwgQzWun74Cgx85z1oy",
       "notes": null,
       "cover_path": "covers/a9_9947431_0_Jailbreak.webp",
       "cover_source_url": null,
@@ -68770,7 +69034,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -68984,6 +69248,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5XgLc3jXWJOXrg1YnbsdxZ",
       "notes": null,
       "cover_path": "covers/c3_5847304_0_ThinLizzyLiveAndDangerous.webp",
       "cover_source_url": null,
@@ -68994,7 +69259,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -69368,6 +69633,7 @@
       "source": "https://en.wikipedia.org/wiki/Tokyo_Blade_%28album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/98_14446797_0_TokyoBlade.webp",
       "cover_source_url": null,
@@ -69572,6 +69838,7 @@
       "source": "https://en.wikipedia.org/wiki/Full_Moon_Fever",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5d71Imt5CIb7LpQwDMQ093",
       "notes": null,
       "cover_path": "covers/e3_2099364_0_TomPettyFullMoonFever.webp",
       "cover_source_url": null,
@@ -69582,7 +69849,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -69856,6 +70123,7 @@
       "source": "https://en.wikipedia.org/wiki/Damn_the_Torpedoes_%28album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/47_3462255_0_DamnTheTorpedoes.webp",
       "cover_source_url": null,
@@ -70080,6 +70348,7 @@
       "source": "https://en.wikipedia.org/wiki/Toto_IV",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "62U7xIHcID94o20Of5ea4D",
       "notes": null,
       "cover_path": "covers/22_2549222_0_TotoIV.webp",
       "cover_source_url": null,
@@ -70090,7 +70359,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -70324,6 +70593,7 @@
       "source": "https://en.wikipedia.org/wiki/Hydra_%28Toto_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3dPZH0a4kjtjq6Hm53BS9S",
       "notes": null,
       "cover_path": "covers/a3_7511528_0_Hydra.webp",
       "cover_source_url": null,
@@ -70334,7 +70604,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -70528,6 +70798,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1eu2FaH7pFa5rS41kvNock",
       "notes": null,
       "cover_path": "covers/download 59.jpg",
       "cover_source_url": null,
@@ -70538,7 +70809,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -70692,6 +70963,7 @@
       "source": "https://en.wikipedia.org/wiki/Spellbound_%28Tygers_of_Pan_Tang_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/05_13346216_0_Spellbound.webp",
       "cover_source_url": null,
@@ -70936,6 +71208,7 @@
       "source": "https://en.wikipedia.org/wiki/The_Joshua_Tree",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/d6_18040552_0_TheJoshuaTree.webp",
       "cover_source_url": null,
@@ -71200,6 +71473,7 @@
       "source": "https://en.wikipedia.org/wiki/Achtung_Baby",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "1U69hFsxaQxP6fquZmOmNH",
       "notes": null,
       "cover_path": "covers/d3_3338541_0_AchtungBaby.webp",
       "cover_source_url": null,
@@ -71210,7 +71484,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -71484,6 +71758,7 @@
       "source": "https://en.wikipedia.org/wiki/War_%28U2_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/29_1951165_0_U2War.webp",
       "cover_source_url": null,
@@ -71728,6 +72003,7 @@
       "source": "https://en.wikipedia.org/wiki/Strangers_in_the_Night_%28UFO_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6QlBELQSjV9x6RYFLz7EE6",
       "notes": null,
       "cover_path": "covers/02_9238075_0_StrangersInTheNight.webp",
       "cover_source_url": null,
@@ -71738,7 +72014,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -72032,6 +72308,7 @@
       "source": "https://en.wikipedia.org/wiki/Lights_Out_%28UFO_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/34_29675602_0_LightsOut.webp",
       "cover_source_url": null,
@@ -72236,6 +72513,7 @@
       "source": "https://en.wikipedia.org/wiki/Vienna_%28album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/f5_6461917_0_Vienna.webp",
       "cover_source_url": null,
@@ -72460,6 +72738,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5OGPphsycPCeEcJlxKnt0l",
       "notes": null,
       "cover_path": "covers/19_9943655_0_DemonsAndWizards.webp",
       "cover_source_url": null,
@@ -72470,7 +72749,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -72684,6 +72963,7 @@
       "source": "https://en.wikipedia.org/wiki/Van_Halen_II",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3w93PGkmXAmEAdJVvmPbzI",
       "notes": null,
       "cover_path": "covers/a3_7339883_0_VanHalenII.webp",
       "cover_source_url": null,
@@ -72694,7 +72974,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -72928,6 +73208,7 @@
       "source": "https://en.wikipedia.org/wiki/Fair_Warning_%28Van_Halen_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4KlqAmR1tA1dERWo7MHhzO",
       "notes": null,
       "cover_path": "covers/2e_6408527_0_FairWarning.webp",
       "cover_source_url": null,
@@ -72938,7 +73219,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -73152,6 +73433,7 @@
       "source": "https://en.wikipedia.org/wiki/Women_and_Children_First",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7fRy246Xzz3gez6stjTgKk",
       "notes": null,
       "cover_path": "covers/download 60.jpg",
       "cover_source_url": null,
@@ -73162,7 +73444,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Ted Templeman",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -73376,6 +73658,7 @@
       "source": "https://en.wikipedia.org/wiki/Van_Halen_%28album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7G2PY8yve3Db0PeGsosb4x",
       "notes": null,
       "cover_path": "covers/eb_29094583_0_VanHalen.webp",
       "cover_source_url": null,
@@ -73386,7 +73669,7 @@
       "album_sales": "It has sold more than 10 million copies in the United States, receiving a Diamond certification from the Recording Industry Association of America (RIAA) and making it one of the best-selling albums in the country.",
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -73640,6 +73923,7 @@
       "source": "https://en.wikipedia.org/wiki/1984_%28Van_Halen_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/download 61.jpg",
       "cover_source_url": null,
@@ -73864,6 +74148,7 @@
       "source": "https://en.wikipedia.org/wiki/Fair_Warning_%28Van_Halen_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4KlqAmR1tA1dERWo7MHhzO",
       "notes": null,
       "cover_path": "covers/2e_6408527_0_FairWarning 1.webp",
       "cover_source_url": null,
@@ -73874,7 +74159,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -74088,6 +74373,7 @@
       "source": "https://en.wikipedia.org/wiki/Diver_Down",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "6Ft0JILsEo5ZP2ddjECznc",
       "notes": null,
       "cover_path": "covers/download.png",
       "cover_source_url": null,
@@ -74098,7 +74384,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -74372,6 +74658,7 @@
       "source": "https://en.wikipedia.org/wiki/Black_Metal_%28Venom_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/9e_1574299_0_VenomBlackMetal.webp",
       "cover_source_url": null,
@@ -74636,6 +74923,7 @@
       "source": "https://en.wikipedia.org/wiki/Welcome_to_Hell",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "072WXyXY18Tnbb9RCjW9wu",
       "notes": null,
       "cover_path": "covers/4a_945150_0_VenomWelcomeToHell.webp",
       "cover_source_url": null,
@@ -74646,7 +74934,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -74940,6 +75228,7 @@
       "source": "https://en.wikipedia.org/wiki/Ready_an%27_Willing",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7b1WxNIgM1UEFKReWIfm9q",
       "notes": null,
       "cover_path": "covers/3c_5667990_0_ReadyAnWilling.webp",
       "cover_source_url": null,
@@ -74950,7 +75239,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -75164,6 +75453,7 @@
       "source": "https://en.wikipedia.org/wiki/Trouble_%28Whitesnake_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/05_7765263_0_Trouble.webp",
       "cover_source_url": null,
@@ -75408,6 +75698,7 @@
       "source": "https://en.wikipedia.org/wiki/Lovehunter",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4bGDoJhgdnYjthVENoNLmE",
       "notes": null,
       "cover_path": "covers/6e_6534021_0_Lovehunter.webp",
       "cover_source_url": null,
@@ -75418,7 +75709,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -75652,6 +75943,7 @@
       "source": null,
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/bf_10460289_0_TheYesAlbum.webp",
       "cover_source_url": null,
@@ -75816,6 +76108,7 @@
       "source": "https://en.wikipedia.org/wiki/Fragile_%28Yes_album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4X6gq5bgpGXcHINlFWzriM",
       "notes": null,
       "cover_path": "covers/4f_7858287_0_Fragile.webp",
       "cover_source_url": null,
@@ -75826,7 +76119,7 @@
       "album_sales": "Fragile was certified Platinum in the UK by the British Phonographic Industry (BPI) and double platinum in the US by the Recording Industry Association of America (RIAA), where it has sold over two million copies.",
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -76040,6 +76333,7 @@
       "source": "https://en.wikipedia.org/wiki/Close_to_the_Edge",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": null,
       "notes": null,
       "cover_path": "covers/9a_9224982_0_CloseToTheEdge.webp",
       "cover_source_url": null,
@@ -76144,6 +76438,7 @@
       "source": "https://en.wikipedia.org/wiki/Deg%C3%BCello",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "7DH3wAtFuyKpfho3tcvLrQ",
       "notes": null,
       "cover_path": "covers/2e_766614_0_ZZTopDegello.webp",
       "cover_source_url": null,
@@ -76154,7 +76449,7 @@
       "album_sales": null,
       "major_contributors": "Produced by Bill Ham",
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-11 15:08:30"
     },
     "tracks": [
       {
@@ -76388,6 +76683,7 @@
       "source": "https://en.wikipedia.org/wiki/Fandango%21",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "4krv5xmTGdK9LhWINUkVgO",
       "notes": null,
       "cover_path": "covers/ZZ Top - Fandango!.jpg",
       "cover_source_url": null,
@@ -76398,7 +76694,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -76612,6 +76908,7 @@
       "source": "https://en.wikipedia.org/wiki/Tres_Hombres",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "0Em8m9kRctyH9S3MTXAHvY",
       "notes": null,
       "cover_path": "covers/ZZ Top - Tres Hombres.jpg",
       "cover_source_url": null,
@@ -76622,7 +76919,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -76856,6 +77153,7 @@
       "source": "https://en.wikipedia.org/wiki/El_Loco",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "3arG8ypefLVEmDBzFVCsyR",
       "notes": null,
       "cover_path": "covers/99_12441025_0_ElLoco.webp",
       "cover_source_url": null,
@@ -76866,7 +77164,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -77100,6 +77398,7 @@
       "source": "https://en.wikipedia.org/wiki/Eliminator_%28album%29",
       "price_paid": null,
       "discogs_url": null,
+      "spotify_album_id": "5LMGAYhn2ywaxGZdtmXGpw",
       "notes": null,
       "cover_path": "covers/ZZ Top - Eliminator.jpg",
       "cover_source_url": null,
@@ -77110,7 +77409,7 @@
       "album_sales": "Eliminator is ZZ Top's most commercially successful release, with sales of 11 million and diamond certification in the US.",
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-04-09 16:14:46"
+      "album_updated_at": "2026-04-10 15:27:16"
     },
     "tracks": [
       {
@@ -77356,14 +77655,15 @@
       "buy_priority": "STRONG BUY",
       "buy_priority_text": null,
       "owned": 1,
-      "media_condition": null,
-      "sleeve_condition": null,
+      "media_condition": "Very Good Plus (VG+)",
+      "sleeve_condition": "Very Good Plus (VG+)",
       "pressing_country": "UK",
       "label": "Warner",
       "pressing_notes": "UK sleeve/catalogue WX 27; LP catalogue 925 342-1; cassette 925 342-4; France distribution code WE 381.",
       "source": "https://en.wikipedia.org/wiki/Afterburner_(ZZ_Top_album)",
       "price_paid": null,
       "discogs_url": "https://www.discogs.com/release/13673189",
+      "spotify_album_id": "1YRTFKHD0QDO2QAKvU4mLz",
       "notes": null,
       "cover_path": "covers/ZZ Top - Afterburner.jpg",
       "cover_source_url": "https://upload.wikimedia.org/wikipedia/en/6/63/ZZ_Top_-_Afterburner.jpg",
@@ -77374,7 +77674,7 @@
       "album_sales": "5× Platinum in the United States; Platinum in the United Kingdom.",
       "major_contributors": "Produced by Bill Ham",
       "album_created_at": "2026-04-06 10:45:28",
-      "album_updated_at": "2026-04-06 10:50:02"
+      "album_updated_at": "2026-04-11 15:27:29"
     },
     "tracks": [
       {

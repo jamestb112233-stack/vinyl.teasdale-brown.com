@@ -1,0 +1,21 @@
+Timestamp: 2026-04-11T18:44:15
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 1
+CHANGED: 5
+DELETED: 0
+
+New Files
+/publish_repo/media/artists/hazel-o-connor.jpg
+
+Changed Files
+/publish_repo/albums/album.html
+/publish_repo/albums/index.html
+/publish_repo/artist.html
+/publish_repo/data/albums/albums_export.json
+/publish_repo/library.json
+
+Deleted Files
+(none)
