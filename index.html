@@ -5,6 +5,8 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/backgrounds/icon-256.png">
 <title>Artist Browser</title>
 
 <script>
@@ -817,87 +819,6 @@ body.filter-hidden .container{
   border-bottom-color:rgba(207,227,255,.8);
 }
 
-.pin-gate{
-  position:fixed;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,.82);
-  backdrop-filter:blur(6px);
-  z-index:9999;
-}
-
-.pin-box{
-  width:100%;
-  max-width:360px;
-  margin:20px;
-  background:rgba(18,18,18,.92);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;
-  box-shadow:
-    0 20px 50px rgba(0,0,0,.6),
-    0 4px 12px rgba(0,0,0,.35);
-  padding:28px 24px 24px;
-  box-sizing:border-box;
-  text-align:center;
-}
-
-.pin-title{
-  font-size:22px;
-  font-weight:800;
-  margin-bottom:8px;
-}
-
-.pin-subtitle{
-  font-size:14px;
-  color:#c3bdb4;
-  line-height:1.45;
-  margin-bottom:18px;
-}
-
-.pin-input{
-  width:100%;
-  box-sizing:border-box;
-  padding:14px 16px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(30,30,30,.95);
-  color:#f0f0f0;
-  text-align:center;
-  font-size:18px;
-  letter-spacing:.1em;
-  outline:none;
-}
-
-.pin-input:focus{
-  border-color:rgba(255,255,255,.26);
-}
-
-.pin-button{
-  width:100%;
-  margin-top:12px;
-  padding:13px 16px;
-  border:none;
-  border-radius:10px;
-  background:rgba(70,70,70,.95);
-  color:#fff;
-  font-size:15px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.pin-button:hover{
-  background:rgba(90,90,90,.95);
-}
-
-.pin-error{
-  min-height:20px;
-  margin-top:12px;
-  font-size:13px;
-  color:#ff7d7d;
-}
-
 @media (hover: hover) and (pointer: fine){
   .card:hover{
     transform:translateY(-3px);
@@ -1267,9 +1188,7 @@ body.touch-mode .hero-panel,
 body.touch-mode .card,
 body.touch-mode .hover-detail,
 body.touch-mode .empty-state,
-body.touch-mode .app-footer,
-body.touch-mode .pin-gate,
-body.touch-mode .pin-box{
+body.touch-mode .app-footer{
   -webkit-backdrop-filter:none !important;
   backdrop-filter:none !important;
   filter:none !important;
@@ -1316,16 +1235,6 @@ body.touch-mode .hover-detail{
 </head>
 
 <body class="dark-default">
-
-<div id="pinGate" class="pin-gate">
-  <div class="pin-box">
-    <div class="pin-title">Restricted Preview</div>
-    <div class="pin-subtitle">Enter access code to view the collection.</div>
-    <input id="pinInput" class="pin-input" type="password" inputmode="numeric" autocomplete="off" />
-    <button id="pinButton" class="pin-button" type="button">Enter</button>
-    <div id="pinError" class="pin-error"></div>
-  </div>
-</div>
 
 <div class="intro-layer" aria-hidden="true">
   <div class="intro-badge">
@@ -1414,54 +1323,6 @@ body.touch-mode .hover-detail{
 </div>
 
 <script>
-const APP_PIN_ENABLED = false;
-const APP_PIN = "1967";
-
-function unlockApp(){
-  sessionStorage.setItem("rvac_auth", "1");
-  document.getElementById("pinGate").style.display = "none";
-}
-
-function checkPin(){
-  var input = document.getElementById("pinInput");
-  var error = document.getElementById("pinError");
-  var value = input.value.trim();
-
-  if(value === APP_PIN){
-    error.textContent = "";
-    unlockApp();
-  } else {
-    error.textContent = "Incorrect code";
-    input.value = "";
-    input.focus();
-  }
-}
-
-window.addEventListener("load", function(){
-  if(!APP_PIN_ENABLED){
-    unlockApp();
-    return;
-  }
-
-  var saved = sessionStorage.getItem("rvac_auth");
-  var input = document.getElementById("pinInput");
-  var button = document.getElementById("pinButton");
-
-  if(saved === "1"){
-    document.getElementById("pinGate").style.display = "none";
-  } else {
-    input.focus();
-  }
-
-  button.addEventListener("click", checkPin);
-
-  input.addEventListener("keydown", function(e){
-    if(e.key === "Enter"){
-      checkPin();
-    }
-  });
-});
-
 function syncScrollState(){
   document.body.classList.toggle("scrolled", window.scrollY > 48);
 }
