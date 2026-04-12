@@ -213,6 +213,56 @@ body::after{
   backdrop-filter:blur(4px);
 }
 
+.artist-chip{
+  width:64px;
+  height:64px;
+  border-radius:14px;
+  overflow:hidden;
+  flex:0 0 auto;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 10px 24px rgba(0,0,0,.28);
+}
+
+.artist-chip img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.artist-chip-placeholder{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:8px;
+  font-size:10px;
+  line-height:1.3;
+  color:#b8b0a3;
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+}
+
+.page-controls-main{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex:1 1 auto;
+}
+
+.page-controls-copy{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex:1 1 auto;
+}
+
 .page-controls label{
   font-size:20px;
   font-weight:800;
@@ -369,6 +419,11 @@ body::after{
     width:100%;
   }
 
+  .page-controls-main,
+  .page-controls-copy{
+    width:100%;
+  }
+
   .page-controls select{
     min-width:0;
     width:100%;
@@ -386,10 +441,27 @@ body::after{
   }
 
   .page-controls{
-    flex-direction:column;
     align-items:flex-start;
-    gap:8px;
+    gap:10px;
     padding:10px 12px;
+  }
+
+  .page-controls-main{
+    width:100%;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .page-controls-copy{
+    flex-direction:column;
+    align-items:stretch;
+    gap:8px;
+  }
+
+  .artist-chip{
+    width:58px;
+    height:58px;
+    border-radius:12px;
   }
 
   .main-nav{
@@ -458,10 +530,17 @@ body::after{
 
 <div class="container">
   <div class="page-controls">
-    <label for="artistSelect">Artist</label>
-    <select id="artistSelect">
-      <option value="">Loading artists...</option>
-    </select>
+    <div class="page-controls-main">
+      <div id="artistChip" class="artist-chip" aria-hidden="true">
+        <div class="artist-chip-placeholder">No artist image</div>
+      </div>
+      <div class="page-controls-copy">
+        <label for="artistSelect">Artist</label>
+        <select id="artistSelect">
+          <option value="">Loading artists...</option>
+        </select>
+      </div>
+    </div>
   </div>
   <div class="hero-panel">
     <div class="hero-copy">
@@ -498,6 +577,7 @@ body::after{
 
 <script>
 const artistSelect = document.getElementById("artistSelect");
+const artistChip = document.getElementById("artistChip");
 const statusEl = document.getElementById("status");
 const newsListEl = document.getElementById("newsList");
 const pageTitleEl = document.getElementById("pageTitle");
@@ -507,6 +587,7 @@ const params = new URLSearchParams(window.location.search);
 
 let artists = [];
 let artistNewsLookup = {};
+let artistMediaLookup = {};
 
 function buildArtistNewsExportUrl(){
   return "./data/news/artist_news.json?v=" + Date.now();
@@ -548,18 +629,53 @@ function deriveArtistSortName(name){
   return value;
 }
 
+function artistImageSrc(path){
+  if(!present(path)) return "";
+  return "media/artists/" + String(path).split("/").pop();
+}
+
 function artistSortKey(artist){
   if(!artist) return "";
   return deriveArtistSortName(artist.sort_name || artist.artist_name || "");
 }
 
+function loadArtistMedia(){
+  return fetch("./library.json?v=" + Date.now(), { cache: "no-store" })
+    .then(function(response){
+      if(!response.ok){
+        throw new Error("Library export HTTP " + response.status);
+      }
+      return response.json();
+    })
+    .then(function(payload){
+      var rows = Array.isArray(payload) ? payload : [];
+      var lookup = {};
+      rows.forEach(function(row){
+        var artistId = String(row && row.artist_id != null ? row.artist_id : "").trim();
+        if(!artistId || lookup[artistId]) return;
+        lookup[artistId] = {
+          image_path: String(row && row.image_path ? row.image_path : "").trim()
+        };
+      });
+      artistMediaLookup = lookup;
+      return lookup;
+    })
+    .catch(function(){
+      artistMediaLookup = {};
+      return {};
+    });
+}
+
 function normalizeArtistRows(rows){
   return (Array.isArray(rows) ? rows : [])
     .map(function(row){
+      var artistId = String(row && row.artist_id != null ? row.artist_id : "").trim();
+      var media = artistMediaLookup[artistId] || {};
       return {
-        artist_id: String(row && row.artist_id != null ? row.artist_id : "").trim(),
+        artist_id: artistId,
         artist_name: String(row && row.artist_name ? row.artist_name : "").trim(),
-        sort_name: deriveArtistSortName(String(row && row.sort_name ? row.sort_name : row && row.artist_name ? row.artist_name : "").trim())
+        sort_name: deriveArtistSortName(String(row && row.sort_name ? row.sort_name : row && row.artist_name ? row.artist_name : "").trim()),
+        image_path: String(media.image_path || row && row.image_path || "").trim()
       };
     })
     .filter(function(row){
@@ -575,6 +691,7 @@ function normalizeArtistNewsPayload(payload){
       var artistId = String(row && row.artist_id != null ? row.artist_id : "").trim();
       var artistName = String(row && row.artist_name ? row.artist_name : "").trim();
       var items = Array.isArray(row && row.items) ? row.items : [];
+      var media = artistMediaLookup[artistId] || {};
       if(!artistId || !artistName){
         return null;
       }
@@ -582,6 +699,7 @@ function normalizeArtistNewsPayload(payload){
         artist_id: artistId,
         artist_name: artistName,
         sort_name: deriveArtistSortName(String(row && row.sort_name ? row.sort_name : artistName).trim()),
+        image_path: String(media.image_path || row && row.image_path || "").trim(),
         items: items
       };
       lookup[artistId] = normalized;
@@ -602,6 +720,16 @@ function syncArtistLinks(artistId){
   var albumsHref = "albums/albums.html?artist_id=" + encodeURIComponent(artistId);
   heroArtistLink.href = artistHref;
   heroAlbumsLink.href = albumsHref;
+}
+
+function renderArtistChip(artist){
+  var imagePath = artistImageSrc(artist && artist.image_path);
+  if(imagePath){
+    artistChip.innerHTML =
+      "<img src='" + escapeHtml(imagePath) + "' alt='" + escapeHtml((artist && artist.artist_name) || "Artist") + "'>";
+    return;
+  }
+  artistChip.innerHTML = "<div class='artist-chip-placeholder'>No artist image</div>";
 }
 
 function renderEmpty(message){
@@ -656,6 +784,7 @@ function populateArtistSelect(list){
 
   artistSelect.value = initialArtist.artist_id;
   syncArtistLinks(initialArtist.artist_id);
+  renderArtistChip(initialArtist);
 }
 
 function setStatus(message, isError){
@@ -691,6 +820,7 @@ function loadNews(){
   }
 
   syncArtistLinks(artistId);
+  renderArtistChip(selectedArtist);
   setStatus("Loading news...", false);
   renderEmpty("Loading news...");
   return Promise.resolve().then(function(){
@@ -711,7 +841,10 @@ artistSelect.addEventListener("change", function(){
   loadNews();
 });
 
-loadArtists()
+loadArtistMedia()
+  .then(function(){
+    return loadArtists();
+  })
   .then(function(){
     setStatus("Artist list loaded.", false);
     return loadNews();
