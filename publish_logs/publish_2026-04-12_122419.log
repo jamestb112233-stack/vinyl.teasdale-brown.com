@@ -1,0 +1,20 @@
+Timestamp: 2026-04-12T12:24:19
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 2
+CHANGED: 3
+DELETED: 1
+
+New Files
+/publish_repo/albums/albums.html
+/publish_repo/backgrounds/icon.png
+
+Changed Files
+/publish_repo/albums/album.html
+/publish_repo/artist.html
+/publish_repo/index.html
+
+Deleted Files
+/publish_repo/albums/index.html

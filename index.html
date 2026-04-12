@@ -25,6 +25,23 @@
 })();
 </script>
 
+<script>
+(function(){
+  try{
+    if(sessionStorage.getItem("vinyl_intro_seen") === "1") return;
+    document.documentElement.classList.add("intro-pending");
+    document.addEventListener("DOMContentLoaded", function(){
+      try{
+        sessionStorage.setItem("vinyl_intro_seen", "1");
+      } catch(_){}
+      requestAnimationFrame(function(){
+        document.documentElement.classList.add("intro-enter");
+      });
+    });
+  } catch(_){}
+})();
+</script>
+
 <style>
 body{
   margin:0;
@@ -59,27 +76,106 @@ body::after{
   top:0;
   left:0;
   width:100%;
-  height:84px;
+  height:68px;
   display:flex;
   align-items:center;
-  justify-content:flex-end;
-  padding:0 28px;
+  justify-content:space-between;
+  padding:0 24px;
   z-index:120;
   box-sizing:border-box;
+}
+
+html.intro-pending .header-brand,
+html.intro-pending .main-nav,
+html.intro-pending .container,
+html.intro-pending .filter-bar,
+html.intro-pending .intro-strip{
+  will-change:opacity, transform;
+}
+
+html.intro-pending .header-brand{
+  opacity:0;
+  transform:translateY(-6px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+
+html.intro-pending .main-nav{
+  opacity:0;
+  transform:translateY(-6px);
+  transition:opacity .5s ease .2s, transform .5s ease .2s;
+}
+
+html.intro-pending .container,
+html.intro-pending .filter-bar,
+html.intro-pending .intro-strip{
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .5s ease .4s, transform .5s ease .4s;
+}
+
+html.intro-pending.intro-enter .header-brand,
+html.intro-pending.intro-enter .main-nav,
+html.intro-pending.intro-enter .container,
+html.intro-pending.intro-enter .filter-bar,
+html.intro-pending.intro-enter .intro-strip{
+  opacity:1;
+  transform:none;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html.intro-pending .header-brand,
+  html.intro-pending .main-nav,
+  html.intro-pending .container,
+  html.intro-pending .filter-bar,
+  html.intro-pending .intro-strip{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
 }
 
 .header-brand{
   display:flex;
   flex-direction:column;
-  align-items:flex-end;
-  gap:8px;
-  padding-top:11px;
+  align-items:flex-start;
+  gap:4px;
+  padding-top:6px;
 }
 
-.header-links{
+.main-nav{
   display:flex;
   align-items:center;
-  gap:16px;
+  gap:10px;
+  margin-right:auto;
+}
+
+.nav-pill{
+  padding:7px 13px;
+  border-radius:10px;
+  background:rgba(34,34,34,0.38);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#c8c0b4;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.03em;
+  transition:all .18s ease;
+  backdrop-filter:blur(4px);
+}
+
+.nav-pill:hover{
+  background:rgba(60,60,60,0.55);
+  border-color:rgba(255,255,255,0.18);
+  color:#e6ded2;
+}
+
+.nav-pill.active{
+  background:rgba(78,68,56,0.48);
+  border-color:rgba(210,190,152,0.28);
+  color:#eadfcd;
+  box-shadow:
+    0 3px 8px rgba(0,0,0,.28),
+    inset 0 0 6px rgba(255,255,255,.05);
 }
 
 .back-link{
@@ -91,15 +187,20 @@ body::after{
   letter-spacing:.02em;
 }
 
+.back-link.active{
+  color:#fff4dc;
+  border-bottom-color:rgba(255,244,220,.85);
+}
+
 .back-link:hover{
   border-bottom-color:rgba(207,227,255,.8);
 }
 
 .app-header img{
-  height:68px;
+  height:54px;
   object-fit:contain;
-  opacity:.96;
-  filter:drop-shadow(0 4px 10px rgba(0,0,0,.55)) saturate(.98) brightness(.99);
+  opacity:.88;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.38)) saturate(.96) brightness(.98);
 }
 
 .filter-bar{
@@ -380,19 +481,25 @@ body.filter-hidden .container{
 }
 
 .hover-album-link{
-  display:block;
-  color:#cfe3ff;
+  display:inline-flex;
+  align-items:center;
+  color:#d6cbbb;
   text-decoration:none;
-  border-bottom:1px solid rgba(207,227,255,.35);
-  padding:4px 6px;
-  margin:0 -6px;
-  border-radius:6px;
+  padding:6px 10px;
+  margin:0;
+  border-radius:8px;
+  border:1px solid rgba(214,203,187,.16);
+  background:rgba(54,52,48,.22);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.02em;
 }
 
 .hover-album-link:hover,
 .hover-album-link:focus-visible{
-  background:rgba(255,255,255,.08);
-  border-bottom-color:rgba(207,227,255,.8);
+  background:rgba(76,72,64,.3);
+  border-color:rgba(214,203,187,.24);
+  color:#efe3d2;
 }
 
 .hover-album-link:focus-visible{
@@ -400,35 +507,30 @@ body.filter-hidden .container{
   outline-offset:1px;
 }
 
-.hover-actions{
-  margin-top:14px;
-  padding-top:12px;
-  border-top:1px solid rgba(255,255,255,.12);
-}
-
-.hover-artist-link{
+.card-link{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   min-height:36px;
   padding:0 12px;
   border-radius:8px;
-  background:rgba(207,227,255,.14);
-  color:#f3f7ff;
+  background:rgba(54,52,48,.22);
+  color:#d6cbbb;
   text-decoration:none;
-  border:1px solid rgba(207,227,255,.22);
+  border:1px solid rgba(214,203,187,.16);
   font-size:12px;
-  font-weight:700;
-  letter-spacing:.03em;
+  font-weight:600;
+  letter-spacing:.02em;
 }
 
-.hover-artist-link:hover,
-.hover-artist-link:focus-visible{
-  background:rgba(207,227,255,.22);
-  border-color:rgba(207,227,255,.38);
+.card-link:hover,
+.card-link:focus-visible{
+  background:rgba(76,72,64,.3);
+  border-color:rgba(214,203,187,.24);
+  color:#efe3d2;
 }
 
-.hover-artist-link:focus-visible{
+.card-link:focus-visible{
   outline:1px solid rgba(255,255,255,.45);
   outline-offset:1px;
 }
@@ -494,6 +596,16 @@ body.filter-hidden .container{
 
 .meta-pair span{
   min-width:0;
+}
+
+.card-actions{
+  position:relative;
+  z-index:3;
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
 }
 
 .empty-state{
@@ -633,8 +745,8 @@ body.filter-hidden .container{
   }
 
   .app-header{
-    height:70px;
-    padding:0 20px;
+    height:60px;
+    padding:0 18px;
   }
 
   .header-brand{
@@ -643,7 +755,7 @@ body.filter-hidden .container{
   }
 
   .app-header img{
-    height:54px;
+    height:40px;
   }
 
   .intro-strip{
@@ -740,7 +852,7 @@ body.filter-hidden .container{
 @media (max-width: 760px){
   .app-header{
     height:auto;
-    padding:14px 18px;
+    padding:12px 16px;
     flex-direction:column;
     align-items:flex-start;
     gap:12px;
@@ -750,7 +862,7 @@ body.filter-hidden .container{
     align-items:flex-start;
   }
 
-  .header-links{
+  .main-nav{
     flex-wrap:wrap;
     gap:10px 16px;
   }
@@ -909,11 +1021,13 @@ body.touch-mode .hover-detail{
 </div>
 
 <div class="app-header">
+  <nav class="main-nav">
+    <a href="index.html" class="nav-pill active" data-nav="artists">Artists</a>
+    <a href="albums/albums.html" class="nav-pill" data-nav="albums">Albums</a>
+    <a href="news.html" class="nav-pill" data-nav="news">News</a>
+  </nav>
   <div class="header-brand">
     <img src="backgrounds/banner.png?v=20260409" alt="Requisite Vinyl Album Collection">
-    <div class="header-links">
-      <a class="back-link" href="albums/index.html">Browse Albums</a>
-    </div>
   </div>
 </div>
 
@@ -1349,20 +1463,19 @@ fetch("./library.json?v=" + Date.now())
           hover.appendChild(emptyLine);
         }
 
-        var hoverActions = document.createElement("div");
-        hoverActions.className = "hover-actions";
-
         var artistLink = document.createElement("a");
-        artistLink.className = "hover-artist-link";
+        artistLink.className = "card-link";
         artistLink.href = "artist.html?artist_id=" + encodeURIComponent(artist.artist_id);
-        artistLink.textContent = "Open artist page";
+        artistLink.textContent = "More Info";
         artistLink.addEventListener("click", function(event){
           event.stopPropagation();
           event.preventDefault();
           navigateToArtist(artist);
         });
-        hoverActions.appendChild(artistLink);
-        hover.appendChild(hoverActions);
+
+        var cardActions = document.createElement("div");
+        cardActions.className = "card-actions";
+        cardActions.appendChild(artistLink);
 
         card.appendChild(createImage(artist));
         card.appendChild(name);
@@ -1372,6 +1485,7 @@ fetch("./library.json?v=" + Date.now())
           card.appendChild(dates);
         }
 
+        card.appendChild(cardActions);
         card.appendChild(hover);
 
         card.addEventListener("click", function(event){

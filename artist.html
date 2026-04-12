@@ -25,6 +25,23 @@
 })();
 </script>
 
+<script>
+(function(){
+  try{
+    if(sessionStorage.getItem("vinyl_intro_seen") === "1") return;
+    document.documentElement.classList.add("intro-pending");
+    document.addEventListener("DOMContentLoaded", function(){
+      try{
+        sessionStorage.setItem("vinyl_intro_seen", "1");
+      } catch(_){}
+      requestAnimationFrame(function(){
+        document.documentElement.classList.add("intro-enter");
+      });
+    });
+  } catch(_){}
+})();
+</script>
+
 <style>
 body{
   margin:0;
@@ -59,20 +76,69 @@ body::after{
   top:0;
   left:0;
   width:100%;
-  height:84px;
+  height:68px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 28px;
+  padding:0 24px;
   z-index:100;
   box-sizing:border-box;
 }
 
-.header-left{
+html.intro-pending .header-brand,
+html.intro-pending .main-nav,
+html.intro-pending .container,
+html.intro-pending .filter-bar,
+html.intro-pending .intro-strip{
+  will-change:opacity, transform;
+}
+
+html.intro-pending .header-brand{
+  opacity:0;
+  transform:translateY(-6px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+
+html.intro-pending .main-nav{
+  opacity:0;
+  transform:translateY(-6px);
+  transition:opacity .5s ease .2s, transform .5s ease .2s;
+}
+
+html.intro-pending .container,
+html.intro-pending .filter-bar,
+html.intro-pending .intro-strip{
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .5s ease .4s, transform .5s ease .4s;
+}
+
+html.intro-pending.intro-enter .header-brand,
+html.intro-pending.intro-enter .main-nav,
+html.intro-pending.intro-enter .container,
+html.intro-pending.intro-enter .filter-bar,
+html.intro-pending.intro-enter .intro-strip{
+  opacity:1;
+  transform:none;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html.intro-pending .header-brand,
+  html.intro-pending .main-nav,
+  html.intro-pending .container,
+  html.intro-pending .filter-bar,
+  html.intro-pending .intro-strip{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+}
+
+.page-controls{
   display:flex;
   align-items:center;
-  gap:14px;
-  padding:10px 14px;
+  gap:12px;
+  padding:8px 12px;
   background:rgba(18,18,18,.42);
   border-radius:12px;
   box-shadow:
@@ -81,16 +147,16 @@ body::after{
   backdrop-filter:blur(4px);
 }
 
-.header-left label{
-  font-size:20px;
+.page-controls label{
+  font-size:18px;
   font-weight:800;
   color:#e0d8cc;
   letter-spacing:.02em;
 }
 
-.header-left select{
-  min-width:280px;
-  padding:10px 14px;
+.page-controls select{
+  min-width:260px;
+  padding:9px 12px;
   border-radius:10px;
   border:1px solid rgba(255,255,255,.12);
   background:rgba(28,28,28,.88);
@@ -102,15 +168,45 @@ body::after{
 .header-brand{
   display:flex;
   flex-direction:column;
-  align-items:flex-end;
-  gap:8px;
-  padding-top:11px;
+  align-items:flex-start;
+  gap:4px;
+  padding-top:6px;
 }
 
-.header-links{
+.main-nav{
   display:flex;
   align-items:center;
-  gap:16px;
+  gap:10px;
+  margin-right:auto;
+}
+
+.nav-pill{
+  padding:7px 13px;
+  border-radius:10px;
+  background:rgba(34,34,34,0.38);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#c8c0b4;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.03em;
+  transition:all .18s ease;
+  backdrop-filter:blur(4px);
+}
+
+.nav-pill:hover{
+  background:rgba(60,60,60,0.55);
+  border-color:rgba(255,255,255,0.18);
+  color:#e6ded2;
+}
+
+.nav-pill.active{
+  background:rgba(78,68,56,0.48);
+  border-color:rgba(210,190,152,0.28);
+  color:#eadfcd;
+  box-shadow:
+    0 3px 8px rgba(0,0,0,.28),
+    inset 0 0 6px rgba(255,255,255,.05);
 }
 
 .back-link{
@@ -122,15 +218,20 @@ body::after{
   letter-spacing:.02em;
 }
 
+.back-link.active{
+  color:#fff4dc;
+  border-bottom-color:rgba(255,244,220,.85);
+}
+
 .back-link:hover{
   border-bottom-color:rgba(207,227,255,.8);
 }
 
 .app-header img{
-  height:68px;
+  height:54px;
   object-fit:contain;
-  opacity:.96;
-  filter:drop-shadow(0 4px 10px rgba(0,0,0,.55)) saturate(.98) brightness(.99);
+  opacity:.88;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.38)) saturate(.96) brightness(.98);
 }
 
 .container{
@@ -138,6 +239,15 @@ body::after{
   max-width:1420px;
   margin:0 auto;
   box-sizing:border-box;
+}
+
+.breadcrumb{
+  margin-bottom:12px;
+  font-size:11px;
+  line-height:1.4;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#938b80;
 }
 
 .artist-panels{
@@ -240,6 +350,67 @@ body::after{
   margin-bottom:34px;
 }
 
+.news-list{
+  display:grid;
+  gap:12px;
+}
+
+.news-entry{
+  padding:12px 14px;
+  border-radius:12px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.news-title{
+  display:inline-block;
+  font-size:15px;
+  line-height:1.4;
+  font-weight:700;
+  color:#e7dfd3;
+  text-decoration:none;
+}
+
+.news-title:hover,
+.news-title:focus-visible{
+  color:#cfe3ff;
+}
+
+.news-meta{
+  margin-top:6px;
+  font-size:12px;
+  color:#bdb5aa;
+}
+
+.news-link{
+  display:inline-block;
+  margin-top:8px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.03em;
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.news-link:hover,
+.news-link:focus-visible{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
+.news-empty{
+  font-size:14px;
+  line-height:1.5;
+  color:#cbc6bd;
+}
+
+.source-note{
+  margin:0 0 12px;
+  font-size:11px;
+  line-height:1.4;
+  color:#a79f93;
+}
+
 .section-title{
   font-size:28px;
   font-weight:800;
@@ -315,26 +486,32 @@ body::after{
   white-space:nowrap;
 }
 
-.card-links{
-  margin-top:8px;
-  display:flex;
-  justify-content:flex-end;
-  gap:10px;
-}
-
 .card-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
   flex-shrink:0;
+  padding:6px 10px;
+  border-radius:8px;
+  border:1px solid rgba(214,203,187,.16);
+  background:rgba(54,52,48,.22);
   font-size:12px;
-  font-weight:700;
-  letter-spacing:.03em;
-  color:#cfe3ff;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:#d6cbbb;
   text-decoration:none;
-  border-bottom:1px solid rgba(207,227,255,.35);
 }
 
 .card-link:hover,
 .card-link:focus-visible{
-  border-bottom-color:rgba(207,227,255,.8);
+  background:rgba(76,72,64,.3);
+  border-color:rgba(214,203,187,.24);
+  color:#efe3d2;
+}
+
+.card-link:focus-visible{
+  outline:1px solid rgba(255,255,255,.45);
+  outline-offset:1px;
 }
 
 .spotify-link{
@@ -353,6 +530,16 @@ body::after{
   flex-shrink:0;
 }
 
+.card-actions{
+  position:relative;
+  z-index:2;
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
 .hover-detail{
   position:absolute;
   left:12px;
@@ -368,6 +555,7 @@ body::after{
   flex-direction:column;
   overflow:hidden;
   pointer-events:none;
+  z-index:1;
 }
 
 .card.preview-open .hover-detail{
@@ -417,16 +605,6 @@ body::after{
   white-space:nowrap;
 }
 
-.hover-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  flex-shrink:0;
-  margin:0 0 10px;
-  padding:0 0 10px;
-  border-bottom:1px solid rgba(255,255,255,.12);
-}
-
 .hover-content{
   min-height:0;
   overflow:auto;
@@ -440,19 +618,20 @@ body::after{
   min-height:36px;
   padding:0 12px;
   border-radius:8px;
-  background:rgba(207,227,255,.14);
-  color:#f3f7ff;
+  background:rgba(54,52,48,.22);
+  color:#d6cbbb;
   text-decoration:none;
-  border:1px solid rgba(207,227,255,.22);
+  border:1px solid rgba(214,203,187,.16);
   font-size:12px;
-  font-weight:700;
-  letter-spacing:.03em;
+  font-weight:600;
+  letter-spacing:.02em;
 }
 
 .hover-album-link:hover,
 .hover-album-link:focus-visible{
-  background:rgba(207,227,255,.22);
-  border-color:rgba(207,227,255,.38);
+  background:rgba(76,72,64,.3);
+  border-color:rgba(214,203,187,.24);
+  color:#efe3d2;
 }
 
 .hover-album-link:focus-visible{
@@ -488,18 +667,26 @@ body::after{
 }
 
 .reference-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
   flex-shrink:0;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.03em;
-  color:#cfe3ff;
+  padding:5px 9px;
+  border-radius:8px;
+  border:1px solid rgba(214,203,187,.14);
+  background:rgba(54,52,48,.18);
+  color:#d6cbbb;
   text-decoration:none;
-  border-bottom:1px solid rgba(207,227,255,.35);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.02em;
 }
 
 .reference-link:hover,
 .reference-link:focus-visible{
-  border-bottom-color:rgba(207,227,255,.8);
+  background:rgba(76,72,64,.26);
+  border-color:rgba(214,203,187,.22);
+  color:#efe3d2;
 }
 
 .reference-empty{
@@ -542,31 +729,31 @@ body::after{
 @media (max-width: 1180px){
   .app-header{
     height:74px;
-    padding:0 22px;
+    padding:0 18px;
   }
 
-  .header-left{
+  .page-controls{
     gap:10px;
     padding:8px 12px;
   }
 
-  .header-left label{
-    font-size:18px;
+  .page-controls label{
+    font-size:16px;
   }
 
-  .header-left select{
-    min-width:220px;
-    padding:9px 12px;
+  .page-controls select{
+    min-width:200px;
+    padding:8px 11px;
     font-size:14px;
   }
 
   .header-brand{
-    gap:6px;
-    padding-top:8px;
+    gap:4px;
+    padding-top:5px;
   }
 
   .app-header img{
-    height:54px;
+    height:40px;
   }
 
   .container{
@@ -595,7 +782,7 @@ body::after{
 
   .app-header{
     height:auto;
-    padding:14px 18px;
+    padding:12px 16px;
     flex-direction:column;
     align-items:flex-start;
     gap:12px;
@@ -605,20 +792,20 @@ body::after{
     align-items:flex-start;
   }
 
-  .header-links{
+  .main-nav{
     flex-wrap:wrap;
-    gap:10px 16px;
+    gap:8px 12px;
   }
 
   .container{
     padding:138px 22px 40px;
   }
 
-  .header-left{
+  .page-controls{
     width:100%;
   }
 
-  .header-left select{
+  .page-controls select{
     min-width:0;
     width:100%;
   }
@@ -714,20 +901,22 @@ body.touch-mode .app-footer{
 <body class="dark-default">
 
 <div class="app-header">
-  <div class="header-left">
-    <label for="artistSelect">Artist</label>
-    <select id="artistSelect"></select>
-  </div>
+  <nav class="main-nav">
+    <a href="index.html" class="nav-pill active" data-nav="artists">Artists</a>
+    <a href="albums/albums.html" class="nav-pill" data-nav="albums">Albums</a>
+    <a href="news.html" class="nav-pill" data-nav="news">News</a>
+  </nav>
   <div class="header-brand">
     <img src="backgrounds/banner.png?v=20260409" alt="Requisite Vinyl Album Collection">
-    <div class="header-links">
-      <a class="back-link" href="index.html">Back to Artists</a>
-      <a id="browseAlbumsLink" class="back-link" href="albums/index.html">Browse Albums</a>
-    </div>
   </div>
 </div>
 
 <div class="container">
+  <div class="page-controls">
+    <label for="artistSelect">Artist</label>
+    <select id="artistSelect"></select>
+  </div>
+  <div id="breadcrumb" class="breadcrumb"></div>
   <div id="library"></div>
 </div>
 
@@ -757,6 +946,15 @@ Promise.all([
 
     function safe(value){
       return present(value) ? String(value) : "—";
+    }
+
+    function escapeHtml(value){
+      return String(value == null ? "" : value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
     function coverSrc(path){
@@ -793,6 +991,99 @@ Promise.all([
     function cleanProfile(text){
       if(!present(text)) return "";
       return String(text).replace(/\r\n/g, "\n").trim();
+    }
+
+    function formatNewsDate(dateValue){
+      if(!present(dateValue)) return "";
+      var parsed = new Date(dateValue);
+      if(Number.isNaN(parsed.getTime())) return String(dateValue).trim();
+      return parsed.toLocaleDateString("en-GB", {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+
+    function createNewsPanel(){
+      var news = document.createElement("div");
+      news.className = "panel news-panel";
+      news.innerHTML =
+        "<div class='panel-title'>News</div>" +
+        "<div class='source-note'>News sourced via Google News (external links)</div>" +
+        "<div class='news-empty'>Loading news...</div>";
+      return news;
+    }
+
+    function renderNewsPanel(panel, items){
+      panel.innerHTML =
+        "<div class='panel-title'>News</div>" +
+        "<div class='source-note'>News sourced via Google News (external links)</div>";
+
+      if(!Array.isArray(items) || !items.length){
+        panel.innerHTML += "<div class='news-empty'>No relevant news items found for this artist.</div>";
+        return;
+      }
+
+      var list = document.createElement("div");
+      list.className = "news-list";
+
+      items.slice(0, 3).forEach(function(item){
+        var entry = document.createElement("div");
+        entry.className = "news-entry";
+
+        var title = document.createElement("a");
+        title.className = "news-title";
+        title.href = String(item.url || "");
+        title.target = "_blank";
+        title.rel = "noopener noreferrer";
+        title.textContent = safe(item.title);
+        entry.appendChild(title);
+
+        var meta = document.createElement("div");
+        meta.className = "news-meta";
+        var source = present(item.source) ? String(item.source).trim() : "Unknown source";
+        var date = formatNewsDate(item.published_date);
+        meta.textContent = date ? (source + " • " + date) : source;
+        entry.appendChild(meta);
+
+        var link = document.createElement("a");
+        link.className = "news-link";
+        link.href = String(item.url || "");
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Open article";
+        entry.appendChild(link);
+
+        list.appendChild(entry);
+      });
+
+      panel.appendChild(list);
+    }
+
+    function renderNewsError(panel){
+      panel.innerHTML =
+        "<div class='panel-title'>News</div>" +
+        "<div class='source-note'>News sourced via Google News (external links)</div>" +
+        "<div class='news-empty'>Artist news is unavailable right now.</div>";
+    }
+
+    function loadArtistNews(artistId, panel){
+      return fetch("/api/news/artist/" + encodeURIComponent(String(artistId)) + "?limit=3", {
+        cache: "no-store"
+      })
+        .then(function(response){
+          if(!response.ok){
+            throw new Error("HTTP " + response.status);
+          }
+          return response.json();
+        })
+        .then(function(payload){
+          renderNewsPanel(panel, Array.isArray(payload.items) ? payload.items : []);
+        })
+        .catch(function(error){
+          console.error(error);
+          renderNewsError(panel);
+        });
     }
 
     var albumTrackLookup = {};
@@ -883,7 +1174,7 @@ Promise.all([
 
     var select = document.getElementById("artistSelect");
     var container = document.getElementById("library");
-    var browseAlbumsLink = document.getElementById("browseAlbumsLink");
+    var breadcrumb = document.getElementById("breadcrumb");
     var params = new URLSearchParams(window.location.search);
     var requestedArtistId = String(params.get("artist_id") || "").trim();
     var activePreviewCard = null;
@@ -922,10 +1213,8 @@ Promise.all([
       });
 
       if(!artist) return;
-
-      if(browseAlbumsLink){
-        browseAlbumsLink.href = "albums/index.html?artist_id=" + encodeURIComponent(artist.artist_id);
-      }
+      breadcrumb.textContent =
+        "Artists collection · " + safe(artist.artist_name);
 
       container.innerHTML = "";
 
@@ -1005,11 +1294,7 @@ Promise.all([
         "<div class='panel-title'>Profile</div>" +
         "<div class='panel-text'>" + safe(cleanProfile(artist.info.description)) + "</div>";
 
-      var news = document.createElement("div");
-      news.className = "panel news-panel";
-      news.innerHTML =
-        "<div class='panel-title'>News</div>" +
-        "<div class='panel-text'>Placeholder</div>";
+      var news = createNewsPanel();
 
       panels.appendChild(imagePanel);
       panels.appendChild(meta);
@@ -1017,6 +1302,7 @@ Promise.all([
 
       container.appendChild(panels);
       container.appendChild(news);
+      loadArtistNews(artist.artist_id, news);
 
       var curatedTitle = document.createElement("div");
       curatedTitle.className = "section-title";
@@ -1065,11 +1351,22 @@ Promise.all([
           owned.textContent = isOwned(album.owned) ? "✓ Owned" : "";
 
           var spotifyHref = spotifyAlbumUrl(album.spotify_album_id);
-          var cardLinks = null;
-          if(spotifyHref){
-            cardLinks = document.createElement("div");
-            cardLinks.className = "card-links";
 
+          var cardActions = document.createElement("div");
+          cardActions.className = "card-actions";
+
+          var albumLink = document.createElement("a");
+          albumLink.className = "card-link";
+          albumLink.href = albumHref;
+          albumLink.textContent = "More Info";
+          albumLink.addEventListener("click", function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            window.location.href = albumHref;
+          });
+          cardActions.appendChild(albumLink);
+
+          if(spotifyHref){
             var visibleSpotifyLink = document.createElement("a");
             visibleSpotifyLink.className = "card-link";
             visibleSpotifyLink.href = spotifyHref;
@@ -1079,40 +1376,11 @@ Promise.all([
             visibleSpotifyLink.addEventListener("click", function(event){
               event.stopPropagation();
             });
-            cardLinks.appendChild(visibleSpotifyLink);
+            cardActions.appendChild(visibleSpotifyLink);
           }
 
           var hover = document.createElement("div");
           hover.className = "hover-detail";
-
-          var hoverActions = document.createElement("div");
-          hoverActions.className = "hover-actions";
-
-          var albumLink = document.createElement("a");
-          albumLink.className = "hover-album-link";
-          albumLink.href = albumHref;
-          albumLink.textContent = "Open album page";
-          albumLink.addEventListener("click", function(event){
-            event.preventDefault();
-            event.stopPropagation();
-            window.location.href = albumHref;
-          });
-          hoverActions.appendChild(albumLink);
-
-          if(spotifyHref){
-            var spotifyLink = document.createElement("a");
-            spotifyLink.className = "hover-album-link";
-            spotifyLink.href = spotifyHref;
-            spotifyLink.target = "_blank";
-            spotifyLink.rel = "noopener noreferrer";
-            applySpotifyLabel(spotifyLink, "Play on Spotify");
-            spotifyLink.addEventListener("click", function(event){
-              event.stopPropagation();
-            });
-            hoverActions.appendChild(spotifyLink);
-          }
-
-          hover.appendChild(hoverActions);
           var hoverContent = document.createElement("div");
           hoverContent.className = "hover-content";
           hover.appendChild(hoverContent);
@@ -1183,9 +1451,7 @@ Promise.all([
           card.appendChild(year);
           card.appendChild(albumTitle);
           card.appendChild(collectionLine);
-          if(cardLinks){
-            card.appendChild(cardLinks);
-          }
+          card.appendChild(cardActions);
           card.appendChild(hover);
 
           albums.appendChild(card);

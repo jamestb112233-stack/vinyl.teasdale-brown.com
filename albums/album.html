@@ -25,6 +25,23 @@
 })();
 </script>
 
+<script>
+(function(){
+  try{
+    if(sessionStorage.getItem("vinyl_intro_seen") === "1") return;
+    document.documentElement.classList.add("intro-pending");
+    document.addEventListener("DOMContentLoaded", function(){
+      try{
+        sessionStorage.setItem("vinyl_intro_seen", "1");
+      } catch(_){}
+      requestAnimationFrame(function(){
+        document.documentElement.classList.add("intro-enter");
+      });
+    });
+  } catch(_){}
+})();
+</script>
+
 <style>
 body{
   margin:0;
@@ -59,41 +76,95 @@ body::after{
   top:0;
   left:0;
   width:100%;
-  height:84px;
+  height:68px;
   display:flex;
   align-items:center;
-  justify-content:flex-end;
-  padding:0 28px;
+  justify-content:space-between;
+  padding:0 24px;
   z-index:100;
   box-sizing:border-box;
+}
+
+html.intro-pending .header-brand,
+html.intro-pending .main-nav,
+html.intro-pending .container{
+  will-change:opacity, transform;
+}
+
+html.intro-pending .header-brand{
+  opacity:0;
+  transform:translateY(-6px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+
+html.intro-pending .main-nav{
+  opacity:0;
+  transform:translateY(-6px);
+  transition:opacity .5s ease .2s, transform .5s ease .2s;
+}
+
+html.intro-pending .container{
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .5s ease .4s, transform .5s ease .4s;
+}
+
+html.intro-pending.intro-enter .header-brand,
+html.intro-pending.intro-enter .main-nav,
+html.intro-pending.intro-enter .container{
+  opacity:1;
+  transform:none;
 }
 
 .header-brand{
   display:flex;
   flex-direction:column;
-  align-items:flex-end;
-  gap:8px;
-  padding-top:11px;
+  align-items:flex-start;
+  gap:4px;
+  padding-top:6px;
 }
 
-.back-link{
-  color:#cfe3ff;
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-right:auto;
+}
+
+.nav-pill{
+  padding:7px 13px;
+  border-radius:10px;
+  background:rgba(34,34,34,0.38);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#c8c0b4;
   text-decoration:none;
-  border-bottom:1px solid rgba(207,227,255,.35);
-  font-size:14px;
-  font-weight:700;
-  letter-spacing:.02em;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.03em;
+  transition:all .18s ease;
+  backdrop-filter:blur(4px);
 }
 
-.back-link:hover{
-  border-bottom-color:rgba(207,227,255,.8);
+.nav-pill:hover{
+  background:rgba(60,60,60,0.55);
+  border-color:rgba(255,255,255,0.18);
+  color:#e6ded2;
+}
+
+.nav-pill.active{
+  background:rgba(78,68,56,0.48);
+  border-color:rgba(210,190,152,0.28);
+  color:#eadfcd;
+  box-shadow:
+    0 3px 8px rgba(0,0,0,.28),
+    inset 0 0 6px rgba(255,255,255,.05);
 }
 
 .app-header img{
-  height:68px;
+  height:54px;
   object-fit:contain;
-  opacity:.96;
-  filter:drop-shadow(0 4px 10px rgba(0,0,0,.55)) saturate(.98) brightness(.99);
+  opacity:.88;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.38)) saturate(.96) brightness(.98);
 }
 
 .container{
@@ -101,6 +172,15 @@ body::after{
   max-width:1420px;
   margin:0 auto;
   box-sizing:border-box;
+}
+
+.breadcrumb{
+  margin-bottom:12px;
+  font-size:11px;
+  line-height:1.4;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#938b80;
 }
 
 .album-header{
@@ -398,25 +478,67 @@ body::after{
 }
 
 .card-links{
-  margin-top:8px;
+  margin-top:12px;
   display:flex;
-  justify-content:flex-end;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
   gap:10px;
 }
 
 .card-link{
+  appearance:none;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
   flex-shrink:0;
+  padding:6px 10px;
+  border-radius:8px;
+  border:1px solid rgba(214,203,187,.16);
+  background:rgba(54,52,48,.22);
   font-size:12px;
-  font-weight:700;
-  letter-spacing:.03em;
-  color:#cfe3ff;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:#d6cbbb;
   text-decoration:none;
-  border-bottom:1px solid rgba(207,227,255,.35);
+  font-family:inherit;
+  cursor:pointer;
 }
 
 .card-link:hover,
 .card-link:focus-visible{
-  border-bottom-color:rgba(207,227,255,.8);
+  background:rgba(76,72,64,.3);
+  border-color:rgba(214,203,187,.24);
+  color:#efe3d2;
+}
+
+.card-link:focus-visible{
+  outline:1px solid rgba(255,255,255,.45);
+  outline-offset:1px;
+}
+
+.card-link[disabled]{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+.playback-note{
+  margin-top:10px;
+  font-size:12px;
+  line-height:1.45;
+  color:#a9a297;
+}
+
+.playback-note[data-tone="ok"]{
+  color:#b8d9bd;
+}
+
+.playback-note[data-tone="warn"]{
+  color:#d7c598;
+}
+
+.playback-note[data-tone="err"]{
+  color:#d8a2a2;
 }
 
 .app-footer{
@@ -454,7 +576,7 @@ body::after{
   }
 
   .app-header img{
-    height:54px;
+    height:40px;
   }
 
   .container{
@@ -499,14 +621,29 @@ body::after{
 
   .app-header{
     height:auto;
-    padding:14px 18px;
+    padding:12px 16px;
     flex-direction:column;
     align-items:flex-start;
     gap:12px;
   }
 
+  .main-nav{
+    flex-wrap:wrap;
+    margin-right:0;
+  }
+
   .container{
     padding:138px 22px 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  html.intro-pending .header-brand,
+  html.intro-pending .main-nav,
+  html.intro-pending .container{
+    opacity:1;
+    transform:none;
+    transition:none;
   }
 }
 
@@ -582,13 +719,18 @@ body.touch-mode .app-footer{
 <body class="dark-default">
 
 <div class="app-header">
+  <nav class="main-nav">
+    <a href="../index.html" class="nav-pill" data-nav="artists">Artists</a>
+    <a href="albums.html" class="nav-pill active" data-nav="albums">Albums</a>
+    <a href="../news.html" class="nav-pill" data-nav="news">News</a>
+  </nav>
   <div class="header-brand">
     <img src="../backgrounds/banner.png?v=20260409" alt="Requisite Vinyl Album Collection">
-    <a class="back-link" href="../index.html">Back to Artist</a>
   </div>
 </div>
 
 <div class="container">
+  <div id="breadcrumb" class="breadcrumb"></div>
   <div id="albumView"></div>
 </div>
 
@@ -604,6 +746,14 @@ fetchAlbumExport()
   .then(function(data){
     var params = new URLSearchParams(window.location.search);
     var albumId = String(params.get("id") || "").trim();
+    if(!albumId){
+      try{
+        var pendingReturnUrl = localStorage.getItem("vinyl_spotify_return_url");
+        if(pendingReturnUrl){
+          albumId = String(new URL(pendingReturnUrl).searchParams.get("id") || "").trim();
+        }
+      } catch(_){}
+    }
     var item = (data || []).find(function(entry){
       return entry && entry.album && String(entry.album.album_id).trim() === albumId;
     });
@@ -616,6 +766,15 @@ fetchAlbumExport()
 
     function safe(value){
       return present(value) ? String(value) : "—";
+    }
+
+    function escapeHtml(value){
+      return String(value == null ? "" : value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
     function isOwned(value){
@@ -644,6 +803,561 @@ fetchAlbumExport()
       return link;
     }
 
+    var SPOTIFY_CLIENT_ID = "93a6954f4a4b4a5bb7d37078ad8f90b8";
+    var SPOTIFY_SCOPES = [
+      "streaming",
+      "user-read-email",
+      "user-read-private",
+      "user-read-playback-state",
+      "user-modify-playback-state"
+    ];
+    var spotifyPrimarySlot = null;
+    var spotifyNotice = null;
+    var spotifySdkPromise = null;
+    var spotifyPlayer = null;
+    var spotifyDeviceId = "";
+    var spotifyProfile = null;
+    var spotifyContextUri = present(item && item.album && item.album.spotify_album_id)
+      ? "spotify:album:" + String(item.album.spotify_album_id).trim()
+      : "";
+
+    function setPlaybackNotice(message, tone){
+      if(!spotifyNotice) return;
+      if(!present(message)){
+        spotifyNotice.hidden = true;
+        spotifyNotice.textContent = "";
+        spotifyNotice.removeAttribute("data-tone");
+        return;
+      }
+      spotifyNotice.hidden = false;
+      spotifyNotice.textContent = String(message);
+      if(present(tone)){
+        spotifyNotice.setAttribute("data-tone", String(tone));
+      } else {
+        spotifyNotice.removeAttribute("data-tone");
+      }
+    }
+
+    function spotifyRedirectUri(){
+      return window.location.origin + window.location.pathname;
+    }
+
+    function spotifyReturnUrl(){
+      return window.location.href;
+    }
+
+    function spotifyStorageGet(key){
+      try{
+        return localStorage.getItem(key);
+      } catch(_){
+        return null;
+      }
+    }
+
+    function spotifyStorageSet(key, value){
+      try{
+        localStorage.setItem(key, value);
+      } catch(_){}
+    }
+
+    function spotifyStorageRemove(key){
+      try{
+        localStorage.removeItem(key);
+      } catch(_){}
+    }
+
+    function randomString(length){
+      var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      var values = crypto.getRandomValues(new Uint8Array(length));
+      return Array.from(values, function(value){
+        return chars[value % chars.length];
+      }).join("");
+    }
+
+    function base64UrlEncode(input){
+      return btoa(String.fromCharCode.apply(null, Array.from(new Uint8Array(input))))
+        .replace(/=/g, "")
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_");
+    }
+
+    function sha256(plain){
+      var encoder = new TextEncoder();
+      return crypto.subtle.digest("SHA-256", encoder.encode(plain));
+    }
+
+    function hasCoreSpotifySupport(){
+      return !!(
+        window.fetch &&
+        window.Promise &&
+        window.crypto &&
+        window.crypto.subtle &&
+        window.localStorage &&
+        present(SPOTIFY_CLIENT_ID)
+      );
+    }
+
+    function isLocalhostRuntime(){
+      var host = String(window.location.hostname || "").toLowerCase();
+      return host === "localhost" || host === "127.0.0.1" || host === "::1";
+    }
+
+    function isSecurePlaybackRuntime(){
+      return window.location.protocol === "https:" || isLocalhostRuntime() || !!window.isSecureContext;
+    }
+
+    function hasStoredSpotifySession(){
+      return present(spotifyStorageGet("vinyl_spotify_access_token")) || present(spotifyStorageGet("vinyl_spotify_refresh_token"));
+    }
+
+    function spotifyRuntimeMessage(){
+      if(!isSecurePlaybackRuntime()){
+        return "This local container runtime does not meet Spotify's secure playback requirements. In-app playback should work on the published HTTPS site.";
+      }
+      return "This environment does not expose the browser features required for Spotify in-app playback.";
+    }
+
+    function classifySpotifyInitFailure(message){
+      var text = String(message || "");
+      if(/premium/i.test(text)){
+        return { kind: "premium", message: "In-app playback requires Spotify Premium." };
+      }
+      if((/secure|security|https|origin|not supported|unsupported/i.test(text) && !isSecurePlaybackRuntime())){
+        return { kind: "runtime", message: spotifyRuntimeMessage() };
+      }
+      if(/unsupported|not supported/i.test(text)){
+        return { kind: "unsupported", message: "Spotify in-app playback is not supported in this environment." };
+      }
+      return { kind: "init_failed", message: text || "Spotify player could not be initialized." };
+    }
+
+    function createSpotifyAction(label, onClick){
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "card-link";
+      button.textContent = label;
+      button.addEventListener("click", function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        onClick(event, button);
+      });
+      return button;
+    }
+
+    function renderSpotifyPrimaryAction(mode){
+      if(!spotifyPrimarySlot) return;
+      spotifyPrimarySlot.innerHTML = "";
+      if(mode === "connect"){
+        spotifyPrimarySlot.appendChild(createSpotifyAction("Connect Spotify", function(){
+          redirectToSpotifyLogin();
+        }));
+        return;
+      }
+      if(mode === "play"){
+        spotifyPrimarySlot.appendChild(createSpotifyAction("Play in App", function(_, button){
+          startSpotifyPlayback(button);
+        }));
+      }
+    }
+
+    function redirectToSpotifyLogin(){
+      if(!hasCoreSpotifySupport()){
+        setPlaybackNotice("This environment does not expose the browser features required for Spotify in-app playback.", "warn");
+        return;
+      }
+
+      Promise.resolve()
+        .then(function(){
+          var verifier = randomString(64);
+          return sha256(verifier).then(function(hash){
+            var challenge = base64UrlEncode(hash);
+            var state = randomString(16);
+
+            spotifyStorageSet("vinyl_spotify_pkce_verifier", verifier);
+            spotifyStorageSet("vinyl_spotify_auth_state", state);
+            spotifyStorageSet("vinyl_spotify_return_url", spotifyReturnUrl());
+
+            var params = new URLSearchParams({
+              client_id: SPOTIFY_CLIENT_ID,
+              response_type: "code",
+              redirect_uri: spotifyRedirectUri(),
+              code_challenge_method: "S256",
+              code_challenge: challenge,
+              state: state,
+              scope: SPOTIFY_SCOPES.join(" ")
+            });
+
+            window.location.href = "https://accounts.spotify.com/authorize?" + params.toString();
+          });
+        })
+        .catch(function(error){
+          setPlaybackNotice((error && error.message) || "Spotify login could not be started.", "warn");
+        });
+    }
+
+    function exchangeCodeForToken(code){
+      var verifier = spotifyStorageGet("vinyl_spotify_pkce_verifier");
+      if(!present(verifier)){
+        return Promise.reject(new Error("Missing Spotify login state. Try connecting again."));
+      }
+
+      var body = new URLSearchParams({
+        client_id: SPOTIFY_CLIENT_ID,
+        grant_type: "authorization_code",
+        code: code,
+        redirect_uri: spotifyRedirectUri(),
+        code_verifier: verifier
+      });
+
+      return fetch("https://accounts.spotify.com/api/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body
+      })
+        .then(function(response){
+          return response.text().then(function(text){
+            var data = {};
+            try{
+              data = text ? JSON.parse(text) : {};
+            } catch(_){}
+            if(!response.ok){
+              throw new Error(data.error_description || data.error || "Spotify token exchange failed.");
+            }
+            spotifyStorageSet("vinyl_spotify_access_token", data.access_token);
+            if(present(data.refresh_token)){
+              spotifyStorageSet("vinyl_spotify_refresh_token", data.refresh_token);
+            }
+            spotifyStorageSet("vinyl_spotify_token_expires_at", String(Date.now() + (Number(data.expires_in || 0) * 1000)));
+            spotifyStorageRemove("vinyl_spotify_pkce_verifier");
+            spotifyStorageRemove("vinyl_spotify_auth_state");
+            return data.access_token;
+          });
+        });
+    }
+
+    function refreshSpotifyToken(){
+      var refreshToken = spotifyStorageGet("vinyl_spotify_refresh_token");
+      if(!present(refreshToken)) return Promise.resolve(null);
+
+      var body = new URLSearchParams({
+        client_id: SPOTIFY_CLIENT_ID,
+        grant_type: "refresh_token",
+        refresh_token: refreshToken
+      });
+
+      return fetch("https://accounts.spotify.com/api/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body
+      })
+        .then(function(response){
+          return response.text().then(function(text){
+            var data = {};
+            try{
+              data = text ? JSON.parse(text) : {};
+            } catch(_){}
+            if(!response.ok){
+              throw new Error(data.error_description || data.error || "Spotify token refresh failed.");
+            }
+            spotifyStorageSet("vinyl_spotify_access_token", data.access_token);
+            spotifyStorageSet("vinyl_spotify_token_expires_at", String(Date.now() + (Number(data.expires_in || 0) * 1000)));
+            if(present(data.refresh_token)){
+              spotifyStorageSet("vinyl_spotify_refresh_token", data.refresh_token);
+            }
+            return data.access_token;
+          });
+        })
+        .catch(function(){
+          return null;
+        });
+    }
+
+    function getValidSpotifyToken(){
+      var stored = spotifyStorageGet("vinyl_spotify_access_token");
+      var expiresAt = Number(spotifyStorageGet("vinyl_spotify_token_expires_at") || 0);
+      if(present(stored) && Date.now() < (expiresAt - 60000)){
+        return Promise.resolve(stored);
+      }
+      return refreshSpotifyToken().then(function(refreshed){
+        return refreshed || null;
+      });
+    }
+
+    function spotifyApi(path, options){
+      return getValidSpotifyToken().then(function(token){
+        if(!present(token)){
+          throw new Error("Spotify login required.");
+        }
+
+        return fetch("https://api.spotify.com/v1" + path, Object.assign({}, options || {}, {
+          headers: Object.assign({
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json"
+          }, options && options.headers ? options.headers : {})
+        })).then(function(response){
+          if(response.status === 204) return null;
+          return response.text().then(function(text){
+            var data = null;
+            try{
+              data = text ? JSON.parse(text) : null;
+            } catch(_){}
+            if(!response.ok){
+              throw new Error(
+                (data && data.error && data.error.message) ||
+                (data && data.message) ||
+                text ||
+                ("Spotify API error " + response.status)
+              );
+            }
+            return data;
+          });
+        });
+      });
+    }
+
+    function handleSpotifyAuthReturn(){
+      var url = new URL(window.location.href);
+      var code = url.searchParams.get("code");
+      var state = url.searchParams.get("state");
+      if(!present(code)) return Promise.resolve(false);
+
+      var storedState = spotifyStorageGet("vinyl_spotify_auth_state");
+      if(!present(state) || state !== storedState){
+        setPlaybackNotice("Spotify login could not be verified. Please try again.", "warn");
+        return Promise.resolve(false);
+      }
+
+      return exchangeCodeForToken(code)
+        .then(function(){
+          var returnUrl = spotifyStorageGet("vinyl_spotify_return_url");
+          if(present(returnUrl)){
+            window.history.replaceState({}, document.title, returnUrl);
+          } else {
+            url.searchParams.delete("code");
+            url.searchParams.delete("state");
+            window.history.replaceState({}, document.title, url.toString());
+          }
+          spotifyStorageRemove("vinyl_spotify_return_url");
+          setPlaybackNotice("Spotify connected. In-app playback is ready when you are.", "ok");
+          return true;
+        })
+        .catch(function(error){
+          setPlaybackNotice(error.message || "Spotify login failed.", "warn");
+          return false;
+        });
+    }
+
+    function fetchSpotifyProfile(){
+      return spotifyApi("/me").then(function(profile){
+        spotifyProfile = profile || null;
+        return spotifyProfile;
+      });
+    }
+
+    function ensureSpotifySdk(){
+      if(window.Spotify) return Promise.resolve(window.Spotify);
+      if(spotifySdkPromise) return spotifySdkPromise;
+
+      spotifySdkPromise = new Promise(function(resolve, reject){
+        var existingScript = document.querySelector('script[data-spotify-sdk="true"]');
+        var timeoutId = window.setTimeout(function(){
+          reject(new Error(isSecurePlaybackRuntime()
+            ? "Spotify Web Playback SDK timed out while loading."
+            : spotifyRuntimeMessage()));
+        }, 12000);
+
+        window.onSpotifyWebPlaybackSDKReady = function(){
+          window.clearTimeout(timeoutId);
+          resolve(window.Spotify);
+        };
+
+        if(existingScript) return;
+
+        var script = document.createElement("script");
+        script.src = "https://sdk.scdn.co/spotify-player.js";
+        script.async = true;
+        script.dataset.spotifySdk = "true";
+        script.onerror = function(){
+          window.clearTimeout(timeoutId);
+          reject(new Error(isSecurePlaybackRuntime()
+            ? "Spotify Web Playback SDK failed to load."
+            : spotifyRuntimeMessage()));
+        };
+        document.head.appendChild(script);
+      });
+
+      return spotifySdkPromise;
+    }
+
+    function ensureSpotifyPlayer(){
+      if(spotifyPlayer && present(spotifyDeviceId)){
+        return Promise.resolve(spotifyDeviceId);
+      }
+
+      return ensureSpotifySdk()
+        .then(function(){
+          return new Promise(function(resolve, reject){
+            var settled = false;
+            var nextPlayer = new Spotify.Player({
+              name: "Vinyl App Browser Player",
+              getOAuthToken: function(callback){
+                getValidSpotifyToken()
+                  .then(function(token){
+                    callback(token || "");
+                  })
+                  .catch(function(){
+                    callback("");
+                  });
+              },
+              volume: 0.65
+            });
+
+            function fail(message){
+              if(settled) return;
+              settled = true;
+              try{
+                nextPlayer.disconnect();
+              } catch(_){}
+              var classified = classifySpotifyInitFailure(message);
+              reject(new Error(classified.message));
+            }
+
+            nextPlayer.addListener("initialization_error", function(event){
+              fail(event && event.message ? event.message : "Spotify player initialization failed.");
+            });
+            nextPlayer.addListener("authentication_error", function(event){
+              fail("Spotify authentication failed: " + (event && event.message ? event.message : "Unknown error"));
+            });
+            nextPlayer.addListener("account_error", function(event){
+              fail((event && event.message) || "In-app playback requires Spotify Premium.");
+            });
+            nextPlayer.addListener("playback_error", function(event){
+              setPlaybackNotice((event && event.message) || "Spotify playback failed inside the Spotify player.", "warn");
+            });
+            nextPlayer.addListener("ready", function(event){
+              if(settled) return;
+              settled = true;
+              spotifyPlayer = nextPlayer;
+              spotifyDeviceId = event.device_id;
+              resolve(spotifyDeviceId);
+            });
+            nextPlayer.addListener("not_ready", function(){
+              spotifyDeviceId = "";
+            });
+
+            try{
+              nextPlayer.activateElement();
+            } catch(_){}
+
+            nextPlayer.connect().then(function(ok){
+              if(!ok){
+                fail("Spotify player failed to connect.");
+              }
+            }).catch(function(error){
+              fail((error && error.message) || "Spotify player failed to connect.");
+            });
+          });
+        });
+    }
+
+    function startSpotifyPlayback(button){
+      if(button) button.disabled = true;
+      ensureSpotifyPlayer()
+        .then(function(deviceId){
+          return spotifyApi("/me/player", {
+            method: "PUT",
+            body: JSON.stringify({
+              device_ids: [deviceId],
+              play: false
+            })
+          }).catch(function(error){
+            throw new Error((error && error.message) || "Playback transfer to the browser player failed.");
+          }).then(function(){
+            return spotifyApi("/me/player/play?device_id=" + encodeURIComponent(deviceId), {
+              method: "PUT",
+              body: JSON.stringify({
+                context_uri: spotifyContextUri
+              })
+            });
+          }).catch(function(error){
+            throw new Error((error && error.message) || "Spotify play command failed.");
+          });
+        })
+        .then(function(){
+          setPlaybackNotice(
+            "Playback started in the page. On iPad or iPhone, one extra tap may still be needed because of browser playback rules.",
+            "ok"
+          );
+        })
+        .catch(function(error){
+          var message = error && error.message ? error.message : "Spotify playback could not start.";
+          if(/premium/i.test(message)){
+            setPlaybackNotice("In-app playback requires Spotify Premium.", "warn");
+          } else {
+            setPlaybackNotice(message, "warn");
+          }
+        })
+        .finally(function(){
+          if(button) button.disabled = false;
+        });
+    }
+
+    function bootSpotifyPlayback(){
+      if(!present(spotifyContextUri)){
+        renderSpotifyPrimaryAction("none");
+        return Promise.resolve();
+      }
+
+      if(!hasCoreSpotifySupport()){
+        renderSpotifyPrimaryAction("none");
+        setPlaybackNotice("This environment does not expose the browser features required for Spotify in-app playback.", "warn");
+        return Promise.resolve();
+      }
+
+      if(!isSecurePlaybackRuntime()){
+        renderSpotifyPrimaryAction("none");
+        setPlaybackNotice(spotifyRuntimeMessage(), "warn");
+        return Promise.resolve();
+      }
+
+      return handleSpotifyAuthReturn()
+        .then(function(){
+          return getValidSpotifyToken();
+        })
+        .then(function(token){
+          if(!present(token)){
+            renderSpotifyPrimaryAction("connect");
+            setPlaybackNotice(
+              hasStoredSpotifySession()
+                ? "Your Spotify session has expired. Connect Spotify again to enable in-app playback."
+                : "Connect Spotify to enable in-app playback.",
+              ""
+            );
+            return null;
+          }
+
+          return fetchSpotifyProfile()
+            .then(function(profile){
+              if(!profile || String(profile.product || "").toLowerCase() !== "premium"){
+                renderSpotifyPrimaryAction("none");
+                setPlaybackNotice("In-app playback requires Spotify Premium.", "warn");
+                return null;
+              }
+
+              renderSpotifyPrimaryAction("play");
+              if(spotifyNotice && !present(spotifyNotice.textContent)){
+                setPlaybackNotice("Spotify connected. In-app playback is ready when you are.", "ok");
+              }
+              return profile;
+            })
+            .catch(function(error){
+              renderSpotifyPrimaryAction("connect");
+              setPlaybackNotice((error && error.message) || "Spotify connection could not be verified.", "warn");
+              return null;
+            });
+        });
+    }
+
     function trackPosition(track){
       if(present(track.position_raw)) return String(track.position_raw).trim();
       if(present(track.side) && present(track.track_number)){
@@ -661,9 +1375,13 @@ fetchAlbumExport()
 
     var album = item.album || {};
     var tracks = Array.isArray(item.tracks) ? item.tracks : [];
-    var backLink = document.querySelector(".back-link");
-    if(backLink && present(album.artist_id)){
-      backLink.href = "../artist.html?artist_id=" + encodeURIComponent(album.artist_id);
+    var breadcrumb = document.getElementById("breadcrumb");
+    if(breadcrumb){
+      var artistHref = present(album.artist_id)
+        ? "../artist.html?artist_id=" + encodeURIComponent(album.artist_id)
+        : "../index.html";
+      breadcrumb.textContent =
+        "Albums view · " + safe(album.artist_name) + " · " + safe(album.album_title);
     }
 
     var sameArtistAlbums = (data || [])
@@ -765,6 +1483,9 @@ fetchAlbumExport()
       cardLinks = document.createElement("div");
       cardLinks.className = "card-links";
 
+      spotifyPrimarySlot = document.createElement("div");
+      cardLinks.appendChild(spotifyPrimarySlot);
+
       var spotifyLink = document.createElement("a");
       spotifyLink.className = "card-link";
       spotifyLink.href = spotifyHref;
@@ -772,6 +1493,10 @@ fetchAlbumExport()
       spotifyLink.rel = "noopener noreferrer";
       applySpotifyLabel(spotifyLink, "Play on Spotify");
       cardLinks.appendChild(spotifyLink);
+
+      spotifyNotice = document.createElement("div");
+      spotifyNotice.className = "playback-note";
+      spotifyNotice.hidden = true;
     }
 
     collectionLine.appendChild(priority);
@@ -782,6 +1507,9 @@ fetchAlbumExport()
     coverCard.appendChild(collectionLine);
     if(cardLinks){
       coverCard.appendChild(cardLinks);
+    }
+    if(spotifyNotice){
+      coverCard.appendChild(spotifyNotice);
     }
 
     left.appendChild(coverCard);
@@ -838,6 +1566,7 @@ fetchAlbumExport()
 
     top.appendChild(left);
     right.appendChild(metaPanel);
+    bootSpotifyPlayback();
 
     if(isOwned(album.owned)){
       var collectorFields = [

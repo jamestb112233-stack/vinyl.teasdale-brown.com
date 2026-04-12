@@ -25,6 +25,23 @@
 })();
 </script>
 
+<script>
+(function(){
+  try{
+    if(sessionStorage.getItem("vinyl_intro_seen") === "1") return;
+    document.documentElement.classList.add("intro-pending");
+    document.addEventListener("DOMContentLoaded", function(){
+      try{
+        sessionStorage.setItem("vinyl_intro_seen", "1");
+      } catch(_){}
+      requestAnimationFrame(function(){
+        document.documentElement.classList.add("intro-enter");
+      });
+    });
+  } catch(_){}
+})();
+</script>
+
 <style>
 body{
   margin:0;
@@ -59,21 +76,62 @@ body::after{
   top:0;
   left:0;
   width:100%;
-  height:84px;
+  height:68px;
   display:flex;
   align-items:center;
-  justify-content:flex-end;
-  padding:0 28px;
+  justify-content:space-between;
+  padding:0 24px;
   z-index:120;
   box-sizing:border-box;
+}
+
+html.intro-pending .header-brand,
+html.intro-pending .main-nav,
+html.intro-pending .container{
+  will-change:opacity, transform;
+}
+
+html.intro-pending .header-brand{
+  opacity:0;
+  transform:translateY(-6px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+
+html.intro-pending .main-nav{
+  opacity:0;
+  transform:translateY(-6px);
+  transition:opacity .5s ease .2s, transform .5s ease .2s;
+}
+
+html.intro-pending .container{
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .5s ease .4s, transform .5s ease .4s;
+}
+
+html.intro-pending.intro-enter .header-brand,
+html.intro-pending.intro-enter .main-nav,
+html.intro-pending.intro-enter .container{
+  opacity:1;
+  transform:none;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html.intro-pending .header-brand,
+  html.intro-pending .main-nav,
+  html.intro-pending .container{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
 }
 
 .header-brand{
   display:flex;
   flex-direction:column;
-  align-items:flex-end;
-  gap:8px;
-  padding-top:11px;
+  align-items:flex-start;
+  gap:4px;
+  padding-top:6px;
 }
 
 .header-copy{
@@ -96,24 +154,47 @@ body::after{
   letter-spacing:.02em;
 }
 
-.back-link{
-  color:#cfe3ff;
-  text-decoration:none;
-  border-bottom:1px solid rgba(207,227,255,.35);
-  font-size:14px;
-  font-weight:700;
-  letter-spacing:.02em;
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-right:auto;
 }
 
-.back-link:hover{
-  border-bottom-color:rgba(207,227,255,.8);
+.nav-pill{
+  padding:7px 13px;
+  border-radius:10px;
+  background:rgba(34,34,34,0.38);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#c8c0b4;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.03em;
+  transition:all .18s ease;
+  backdrop-filter:blur(4px);
+}
+
+.nav-pill:hover{
+  background:rgba(60,60,60,0.55);
+  border-color:rgba(255,255,255,0.18);
+  color:#e6ded2;
+}
+
+.nav-pill.active{
+  background:rgba(78,68,56,0.48);
+  border-color:rgba(210,190,152,0.28);
+  color:#eadfcd;
+  box-shadow:
+    0 3px 8px rgba(0,0,0,.28),
+    inset 0 0 6px rgba(255,255,255,.05);
 }
 
 .app-header img{
-  height:68px;
+  height:54px;
   object-fit:contain;
-  opacity:.96;
-  filter:drop-shadow(0 4px 10px rgba(0,0,0,.55)) saturate(.98) brightness(.99);
+  opacity:.88;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.38)) saturate(.96) brightness(.98);
 }
 
 .filter-bar{
@@ -298,6 +379,7 @@ body.filter-hidden .container{
   flex-direction:column;
   overflow:hidden;
   pointer-events:none;
+  z-index:1;
 }
 
 .hover-detail.is-empty{
@@ -356,16 +438,6 @@ body.filter-hidden .container{
   min-width:0;
 }
 
-.hover-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  flex-shrink:0;
-  margin:0 0 10px;
-  padding:0 0 10px;
-  border-bottom:1px solid rgba(255,255,255,.12);
-}
-
 .hover-content{
   min-height:0;
   overflow:auto;
@@ -379,19 +451,20 @@ body.filter-hidden .container{
   min-height:36px;
   padding:0 12px;
   border-radius:8px;
-  background:rgba(207,227,255,.14);
-  color:#f3f7ff;
+  background:rgba(54,52,48,.22);
+  color:#d6cbbb;
   text-decoration:none;
-  border:1px solid rgba(207,227,255,.22);
+  border:1px solid rgba(214,203,187,.16);
   font-size:12px;
-  font-weight:700;
-  letter-spacing:.03em;
+  font-weight:600;
+  letter-spacing:.02em;
 }
 
 .hover-album-link:hover,
 .hover-album-link:focus-visible{
-  background:rgba(207,227,255,.22);
-  border-color:rgba(207,227,255,.38);
+  background:rgba(76,72,64,.3);
+  border-color:rgba(214,203,187,.24);
+  color:#efe3d2;
 }
 
 .hover-album-link:focus-visible{
@@ -472,26 +545,32 @@ body.filter-hidden .container{
   white-space:nowrap;
 }
 
-.card-links{
-  margin-top:8px;
-  display:flex;
-  justify-content:flex-end;
-  gap:10px;
-}
-
 .card-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
   flex-shrink:0;
+  padding:6px 10px;
+  border-radius:8px;
+  border:1px solid rgba(214,203,187,.16);
+  background:rgba(54,52,48,.22);
   font-size:12px;
-  font-weight:700;
-  letter-spacing:.03em;
-  color:#cfe3ff;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:#d6cbbb;
   text-decoration:none;
-  border-bottom:1px solid rgba(207,227,255,.35);
 }
 
 .card-link:hover,
 .card-link:focus-visible{
-  border-bottom-color:rgba(207,227,255,.8);
+  background:rgba(76,72,64,.3);
+  border-color:rgba(214,203,187,.24);
+  color:#efe3d2;
+}
+
+.card-link:focus-visible{
+  outline:1px solid rgba(255,255,255,.45);
+  outline-offset:1px;
 }
 
 .spotify-link{
@@ -508,6 +587,16 @@ body.filter-hidden .container{
   background:#1db954;
   box-shadow:0 0 0 1px rgba(29,185,84,.18);
   flex-shrink:0;
+}
+
+.card-actions{
+  position:relative;
+  z-index:2;
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
 }
 
 .empty-state{
@@ -562,17 +651,17 @@ body.filter-hidden .container{
 
 @media (max-width: 1180px){
   .app-header{
-    height:74px;
-    padding:0 22px;
+    height:60px;
+    padding:0 18px;
   }
 
   .header-brand{
-    gap:6px;
-    padding-top:8px;
+    gap:4px;
+    padding-top:5px;
   }
 
   .app-header img{
-    height:54px;
+    height:40px;
   }
 
   .filter-bar{
@@ -650,10 +739,15 @@ body.filter-hidden .container{
 @media (max-width: 760px){
   .app-header{
     height:auto;
-    padding:14px 18px;
+    padding:12px 16px;
     flex-direction:column;
     align-items:flex-start;
     gap:12px;
+  }
+
+  .main-nav{
+    flex-wrap:wrap;
+    margin-right:0;
   }
 
   .filter-bar{
@@ -778,9 +872,13 @@ body.touch-mode .hover-detail{
 <body class="dark-default">
 
 <div class="app-header">
+  <nav class="main-nav">
+    <a href="../index.html" class="nav-pill" data-nav="artists">Artists</a>
+    <a href="albums.html" class="nav-pill active" data-nav="albums">Albums</a>
+    <a href="../news.html" class="nav-pill" data-nav="news">News</a>
+  </nav>
   <div class="header-brand">
     <img src="../backgrounds/banner.png?v=20260409" alt="Requisite Vinyl Album Collection">
-    <a id="backToArtistsLink" class="back-link" href="../index.html">Back to Artists</a>
   </div>
 </div>
 
@@ -826,8 +924,8 @@ body.touch-mode .hover-detail{
 <div class="container">
   <div class="hero-panel">
     <div class="hero-copy">
-      <h1 class="section-title">Browse Albums</h1>
-      <div class="section-subtitle">Explore the curated collection as album-first cards, then jump into the existing detail page for the record you want.</div>
+      <h1 class="section-title">Albums</h1>
+      <div class="section-subtitle">Continue through the collection in album view, with filters that stay close to the artist-led browse flow.</div>
     </div>
     <div id="resultCount" class="result-count">0 Albums</div>
   </div>
@@ -900,7 +998,6 @@ fetchAlbumExport()
 
     var albumGrid = document.getElementById("albumGrid");
     var resultCount = document.getElementById("resultCount");
-    var backToArtistsLink = document.getElementById("backToArtistsLink");
     var activePreviewCard = null;
 
     function isTouchPreviewMode(){
@@ -927,6 +1024,15 @@ fetchAlbumExport()
 
     function safe(value){
       return present(value) ? String(value) : "—";
+    }
+
+    function escapeHtml(value){
+      return String(value == null ? "" : value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
     function isOwned(value){
@@ -1072,14 +1178,6 @@ fetchAlbumExport()
       window.history.replaceState({}, "", url);
     }
 
-    function updateBackLink(){
-      if(filters.artist.value){
-        backToArtistsLink.href = "../artist.html?artist_id=" + encodeURIComponent(filters.artist.value);
-      } else {
-        backToArtistsLink.href = "../index.html";
-      }
-    }
-
     function currentFilters(){
       return {
         artistId: String(filters.artist.value || "").trim(),
@@ -1110,7 +1208,6 @@ fetchAlbumExport()
       var visibleAlbums = filteredAlbums();
       closeActivePreview();
       updateUrl();
-      updateBackLink();
 
       resultCount.textContent = visibleAlbums.length + (visibleAlbums.length === 1 ? " Album" : " Albums");
       albumGrid.innerHTML = "";
@@ -1166,11 +1263,16 @@ fetchAlbumExport()
         owned.textContent = isOwned(album.owned) ? "✓ Owned" : "";
 
         var spotifyHref = spotifyAlbumUrl(album.spotify_album_id);
-        var cardLinks = null;
-        if(spotifyHref){
-          cardLinks = document.createElement("div");
-          cardLinks.className = "card-links";
 
+        var cardActions = document.createElement("div");
+        cardActions.className = "card-actions";
+
+        var moreInfoLink = document.createElement("span");
+        moreInfoLink.className = "card-link";
+        moreInfoLink.textContent = "More Info";
+        cardActions.appendChild(moreInfoLink);
+
+        if(spotifyHref){
           var visibleSpotifyLink = document.createElement("span");
           visibleSpotifyLink.className = "card-link";
           applySpotifyLabel(visibleSpotifyLink, "Play on Spotify");
@@ -1190,40 +1292,11 @@ fetchAlbumExport()
             }
           });
 
-          cardLinks.appendChild(visibleSpotifyLink);
+          cardActions.appendChild(visibleSpotifyLink);
         }
 
         var hover = document.createElement("div");
         hover.className = "hover-detail";
-
-        var hoverActions = document.createElement("div");
-        hoverActions.className = "hover-actions";
-
-        var albumLink = document.createElement("a");
-        albumLink.className = "hover-album-link";
-        albumLink.href = card.href;
-        albumLink.textContent = "Open album page";
-        albumLink.addEventListener("click", function(event){
-          event.preventDefault();
-          event.stopPropagation();
-          window.location.href = card.href;
-        });
-        hoverActions.appendChild(albumLink);
-
-        if(spotifyHref){
-          var spotifyLink = document.createElement("a");
-          spotifyLink.className = "hover-album-link";
-          spotifyLink.href = spotifyHref;
-          spotifyLink.target = "_blank";
-          spotifyLink.rel = "noopener noreferrer";
-          applySpotifyLabel(spotifyLink, "Play on Spotify");
-          spotifyLink.addEventListener("click", function(event){
-            event.stopPropagation();
-          });
-          hoverActions.appendChild(spotifyLink);
-        }
-
-        hover.appendChild(hoverActions);
         var hoverContent = document.createElement("div");
         hoverContent.className = "hover-content";
         hover.appendChild(hoverContent);
@@ -1275,9 +1348,7 @@ fetchAlbumExport()
         card.appendChild(title);
         card.appendChild(artist);
         card.appendChild(collectionLine);
-        if(cardLinks){
-          card.appendChild(cardLinks);
-        }
+        card.appendChild(cardActions);
         card.appendChild(hover);
 
         card.addEventListener("click", function(event){
