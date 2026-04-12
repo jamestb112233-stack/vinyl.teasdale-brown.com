@@ -432,8 +432,8 @@ body::after{
 .card-links{
   margin-top:12px;
   display:flex;
-  align-items:center;
-  justify-content:space-between;
+  align-items:stretch;
+  justify-content:flex-start;
   flex-wrap:wrap;
   gap:10px;
 }
@@ -444,6 +444,7 @@ body::after{
   align-items:center;
   gap:6px;
   flex-shrink:0;
+  max-width:100%;
   padding:6px 10px;
   border-radius:8px;
   border:1px solid rgba(214,203,187,.16);
@@ -455,6 +456,15 @@ body::after{
   text-decoration:none;
   font-family:inherit;
   cursor:pointer;
+  line-height:1.3;
+  text-align:center;
+  white-space:normal;
+  word-break:break-word;
+}
+
+.card-links .card-link,
+.card-links > div{
+  flex:1 1 0;
 }
 
 .card-link:hover,

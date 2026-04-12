@@ -1,0 +1,23 @@
+Timestamp: 2026-04-12T16:53:20
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 1
+CHANGED: 7
+DELETED: 0
+
+New Files
+/publish_repo/media/covers/11_19861087_0_InSearchoftheLostChord.webp
+
+Changed Files
+/publish_repo/albums/album.html
+/publish_repo/albums/albums.html
+/publish_repo/artist.html
+/publish_repo/data/albums/albums_export.json
+/publish_repo/data/news/artist_news.json
+/publish_repo/index.html
+/publish_repo/library.json
+
+Deleted Files
+(none)

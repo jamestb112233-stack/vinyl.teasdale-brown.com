@@ -65945,8 +65945,8 @@
       "discogs_url": null,
       "spotify_album_id": null,
       "notes": null,
-      "cover_path": null,
-      "cover_source_url": null,
+      "cover_path": "covers/11_19861087_0_InSearchoftheLostChord.webp",
+      "cover_source_url": "https://coverartarchive.org/release/91927f6e-675d-4bcb-9c29-0fe47878a8c3/front-500",
       "mb_releasegroup_id": "e817037c-2c6b-34be-a860-b51957f7e82a",
       "album_description": "In Search of the Lost Chord is the third album by the Moody Blues, released in July 1968 on the Deram label.",
       "release_notes": null,
@@ -65954,7 +65954,7 @@
       "album_sales": null,
       "major_contributors": null,
       "album_created_at": "2026-02-06 13:14:57",
-      "album_updated_at": "2026-02-06 13:14:57"
+      "album_updated_at": "2026-04-12 16:51:10"
     },
     "tracks": [
       {
