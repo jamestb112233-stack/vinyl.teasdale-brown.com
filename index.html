@@ -555,6 +555,7 @@ body.filter-hidden .container{
 }
 
 .card{
+  --card-action-zone:56px;
   position:relative;
   display:block;
   background:rgba(20,20,20,.58);
@@ -576,7 +577,7 @@ body.filter-hidden .container{
   left:12px;
   right:12px;
   top:12px;
-  bottom:12px;
+  bottom:calc(12px + var(--card-action-zone));
   padding:14px;
   border-radius:8px;
   background:rgba(0,0,0,.88);
@@ -748,6 +749,7 @@ body.filter-hidden .container{
   position:relative;
   z-index:3;
   margin-top:14px;
+  min-height:42px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -1084,6 +1086,10 @@ body.filter-hidden .container{
 }
 
 @media (max-width: 640px){
+  .card{
+    --card-action-zone:92px;
+  }
+
   .app-header{
     padding:10px 14px;
     gap:8px;
