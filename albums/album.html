@@ -529,6 +529,14 @@ html.intro-pending.intro-enter .container{
   color:#a9a297;
 }
 
+.playback-controls{
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
 .playback-note[data-tone="ok"]{
   color:#b8d9bd;
 }
@@ -813,10 +821,13 @@ fetchAlbumExport()
     ];
     var spotifyPrimarySlot = null;
     var spotifyNotice = null;
+    var playbackControls = null;
+    var spotifyToggleButton = null;
     var spotifySdkPromise = null;
     var spotifyPlayer = null;
     var spotifyDeviceId = "";
     var spotifyProfile = null;
+    var spotifyPlaybackStarted = false;
     var spotifyContextUri = present(item && item.album && item.album.spotify_album_id)
       ? "spotify:album:" + String(item.album.spotify_album_id).trim()
       : "";
@@ -836,6 +847,16 @@ fetchAlbumExport()
       } else {
         spotifyNotice.removeAttribute("data-tone");
       }
+    }
+
+    function setPlaybackControlsVisible(visible){
+      if(!playbackControls) return;
+      playbackControls.hidden = !visible;
+    }
+
+    function setToggleButtonLabel(isPaused){
+      if(!spotifyToggleButton) return;
+      spotifyToggleButton.textContent = isPaused ? "Play" : "Pause";
     }
 
     function spotifyRedirectUri(){
@@ -1244,6 +1265,12 @@ fetchAlbumExport()
             nextPlayer.addListener("not_ready", function(){
               spotifyDeviceId = "";
             });
+            nextPlayer.addListener("player_state_changed", function(state){
+              if(!state) return;
+              spotifyPlaybackStarted = true;
+              setPlaybackControlsVisible(true);
+              setToggleButtonLabel(!!state.paused);
+            });
 
             try{
               nextPlayer.activateElement();
@@ -1284,6 +1311,9 @@ fetchAlbumExport()
           });
         })
         .then(function(){
+          spotifyPlaybackStarted = true;
+          setPlaybackControlsVisible(true);
+          setToggleButtonLabel(false);
           setPlaybackNotice(
             "Playback started in the page. On iPad or iPhone, one extra tap may still be needed because of browser playback rules.",
             "ok"
@@ -1345,6 +1375,7 @@ fetchAlbumExport()
               }
 
               renderSpotifyPrimaryAction("play");
+              setPlaybackControlsVisible(spotifyPlaybackStarted);
               if(spotifyNotice && !present(spotifyNotice.textContent)){
                 setPlaybackNotice("Spotify connected. In-app playback is ready when you are.", "ok");
               }
@@ -1497,6 +1528,26 @@ fetchAlbumExport()
       spotifyNotice = document.createElement("div");
       spotifyNotice.className = "playback-note";
       spotifyNotice.hidden = true;
+
+      playbackControls = document.createElement("div");
+      playbackControls.className = "playback-controls";
+      playbackControls.hidden = true;
+
+      spotifyToggleButton = createSpotifyAction("Pause", function(_, button){
+        if(!spotifyPlayer){
+          setPlaybackNotice("Spotify player is not ready yet.", "warn");
+          return;
+        }
+        button.disabled = true;
+        spotifyPlayer.togglePlay()
+          .catch(function(error){
+            setPlaybackNotice((error && error.message) || "Playback could not be toggled.", "warn");
+          })
+          .finally(function(){
+            button.disabled = false;
+          });
+      });
+      playbackControls.appendChild(spotifyToggleButton);
     }
 
     collectionLine.appendChild(priority);
@@ -1510,6 +1561,9 @@ fetchAlbumExport()
     }
     if(spotifyNotice){
       coverCard.appendChild(spotifyNotice);
+    }
+    if(playbackControls){
+      coverCard.appendChild(playbackControls);
     }
 
     left.appendChild(coverCard);

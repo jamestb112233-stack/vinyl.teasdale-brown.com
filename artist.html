@@ -135,6 +135,13 @@ html.intro-pending.intro-enter .intro-strip{
 }
 
 .page-controls{
+  position:fixed;
+  top:84px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(calc(100% - 56px), 1420px);
+  z-index:110;
+  box-sizing:border-box;
   display:flex;
   align-items:center;
   gap:12px;
@@ -145,6 +152,7 @@ html.intro-pending.intro-enter .intro-strip{
     0 10px 24px rgba(0,0,0,.35),
     0 2px 4px rgba(0,0,0,.25);
   backdrop-filter:blur(4px);
+  transition:padding .22s ease, opacity .22s ease, transform .22s ease;
 }
 
 .page-controls label{
@@ -235,10 +243,25 @@ html.intro-pending.intro-enter .intro-strip{
 }
 
 .container{
-  padding:118px 28px 60px;
+  padding:186px 28px 60px;
   max-width:1420px;
   margin:0 auto;
   box-sizing:border-box;
+  transition:padding-top .22s ease;
+}
+
+body.scrolled .container{
+  padding-top:154px;
+}
+
+body.filter-hidden .page-controls{
+  opacity:0;
+  transform:translate(-50%, -22px);
+  pointer-events:none;
+}
+
+body.filter-hidden .container{
+  padding-top:108px;
 }
 
 .breadcrumb{
@@ -733,6 +756,7 @@ html.intro-pending.intro-enter .intro-strip{
   }
 
   .page-controls{
+    top:74px;
     gap:10px;
     padding:8px 12px;
   }
@@ -757,7 +781,15 @@ html.intro-pending.intro-enter .intro-strip{
   }
 
   .container{
-    padding:102px 22px 52px;
+    padding:170px 22px 52px;
+  }
+
+  body.scrolled .container{
+    padding-top:146px;
+  }
+
+  body.filter-hidden .container{
+    padding-top:104px;
   }
 
   .artist-panels{
@@ -798,16 +830,26 @@ html.intro-pending.intro-enter .intro-strip{
   }
 
   .container{
-    padding:138px 22px 40px;
+    padding:224px 22px 40px;
   }
 
   .page-controls{
-    width:100%;
+    top:122px;
+    width:calc(100% - 32px);
+    flex-wrap:wrap;
   }
 
   .page-controls select{
     min-width:0;
     width:100%;
+  }
+
+  body.scrolled .container{
+    padding-top:212px;
+  }
+
+  body.filter-hidden .container{
+    padding-top:144px;
   }
 }
 
@@ -867,6 +909,13 @@ body.touch-mode .app-footer{
 }
 
 body.touch-mode .header-left{
+  background:rgba(18,18,18,.18) !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.14),
+    0 2px 4px rgba(0,0,0,.08) !important;
+}
+
+body.touch-mode .page-controls{
   background:rgba(18,18,18,.18) !important;
   box-shadow:
     0 8px 18px rgba(0,0,0,.14),
@@ -937,6 +986,35 @@ Promise.all([
   fetchAlbumTrackExport()
 ])
   .then(function(results){
+    function syncScrollState(){
+      document.body.classList.toggle("scrolled", window.scrollY > 48);
+    }
+
+    var lastScrollY = 0;
+
+    function syncBrowserChrome(){
+      var currentScrollY = window.scrollY;
+      var nearTop = currentScrollY <= 24;
+      var browsingDepth = currentScrollY > 120;
+      var scrollingDown = currentScrollY > lastScrollY;
+
+      syncScrollState();
+
+      if(nearTop){
+        document.body.classList.remove("filter-hidden");
+      } else if(browsingDepth && scrollingDown){
+        document.body.classList.add("filter-hidden");
+      } else if(!scrollingDown){
+        document.body.classList.remove("filter-hidden");
+      }
+
+      lastScrollY = currentScrollY;
+    }
+
+    window.addEventListener("scroll", syncBrowserChrome, { passive: true });
+    window.addEventListener("load", syncScrollState);
+    window.addEventListener("load", syncBrowserChrome);
+
     var data = results[0] || [];
     var albumExport = results[1] || [];
 
@@ -1543,6 +1621,8 @@ Promise.all([
         closeActivePreview();
       }
     }, { passive: true });
+
+    syncBrowserChrome();
 
     if(artistList.length){
       var initialArtist = artistList.find(function(item){

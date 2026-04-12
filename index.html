@@ -332,6 +332,64 @@ html.intro-pending.intro-enter .intro-strip{
   transition:padding .22s ease, margin-bottom .22s ease;
 }
 
+.spotify-panel{
+  margin:0 0 18px;
+  padding:14px 16px;
+  border-radius:14px;
+  background:rgba(20,20,20,.42);
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.32),
+    0 2px 4px rgba(0,0,0,.24);
+  backdrop-filter:blur(4px);
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.spotify-panel-copy{
+  min-width:0;
+}
+
+.spotify-panel-title{
+  margin:0 0 4px;
+  font-size:14px;
+  font-weight:700;
+  color:#e2dacd;
+}
+
+.spotify-panel-body{
+  margin:0;
+  font-size:13px;
+  line-height:1.5;
+  color:#cbc5bb;
+}
+
+.spotify-panel-note{
+  margin-top:6px;
+  font-size:11px;
+  line-height:1.45;
+  color:#a9a297;
+}
+
+.spotify-panel-actions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+  flex-shrink:0;
+}
+
+.spotify-status{
+  font-size:12px;
+  color:#b8d9bd;
+}
+
+.spotify-status[data-tone="warn"]{
+  color:#d7c598;
+}
+
 body.scrolled .intro-strip{
   opacity:0;
   transform:translateY(-14px);
@@ -822,6 +880,11 @@ body.filter-hidden .container{
     backdrop-filter:none;
   }
 
+  .spotify-panel{
+    padding:13px 14px;
+    backdrop-filter:none;
+  }
+
   .page-title,
   .section-title{
     font-size:22px;
@@ -904,6 +967,16 @@ body.filter-hidden .container{
   .hero-panel{
     flex-direction:column;
     align-items:flex-start;
+  }
+
+  .spotify-panel{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .spotify-panel-actions{
+    width:100%;
+    justify-content:flex-start;
   }
 }
 
@@ -1073,6 +1146,18 @@ body.touch-mode .hover-detail{
     <div id="resultCount" class="result-count">0 Artists</div>
   </div>
 
+  <div class="spotify-panel">
+    <div class="spotify-panel-copy">
+      <div class="spotify-panel-title">Spotify</div>
+      <p class="spotify-panel-body">Connect your Spotify account to enable in-app playback where available.</p>
+      <div class="spotify-panel-note">In-app playback requires Spotify Premium and a supported browser.</div>
+    </div>
+    <div class="spotify-panel-actions">
+      <button id="spotifyConnectButton" class="card-link" type="button">Connect Spotify</button>
+      <div id="spotifyConnectStatus" class="spotify-status" hidden></div>
+    </div>
+  </div>
+
   <div id="artistGrid" class="artists"></div>
 
   <div class="app-footer">
@@ -1158,6 +1243,260 @@ window.addEventListener("load", syncBrowserChrome);
 </script>
 
 <script>
+var SPOTIFY_CLIENT_ID = "93a6954f4a4b4a5bb7d37078ad8f90b8";
+var SPOTIFY_SCOPES = [
+  "streaming",
+  "user-read-email",
+  "user-read-private",
+  "user-read-playback-state",
+  "user-modify-playback-state"
+];
+
+function spotifyStorageGet(key){
+  try{
+    return localStorage.getItem(key);
+  } catch(_){
+    return null;
+  }
+}
+
+function spotifyStorageSet(key, value){
+  try{
+    localStorage.setItem(key, value);
+  } catch(_){}
+}
+
+function spotifyStorageRemove(key){
+  try{
+    localStorage.removeItem(key);
+  } catch(_){}
+}
+
+function spotifyPresent(value){
+  return value !== null && value !== undefined && String(value).trim() !== "";
+}
+
+function spotifyRandomString(length){
+  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var values = crypto.getRandomValues(new Uint8Array(length));
+  return Array.from(values, function(value){
+    return chars[value % chars.length];
+  }).join("");
+}
+
+function spotifyBase64UrlEncode(input){
+  return btoa(String.fromCharCode.apply(null, Array.from(new Uint8Array(input))))
+    .replace(/=/g, "")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_");
+}
+
+function spotifySha256(plain){
+  var encoder = new TextEncoder();
+  return crypto.subtle.digest("SHA-256", encoder.encode(plain));
+}
+
+function spotifyHasCoreSupport(){
+  return !!(
+    window.fetch &&
+    window.Promise &&
+    window.crypto &&
+    window.crypto.subtle &&
+    window.localStorage &&
+    spotifyPresent(SPOTIFY_CLIENT_ID)
+  );
+}
+
+function spotifyRedirectUri(){
+  return window.location.origin + window.location.pathname;
+}
+
+function spotifyRefreshToken(){
+  var refreshToken = spotifyStorageGet("vinyl_spotify_refresh_token");
+  if(!spotifyPresent(refreshToken)) return Promise.resolve(null);
+
+  var body = new URLSearchParams({
+    client_id: SPOTIFY_CLIENT_ID,
+    grant_type: "refresh_token",
+    refresh_token: refreshToken
+  });
+
+  return fetch("https://accounts.spotify.com/api/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: body
+  })
+    .then(function(response){
+      return response.text().then(function(text){
+        var data = {};
+        try{
+          data = text ? JSON.parse(text) : {};
+        } catch(_){}
+        if(!response.ok){
+          throw new Error(data.error_description || data.error || "Spotify token refresh failed.");
+        }
+        spotifyStorageSet("vinyl_spotify_access_token", data.access_token);
+        spotifyStorageSet("vinyl_spotify_token_expires_at", String(Date.now() + (Number(data.expires_in || 0) * 1000)));
+        if(spotifyPresent(data.refresh_token)){
+          spotifyStorageSet("vinyl_spotify_refresh_token", data.refresh_token);
+        }
+        return data.access_token;
+      });
+    })
+    .catch(function(){
+      return null;
+    });
+}
+
+function spotifyGetValidToken(){
+  var stored = spotifyStorageGet("vinyl_spotify_access_token");
+  var expiresAt = Number(spotifyStorageGet("vinyl_spotify_token_expires_at") || 0);
+  if(spotifyPresent(stored) && Date.now() < (expiresAt - 60000)){
+    return Promise.resolve(stored);
+  }
+  return spotifyRefreshToken().then(function(refreshed){
+    return refreshed || null;
+  });
+}
+
+function spotifyExchangeCodeForToken(code){
+  var verifier = spotifyStorageGet("vinyl_spotify_pkce_verifier");
+  if(!spotifyPresent(verifier)){
+    return Promise.reject(new Error("Missing Spotify login state. Try connecting again."));
+  }
+
+  var body = new URLSearchParams({
+    client_id: SPOTIFY_CLIENT_ID,
+    grant_type: "authorization_code",
+    code: code,
+    redirect_uri: spotifyRedirectUri(),
+    code_verifier: verifier
+  });
+
+  return fetch("https://accounts.spotify.com/api/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: body
+  })
+    .then(function(response){
+      return response.text().then(function(text){
+        var data = {};
+        try{
+          data = text ? JSON.parse(text) : {};
+        } catch(_){}
+        if(!response.ok){
+          throw new Error(data.error_description || data.error || "Spotify login failed.");
+        }
+        spotifyStorageSet("vinyl_spotify_access_token", data.access_token);
+        if(spotifyPresent(data.refresh_token)){
+          spotifyStorageSet("vinyl_spotify_refresh_token", data.refresh_token);
+        }
+        spotifyStorageSet("vinyl_spotify_token_expires_at", String(Date.now() + (Number(data.expires_in || 0) * 1000)));
+        spotifyStorageRemove("vinyl_spotify_pkce_verifier");
+        spotifyStorageRemove("vinyl_spotify_auth_state");
+        return data.access_token;
+      });
+    });
+}
+
+function spotifyHandleAuthReturn(){
+  var url = new URL(window.location.href);
+  var code = url.searchParams.get("code");
+  var state = url.searchParams.get("state");
+  if(!spotifyPresent(code)) return Promise.resolve(false);
+
+  var storedState = spotifyStorageGet("vinyl_spotify_auth_state");
+  if(!spotifyPresent(state) || state !== storedState){
+    return Promise.reject(new Error("Spotify login could not be verified. Please try again."));
+  }
+
+  return spotifyExchangeCodeForToken(code).then(function(){
+    url.searchParams.delete("code");
+    url.searchParams.delete("state");
+    window.history.replaceState({}, document.title, url.toString());
+    return true;
+  });
+}
+
+function spotifyRedirectToLogin(){
+  if(!spotifyHasCoreSupport()){
+    return Promise.reject(new Error("This environment does not expose the browser features required for Spotify in-app playback."));
+  }
+
+  return Promise.resolve()
+    .then(function(){
+      var verifier = spotifyRandomString(64);
+      return spotifySha256(verifier).then(function(hash){
+        var challenge = spotifyBase64UrlEncode(hash);
+        var state = spotifyRandomString(16);
+
+        spotifyStorageSet("vinyl_spotify_pkce_verifier", verifier);
+        spotifyStorageSet("vinyl_spotify_auth_state", state);
+
+        var params = new URLSearchParams({
+          client_id: SPOTIFY_CLIENT_ID,
+          response_type: "code",
+          redirect_uri: spotifyRedirectUri(),
+          code_challenge_method: "S256",
+          code_challenge: challenge,
+          state: state,
+          scope: SPOTIFY_SCOPES.join(" ")
+        });
+
+        window.location.href = "https://accounts.spotify.com/authorize?" + params.toString();
+      });
+    });
+}
+
+function spotifySetConnectState(message, tone){
+  var status = document.getElementById("spotifyConnectStatus");
+  var button = document.getElementById("spotifyConnectButton");
+  if(!status || !button) return;
+
+  status.hidden = !spotifyPresent(message);
+  status.textContent = spotifyPresent(message) ? String(message) : "";
+  if(spotifyPresent(tone)){
+    status.setAttribute("data-tone", String(tone));
+  } else {
+    status.removeAttribute("data-tone");
+  }
+}
+
+function spotifyUpdateConnectUi(){
+  var button = document.getElementById("spotifyConnectButton");
+  if(!button) return;
+
+  return spotifyGetValidToken().then(function(token){
+    if(spotifyPresent(token)){
+      button.hidden = true;
+      spotifySetConnectState("Spotify connected", "");
+    } else {
+      button.hidden = false;
+      spotifySetConnectState("", "");
+    }
+  });
+}
+
+window.addEventListener("load", function(){
+  var button = document.getElementById("spotifyConnectButton");
+  if(!button) return;
+
+  spotifyHandleAuthReturn()
+    .then(function(){
+      return spotifyUpdateConnectUi();
+    })
+    .catch(function(error){
+      button.hidden = false;
+      spotifySetConnectState((error && error.message) || "Spotify login failed.", "warn");
+    });
+
+  button.addEventListener("click", function(){
+    spotifyRedirectToLogin().catch(function(error){
+      spotifySetConnectState((error && error.message) || "Spotify login could not be started.", "warn");
+    });
+  });
+});
+
 fetch("./library.json?v=" + Date.now())
   .then(function(r){
     if(!r.ok) throw new Error("Failed to load library.json");
