@@ -822,7 +822,9 @@ fetchAlbumExport()
     var spotifyPrimarySlot = null;
     var spotifyNotice = null;
     var playbackControls = null;
+    var spotifyPreviousButton = null;
     var spotifyToggleButton = null;
+    var spotifyNextButton = null;
     var spotifySdkPromise = null;
     var spotifyPlayer = null;
     var spotifyDeviceId = "";
@@ -857,6 +859,22 @@ fetchAlbumExport()
     function setToggleButtonLabel(isPaused){
       if(!spotifyToggleButton) return;
       spotifyToggleButton.textContent = isPaused ? "Play" : "Pause";
+    }
+
+    function runSpotifyTransportAction(button, action, fallbackMessage){
+      if(!spotifyPlayer){
+        setPlaybackNotice("Spotify player is not ready yet.", "warn");
+        return;
+      }
+      button.disabled = true;
+      Promise.resolve()
+        .then(action)
+        .catch(function(error){
+          setPlaybackNotice((error && error.message) || fallbackMessage, "warn");
+        })
+        .finally(function(){
+          button.disabled = false;
+        });
     }
 
     function spotifyRedirectUri(){
@@ -1533,21 +1551,26 @@ fetchAlbumExport()
       playbackControls.className = "playback-controls";
       playbackControls.hidden = true;
 
+      spotifyPreviousButton = createSpotifyAction("Previous", function(_, button){
+        runSpotifyTransportAction(button, function(){
+          return spotifyPlayer.previousTrack();
+        }, "Previous track could not be started.");
+      });
+      playbackControls.appendChild(spotifyPreviousButton);
+
       spotifyToggleButton = createSpotifyAction("Pause", function(_, button){
-        if(!spotifyPlayer){
-          setPlaybackNotice("Spotify player is not ready yet.", "warn");
-          return;
-        }
-        button.disabled = true;
-        spotifyPlayer.togglePlay()
-          .catch(function(error){
-            setPlaybackNotice((error && error.message) || "Playback could not be toggled.", "warn");
-          })
-          .finally(function(){
-            button.disabled = false;
-          });
+        runSpotifyTransportAction(button, function(){
+          return spotifyPlayer.togglePlay();
+        }, "Playback could not be toggled.");
       });
       playbackControls.appendChild(spotifyToggleButton);
+
+      spotifyNextButton = createSpotifyAction("Next", function(_, button){
+        runSpotifyTransportAction(button, function(){
+          return spotifyPlayer.nextTrack();
+        }, "Next track could not be started.");
+      });
+      playbackControls.appendChild(spotifyNextButton);
     }
 
     collectionLine.appendChild(priority);
