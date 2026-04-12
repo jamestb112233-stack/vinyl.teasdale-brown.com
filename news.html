@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artist News</title>
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;
+  color:#ddd5ca;
+}
+
+body.dark-default{ background-image:url("backgrounds/rac.jpg"); }
+body.dark-muted{ background-image:url("backgrounds/rac.jpg"); }
+body.dark-ultra{ background-image:url("backgrounds/rac.jpg"); }
+
+body{
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.58);
+  z-index:-1;
+}
+
+body::after{
+  content:none;
+}
+
+.app-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  z-index:100;
+  box-sizing:border-box;
+}
+
+.header-brand{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+  padding-top:6px;
+}
+
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-right:auto;
+}
+
+.nav-pill{
+  padding:7px 13px;
+  border-radius:10px;
+  background:rgba(34,34,34,0.38);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#c8c0b4;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.03em;
+  transition:all .18s ease;
+  backdrop-filter:blur(4px);
+}
+
+.nav-pill:hover{
+  background:rgba(60,60,60,0.55);
+  border-color:rgba(255,255,255,0.18);
+  color:#e6ded2;
+}
+
+.nav-pill.active{
+  background:rgba(78,68,56,0.48);
+  border-color:rgba(210,190,152,0.28);
+  color:#eadfcd;
+  box-shadow:
+    0 3px 8px rgba(0,0,0,.28),
+    inset 0 0 6px rgba(255,255,255,.05);
+}
+
+.app-header img{
+  height:54px;
+  object-fit:contain;
+  opacity:.88;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.38)) saturate(.96) brightness(.98);
+}
+
+.container{
+  padding:118px 28px 60px;
+  max-width:1420px;
+  margin:0 auto;
+  box-sizing:border-box;
+}
+
+.hero-panel{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:22px;
+  background:rgba(20,20,20,.52);
+  border-radius:14px;
+  padding:18px;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.42),
+    0 3px 6px rgba(0,0,0,.28);
+  backdrop-filter:blur(4px);
+}
+
+.hero-copy{
+  min-width:0;
+}
+
+.page-title{
+  font-size:28px;
+  font-weight:800;
+  margin:0 0 4px;
+  line-height:1.1;
+  color:#e5dbce;
+}
+
+.page-subtitle{
+  font-size:14px;
+  line-height:1.5;
+  color:#cbbfaf;
+  margin:0;
+}
+
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.hero-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius:8px;
+  background:rgba(54,52,48,.22);
+  border:1px solid rgba(214,203,187,.16);
+  color:#d6cbbb;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+
+.hero-link:hover,
+.hero-link:focus-visible{
+  background:rgba(76,72,64,.3);
+  border-color:rgba(214,203,187,.24);
+  color:#efe3d2;
+}
+
+.panel{
+  background:rgba(20,20,20,.52);
+  border-radius:14px;
+  padding:18px;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.42),
+    0 3px 6px rgba(0,0,0,.28);
+  backdrop-filter:blur(4px);
+}
+
+.panel-title{
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:14px;
+  color:#e2dacd;
+}
+
+.source-note{
+  margin:-4px 0 14px;
+  font-size:11px;
+  line-height:1.4;
+  color:#a79f93;
+}
+
+.page-controls{
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:10px 14px;
+  background:rgba(18,18,18,.42);
+  border-radius:12px;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.35),
+    0 2px 4px rgba(0,0,0,.25);
+  backdrop-filter:blur(4px);
+}
+
+.page-controls label{
+  font-size:20px;
+  font-weight:800;
+  color:#e0d8cc;
+  letter-spacing:.02em;
+}
+
+.page-controls select{
+  min-width:320px;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(28,28,28,.88);
+  color:#f0f0f0;
+  font-size:15px;
+  outline:none;
+}
+
+.status{
+  margin-bottom:14px;
+  font-size:14px;
+  color:#c8c1b5;
+}
+
+.status.error{
+  color:#ef9b9b;
+}
+
+.news-list{
+  display:grid;
+  gap:14px;
+}
+
+.news-item{
+  padding:14px 16px;
+  border-radius:12px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.news-title{
+  display:inline-block;
+  font-size:17px;
+  line-height:1.45;
+  font-weight:700;
+  color:#e7dfd3;
+  text-decoration:none;
+}
+
+.news-title:hover,
+.news-title:focus-visible{
+  color:#cfe3ff;
+}
+
+.news-meta{
+  margin-top:8px;
+  font-size:12px;
+  color:#bdb5aa;
+}
+
+.news-link{
+  display:inline-block;
+  margin-top:10px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.03em;
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.news-link:hover,
+.news-link:focus-visible{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
+.empty{
+  font-size:14px;
+  line-height:1.5;
+  color:#cbc6bd;
+}
+
+.app-footer{
+  margin-top:28px;
+  padding:18px 24px;
+  font-size:12px;
+  line-height:1.6;
+  color:#c6c0b7;
+  text-align:left;
+  background:rgba(18,18,18,.6);
+  border-top:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(4px);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.footer-icon{
+  width:40px;
+  height:40px;
+  opacity:.9;
+  flex:0 0 auto;
+}
+
+.footer-copy{
+  min-width:0;
+}
+
+.app-footer a{
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.app-footer a:hover{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
+@media (max-width: 980px){
+  .app-header{
+    height:auto;
+    padding:12px 16px;
+    gap:14px;
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .header-brand{
+    width:100%;
+    align-items:flex-start;
+  }
+
+  .main-nav{
+    width:100%;
+    margin-right:0;
+  }
+
+  .container{
+    padding:170px 20px 40px;
+  }
+
+  .hero-panel{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .hero-actions{
+    justify-content:flex-start;
+  }
+
+  .page-controls{
+    width:100%;
+  }
+
+  .page-controls select{
+    min-width:0;
+    width:100%;
+  }
+}
+
+@media (max-width: 640px){
+  .app-header{
+    padding:10px 14px;
+    gap:8px;
+  }
+
+  .app-header img{
+    height:32px;
+  }
+
+  .page-controls{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+    padding:10px 12px;
+  }
+
+  .main-nav{
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .nav-pill{
+    padding:6px 10px;
+    font-size:12px;
+  }
+
+  .container{
+    padding:138px 14px 32px;
+  }
+
+  .page-controls label{
+    font-size:15px;
+  }
+
+  .page-controls select{
+    width:100%;
+    min-width:0;
+    padding:10px 12px;
+    font-size:15px;
+  }
+
+  .page-title{
+    font-size:24px;
+  }
+
+  .hero-actions{
+    width:100%;
+    justify-content:flex-start;
+  }
+
+  .hero-link{
+    min-height:38px;
+  }
+
+  .panel{
+    padding:14px;
+  }
+
+  .app-footer{
+    flex-direction:column-reverse;
+    align-items:flex-start;
+    gap:12px;
+  }
+}
+</style>
+</head>
+
+<body class="dark-default">
+
+<div class="app-header">
+  <nav class="main-nav">
+    <a href="index.html" class="nav-pill" data-nav="artists">Artists</a>
+    <a href="albums/albums.html" class="nav-pill" data-nav="albums">Albums</a>
+    <a href="news.html" class="nav-pill active" data-nav="news">News</a>
+  </nav>
+  <div class="header-brand">
+    <img src="backgrounds/banner.png?v=20260409" alt="Requisite Vinyl Album Collection">
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-controls">
+    <label for="artistSelect">Artist</label>
+    <select id="artistSelect">
+      <option value="">Loading artists...</option>
+    </select>
+  </div>
+  <div class="hero-panel">
+    <div class="hero-copy">
+      <h1 id="pageTitle" class="page-title">Artist News</h1>
+      <p class="page-subtitle">Recent artist coverage, cleaned up to keep distinct stories and direct source links.</p>
+    </div>
+    <div class="hero-actions">
+      <a id="heroArtistLink" class="hero-link" href="artist.html">Open artist</a>
+      <a id="heroAlbumsLink" class="hero-link" href="albums/albums.html">Open albums</a>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Latest Coverage</div>
+    <div class="source-note">News sourced via Google News (external links)</div>
+    <div id="status" class="status">Loading artist list...</div>
+    <div id="newsList" class="news-list">
+      <div class="empty">Loading news…</div>
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="footer-copy">
+      Data sources:
+      <a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer">Discogs</a>,
+      <a href="https://musicbrainz.org" target="_blank" rel="noopener noreferrer">MusicBrainz</a>,
+      <a href="https://news.google.com" target="_blank" rel="noopener noreferrer">Google News</a>,
+      <a href="https://www.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>.
+      Metadata, images and reference information remain the property of their respective sources.
+    </div>
+    <img class="footer-icon" src="backgrounds/icon-256.png?v=20260412" alt="">
+  </div>
+</div>
+
+<script>
+const artistSelect = document.getElementById("artistSelect");
+const statusEl = document.getElementById("status");
+const newsListEl = document.getElementById("newsList");
+const pageTitleEl = document.getElementById("pageTitle");
+const heroArtistLink = document.getElementById("heroArtistLink");
+const heroAlbumsLink = document.getElementById("heroAlbumsLink");
+const params = new URLSearchParams(window.location.search);
+
+let artists = [];
+let artistNewsLookup = {};
+
+function buildArtistNewsExportUrl(){
+  return "./data/news/artist_news.json?v=" + Date.now();
+}
+
+function present(value){
+  return value !== null && value !== undefined && String(value).trim() !== "";
+}
+
+function escapeHtml(value){
+  return String(value == null ? "" : value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function formatDate(value){
+  if(!present(value)) return "";
+  var parsed = new Date(value);
+  if(Number.isNaN(parsed.getTime())) return String(value).trim();
+  return parsed.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  });
+}
+
+function deriveArtistSortName(name){
+  var value = String(name || "").trim();
+  if(!value) return "";
+
+  var leadingArticleMatch = value.match(/^(The|A|An)\s+(.+)$/i);
+  if(leadingArticleMatch){
+    return leadingArticleMatch[2].trim() + ", " + leadingArticleMatch[1];
+  }
+
+  return value;
+}
+
+function artistSortKey(artist){
+  if(!artist) return "";
+  return deriveArtistSortName(artist.sort_name || artist.artist_name || "");
+}
+
+function normalizeArtistRows(rows){
+  return (Array.isArray(rows) ? rows : [])
+    .map(function(row){
+      return {
+        artist_id: String(row && row.artist_id != null ? row.artist_id : "").trim(),
+        artist_name: String(row && row.artist_name ? row.artist_name : "").trim(),
+        sort_name: deriveArtistSortName(String(row && row.sort_name ? row.sort_name : row && row.artist_name ? row.artist_name : "").trim())
+      };
+    })
+    .filter(function(row){
+      return row.artist_id && row.artist_name;
+    });
+}
+
+function normalizeArtistNewsPayload(payload){
+  var rows = payload && Array.isArray(payload.artists) ? payload.artists : [];
+  var lookup = {};
+  var list = rows
+    .map(function(row){
+      var artistId = String(row && row.artist_id != null ? row.artist_id : "").trim();
+      var artistName = String(row && row.artist_name ? row.artist_name : "").trim();
+      var items = Array.isArray(row && row.items) ? row.items : [];
+      if(!artistId || !artistName){
+        return null;
+      }
+      var normalized = {
+        artist_id: artistId,
+        artist_name: artistName,
+        sort_name: deriveArtistSortName(String(row && row.sort_name ? row.sort_name : artistName).trim()),
+        items: items
+      };
+      lookup[artistId] = normalized;
+      return normalized;
+    })
+    .filter(Boolean)
+    .sort(function(a, b){
+      return artistSortKey(a).localeCompare(artistSortKey(b));
+    });
+
+  artistNewsLookup = lookup;
+  return list;
+}
+
+function syncArtistLinks(artistId){
+  if(!present(artistId)) return;
+  var artistHref = "artist.html?artist_id=" + encodeURIComponent(artistId);
+  var albumsHref = "albums/albums.html?artist_id=" + encodeURIComponent(artistId);
+  heroArtistLink.href = artistHref;
+  heroAlbumsLink.href = albumsHref;
+}
+
+function renderEmpty(message){
+  newsListEl.innerHTML = "<div class='empty'>" + escapeHtml(message) + "</div>";
+}
+
+function renderItems(artistName, items){
+  pageTitleEl.textContent = artistName ? (artistName + " News") : "Artist News";
+
+  if(!Array.isArray(items) || !items.length){
+    renderEmpty("No relevant news items found for this artist.");
+    return;
+  }
+
+  newsListEl.innerHTML = items.map(function(item){
+    var title = escapeHtml(item.title || "");
+    var source = escapeHtml(item.source || "Unknown source");
+    var date = formatDate(item.published_date);
+    var safeDate = escapeHtml(date);
+    var safeUrl = escapeHtml(item.url || "#");
+
+    return (
+      "<div class='news-item'>" +
+        "<a class='news-title' href='" + safeUrl + "' target='_blank' rel='noopener noreferrer'>" + title + "</a>" +
+        "<div class='news-meta'>" + source + (date ? " • " + safeDate : "") + "</div>" +
+        "<a class='news-link' href='" + safeUrl + "' target='_blank' rel='noopener noreferrer'>Open article</a>" +
+      "</div>"
+    );
+  }).join("");
+}
+
+function populateArtistSelect(list){
+  artistSelect.innerHTML = "";
+
+  if(!list.length){
+    artistSelect.innerHTML = "<option value=''>No artists available</option>";
+    artistSelect.disabled = true;
+    return;
+  }
+
+  list.forEach(function(artist){
+    var option = document.createElement("option");
+    option.value = artist.artist_id;
+    option.textContent = artist.artist_name;
+    artistSelect.appendChild(option);
+  });
+
+  var requestedArtistId = String(params.get("artist_id") || "").trim();
+  var initialArtist = list.find(function(artist){
+    return artist.artist_id === requestedArtistId;
+  }) || list[0];
+
+  artistSelect.value = initialArtist.artist_id;
+  syncArtistLinks(initialArtist.artist_id);
+}
+
+function setStatus(message, isError){
+  statusEl.textContent = message;
+  statusEl.className = isError ? "status error" : "status";
+}
+
+function loadArtists(){
+  return fetch(buildArtistNewsExportUrl(), { cache: "no-store" })
+    .then(function(response){
+      if(!response.ok){
+        throw new Error("News export HTTP " + response.status);
+      }
+      return response.json();
+    })
+    .then(function(payload){
+      artists = normalizeArtistNewsPayload(payload);
+      populateArtistSelect(artists);
+      return artists;
+    });
+}
+
+function loadNews(){
+  var artistId = String(artistSelect.value || "").trim();
+  var selectedArtist = artists.find(function(artist){
+    return artist.artist_id === artistId;
+  });
+
+  if(!artistId || !selectedArtist){
+    setStatus("Select an artist first.", true);
+    renderEmpty("No artist selected.");
+    return Promise.resolve();
+  }
+
+  syncArtistLinks(artistId);
+  setStatus("Loading news...", false);
+  renderEmpty("Loading news...");
+  return Promise.resolve().then(function(){
+    var artistRecord = artistNewsLookup[artistId] || selectedArtist;
+    var items = Array.isArray(artistRecord && artistRecord.items) ? artistRecord.items.slice(0, 10) : [];
+    renderItems((artistRecord && artistRecord.artist_name) || selectedArtist.artist_name, items);
+    setStatus("Loaded " + items.length + " item" + (items.length === 1 ? "" : "s") + ".", false);
+    params.set("artist_id", artistId);
+    window.history.replaceState({}, "", window.location.pathname + "?" + params.toString());
+  }).catch(function(error){
+    console.error(error);
+    renderEmpty("Artist news is unavailable right now.");
+    setStatus("Load failed: " + error.message, true);
+  });
+}
+
+artistSelect.addEventListener("change", function(){
+  loadNews();
+});
+
+loadArtists()
+  .then(function(){
+    setStatus("Artist list loaded.", false);
+    return loadNews();
+  })
+  .catch(function(error){
+    console.error(error);
+    artistSelect.innerHTML = "<option value=''>Failed to load artists</option>";
+    artistSelect.disabled = true;
+    setStatus(error.message, true);
+    renderEmpty("Artist directory is unavailable right now.");
+  });
+</script>
+
+</body>
+</html>

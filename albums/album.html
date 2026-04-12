@@ -25,23 +25,6 @@
 })();
 </script>
 
-<script>
-(function(){
-  try{
-    if(sessionStorage.getItem("vinyl_intro_seen") === "1") return;
-    document.documentElement.classList.add("intro-pending");
-    document.addEventListener("DOMContentLoaded", function(){
-      try{
-        sessionStorage.setItem("vinyl_intro_seen", "1");
-      } catch(_){}
-      requestAnimationFrame(function(){
-        document.documentElement.classList.add("intro-enter");
-      });
-    });
-  } catch(_){}
-})();
-</script>
-
 <style>
 body{
   margin:0;
@@ -83,37 +66,6 @@ body::after{
   padding:0 24px;
   z-index:100;
   box-sizing:border-box;
-}
-
-html.intro-pending .header-brand,
-html.intro-pending .main-nav,
-html.intro-pending .container{
-  will-change:opacity, transform;
-}
-
-html.intro-pending .header-brand{
-  opacity:0;
-  transform:translateY(-6px);
-  transition:opacity .5s ease, transform .5s ease;
-}
-
-html.intro-pending .main-nav{
-  opacity:0;
-  transform:translateY(-6px);
-  transition:opacity .5s ease .2s, transform .5s ease .2s;
-}
-
-html.intro-pending .container{
-  opacity:0;
-  transform:translateY(12px);
-  transition:opacity .5s ease .4s, transform .5s ease .4s;
-}
-
-html.intro-pending.intro-enter .header-brand,
-html.intro-pending.intro-enter .main-nav,
-html.intro-pending.intro-enter .container{
-  opacity:1;
-  transform:none;
 }
 
 .header-brand{
@@ -555,11 +507,26 @@ html.intro-pending.intro-enter .container{
   font-size:12px;
   line-height:1.6;
   color:#c6c0b7;
-  text-align:center;
+  text-align:left;
   background:rgba(18,18,18,.6);
   border-top:1px solid rgba(255,255,255,.08);
   backdrop-filter:blur(4px);
   border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.footer-icon{
+  width:40px;
+  height:40px;
+  opacity:.9;
+  flex:0 0 auto;
+}
+
+.footer-copy{
+  min-width:0;
 }
 
 .app-footer a{
@@ -642,6 +609,117 @@ html.intro-pending.intro-enter .container{
 
   .container{
     padding:138px 22px 40px;
+  }
+}
+
+@media (max-width: 640px){
+  .app-header{
+    padding:10px 14px;
+    gap:8px;
+  }
+
+  .app-header img{
+    height:32px;
+  }
+
+  .main-nav{
+    gap:8px;
+  }
+
+  .nav-pill{
+    padding:6px 10px;
+    font-size:12px;
+  }
+
+  .container{
+    padding:118px 14px 32px;
+  }
+
+  .breadcrumb{
+    margin-bottom:10px;
+    font-size:10px;
+  }
+
+  #albumView{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .album-header,
+  .description-panel,
+  .artist-panels,
+  .app-footer{
+    margin-bottom:0;
+  }
+
+  .album-header{
+    gap:8px;
+  }
+
+  .page-title,
+  .section-title{
+    font-size:24px;
+  }
+
+  .album-nav,
+  .album-nav select{
+    width:100%;
+  }
+
+  .artist-panels,
+  .stack,
+  .right-stack{
+    display:contents;
+  }
+
+  .artist-panels > .stack > .card{
+    order:1;
+    width:auto;
+  }
+
+  .artist-panels > .right-stack > .metadata-panel:first-child{
+    order:2;
+  }
+
+  .description-panel{
+    order:3;
+  }
+
+  .artist-panels > .stack > .metadata-panel{
+    order:4;
+  }
+
+  .artist-panels > .right-stack > .tracklist-panel{
+    order:5;
+  }
+
+  .panel{
+    padding:14px;
+  }
+
+  .panel-text{
+    max-height:none;
+    overflow:visible;
+    padding-right:0;
+  }
+
+  .tracklist-panel{
+    max-height:none;
+    overflow:visible;
+  }
+
+  .card-links,
+  .playback-controls{
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .app-footer{
+    flex-direction:column-reverse;
+    align-items:flex-start;
+    gap:12px;
   }
 }
 
@@ -1284,9 +1362,13 @@ fetchAlbumExport()
               spotifyDeviceId = "";
             });
             nextPlayer.addListener("player_state_changed", function(state){
-              if(!state) return;
-              spotifyPlaybackStarted = true;
-              setPlaybackControlsVisible(true);
+              if(!state){
+                spotifyPlaybackStarted = false;
+                setPlaybackControlsVisible(false);
+                return;
+              }
+              spotifyPlaybackStarted = !state.paused;
+              setPlaybackControlsVisible(!state.paused);
               setToggleButtonLabel(!!state.paused);
             });
 
@@ -1329,9 +1411,6 @@ fetchAlbumExport()
           });
         })
         .then(function(){
-          spotifyPlaybackStarted = true;
-          setPlaybackControlsVisible(true);
-          setToggleButtonLabel(false);
           setPlaybackNotice(
             "Playback started in the page. On iPad or iPhone, one extra tap may still be needed because of browser playback rules.",
             "ok"
@@ -1768,11 +1847,15 @@ fetchAlbumExport()
     var footer = document.createElement("div");
     footer.className = "app-footer";
     footer.innerHTML =
+      '<div class="footer-copy">' +
       'Data sources: ' +
       '<a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer">Discogs</a>, ' +
       '<a href="https://musicbrainz.org" target="_blank" rel="noopener noreferrer">MusicBrainz</a>, ' +
+      '<a href="https://news.google.com" target="_blank" rel="noopener noreferrer">Google News</a>, ' +
       '<a href="https://www.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>. ' +
-      'Metadata, images and reference information remain the property of their respective sources.';
+      'Metadata, images and reference information remain the property of their respective sources.' +
+      '</div>' +
+      '<img class="footer-icon" src="../backgrounds/icon-256.png?v=20260412" alt="">';
     root.appendChild(footer);
   })
   .catch(function(err){

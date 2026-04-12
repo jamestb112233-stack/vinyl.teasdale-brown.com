@@ -27,16 +27,38 @@
 
 <script>
 (function(){
+  var INTRO_DONE_KEY = "rvac_intro_done";
+  var introCleanupDone = false;
   try{
-    if(sessionStorage.getItem("vinyl_intro_seen") === "1") return;
+    if(sessionStorage.getItem(INTRO_DONE_KEY) === "1"){
+      document.addEventListener("DOMContentLoaded", function(){
+        var existingIntroLayer = document.querySelector(".intro-layer");
+        if(existingIntroLayer){
+          existingIntroLayer.remove();
+        }
+      });
+      return;
+    }
     document.documentElement.classList.add("intro-pending");
     document.addEventListener("DOMContentLoaded", function(){
-      try{
-        sessionStorage.setItem("vinyl_intro_seen", "1");
-      } catch(_){}
       requestAnimationFrame(function(){
         document.documentElement.classList.add("intro-enter");
       });
+      window.setTimeout(function(){
+        document.documentElement.classList.add("intro-exit");
+      }, 1220);
+      window.setTimeout(function(){
+        if(introCleanupDone) return;
+        introCleanupDone = true;
+        document.documentElement.classList.remove("intro-pending", "intro-enter", "intro-exit");
+        var introLayer = document.querySelector(".intro-layer");
+        if(introLayer){
+          introLayer.remove();
+        }
+        try{
+          sessionStorage.setItem(INTRO_DONE_KEY, "1");
+        } catch(_){}
+      }, 1680);
     });
   } catch(_){}
 })();
@@ -85,6 +107,11 @@ body::after{
   box-sizing:border-box;
 }
 
+.intro-layer,
+.intro-badge{
+  display:none;
+}
+
 html.intro-pending .header-brand,
 html.intro-pending .main-nav,
 html.intro-pending .container,
@@ -95,22 +122,81 @@ html.intro-pending .intro-strip{
 
 html.intro-pending .header-brand{
   opacity:0;
-  transform:translateY(-6px);
-  transition:opacity .5s ease, transform .5s ease;
+  transform:translateY(6px);
+  transition:opacity .42s ease 1.02s, transform .52s ease 1.02s;
 }
 
 html.intro-pending .main-nav{
   opacity:0;
-  transform:translateY(-6px);
-  transition:opacity .5s ease .2s, transform .5s ease .2s;
+  transform:translateY(6px);
+  transition:opacity .38s ease 1.12s, transform .48s ease 1.12s;
 }
 
 html.intro-pending .container,
 html.intro-pending .filter-bar,
 html.intro-pending .intro-strip{
   opacity:0;
-  transform:translateY(12px);
-  transition:opacity .5s ease .4s, transform .5s ease .4s;
+  transform:translateY(10px);
+  transition:opacity .42s ease 1.24s, transform .52s ease 1.24s;
+}
+
+html.intro-pending .intro-layer{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  z-index:150;
+  opacity:1;
+  transition:opacity .42s ease;
+}
+
+html.intro-pending .intro-layer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.24);
+  opacity:1;
+  transition:opacity .48s ease;
+}
+
+html.intro-pending .intro-badge{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:188px;
+  height:188px;
+  opacity:0;
+  transform:scale(.92);
+  transition:opacity .44s ease, transform .68s cubic-bezier(.22,.61,.36,1);
+}
+
+html.intro-pending .intro-badge img{
+  width:188px;
+  height:188px;
+  display:block;
+  image-rendering:auto;
+  filter:none;
+}
+
+html.intro-pending.intro-enter .intro-badge{
+  opacity:1;
+  transform:scale(1);
+}
+
+html.intro-pending.intro-exit .intro-layer{
+  opacity:0;
+}
+
+html.intro-pending.intro-exit .intro-layer::before{
+  opacity:0;
+}
+
+html.intro-pending.intro-exit .intro-badge{
+  opacity:0;
+  transform:scale(.97);
 }
 
 html.intro-pending.intro-enter .header-brand,
@@ -123,6 +209,8 @@ html.intro-pending.intro-enter .intro-strip{
 }
 
 @media (prefers-reduced-motion: reduce){
+  html.intro-pending .intro-layer,
+  html.intro-pending .intro-badge,
   html.intro-pending .header-brand,
   html.intro-pending .main-nav,
   html.intro-pending .container,
@@ -685,11 +773,26 @@ body.filter-hidden .container{
   font-size:12px;
   line-height:1.6;
   color:#c6c0b7;
-  text-align:center;
+  text-align:left;
   background:rgba(18,18,18,.6);
   border-top:1px solid rgba(255,255,255,.08);
   backdrop-filter:blur(4px);
   border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.footer-icon{
+  width:40px;
+  height:40px;
+  opacity:.9;
+  flex:0 0 auto;
+}
+
+.footer-copy{
+  min-width:0;
 }
 
 .app-footer a{
@@ -980,6 +1083,121 @@ body.filter-hidden .container{
   }
 }
 
+@media (max-width: 640px){
+  .app-header{
+    padding:10px 14px;
+    gap:8px;
+  }
+
+  .app-header img{
+    height:32px;
+  }
+
+  .main-nav{
+    gap:8px;
+  }
+
+  .nav-pill{
+    padding:6px 10px;
+    font-size:12px;
+  }
+
+  .intro-strip{
+    top:92px;
+    padding:8px 14px 0;
+  }
+
+  .intro-shell{
+    padding:8px 10px;
+  }
+
+  .filter-bar{
+    top:146px;
+    padding:10px 14px 0;
+  }
+
+  .filter-shell{
+    padding:10px;
+  }
+
+  .filter-grid{
+    gap:10px;
+  }
+
+  .filter-group input,
+  .filter-group select{
+    width:100%;
+    padding:10px 12px;
+    font-size:15px;
+  }
+
+  .filter-actions{
+    width:100%;
+  }
+
+  .reset-button{
+    width:100%;
+    min-height:40px;
+  }
+
+  .container{
+    padding:414px 14px 32px;
+  }
+
+  body.scrolled .filter-bar{
+    top:92px;
+  }
+
+  body.scrolled .container{
+    padding-top:350px;
+  }
+
+  body.filter-hidden .container{
+    padding-top:170px;
+  }
+
+  .hero-panel,
+  .spotify-panel{
+    padding:14px;
+  }
+
+  .page-title,
+  .section-title{
+    font-size:24px;
+  }
+
+  .artists{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .card{
+    padding:14px;
+  }
+
+  .card-actions{
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .meta-pair{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+  }
+
+  .hover-detail{
+    display:none !important;
+  }
+
+  .app-footer{
+    flex-direction:column-reverse;
+    align-items:flex-start;
+    gap:12px;
+  }
+}
+
 body.touch-mode{
   background-attachment:scroll !important;
   background-image:none !important;
@@ -1093,6 +1311,12 @@ body.touch-mode .hover-detail{
   </div>
 </div>
 
+<div class="intro-layer" aria-hidden="true">
+  <div class="intro-badge">
+    <img src="backgrounds/icon-512.png?v=20260412b" alt="">
+  </div>
+</div>
+
 <div class="app-header">
   <nav class="main-nav">
     <a href="index.html" class="nav-pill active" data-nav="artists">Artists</a>
@@ -1161,15 +1385,20 @@ body.touch-mode .hover-detail{
   <div id="artistGrid" class="artists"></div>
 
   <div class="app-footer">
-    Data sources:
-    <a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer">Discogs</a>,
-    <a href="https://musicbrainz.org" target="_blank" rel="noopener noreferrer">MusicBrainz</a>,
-    <a href="https://www.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>.
-    Metadata, images and reference information remain the property of their respective sources.
+    <div class="footer-copy">
+      Data sources:
+      <a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer">Discogs</a>,
+      <a href="https://musicbrainz.org" target="_blank" rel="noopener noreferrer">MusicBrainz</a>,
+      <a href="https://news.google.com" target="_blank" rel="noopener noreferrer">Google News</a>,
+      <a href="https://www.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>.
+      Metadata, images and reference information remain the property of their respective sources.
+    </div>
+    <img class="footer-icon" src="backgrounds/icon-256.png?v=20260412" alt="">
   </div>
 </div>
 
 <script>
+const APP_PIN_ENABLED = false;
 const APP_PIN = "1967";
 
 function unlockApp(){
@@ -1193,6 +1422,11 @@ function checkPin(){
 }
 
 window.addEventListener("load", function(){
+  if(!APP_PIN_ENABLED){
+    unlockApp();
+    return;
+  }
+
   var saved = sessionStorage.getItem("rvac_auth");
   var input = document.getElementById("pinInput");
   var button = document.getElementById("pinButton");
@@ -1221,17 +1455,13 @@ var lastScrollY = 0;
 function syncBrowserChrome(){
   var currentScrollY = window.scrollY;
   var nearTop = currentScrollY <= 24;
-  var browsingDepth = currentScrollY > 120;
-  var scrollingDown = currentScrollY > lastScrollY;
 
   syncScrollState();
 
   if(nearTop){
     document.body.classList.remove("filter-hidden");
-  } else if(browsingDepth && scrollingDown){
+  } else {
     document.body.classList.add("filter-hidden");
-  } else if(!scrollingDown){
-    document.body.classList.remove("filter-hidden");
   }
 
   lastScrollY = currentScrollY;
@@ -1270,6 +1500,23 @@ function spotifyStorageRemove(key){
   try{
     localStorage.removeItem(key);
   } catch(_){}
+}
+
+function deriveArtistSortName(name){
+  var value = String(name || "").trim();
+  if(!value) return "";
+
+  var leadingArticleMatch = value.match(/^(The|A|An)\s+(.+)$/i);
+  if(leadingArticleMatch){
+    return leadingArticleMatch[2].trim() + ", " + leadingArticleMatch[1];
+  }
+
+  return value;
+}
+
+function artistSortKey(artist){
+  if(!artist) return "";
+  return deriveArtistSortName(artist.sort_name || artist.artist_name || "");
 }
 
 function spotifyPresent(value){
@@ -1550,7 +1797,7 @@ fetch("./library.json?v=" + Date.now())
         artistLookup[key] = {
           artist_id: row.artist_id,
           artist_name: row.artist_name || "Unknown Artist",
-          sort_name: row.sort_name || row.artist_name || "Unknown Artist",
+          sort_name: deriveArtistSortName(row.sort_name || row.artist_name || "Unknown Artist"),
           genre: row.genre || "",
           artist_type: row.artist_type || "",
           area: row.area || "",
@@ -1566,7 +1813,9 @@ fetch("./library.json?v=" + Date.now())
       var artist = artistLookup[key];
 
       if(present(row.artist_name) && !present(artist.artist_name)) artist.artist_name = row.artist_name;
-      if(present(row.sort_name) && !present(artist.sort_name)) artist.sort_name = row.sort_name;
+      if((present(row.sort_name) || present(row.artist_name)) && !present(artist.sort_name)){
+        artist.sort_name = deriveArtistSortName(row.sort_name || row.artist_name);
+      }
       if(present(row.genre) && !present(artist.genre)) artist.genre = row.genre;
       if(present(row.artist_type) && !present(artist.artist_type)) artist.artist_type = row.artist_type;
       if(present(row.area) && !present(artist.area)) artist.area = row.area;
@@ -1589,11 +1838,12 @@ fetch("./library.json?v=" + Date.now())
     var artists = Object.keys(artistLookup)
       .map(function(key){
         var artist = artistLookup[key];
+        artist.sort_name = deriveArtistSortName(artist.sort_name || artist.artist_name);
         artist.era = decadeLabel(artist.born);
         return artist;
       })
       .sort(function(a, b){
-        return String(a.artist_name || "").localeCompare(String(b.artist_name || ""));
+        return artistSortKey(a).localeCompare(artistSortKey(b));
       });
 
     var filters = {
@@ -1609,7 +1859,7 @@ fetch("./library.json?v=" + Date.now())
     var activePreviewCard = null;
 
     function isTouchPreviewMode(){
-      return window.matchMedia("(hover: none), (pointer: coarse)").matches;
+      return document.body.classList.contains("touch-mode") && window.innerWidth > 640;
     }
 
     function closeActivePreview(){

@@ -25,23 +25,6 @@
 })();
 </script>
 
-<script>
-(function(){
-  try{
-    if(sessionStorage.getItem("vinyl_intro_seen") === "1") return;
-    document.documentElement.classList.add("intro-pending");
-    document.addEventListener("DOMContentLoaded", function(){
-      try{
-        sessionStorage.setItem("vinyl_intro_seen", "1");
-      } catch(_){}
-      requestAnimationFrame(function(){
-        document.documentElement.classList.add("intro-enter");
-      });
-    });
-  } catch(_){}
-})();
-</script>
-
 <style>
 body{
   margin:0;
@@ -83,55 +66,6 @@ body::after{
   padding:0 24px;
   z-index:100;
   box-sizing:border-box;
-}
-
-html.intro-pending .header-brand,
-html.intro-pending .main-nav,
-html.intro-pending .container,
-html.intro-pending .filter-bar,
-html.intro-pending .intro-strip{
-  will-change:opacity, transform;
-}
-
-html.intro-pending .header-brand{
-  opacity:0;
-  transform:translateY(-6px);
-  transition:opacity .5s ease, transform .5s ease;
-}
-
-html.intro-pending .main-nav{
-  opacity:0;
-  transform:translateY(-6px);
-  transition:opacity .5s ease .2s, transform .5s ease .2s;
-}
-
-html.intro-pending .container,
-html.intro-pending .filter-bar,
-html.intro-pending .intro-strip{
-  opacity:0;
-  transform:translateY(12px);
-  transition:opacity .5s ease .4s, transform .5s ease .4s;
-}
-
-html.intro-pending.intro-enter .header-brand,
-html.intro-pending.intro-enter .main-nav,
-html.intro-pending.intro-enter .container,
-html.intro-pending.intro-enter .filter-bar,
-html.intro-pending.intro-enter .intro-strip{
-  opacity:1;
-  transform:none;
-}
-
-@media (prefers-reduced-motion: reduce){
-  html.intro-pending .header-brand,
-  html.intro-pending .main-nav,
-  html.intro-pending .container,
-  html.intro-pending .filter-bar,
-  html.intro-pending .intro-strip{
-    opacity:1;
-    transform:none;
-    transition:none;
-  }
 }
 
 .page-controls{
@@ -725,11 +659,26 @@ body.filter-hidden .container{
   font-size:12px;
   line-height:1.6;
   color:#c6c0b7;
-  text-align:center;
+  text-align:left;
   background:rgba(18,18,18,.6);
   border-top:1px solid rgba(255,255,255,.08);
   backdrop-filter:blur(4px);
   border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.footer-icon{
+  width:40px;
+  height:40px;
+  opacity:.9;
+  flex:0 0 auto;
+}
+
+.footer-copy{
+  min-width:0;
 }
 
 .app-footer a{
@@ -850,6 +799,118 @@ body.filter-hidden .container{
 
   body.filter-hidden .container{
     padding-top:144px;
+  }
+}
+
+@media (max-width: 640px){
+  .app-header{
+    padding:10px 14px;
+    gap:8px;
+  }
+
+  .app-header img{
+    height:32px;
+  }
+
+  .main-nav{
+    gap:8px;
+  }
+
+  .nav-pill{
+    padding:6px 10px;
+    font-size:12px;
+  }
+
+  .page-controls{
+    top:90px;
+    width:calc(100% - 28px);
+    padding:10px 12px;
+    gap:8px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .page-controls label{
+    font-size:15px;
+  }
+
+  .page-controls select{
+    width:100%;
+    min-width:0;
+    padding:10px 12px;
+    font-size:15px;
+  }
+
+  .container{
+    padding:184px 14px 32px;
+  }
+
+  body.scrolled .container{
+    padding-top:176px;
+  }
+
+  body.filter-hidden .container{
+    padding-top:94px;
+  }
+
+  .breadcrumb{
+    margin-bottom:10px;
+    font-size:10px;
+  }
+
+  .artist-panels{
+    gap:14px;
+  }
+
+  .panel{
+    padding:14px;
+  }
+
+  .panel-text{
+    max-height:none;
+    overflow:visible;
+    padding-right:0;
+  }
+
+  .meta-grid{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .albums{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .card{
+    width:auto;
+  }
+
+  .card-actions{
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .hover-detail{
+    display:none !important;
+  }
+
+  .reference-item{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .reference-link{
+    width:100%;
+    justify-content:center;
+  }
+
+  .app-footer{
+    flex-direction:column-reverse;
+    align-items:flex-start;
+    gap:12px;
   }
 }
 
@@ -981,9 +1042,24 @@ function fetchAlbumTrackExport(){
     });
 }
 
+function fetchArtistNewsExport(){
+  return fetch("./data/news/artist_news.json?v=" + Date.now())
+    .then(function(response){
+      if(!response.ok){
+        throw new Error("artist_news.json HTTP " + response.status);
+      }
+      return response.json();
+    })
+    .catch(function(error){
+      console.warn(error);
+      return null;
+    });
+}
+
 Promise.all([
   fetch("./library.json?v=" + Date.now()).then(function(r){ return r.json(); }),
-  fetchAlbumTrackExport()
+  fetchAlbumTrackExport(),
+  fetchArtistNewsExport()
 ])
   .then(function(results){
     function syncScrollState(){
@@ -995,17 +1071,13 @@ Promise.all([
     function syncBrowserChrome(){
       var currentScrollY = window.scrollY;
       var nearTop = currentScrollY <= 24;
-      var browsingDepth = currentScrollY > 120;
-      var scrollingDown = currentScrollY > lastScrollY;
 
       syncScrollState();
 
       if(nearTop){
         document.body.classList.remove("filter-hidden");
-      } else if(browsingDepth && scrollingDown){
+      } else {
         document.body.classList.add("filter-hidden");
-      } else if(!scrollingDown){
-        document.body.classList.remove("filter-hidden");
       }
 
       lastScrollY = currentScrollY;
@@ -1017,6 +1089,7 @@ Promise.all([
 
     var data = results[0] || [];
     var albumExport = results[1] || [];
+    var artistNewsExport = results[2] || null;
 
     function present(value){
       return value !== null && value !== undefined && String(value).trim() !== "";
@@ -1082,6 +1155,25 @@ Promise.all([
       });
     }
 
+    function deriveArtistSortName(name){
+      var value = String(name || "").trim();
+      if(!value) return "";
+
+      var leadingArticleMatch = value.match(/^(The|A|An)\s+(.+)$/i);
+      if(leadingArticleMatch){
+        return leadingArticleMatch[2].trim() + ", " + leadingArticleMatch[1];
+      }
+
+      return value;
+    }
+
+    function artistSortKey(artist){
+      if(!artist) return "";
+      return deriveArtistSortName(
+        (artist.info && artist.info.sort_name) || artist.sort_name || artist.artist_name || ""
+      );
+    }
+
     function createNewsPanel(){
       var news = document.createElement("div");
       news.className = "panel news-panel";
@@ -1145,23 +1237,28 @@ Promise.all([
         "<div class='news-empty'>Artist news is unavailable right now.</div>";
     }
 
+    var artistNewsAvailable = !!(artistNewsExport && Array.isArray(artistNewsExport.artists));
+    var artistNewsLookup = {};
+    if(artistNewsAvailable){
+      artistNewsExport.artists.forEach(function(row){
+        var artistId = String(row && row.artist_id != null ? row.artist_id : "").trim();
+        if(!present(artistId)) return;
+        artistNewsLookup[artistId] = Array.isArray(row && row.items) ? row.items : [];
+      });
+    }
+
     function loadArtistNews(artistId, panel){
-      return fetch("/api/news/artist/" + encodeURIComponent(String(artistId)) + "?limit=3", {
-        cache: "no-store"
-      })
-        .then(function(response){
-          if(!response.ok){
-            throw new Error("HTTP " + response.status);
-          }
-          return response.json();
-        })
-        .then(function(payload){
-          renderNewsPanel(panel, Array.isArray(payload.items) ? payload.items : []);
-        })
-        .catch(function(error){
-          console.error(error);
+      return Promise.resolve().then(function(){
+        if(!artistNewsAvailable){
           renderNewsError(panel);
-        });
+          return;
+        }
+        var items = artistNewsLookup[String(artistId)] || [];
+        renderNewsPanel(panel, items);
+      }).catch(function(error){
+        console.error(error);
+        renderNewsError(panel);
+      });
     }
 
     var albumTrackLookup = {};
@@ -1217,7 +1314,9 @@ Promise.all([
       var info = artists[key].info;
 
       if(present(row.artist_name) && !present(info.artist_name)) info.artist_name = row.artist_name;
-      if(present(row.sort_name) && !present(info.sort_name)) info.sort_name = row.sort_name;
+      if((present(row.sort_name) || present(row.artist_name)) && !present(info.sort_name)){
+        info.sort_name = deriveArtistSortName(row.sort_name || row.artist_name);
+      }
       if(present(row.genre) && !present(info.genre)) info.genre = row.genre;
       if(present(row.artist_type) && !present(info.artist_type)) info.artist_type = row.artist_type;
       if(present(row.area) && !present(info.area)) info.area = row.area;
@@ -1245,9 +1344,13 @@ Promise.all([
     });
 
     var artistList = Object.keys(artists)
-      .map(function(key){ return artists[key]; })
+      .map(function(key){
+        var artist = artists[key];
+        artist.info.sort_name = deriveArtistSortName(artist.info.sort_name || artist.info.artist_name);
+        return artist;
+      })
       .sort(function(a, b){
-        return a.artist_name.localeCompare(b.artist_name);
+        return artistSortKey(a).localeCompare(artistSortKey(b));
       });
 
     var select = document.getElementById("artistSelect");
@@ -1258,7 +1361,7 @@ Promise.all([
     var activePreviewCard = null;
 
     function isTouchPreviewMode(){
-      return document.body.classList.contains("touch-mode");
+      return document.body.classList.contains("touch-mode") && window.innerWidth > 640;
     }
 
     function closeActivePreview(){
@@ -1592,11 +1695,15 @@ Promise.all([
       var footer = document.createElement("div");
       footer.className = "app-footer";
       footer.innerHTML =
+        '<div class="footer-copy">' +
         'Data sources: ' +
         '<a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer">Discogs</a>, ' +
         '<a href="https://musicbrainz.org" target="_blank" rel="noopener noreferrer">MusicBrainz</a>, ' +
+        '<a href="https://news.google.com" target="_blank" rel="noopener noreferrer">Google News</a>, ' +
         '<a href="https://www.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>. ' +
-        'Metadata, images and reference information remain the property of their respective sources.';
+        'Metadata, images and reference information remain the property of their respective sources.' +
+        '</div>' +
+        '<img class="footer-icon" src="backgrounds/icon-256.png?v=20260412" alt="">';
       container.appendChild(footer);
     }
 

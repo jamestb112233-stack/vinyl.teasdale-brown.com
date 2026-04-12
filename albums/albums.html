@@ -25,23 +25,6 @@
 })();
 </script>
 
-<script>
-(function(){
-  try{
-    if(sessionStorage.getItem("vinyl_intro_seen") === "1") return;
-    document.documentElement.classList.add("intro-pending");
-    document.addEventListener("DOMContentLoaded", function(){
-      try{
-        sessionStorage.setItem("vinyl_intro_seen", "1");
-      } catch(_){}
-      requestAnimationFrame(function(){
-        document.documentElement.classList.add("intro-enter");
-      });
-    });
-  } catch(_){}
-})();
-</script>
-
 <style>
 body{
   margin:0;
@@ -83,47 +66,6 @@ body::after{
   padding:0 24px;
   z-index:120;
   box-sizing:border-box;
-}
-
-html.intro-pending .header-brand,
-html.intro-pending .main-nav,
-html.intro-pending .container{
-  will-change:opacity, transform;
-}
-
-html.intro-pending .header-brand{
-  opacity:0;
-  transform:translateY(-6px);
-  transition:opacity .5s ease, transform .5s ease;
-}
-
-html.intro-pending .main-nav{
-  opacity:0;
-  transform:translateY(-6px);
-  transition:opacity .5s ease .2s, transform .5s ease .2s;
-}
-
-html.intro-pending .container{
-  opacity:0;
-  transform:translateY(12px);
-  transition:opacity .5s ease .4s, transform .5s ease .4s;
-}
-
-html.intro-pending.intro-enter .header-brand,
-html.intro-pending.intro-enter .main-nav,
-html.intro-pending.intro-enter .container{
-  opacity:1;
-  transform:none;
-}
-
-@media (prefers-reduced-motion: reduce){
-  html.intro-pending .header-brand,
-  html.intro-pending .main-nav,
-  html.intro-pending .container{
-    opacity:1;
-    transform:none;
-    transition:none;
-  }
 }
 
 .header-brand{
@@ -618,11 +560,26 @@ body.filter-hidden .container{
   font-size:12px;
   line-height:1.6;
   color:#c6c0b7;
-  text-align:center;
+  text-align:left;
   background:rgba(18,18,18,.6);
   border-top:1px solid rgba(255,255,255,.08);
   backdrop-filter:blur(4px);
   border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.footer-icon{
+  width:40px;
+  height:40px;
+  opacity:.9;
+  flex:0 0 auto;
+}
+
+.footer-copy{
+  min-width:0;
 }
 
 .app-footer a{
@@ -781,6 +738,99 @@ body.filter-hidden .container{
   }
 }
 
+@media (max-width: 640px){
+  .app-header{
+    padding:10px 14px;
+    gap:8px;
+  }
+
+  .app-header img{
+    height:32px;
+  }
+
+  .main-nav{
+    gap:8px;
+  }
+
+  .nav-pill{
+    padding:6px 10px;
+    font-size:12px;
+  }
+
+  .filter-bar{
+    top:94px;
+    padding:10px 14px 0;
+  }
+
+  .filter-shell{
+    padding:10px;
+  }
+
+  .filter-grid{
+    gap:10px;
+  }
+
+  .filter-group select{
+    width:100%;
+    padding:10px 12px;
+    font-size:15px;
+  }
+
+  .filter-actions{
+    width:100%;
+  }
+
+  .reset-button{
+    width:100%;
+    min-height:40px;
+  }
+
+  .container{
+    padding:356px 14px 32px;
+  }
+
+  body.scrolled .container{
+    padding-top:320px;
+  }
+
+  body.filter-hidden .container{
+    padding-top:94px;
+  }
+
+  .hero-panel{
+    padding:14px;
+  }
+
+  .section-title{
+    font-size:24px;
+  }
+
+  .albums{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .card{
+    padding:14px;
+  }
+
+  .card-actions{
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .hover-detail{
+    display:none !important;
+  }
+
+  .app-footer{
+    flex-direction:column-reverse;
+    align-items:flex-start;
+    gap:12px;
+  }
+}
+
 body.touch-mode{
   background-attachment:scroll !important;
   background-image:none !important;
@@ -933,11 +983,15 @@ body.touch-mode .hover-detail{
   <div id="albumGrid" class="albums"></div>
 
   <div class="app-footer">
-    Data sources:
-    <a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer">Discogs</a>,
-    <a href="https://musicbrainz.org" target="_blank" rel="noopener noreferrer">MusicBrainz</a>,
-    <a href="https://www.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>.
-    Metadata, images and reference information remain the property of their respective sources.
+    <div class="footer-copy">
+      Data sources:
+      <a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer">Discogs</a>,
+      <a href="https://musicbrainz.org" target="_blank" rel="noopener noreferrer">MusicBrainz</a>,
+      <a href="https://news.google.com" target="_blank" rel="noopener noreferrer">Google News</a>,
+      <a href="https://www.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>.
+      Metadata, images and reference information remain the property of their respective sources.
+    </div>
+    <img class="footer-icon" src="../backgrounds/icon-256.png?v=20260412" alt="">
   </div>
 </div>
 
@@ -951,17 +1005,13 @@ var lastScrollY = 0;
 function syncBrowserChrome(){
   var currentScrollY = window.scrollY;
   var nearTop = currentScrollY <= 24;
-  var browsingDepth = currentScrollY > 120;
-  var scrollingDown = currentScrollY > lastScrollY;
 
   syncScrollState();
 
   if(nearTop){
     document.body.classList.remove("filter-hidden");
-  } else if(browsingDepth && scrollingDown){
+  } else {
     document.body.classList.add("filter-hidden");
-  } else if(!scrollingDown){
-    document.body.classList.remove("filter-hidden");
   }
 
   lastScrollY = currentScrollY;
@@ -1001,7 +1051,7 @@ fetchAlbumExport()
     var activePreviewCard = null;
 
     function isTouchPreviewMode(){
-      return document.body.classList.contains("touch-mode");
+      return document.body.classList.contains("touch-mode") && window.innerWidth > 640;
     }
 
     function closeActivePreview(){
@@ -1090,12 +1140,29 @@ fetchAlbumExport()
       return String(a || "").localeCompare(String(b || ""));
     }
 
+    function deriveArtistSortName(name){
+      var value = String(name || "").trim();
+      if(!value) return "";
+
+      var leadingArticleMatch = value.match(/^(The|A|An)\s+(.+)$/i);
+      if(leadingArticleMatch){
+        return leadingArticleMatch[2].trim() + ", " + leadingArticleMatch[1];
+      }
+
+      return value;
+    }
+
+    function artistSortKey(artist){
+      if(!artist) return "";
+      return deriveArtistSortName(artist.sort_name || artist.artist_name || "");
+    }
+
     function compareAlbums(a, b){
       var ay = present(a.year) ? Number(a.year) : 9999;
       var by = present(b.year) ? Number(b.year) : 9999;
       if(ay !== by) return ay - by;
 
-      var artistCompare = compareText(a.artist_name, b.artist_name);
+      var artistCompare = compareText(artistSortKey(a), artistSortKey(b));
       if(artistCompare !== 0) return artistCompare;
 
       return compareText(a.album_title, b.album_title);
@@ -1140,12 +1207,13 @@ fetchAlbumExport()
 
         list.push({
           artist_id: key,
-          artist_name: String(album.artist_name).trim()
+          artist_name: String(album.artist_name).trim(),
+          sort_name: deriveArtistSortName(String(album.sort_name || album.artist_name).trim())
         });
         return list;
       }, [])
       .sort(function(a, b){
-        return a.artist_name.localeCompare(b.artist_name);
+        return artistSortKey(a).localeCompare(artistSortKey(b));
       });
 
     setOptions(filters.artist, artistOptions, "artist_id", "artist_name");
