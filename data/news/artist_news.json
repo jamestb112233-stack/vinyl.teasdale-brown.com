@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-12T16:52:12Z",
+  "updated_at": "2026-04-14T18:27:46Z",
   "artists": [
     {
       "artist_id": 1,
@@ -406,6 +406,74 @@
           "source": "VICE",
           "published_date": "2025-07-08",
           "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQR0VvNmU5cGJhUW5ST004QXVsNi1jOWxzSWlxRDdpMkFGVm1fTlpZWUJSSzhCWkhjQmh2R3Y3cFViTmRHN2NBakdJbFF0VGxDa0Q0MHJ5cG5FSElfOHdJMW03OHFaSFNPbmU0Y0FzbHNxTTdZOU1DSDlRQ3ctOEZ6dW5yRG1UejdhSnIxT0ZNNjM?oc=5"
+        }
+      ]
+    },
+    {
+      "artist_id": 136,
+      "artist_name": "Aretha Franklin",
+      "item_count": 10,
+      "last_checked": "2026-04-14T18:27:46Z",
+      "items": [
+        {
+          "title": "Aretha Franklin Was the ‘Queen of Soul.’ Peter Wolf Found Out Firsthand",
+          "source": "Rolling Stone",
+          "published_date": "2025-03-05",
+          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNbmdsTm5VU01fLTNCWmJLcFFYYUxIbFFVdG5iQjdBT1Z5aVFpNDZ4cFlQTzdYdjM4RVVhOGJJRGk2VDhaWGs4c242ZG13anJHLThLeU5aWC1YOE5oZzRLamllT2RrcUQwQ1dYbHk3R21PV0dza0QtaFgyNm10dnhvVHdmSEppQkZWdUFPMXBqeW9VWGE1Y2pWT041Z2hwTGh4b1lXci1feE5JNW5s?oc=5"
+        },
+        {
+          "title": "How Aretha Franklin Earned Her Crown as the Queen of Soul",
+          "source": "Pitchfork",
+          "published_date": "2018-08-16",
+          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNa3JYUUd2Vk9iRGY1X0p1YTRKbWZTWFhDZXlBSVpHRzFzbVU1c0c3aVJDWlpVNWRXOGdOY2loQUpfeVV6am5oc1VnV2NrLUMxTXRYRHRxOUhCMkpqVDVqRzF4Y044STBmUXFZSldQcEtwV2NqbTFCUjFtLUF6U2l0ZWJzdHN6RFR5UlRDMUJCeEV3OVBzZWdfWnJkZ2h1ck1B?oc=5"
+        },
+        {
+          "title": "Aretha Franklin on Beyonce, Women’s Rights, the Future: Her Last Rolling Stone Interview",
+          "source": "Rolling Stone",
+          "published_date": "2018-08-18",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNZDR6Z2dscll0Z0l2RDAzWnBJZnNfcGo0WVpDaXNjb1gxMDRHdXJyLWhWU0l5UXBQWGVwaXNjZVc4WVA3cUI3ODVXUnl0OGVKNzZDallmV3paMW9ycHlBTHg1NnlxczA4YW9sRTI3cDZjdVhTeVdGeVNqV0REdXpwR1F1aGIxSjdoZDlaWHVIV2hMTjhKTkpmbEhxOWI?oc=5"
+        },
+        {
+          "title": "Aretha Franklin: Her 6 Best Country Performances",
+          "source": "Rolling Stone",
+          "published_date": "2018-08-16",
+          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQdVpaclpLMlM2MDJRMFROdERVMEozUmVBTmUwM0lCc2wwZkd6aE9UZi1wNFhveHpSRzJUM3BaM3ZMa1U5bXl5UUYxNFBnYmRJZ3N6SlVTUU4ybHpadFBqaFIybGdwaHpoWGl6UHBIdGlFWEtPTHByWkVWWld1TTd3SjJob214QUhmMlpKWExyYnNlN3VrSHprc3I1S3ctSWtaYzRvZjBNeWY?oc=5"
+        },
+        {
+          "title": "Aretha Franklin: The 8 Best Remixes",
+          "source": "Billboard",
+          "published_date": "2018-08-16",
+          "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOWHBNcXpTcTNZVmdwTExyZHNObGpzV2RXNURBOE5ZMmVvUlowTFo2QVEtWkpEVTB2SFVJeThTcUZVX3labUJodnFTVFBiTk9MelpKOVBleWFZUjhaWjdYLWlONzJQRmRHZ1IzMThWREpfM3FzNWMxNE1PZzZ2SUJHZG42LTR1TVRfbV82MFFDOV85d0k2enc?oc=5"
+        },
+        {
+          "title": "Aretha Franklin, 1942-2018: an icon for feminism, the civil rights movement and the greatest soul singer of her generation",
+          "source": "NME",
+          "published_date": "2018-08-16",
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOcHdrdFRFMjFUY09DV1phaTZjczZGREFOTEZZbjlRd0Nya3NIRm4zVlFvTnpJMDQxQ1cxdGtmaWpBZkRSMmtKR3BucEJoVVZiLW1WeWZldllpMUdDRUh6ek1WQmN4SG5ZRVAtcjlJZFdzN1hYZ245ZkV6VjFlZmFyYlRSY3ZIc1J5MndsOHNQZC03MlNmbHhSdTU3VjQtREE2Z3RCNHktQUhtZy1FeE1SSXl1RDB2b2YxODhvcmpNLXBpNnNlYnc?oc=5"
+        },
+        {
+          "title": "Why Aretha Franklin Still Rules Playlists for Young Fans in 2026",
+          "source": "AD HOC NEWS",
+          "published_date": "2026-04-13",
+          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOWWlqNTdhUktQODlxM0s4ZC1fUUVydl9KRVRRWFpFTTliczdsaWNjT1FJanFEOTREN2cycjdhOFRrZGpyZXVBWnJKal90NEJ1dlRaYmt3aG5PMGtuaWV0cFluSEdPX0hHdngyalBmOFpqSC1wckpWTlhfRGVDaUZua3ctN3pHVGJmQ2NDN2JrcnRncmJ1dnpoQ3NEelNQVW5jRUd0XzN5WkxWb3hKYWd2Mm1jazJEZHd6LUE?oc=5"
+        },
+        {
+          "title": "When former Australian cricket legend Brett Lee called Asha Bhosle 'India’s Aretha Franklin'",
+          "source": "Deccan Herald",
+          "published_date": "2026-04-12",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOLVZOM29ycDlCdkFVWEcxNlpjdTRqSUlQTTI1cklGSmY2V0NCQjB5UlBDdTdNV1dhQmIwYXJmNHc1OTVKakw1WXhaWFkxVVdKdlFYSUJ0ZURLRlpDMk13cGVWVFRUbFVvUXJIZ2syaU94aFltNnZ6YVF5LUF2OXlrZGh2ZHVDTHNBQ1d6Q1RDYkJlUmsxai02X3Z0aVZiRldwMTg5a2lSVEh2amJ5eENGTzc3Q1FVSXZqS0NMaHctbjhYZ1N1Uy1uT1FuSjg?oc=5"
+        },
+        {
+          "title": "Aretha Franklin Remembered With Stirring Tribute at 2018 American Music Awards",
+          "source": "IMDb",
+          "published_date": "2026-04-07",
+          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1EMkFZdTZqeTdTcVNrbWhkZFhvMVBDUktXbWxoQXVlbm1ld2x6MU5oeDN2SkJDT1U1ei1pek5Zd0pZLTBXc1BMR09UUGhUc05hMnQwZVU5VlNUelN3Tndtd29OTUo?oc=5"
+        },
+        {
+          "title": "'Get Me 2 Hot Dogs' — Jill Scott Details Ice-Cold Aretha Franklin First Encounter Fans Are Calling 'Hazing'",
+          "source": "MadameNoire",
+          "published_date": "2026-04-06",
+          "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNZ09yOThLNG1DcWFRNW9sUFJXLVM4M3VBcnVLX1FmRjNhR29WZWhHZTcwQUFhM1QzX3huNUVHN3Q2R1VSWXVUSjRpQVhpZktqMlRNOEdjRk9sNkVzNW9jWFpWZ201dW5nMlBNU3hrUmV1dmMzU1JEQWlnWnpIUW1sYg?oc=5"
         }
       ]
     },

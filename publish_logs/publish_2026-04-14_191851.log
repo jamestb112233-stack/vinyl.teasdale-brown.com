@@ -1,0 +1,43 @@
+Timestamp: 2026-04-14T19:18:51
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 25
+CHANGED: 3
+DELETED: 1
+
+New Files
+/publish_repo/media/artists/aretha-franklin.jpg
+/publish_repo/media/covers/aretha-franklin-a-rose-is-still-a-rose.jpg
+/publish_repo/media/covers/aretha-franklin-almighty-fire.jpg
+/publish_repo/media/covers/aretha-franklin-aretha-arrives.jpg
+/publish_repo/media/covers/aretha-franklin-aretha-now.jpg
+/publish_repo/media/covers/aretha-franklin-aretha.jpg
+/publish_repo/media/covers/aretha-franklin-get-it-right.jpg
+/publish_repo/media/covers/aretha-franklin-hey-now-hey-the-other-side-of-the-sky.jpg
+/publish_repo/media/covers/aretha-franklin-i-never-loved-a-man-the-way-i-love-you.jpg
+/publish_repo/media/covers/aretha-franklin-jump-to-it.jpg
+/publish_repo/media/covers/aretha-franklin-la-diva.jpg
+/publish_repo/media/covers/aretha-franklin-lady-soul.jpg
+/publish_repo/media/covers/aretha-franklin-let-me-in-your-life.jpg
+/publish_repo/media/covers/aretha-franklin-love-all-the-hurt-away.jpg
+/publish_repo/media/covers/aretha-franklin-soul-69.jpg
+/publish_repo/media/covers/aretha-franklin-spirit-in-the-dark.jpg
+/publish_repo/media/covers/aretha-franklin-sweet-passion.jpg
+/publish_repo/media/covers/aretha-franklin-this-girl-s-in-love-with-you.jpg
+/publish_repo/media/covers/aretha-franklin-through-the-storm.jpg
+/publish_repo/media/covers/aretha-franklin-what-you-see-is-what-you-sweat.jpg
+/publish_repo/media/covers/aretha-franklin-who-s-zoomin-who.jpg
+/publish_repo/media/covers/aretha-franklin-with-everything-i-feel-in-me.jpg
+/publish_repo/media/covers/aretha-franklin-you.jpg
+/publish_repo/media/covers/aretha-franklin-young-gifted-and-black.jpg
+/publish_repo/media/covers/black-sabbath-paranoid.jpg
+
+Changed Files
+/publish_repo/data/albums/albums_export.json
+/publish_repo/data/news/artist_news.json
+/publish_repo/library.json
+
+Deleted Files
+/publish_repo/media/artists/hazel-o-connor.jpg
