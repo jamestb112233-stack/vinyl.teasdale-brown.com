@@ -1170,9 +1170,13 @@ fetchAlbumExport()
       return value;
     }
 
-    function artistSortKey(artist){
+    function artistBrowseKey(artist){
       if(!artist) return "";
-      return deriveArtistSortName(artist.sort_name || artist.artist_name || "");
+      return deriveArtistSortName(artist.artist_name || artist.sort_name || "");
+    }
+
+    function artistSortKey(artist){
+      return artistBrowseKey(artist);
     }
 
     function compareAlbums(a, b){

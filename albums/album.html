@@ -370,6 +370,61 @@ body::after{
   font-weight:700;
 }
 
+.owned-copy-list{
+  display:grid;
+  gap:14px;
+}
+
+.owned-copy-row{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) auto;
+  gap:14px 18px;
+  align-items:center;
+  padding:14px 12px;
+  border-radius:12px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.owned-copy-headline{
+  font-size:15px;
+  font-weight:700;
+  color:#e2dacd;
+  line-height:1.35;
+}
+
+.owned-copy-copy{
+  display:grid;
+  gap:6px;
+  min-width:0;
+}
+
+.owned-copy-subline{
+  font-size:13px;
+  line-height:1.45;
+  color:#cbc4b9;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.owned-copy-meta{
+  font-size:12px;
+  line-height:1.5;
+  color:#afa89d;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.owned-copy-actions{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+}
+
 .stack{
   display:grid;
   gap:18px;
@@ -604,6 +659,14 @@ body::after{
 
   .artist-panels{
     grid-template-columns:1fr;
+  }
+
+  .owned-copy-row{
+    grid-template-columns:1fr;
+  }
+
+  .owned-copy-actions{
+    justify-content:flex-start;
   }
 
   .app-header{
@@ -892,6 +955,89 @@ fetchAlbumExport()
     function spotifyAlbumUrl(spotifyAlbumId){
       if(!present(spotifyAlbumId)) return "";
       return "https://open.spotify.com/album/" + encodeURIComponent(String(spotifyAlbumId).trim());
+    }
+
+    function uniqueParts(parts){
+      var seen = new Set();
+      return parts.filter(function(part){
+        var key = String(part || "").trim().toLowerCase();
+        if(!key || seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    function splitDisplayParts(value){
+      if(!present(value)) return [];
+      return uniqueParts(String(value).split("/").map(function(part){
+        return String(part).trim();
+      }).filter(Boolean));
+    }
+
+    function cleanLabelToken(value){
+      if(!present(value)) return "";
+      return String(value)
+        .replace(/\b(Records Ltd\.?|Recordings?|Recording Corporation|Music Group|Corporation|Corp\.?|Ltd\.?|Limited|Inc\.?|B\.V\.|GmbH|Co\.?)\b/gi, "")
+        .replace(/\s{2,}/g, " ")
+        .trim()
+        .replace(/[,\-/]+$/, "")
+        .trim();
+    }
+
+    function conciseLabel(value, maxParts){
+      var parts = splitDisplayParts(value).map(cleanLabelToken).filter(Boolean);
+      if(!parts.length) return "";
+      return parts.slice(0, maxParts || 1).join(" / ");
+    }
+
+    function conciseFormat(value, maxParts){
+      if(!present(value)) return "";
+      var parts = uniqueParts(String(value).split("/").map(function(part){
+        return String(part).trim();
+      }).filter(Boolean));
+      return parts.slice(0, maxParts || 3).join(" / ");
+    }
+
+    function shortCountry(value){
+      if(!present(value)) return "";
+      var country = String(value).trim();
+      return country === "United Kingdom" ? "UK" : country;
+    }
+
+    function formatOwnedCopyLabel(copy, index){
+      var parts = [
+        present(copy.release_year) ? String(copy.release_year) : "",
+        shortCountry(copy.country),
+        conciseLabel(copy.label, 1)
+      ].filter(Boolean);
+      return parts.join(" · ") || ("Copy " + String(index + 1));
+    }
+
+    function buildOwnedCopySecondary(copy){
+      var parts = [
+        conciseFormat(copy.format_description, 3),
+        [copy.media_condition || "", copy.sleeve_condition || ""].filter(Boolean).join(" / ")
+      ].filter(Boolean);
+      return parts.join(" · ");
+    }
+
+    function buildOwnedCopyTertiary(copy){
+      var parts = [
+        present(copy.catalog_number) ? String(copy.catalog_number) : "",
+        present(copy.source) ? humanizePurchaseSource(copy.source) : ""
+      ].filter(Boolean);
+      return parts.join(" · ");
+    }
+
+    function humanizePurchaseSource(value){
+      if(!present(value)) return "";
+      try{
+        var parsed = new URL(String(value));
+        var host = String(parsed.hostname || "").replace(/^www\./, "");
+        return host || String(value);
+      } catch(_){
+        return String(value);
+      }
     }
 
     function applySpotifyLabel(link, label){
@@ -1737,40 +1883,92 @@ fetchAlbumExport()
     bootSpotifyPlayback();
 
     if(isOwned(album.owned)){
-      var collectorFields = [
-        ["Media Condition", album.media_condition],
-        ["Sleeve Condition", album.sleeve_condition],
-        ["Source", album.source],
-        ["Price Paid", album.price_paid],
-        ["Notes", album.notes]
-      ];
-
       var collectorPanel = document.createElement("div");
       collectorPanel.className = "panel metadata-panel";
-      collectorPanel.innerHTML = "<div class='panel-title'>Collector Details</div>";
+      collectorPanel.innerHTML = "<div class='panel-title'>Releases in Collection</div>";
 
-      var collectorGrid = document.createElement("div");
-      collectorGrid.className = "meta-grid";
+      var collectorBody = document.createElement("div");
+      collectorBody.className = "owned-copy-list";
+      collectorBody.innerHTML = "";
+      collectorPanel.appendChild(collectorBody);
 
-      collectorFields.forEach(function(pair){
-        var item = document.createElement("div");
-        item.className = "meta-item";
+      function renderLegacyCollectorPanel(){
+        collectorPanel.querySelector(".panel-title").textContent = "Collector Details";
+        collectorBody.className = "meta-grid";
+        collectorBody.innerHTML = "";
+        [
+          ["Media Condition", album.media_condition],
+          ["Sleeve Condition", album.sleeve_condition],
+          ["Source", album.source],
+          ["Price Paid", album.price_paid],
+          ["Notes", album.notes]
+        ].forEach(function(pair){
+          var item = document.createElement("div");
+          item.className = "meta-item";
 
-        var label = document.createElement("span");
-        label.className = "meta-label";
-        label.textContent = pair[0];
+          var label = document.createElement("span");
+          label.className = "meta-label";
+          label.textContent = pair[0];
 
-        var value = document.createElement("span");
-        value.className = "meta-value";
-        value.textContent = present(pair[1]) ? String(pair[1]) : "—";
+          var value = document.createElement("span");
+          value.className = "meta-value";
+          value.textContent = present(pair[1]) ? String(pair[1]) : "—";
 
-        item.appendChild(label);
-        item.appendChild(value);
-        collectorGrid.appendChild(item);
-      });
+          item.appendChild(label);
+          item.appendChild(value);
+          collectorBody.appendChild(item);
+        });
+      }
 
-      collectorPanel.appendChild(collectorGrid);
-      left.appendChild(collectorPanel);
+      var copies = Array.isArray(item.owned_copies) ? item.owned_copies : [];
+      if(!copies.length){
+        renderLegacyCollectorPanel();
+      } else {
+        collectorBody.className = "owned-copy-list";
+        collectorBody.innerHTML = "";
+
+        copies.forEach(function(copy, index){
+          var row = document.createElement("div");
+          row.className = "owned-copy-row";
+
+          var copyBody = document.createElement("div");
+          copyBody.className = "owned-copy-copy";
+
+          var headline = document.createElement("div");
+          headline.className = "owned-copy-headline";
+          headline.textContent = formatOwnedCopyLabel(copy, index);
+          copyBody.appendChild(headline);
+
+          var secondary = buildOwnedCopySecondary(copy);
+          if(present(secondary)){
+            var subline = document.createElement("div");
+            subline.className = "owned-copy-subline";
+            subline.textContent = secondary;
+            copyBody.appendChild(subline);
+          }
+
+          var tertiary = buildOwnedCopyTertiary(copy);
+          if(present(tertiary)){
+            var meta = document.createElement("div");
+            meta.className = "owned-copy-meta";
+            meta.textContent = tertiary;
+            copyBody.appendChild(meta);
+          }
+
+          row.appendChild(copyBody);
+
+          var actions = document.createElement("div");
+          actions.className = "owned-copy-actions";
+          var link = document.createElement("a");
+          link.className = "card-link";
+          link.href = "/albums/child.html?copy_id=" + encodeURIComponent(String(copy.copy_id || ""));
+          link.textContent = "View Copy";
+          actions.appendChild(link);
+          row.appendChild(actions);
+
+          collectorBody.appendChild(row);
+        });
+      }
     }
 
     var trackPanel = document.createElement("div");
@@ -1838,6 +2036,9 @@ fetchAlbumExport()
 
     top.appendChild(right);
     root.appendChild(top);
+    if(typeof collectorPanel !== "undefined"){
+      root.appendChild(collectorPanel);
+    }
 
     [
       ["Highlights", album.highlights_text],

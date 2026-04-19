@@ -629,14 +629,18 @@ function deriveArtistSortName(name){
   return value;
 }
 
+function artistBrowseKey(artist){
+  if(!artist) return "";
+  return deriveArtistSortName(artist.artist_name || artist.sort_name || "");
+}
+
 function artistImageSrc(path){
   if(!present(path)) return "";
   return "media/artists/" + String(path).split("/").pop();
 }
 
 function artistSortKey(artist){
-  if(!artist) return "";
-  return deriveArtistSortName(artist.sort_name || artist.artist_name || "");
+  return artistBrowseKey(artist);
 }
 
 function loadArtistMedia(){

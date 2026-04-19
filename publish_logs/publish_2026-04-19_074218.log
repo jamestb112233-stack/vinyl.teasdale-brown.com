@@ -1,0 +1,27 @@
+Timestamp: 2026-04-19T07:42:18
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 3
+CHANGED: 9
+DELETED: 0
+
+New Files
+/publish_repo/albums/child.html
+/publish_repo/media/covers/bob-marley-the-wailers-legend-the-best-of-bob-marley-and-the-wailers.jpg
+/publish_repo/media/covers/chris-rea-the-very-best-of.jpg
+
+Changed Files
+/publish_repo/albums/album.html
+/publish_repo/albums/albums.html
+/publish_repo/artist.html
+/publish_repo/data/albums/albums_export.json
+/publish_repo/data/news/artist_news.json
+/publish_repo/index.html
+/publish_repo/library.json
+/publish_repo/media/covers/ZZ Top - Afterburner.jpg
+/publish_repo/news.html
+
+Deleted Files
+(none)

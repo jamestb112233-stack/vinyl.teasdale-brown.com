@@ -1185,11 +1185,15 @@ Promise.all([
       return value;
     }
 
-    function artistSortKey(artist){
+    function artistBrowseKey(artist){
       if(!artist) return "";
       return deriveArtistSortName(
-        (artist.info && artist.info.sort_name) || artist.sort_name || artist.artist_name || ""
+        artist.artist_name || (artist.info && artist.info.artist_name) || artist.sort_name || (artist.info && artist.info.sort_name) || ""
       );
+    }
+
+    function artistSortKey(artist){
+      return artistBrowseKey(artist);
     }
 
     function createNewsPanel(){

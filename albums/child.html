@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/backgrounds/icon-256.png">
+<title>Owned Copy Detail</title>
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;
+  color:#ddd5ca;
+  background-image:url("../backgrounds/rac.jpg");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.58);
+  z-index:-1;
+}
+
+.app-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  z-index:100;
+  box-sizing:border-box;
+}
+
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 13px;
+  border-radius:10px;
+  background:rgba(34,34,34,0.38);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#c8c0b4;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.03em;
+  transition:all .18s ease;
+  backdrop-filter:blur(4px);
+}
+
+.back-link:hover{
+  background:rgba(60,60,60,0.55);
+  border-color:rgba(255,255,255,0.18);
+  color:#e6ded2;
+}
+
+.app-header img{
+  height:54px;
+  object-fit:contain;
+  opacity:.88;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.38)) saturate(.96) brightness(.98);
+}
+
+.container{
+  padding:118px 28px 60px;
+  max-width:1420px;
+  margin:0 auto;
+  box-sizing:border-box;
+}
+
+.breadcrumb{
+  margin-bottom:12px;
+  font-size:11px;
+  line-height:1.4;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#938b80;
+}
+
+.breadcrumb a{
+  color:#b8afa2;
+  text-decoration:none;
+}
+
+.breadcrumb a:hover{
+  color:#e2dacd;
+}
+
+.top-bar{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin:0 0 22px;
+}
+
+.page-header{
+  display:grid;
+  gap:8px;
+  min-width:0;
+}
+
+.page-title{
+  font-size:28px;
+  font-weight:800;
+  margin:0;
+  line-height:1.2;
+  min-height:34px;
+  color:#e2dacd;
+}
+
+.page-subtitle{
+  font-size:13px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#a49b8f;
+}
+
+.copy-nav{
+  display:grid;
+  gap:8px;
+  justify-items:end;
+  flex:0 0 auto;
+}
+
+.copy-nav-label{
+  font-size:11px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#9b9388;
+}
+
+.copy-nav select{
+  width:290px;
+  max-width:100%;
+  padding:9px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(26,26,26,.76);
+  color:#ece5db;
+  font-size:14px;
+  outline:none;
+  box-shadow:0 8px 18px rgba(0,0,0,.22);
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:280px minmax(320px, 1fr);
+  gap:18px;
+  align-items:start;
+}
+
+.left-stack,
+.right-stack{
+  display:grid;
+  gap:16px;
+}
+
+.right-stack{
+  align-content:start;
+}
+
+.panel,
+.card{
+  background:rgba(20,20,20,.52);
+  border-radius:14px;
+  padding:18px;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.42),
+    0 3px 6px rgba(0,0,0,.28);
+  backdrop-filter:blur(4px);
+}
+
+.card{
+  padding:14px;
+}
+
+.panel-title{
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:14px;
+  color:#e2dacd;
+}
+
+.album-cover,
+.secondary-cover{
+  width:100%;
+  display:block;
+  border-radius:8px;
+  background:rgba(255,255,255,.05);
+}
+
+.album-cover{
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+}
+
+.secondary-cover{
+  max-height:360px;
+  object-fit:contain;
+}
+
+.image-placeholder{
+  width:100%;
+  min-height:280px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:rgba(255,255,255,.05);
+  color:#c7c1b8;
+  font-size:14px;
+  border-radius:8px;
+}
+
+.year-line{
+  margin-top:12px;
+  font-size:12px;
+  color:#c6c0b6;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.album-title{
+  margin-top:8px;
+  font-size:18px;
+  font-weight:700;
+  line-height:1.25;
+  color:#e2dacd;
+}
+
+.cover-summary{
+  display:grid;
+  gap:6px;
+  margin-top:12px;
+}
+
+.summary-line{
+  font-size:13px;
+  line-height:1.45;
+  color:#c9c2b8;
+}
+
+.summary-line.secondary{
+  color:#b8b1a6;
+}
+
+.summary-line.muted{
+  color:#a19a8e;
+}
+
+.meta-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(180px, 1fr));
+  gap:12px 18px;
+}
+
+.meta-item{
+  font-size:13px;
+  min-width:0;
+}
+
+.meta-label{
+  display:block;
+  font-size:11px;
+  text-transform:uppercase;
+  color:#a9a297;
+  margin-bottom:3px;
+}
+
+.meta-value{
+  display:block;
+  font-size:13px;
+  line-height:1.45;
+  white-space:pre-wrap;
+  color:#cbc5bb;
+  overflow-wrap:anywhere;
+}
+
+.meta-value a{
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.meta-value a:hover{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
+.panel-text{
+  font-size:14px;
+  line-height:1.55;
+  white-space:pre-wrap;
+  color:#cbc6bd;
+}
+
+.lower-layout{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) 340px;
+  gap:18px;
+  margin-top:18px;
+  align-items:start;
+}
+
+.notes-stack{
+  display:grid;
+  gap:16px;
+}
+
+.notes-stack .panel,
+.lower-layout .panel{
+  min-width:0;
+}
+
+.loading-panel,
+.error-panel{
+  max-width:680px;
+}
+
+.app-footer{
+  margin-top:60px;
+  padding:18px 24px;
+  font-size:12px;
+  line-height:1.6;
+  color:#c6c0b7;
+  text-align:left;
+  background:rgba(18,18,18,.6);
+  border-top:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(4px);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.footer-icon{
+  width:40px;
+  height:40px;
+  opacity:.9;
+  flex:0 0 auto;
+}
+
+.footer-copy{
+  min-width:0;
+}
+
+.app-footer a{
+  color:#cfe3ff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(207,227,255,.35);
+}
+
+.app-footer a:hover{
+  border-bottom-color:rgba(207,227,255,.8);
+}
+
+@media (max-width: 1180px){
+  .app-header{
+    height:74px;
+    padding:0 22px;
+  }
+
+  .app-header img{
+    height:40px;
+  }
+
+  .container{
+    padding:106px 22px 52px;
+  }
+
+  .page-title{
+    font-size:24px;
+  }
+
+  .layout{
+    grid-template-columns:250px minmax(280px, 1fr);
+  }
+
+  .lower-layout{
+    grid-template-columns:1fr 300px;
+  }
+}
+
+@media (max-width: 760px){
+  .app-header{
+    height:auto;
+    padding:12px 16px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .container{
+    padding:138px 22px 40px;
+  }
+
+  .top-bar{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .copy-nav,
+  .copy-nav select{
+    width:100%;
+  }
+
+  .copy-nav{
+    justify-items:stretch;
+  }
+
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+  .meta-grid,
+  .lower-layout{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width: 640px){
+  .app-header{
+    padding:10px 14px;
+    gap:8px;
+  }
+
+  .app-header img{
+    height:32px;
+  }
+
+  .container{
+    padding:118px 14px 32px;
+  }
+
+  .breadcrumb{
+    margin-bottom:10px;
+    font-size:10px;
+  }
+
+  .page-title{
+    font-size:24px;
+  }
+
+  .panel,
+  .card{
+    padding:14px;
+  }
+
+  .album-title{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="app-header">
+  <a id="backToAlbumLink" class="back-link" href="/albums/album.html">Back to Album</a>
+  <img src="../backgrounds/banner.png?v=20260409" alt="Requisite Vinyl Album Collection">
+</div>
+
+<div class="container">
+  <div id="copyView"></div>
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById("copyView");
+  var backToAlbumLink = document.getElementById("backToAlbumLink");
+
+  function present(value){
+    return value !== null && value !== undefined && String(value).trim() !== "";
+  }
+
+  function safe(value){
+    return present(value) ? String(value) : "—";
+  }
+
+  function uniqueParts(parts){
+    var seen = new Set();
+    return parts.filter(function(part){
+      var key = String(part || "").trim().toLowerCase();
+      if(!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  function splitDisplayParts(value){
+    if(!present(value)) return [];
+    return uniqueParts(String(value).split("/").map(function(part){
+      return String(part).trim();
+    }).filter(Boolean));
+  }
+
+  function cleanLabelToken(value){
+    if(!present(value)) return "";
+    return String(value)
+      .replace(/\b(Records Ltd\.?|Recordings?|Recording Corporation|Music Group|Corporation|Corp\.?|Ltd\.?|Limited|Inc\.?|B\.V\.|GmbH|Co\.?)\b/gi, "")
+      .replace(/\s{2,}/g, " ")
+      .replace(/\s+\/\s+/g, " / ")
+      .trim()
+      .replace(/[,\-/]+$/, "")
+      .trim();
+  }
+
+  function conciseLabel(value, maxParts){
+    var parts = splitDisplayParts(value).map(cleanLabelToken).filter(Boolean);
+    if(!parts.length) return "";
+    return parts.slice(0, maxParts || 1).join(" / ");
+  }
+
+  function conciseFormat(value, maxParts){
+    if(!present(value)) return "";
+    var parts = uniqueParts(String(value).split("/").map(function(part){
+      return String(part).trim();
+    }).filter(Boolean));
+    return parts.slice(0, maxParts || 3).join(" / ");
+  }
+
+  function shortCountry(value){
+    if(!present(value)) return "";
+    var country = String(value).trim();
+    return country === "United Kingdom" ? "UK" : country;
+  }
+
+  function mediaSrc(path){
+    if(!present(path)) return "";
+    return "../media/" + String(path).replace(/^\/+/, "");
+  }
+
+  function escapeHtml(value){
+    return String(value == null ? "" : value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function formatPrice(currency, amount){
+    if(!present(amount)) return "";
+    var numericAmount = Number(amount);
+    var formattedAmount = Number.isFinite(numericAmount) ? numericAmount.toFixed(2) : String(amount);
+    return present(currency) ? String(currency).trim().toUpperCase() + " " + formattedAmount : formattedAmount;
+  }
+
+  function buildPurchaseSource(detail){
+    if(!present(detail.purchase_source_text)) return null;
+    if(present(detail.purchase_source_url)){
+      return {
+        text: String(detail.purchase_source_text),
+        href: String(detail.purchase_source_url)
+      };
+    }
+    return {
+      text: String(detail.purchase_source_text)
+    };
+  }
+
+  function metaItem(labelText, value, href){
+    if(!present(value)) return "";
+    var valueHtml = href
+      ? '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(String(value)) + '</a>'
+      : escapeHtml(String(value));
+    return (
+      '<div class="meta-item">' +
+      '<span class="meta-label">' + escapeHtml(labelText) + '</span>' +
+      '<span class="meta-value">' + valueHtml + '</span>' +
+      '</div>'
+    );
+  }
+
+  function panel(title, contentHtml, extraClass){
+    if(!present(contentHtml)) return "";
+    return (
+      '<div class="panel' + (extraClass ? " " + extraClass : "") + '">' +
+      '<div class="panel-title">' + escapeHtml(title) + '</div>' +
+      contentHtml +
+      '</div>'
+    );
+  }
+
+  function notesPanel(title, value){
+    if(!present(value)) return "";
+    return panel(title, '<div class="panel-text">' + escapeHtml(String(value)) + '</div>');
+  }
+
+  function fetchJson(path){
+    return fetch(path).then(function(response){
+      if(!response.ok){
+        throw new Error("Failed to load child copy data.");
+      }
+      return response.json();
+    });
+  }
+
+  function renderError(message){
+    root.innerHTML =
+      '<div class="panel error-panel">' +
+      '<div class="panel-title">Error</div>' +
+      '<div class="panel-text">' + escapeHtml(message || "Failed to load owned copy.") + '</div>' +
+      '</div>';
+  }
+
+  function buildSwitchLabel(copy, index){
+    var parts = [
+      present(copy.release_year) ? String(copy.release_year) : "",
+      shortCountry(copy.country),
+      conciseLabel(copy.label, 1)
+    ].filter(Boolean);
+    var base = parts.join(" · ");
+    if(!base) return "Copy " + String(index + 1);
+    var duplicateCount = (copy && copy._duplicate_count) || 1;
+    return duplicateCount > 1 ? base + " · Copy " + String(index + 1) : base;
+  }
+
+  function humanizePurchaseSource(value){
+    if(!present(value)) return { text: null, href: null };
+    try{
+      var parsed = new URL(String(value));
+      var host = String(parsed.hostname || "").replace(/^www\./, "");
+      return { text: host || String(value), href: String(value) };
+    } catch(_){
+      return { text: String(value), href: null };
+    }
+  }
+
+  function buildDetailFromExport(data, copyId){
+    var matchedEntry = null;
+    var matchedCopy = null;
+    (data || []).some(function(entry){
+      var copies = Array.isArray(entry && entry.owned_copies) ? entry.owned_copies : [];
+      var found = copies.find(function(copy){
+        return String(copy && copy.copy_id).trim() === String(copyId).trim();
+      });
+      if(found){
+        matchedEntry = entry;
+        matchedCopy = found;
+        return true;
+      }
+      return false;
+    });
+    if(!matchedEntry || !matchedCopy){
+      return null;
+    }
+
+    var album = matchedEntry.album || {};
+    var siblingGroups = {};
+    (matchedEntry.owned_copies || []).forEach(function(copy){
+      var key = [
+        present(copy.release_year) ? String(copy.release_year) : "",
+        shortCountry(copy.country),
+        conciseLabel(copy.label, 1)
+      ].join("|");
+      siblingGroups[key] = (siblingGroups[key] || 0) + 1;
+    });
+    var siblings = (matchedEntry.owned_copies || []).map(function(copy, index){
+      var groupKey = [
+        present(copy.release_year) ? String(copy.release_year) : "",
+        shortCountry(copy.country),
+        conciseLabel(copy.label, 1)
+      ].join("|");
+      copy._duplicate_count = siblingGroups[groupKey] || 1;
+      return {
+        copy_id: copy.copy_id,
+        switch_label: buildSwitchLabel(copy, index)
+      };
+    });
+    var currentIndex = (matchedEntry.owned_copies || []).findIndex(function(copy){
+      return String(copy.copy_id) === String(matchedCopy.copy_id);
+    });
+    var purchaseSource = humanizePurchaseSource(matchedCopy.source);
+    var identityRegion = [present(matchedCopy.release_year) ? String(matchedCopy.release_year) : "", shortCountry(matchedCopy.country)].filter(Boolean).join(" · ");
+    var identityLabelCatalog = [conciseLabel(matchedCopy.label, 1), present(matchedCopy.catalog_number) ? String(matchedCopy.catalog_number) : ""].filter(Boolean).join(" · ");
+    var identityFormat = conciseFormat(matchedCopy.format_description, 3);
+    return {
+      copy_id: matchedCopy.copy_id,
+      album_id: album.album_id,
+      artist_name: album.artist_name,
+      album_title: album.album_title,
+      subtitle: "Owned Copy",
+      switch_label: buildSwitchLabel(matchedCopy, currentIndex >= 0 ? currentIndex : 0),
+      album_url: "/albums/album.html?id=" + encodeURIComponent(String(album.album_id || "")),
+      cover_path: matchedCopy.cover_path || matchedCopy.parent_cover_path || album.cover_path,
+      child_cover_path: matchedCopy.cover_path || null,
+      parent_cover_path: matchedCopy.parent_cover_path || album.cover_path || null,
+      back_cover_path: matchedCopy.back_cover_path || null,
+      release_year: matchedCopy.release_year,
+      label: matchedCopy.label,
+      catalog_number: matchedCopy.catalog_number,
+      format_description: matchedCopy.format_description,
+      country: matchedCopy.country,
+      barcode: matchedCopy.barcode,
+      discogs_url: present(matchedCopy.discogs_release_id) ? ("https://www.discogs.com/release/" + encodeURIComponent(String(matchedCopy.discogs_release_id))) : "",
+      media_condition: matchedCopy.media_condition,
+      sleeve_condition: matchedCopy.sleeve_condition,
+      purchase_date: matchedCopy.purchase_date,
+      price_paid_currency: matchedCopy.price_paid_currency,
+      price_paid: matchedCopy.price_paid,
+      purchase_source_text: purchaseSource.text,
+      purchase_source_url: purchaseSource.href,
+      pressing_notes: matchedCopy.pressing_notes,
+      notes: matchedCopy.notes,
+      siblings: siblings,
+      identity_region: identityRegion,
+      identity_label_catalog: identityLabelCatalog,
+      identity_format: identityFormat,
+      display_label: conciseLabel(matchedCopy.label, 2),
+      display_country: shortCountry(matchedCopy.country)
+    };
+  }
+
+  function renderDetail(detail){
+    var albumUrl = present(detail && detail.album_url) ? String(detail.album_url) : "/albums/albums.html";
+    backToAlbumLink.href = albumUrl;
+
+    var breadcrumb =
+      '<div class="breadcrumb">' +
+      '<a href="' + escapeHtml(albumUrl) + '">Album View</a> / ' +
+      escapeHtml(safe(detail.artist_name)) + ' / ' +
+      escapeHtml(safe(detail.album_title)) + ' / This Copy' +
+      '</div>';
+
+    var selectorHtml = "";
+    if(Array.isArray(detail.siblings) && detail.siblings.length > 1){
+      selectorHtml = (
+        '<div class="copy-nav">' +
+        '<div class="copy-nav-label">Collection Copy</div>' +
+        '<select id="copySelector" aria-label="Browse owned copies for this album">' +
+        detail.siblings.map(function(item){
+          var selected = String(item.copy_id) === String(detail.copy_id) ? ' selected' : '';
+          return '<option value="' + escapeHtml(String(item.copy_id)) + '"' + selected + '>' + escapeHtml(String(item.switch_label || "This copy")) + '</option>';
+        }).join("") +
+        '</select>' +
+        '</div>'
+      );
+    }
+
+    var coverHtml = present(detail.cover_path)
+      ? '<img class="album-cover" src="' + escapeHtml(mediaSrc(detail.cover_path)) + '" alt="' + escapeHtml(safe(detail.album_title)) + ' owned copy cover">'
+      : '<div class="image-placeholder">No cover image</div>';
+
+    var coverCard =
+      '<div class="card">' +
+      coverHtml +
+      (present(detail.release_year) ? '<div class="year-line">' + escapeHtml(String(detail.release_year)) + '</div>' : "") +
+      '<div class="album-title">' + escapeHtml(safe(detail.album_title)) + '</div>' +
+      '<div class="cover-summary">' +
+      (present(detail.identity_region) ? '<div class="summary-line">' + escapeHtml(String(detail.identity_region)) + '</div>' : "") +
+      (present(detail.identity_label_catalog) ? '<div class="summary-line secondary">' + escapeHtml(String(detail.identity_label_catalog)) + '</div>' : "") +
+      (present(detail.identity_format) ? '<div class="summary-line muted">' + escapeHtml(String(detail.identity_format)) + '</div>' : "") +
+      '</div>' +
+      '</div>';
+
+    var metadataHtml = [
+      metaItem("Pressing Year", detail.release_year),
+      metaItem("Label", detail.display_label || detail.label),
+      metaItem("Catalogue No.", detail.catalog_number),
+      metaItem("Format", conciseFormat(detail.format_description, 4)),
+      metaItem("Country", detail.display_country || detail.country),
+      metaItem("Barcode", detail.barcode),
+      present(detail.discogs_url) ? metaItem("Discogs", "View Release", detail.discogs_url) : ""
+    ].join("");
+
+    var collectorSource = buildPurchaseSource(detail);
+    var collectorHtml = [
+      metaItem("Media Condition", detail.media_condition),
+      metaItem("Sleeve Condition", detail.sleeve_condition),
+      metaItem("Purchase Date", detail.purchase_date),
+      metaItem("Price Paid", formatPrice(detail.price_paid_currency, detail.price_paid)),
+      collectorSource ? metaItem("Purchase Source", collectorSource.text, collectorSource.href) : ""
+    ].join("");
+
+    var rightPanels = [
+      panel("Key Metadata", '<div class="meta-grid">' + metadataHtml + '</div>'),
+      panel("Collector Details", '<div class="meta-grid">' + collectorHtml + '</div>')
+    ].filter(Boolean).join("");
+
+    var backCoverPanel = "";
+    if(present(detail.back_cover_path)){
+      backCoverPanel = panel(
+        "Back Cover",
+        '<img class="secondary-cover" src="' + escapeHtml(mediaSrc(detail.back_cover_path)) + '" alt="' + escapeHtml(safe(detail.album_title)) + ' back cover">'
+      );
+    }
+
+    var notesPanels = [
+      notesPanel("Pressing Notes / Matrix Notes", detail.pressing_notes),
+      notesPanel("Owned Copy Notes", detail.notes)
+    ].filter(Boolean).join("");
+
+    root.innerHTML =
+      breadcrumb +
+      '<div class="top-bar">' +
+      '<div class="page-header">' +
+      '<h1 class="page-title">' + escapeHtml(safe(detail.artist_name)) + ' — ' + escapeHtml(safe(detail.album_title)) + '</h1>' +
+      '<div class="page-subtitle">' + escapeHtml(safe(detail.subtitle || "Owned Copy")) + '</div>' +
+      '</div>' +
+      selectorHtml +
+      '</div>' +
+      '<div class="layout">' +
+      '<div class="left-stack">' + coverCard + '</div>' +
+      '<div class="right-stack">' + rightPanels + '</div>' +
+      '</div>' +
+      ((present(notesPanels) || present(backCoverPanel))
+        ? (present(backCoverPanel)
+            ? '<div class="lower-layout">' +
+                '<div class="notes-stack">' + notesPanels + '</div>' +
+                '<div class="right-stack">' + backCoverPanel + '</div>' +
+              '</div>'
+            : '<div class="notes-stack" style="margin-top:18px;">' + notesPanels + '</div>')
+        : "") +
+      '<div class="app-footer">' +
+      '<div class="footer-copy">Data sources: <a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer">Discogs</a>, <a href="https://musicbrainz.org" target="_blank" rel="noopener noreferrer">MusicBrainz</a>. Metadata and images remain the property of their respective sources.</div>' +
+      '<img class="footer-icon" src="../backgrounds/icon-256.png?v=20260412" alt="">' +
+      '</div>';
+
+    var selectorEl = document.getElementById("copySelector");
+    if(selectorEl){
+      selectorEl.addEventListener("change", function(){
+        var nextCopyId = String(selectorEl.value || "").trim();
+        if(!nextCopyId || nextCopyId === String(detail.copy_id)) return;
+        window.location.href = "/albums/child.html?copy_id=" + encodeURIComponent(nextCopyId);
+      });
+    }
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  var copyId = String(params.get("copy_id") || "").trim();
+  if(!copyId){
+    renderError("No owned copy was specified.");
+    return;
+  }
+
+  root.innerHTML =
+    '<div class="panel loading-panel">' +
+    '<div class="panel-title">Loading</div>' +
+    '<div class="panel-text">Loading owned copy detail...</div>' +
+    '</div>';
+
+  fetchJson("../data/albums/albums_export.json?v=" + Date.now())
+    .then(function(data){
+      var detail = buildDetailFromExport(data, copyId);
+      if(!detail){
+        throw new Error("Owned copy not found.");
+      }
+      renderDetail(detail);
+    })
+    .catch(function(error){
+      console.error(error);
+      renderError((error && error.message) || "Failed to load owned copy.");
+    });
+})();
+</script>
+</body>
+</html>
