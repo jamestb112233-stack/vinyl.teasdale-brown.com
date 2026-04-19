@@ -44,15 +44,18 @@
     document.documentElement.classList.add("intro-pending");
     document.addEventListener("DOMContentLoaded", function(){
       requestAnimationFrame(function(){
-        document.documentElement.classList.add("intro-enter");
+        document.documentElement.classList.add("intro-show-icon");
       });
       window.setTimeout(function(){
+        document.documentElement.classList.add("intro-show-background");
+      }, 1900);
+      window.setTimeout(function(){
         document.documentElement.classList.add("intro-exit");
-      }, 1220);
+      }, 3400);
       window.setTimeout(function(){
         if(introCleanupDone) return;
         introCleanupDone = true;
-        document.documentElement.classList.remove("intro-pending", "intro-enter", "intro-exit");
+        document.documentElement.classList.remove("intro-pending", "intro-show-icon", "intro-show-background", "intro-exit");
         var introLayer = document.querySelector(".intro-layer");
         if(introLayer){
           introLayer.remove();
@@ -60,7 +63,7 @@
         try{
           sessionStorage.setItem(INTRO_DONE_KEY, "1");
         } catch(_){}
-      }, 1680);
+      }, 4050);
     });
   } catch(_){}
 })();
@@ -110,7 +113,8 @@ body::after{
 }
 
 .intro-layer,
-.intro-badge{
+.intro-badge,
+.intro-backdrop{
   display:none;
 }
 
@@ -139,7 +143,7 @@ html.intro-pending .filter-bar,
 html.intro-pending .intro-strip{
   opacity:0;
   transform:translateY(10px);
-  transition:opacity .42s ease 1.24s, transform .52s ease 1.24s;
+  transition:opacity .42s ease 3.52s, transform .52s ease 3.52s;
 }
 
 html.intro-pending .intro-layer{
@@ -152,6 +156,7 @@ html.intro-pending .intro-layer{
   z-index:150;
   opacity:1;
   transition:opacity .42s ease;
+  background:rgba(0,0,0,.92);
 }
 
 html.intro-pending .intro-layer::before{
@@ -159,8 +164,18 @@ html.intro-pending .intro-layer::before{
   position:absolute;
   inset:0;
   background:rgba(0,0,0,.24);
-  opacity:1;
+  opacity:.92;
   transition:opacity .48s ease;
+}
+
+html.intro-pending .intro-backdrop{
+  position:absolute;
+  inset:0;
+  display:block;
+  background:url("backgrounds/rac.jpg") center/cover no-repeat;
+  opacity:0;
+  transform:scale(1.03);
+  transition:opacity .72s ease, transform .92s ease;
 }
 
 html.intro-pending .intro-badge{
@@ -170,6 +185,8 @@ html.intro-pending .intro-badge{
   justify-content:center;
   width:188px;
   height:188px;
+  border-radius:50%;
+  overflow:hidden;
   opacity:0;
   transform:scale(.92);
   transition:opacity .44s ease, transform .68s cubic-bezier(.22,.61,.36,1);
@@ -181,11 +198,22 @@ html.intro-pending .intro-badge img{
   display:block;
   image-rendering:auto;
   filter:none;
+  border-radius:50%;
 }
 
-html.intro-pending.intro-enter .intro-badge{
+html.intro-pending.intro-show-icon .intro-badge{
   opacity:1;
   transform:scale(1);
+}
+
+html.intro-pending.intro-show-background .intro-backdrop{
+  opacity:1;
+  transform:scale(1);
+}
+
+html.intro-pending.intro-show-background .intro-badge{
+  opacity:.12;
+  transform:scale(1.08);
 }
 
 html.intro-pending.intro-exit .intro-layer{
@@ -201,11 +229,11 @@ html.intro-pending.intro-exit .intro-badge{
   transform:scale(.97);
 }
 
-html.intro-pending.intro-enter .header-brand,
-html.intro-pending.intro-enter .main-nav,
-html.intro-pending.intro-enter .container,
-html.intro-pending.intro-enter .filter-bar,
-html.intro-pending.intro-enter .intro-strip{
+html.intro-pending.intro-exit .header-brand,
+html.intro-pending.intro-exit .main-nav,
+html.intro-pending.intro-exit .container,
+html.intro-pending.intro-exit .filter-bar,
+html.intro-pending.intro-exit .intro-strip{
   opacity:1;
   transform:none;
 }
@@ -213,6 +241,7 @@ html.intro-pending.intro-enter .intro-strip{
 @media (prefers-reduced-motion: reduce){
   html.intro-pending .intro-layer,
   html.intro-pending .intro-badge,
+  html.intro-pending .intro-backdrop,
   html.intro-pending .header-brand,
   html.intro-pending .main-nav,
   html.intro-pending .container,
@@ -1237,8 +1266,9 @@ body.touch-mode .hover-detail{
 <body class="dark-default">
 
 <div class="intro-layer" aria-hidden="true">
+  <div class="intro-backdrop"></div>
   <div class="intro-badge">
-    <img src="backgrounds/icon-512.png?v=20260412b" alt="">
+    <img src="backgrounds/icon-512-intro.png?v=20260419a" alt="">
   </div>
 </div>
 

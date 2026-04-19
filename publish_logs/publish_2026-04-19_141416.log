@@ -1,0 +1,26 @@
+Timestamp: 2026-04-19T14:14:16
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 1
+CHANGED: 10
+DELETED: 0
+
+New Files
+/publish_repo/backgrounds/icon-512-intro.png
+
+Changed Files
+/publish_repo/backgrounds/icon-1024.png
+/publish_repo/backgrounds/icon-128.png
+/publish_repo/backgrounds/icon-192.png
+/publish_repo/backgrounds/icon-256.png
+/publish_repo/backgrounds/icon-512.png
+/publish_repo/data/albums/albums_export.json
+/publish_repo/data/news/artist_news.json
+/publish_repo/index.html
+/publish_repo/library.json
+/publish_repo/media/covers/bob-marley-the-wailers-legend-the-best-of-bob-marley-and-the-wailers.jpg
+
+Deleted Files
+(none)
