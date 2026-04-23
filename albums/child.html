@@ -704,6 +704,7 @@ body::before{
       country: matchedCopy.country,
       barcode: matchedCopy.barcode,
       discogs_url: present(matchedCopy.discogs_release_id) ? ("https://www.discogs.com/release/" + encodeURIComponent(String(matchedCopy.discogs_release_id))) : "",
+      condition: matchedCopy.condition,
       media_condition: matchedCopy.media_condition,
       sleeve_condition: matchedCopy.sleeve_condition,
       purchase_date: matchedCopy.purchase_date,
@@ -776,6 +777,7 @@ body::before{
 
     var collectorSource = buildPurchaseSource(detail);
     var collectorHtml = [
+      metaItem("Condition", detail.condition),
       metaItem("Media Condition", detail.media_condition),
       metaItem("Sleeve Condition", detail.sleeve_condition),
       metaItem("Purchase Date", detail.purchase_date),

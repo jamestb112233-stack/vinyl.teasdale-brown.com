@@ -1,14 +1,14 @@
 {
-  "updated_at": "2026-04-23T08:08:51Z",
-  "artists_total": 135,
-  "reference_albums_total": 2518,
-  "curated_albums_total": 327,
-  "owned_copies_total": 5,
+  "updated_at": "2026-04-23T19:04:05Z",
+  "artists_total": 139,
+  "reference_albums_total": 2551,
+  "curated_albums_total": 337,
+  "owned_copies_total": 23,
   "owned_copy_duplicate_groups": 0,
-  "curated_with_spotify": 163,
-  "reference_with_spotify": 750,
-  "curated_missing_spotify": 164,
-  "news_artist_count": 135,
-  "news_article_count": 1350,
-  "news_updated_at": "2026-04-23T08:08:48Z"
+  "curated_with_spotify": 164,
+  "reference_with_spotify": 751,
+  "curated_missing_spotify": 173,
+  "news_artist_count": 139,
+  "news_article_count": 1390,
+  "news_updated_at": "2026-04-23T19:03:55Z"
 }

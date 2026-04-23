@@ -1015,8 +1015,10 @@ fetchAlbumExport()
     }
 
     function buildOwnedCopySecondary(copy){
+      var ownershipCondition = copy.condition ? "Condition: " + copy.condition : "";
       var parts = [
         conciseFormat(copy.format_description, 3),
+        ownershipCondition,
         [copy.media_condition || "", copy.sleeve_condition || ""].filter(Boolean).join(" / ")
       ].filter(Boolean);
       return parts.join(" · ");

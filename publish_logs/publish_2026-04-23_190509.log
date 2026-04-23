@@ -1,0 +1,35 @@
+Timestamp: 2026-04-23T19:05:09
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 14
+CHANGED: 6
+DELETED: 0
+
+New Files
+/publish_repo/media/artists/abba.jpeg
+/publish_repo/media/artists/cat-stevens.jpg
+/publish_repo/media/artists/cher.jpeg
+/publish_repo/media/covers/abba-abba.jpg
+/publish_repo/media/covers/cher-love-hurts.jpg
+/publish_repo/media/covers/deep-purple-deep-purple-in-rock.jpg
+/publish_repo/media/covers/don-mclean-don-mclean.jpg
+/publish_repo/media/covers/electric-light-orchestra-all-over-the-world-the-very-best-of.jpg
+/publish_repo/media/covers/fleetwood-mac-tango-in-the-night.jpg
+/publish_repo/media/covers/led-zeppelin-led-zeppelin-iii.jpg
+/publish_repo/media/covers/neil-diamond-the-jazz-singer-original-songs-from-the-motion-picture.jpg
+/publish_repo/media/covers/rainbow_ritchie_blackmores_rainbow_1975.jpg
+/publish_repo/media/covers/the-eagles-hell-freezes-over.jpg
+/publish_repo/media/covers/the-move-california-man.jpg
+
+Changed Files
+/publish_repo/albums/album.html
+/publish_repo/albums/child.html
+/publish_repo/dashboard_stats.json
+/publish_repo/data/albums/albums_export.json
+/publish_repo/data/news/artist_news.json
+/publish_repo/library.json
+
+Deleted Files
+(none)

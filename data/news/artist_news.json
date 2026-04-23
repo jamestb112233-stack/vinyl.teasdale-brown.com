@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-23T08:08:48Z",
+  "updated_at": "2026-04-23T19:03:55Z",
   "artists": [
     {
       "artist_id": 1,
@@ -66,6 +66,74 @@
           "source": "Ultimate Classic Rock",
           "published_date": "2022-05-29",
           "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9iX0tzM2g0UkhSOERCbFNZNzR5NXNkMjhBZjR2Y0lLbURuNk5YNEMtSEcyTkZNWEkyTFdCNjZjNjRtM1JfUEQxMVdqTl83a2ZiMTU3dmZTY3RtaGJHTmNGSjZqeFdaUQ?oc=5"
+        }
+      ]
+    },
+    {
+      "artist_id": 139,
+      "artist_name": "ABBA",
+      "item_count": 10,
+      "last_checked": "2026-04-23T19:03:55Z",
+      "items": [
+        {
+          "title": "The 25 Best Abba Songs",
+          "source": "Rolling Stone",
+          "published_date": "2025-06-17",
+          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBTWGY5cG92bWdhSEllMVNkaDhmMU80aEc5S3dha0pVcHl4OWlKTDl2WGNEbXlaYjJEMGIyaTdpVkhudUVZWVMwWllMc1J0QjI5Uzd6dlNTcUk5MVh0UFZkU2FMTmpsS2RqMVJNZ0NtNWkySXNpcTYxMHgyY29Dcjg?oc=5"
+        },
+        {
+          "title": "Watch ABBA Voyage celebrate third anniversary with new setlist and surprise performance from Elvis Costello and Guy Garvey",
+          "source": "NME",
+          "published_date": "2025-05-28",
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxORGxET3hWMHBFR3Fpazg5QS04ODJPeTg2RGJ5U1RXN2FrY1JrTXpfVVViMnNVMk4tQ1NYbDE0VDU2eXhRTmhBMUNNOVc1ZFhDdkFHd0JwX1BrVGpFbVFmQ2dWcm5jT21PR2c0SllkUFdsbHQ4RGluYjRKNF90QnNXOVM2cG9xckpWZy0yZnd1bDRxbXFhQkJLb3RySlB6cFVHTGJ6Tw?oc=5"
+        },
+        {
+          "title": "ARRIVAL from Sweden Brings Music of ABBA to City of Pittsburgh",
+          "source": "Business Wire",
+          "published_date": "2026-04-14",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPQ0dfMGVad1I2RzYzNzlNNUR2Y1NwcnNpNUJGMk1GeFduS3MwWGlHVzhQZ3FrZnZNZVJCWGRvR1I3NGVFOFZacFZzeEJza0hJRzJtc1VxNkZScEdxSkIzc2pPTzkxM3hkU1FQcVVZWXktaDdIWEJ1NzV5V29GcDFIVU1hMGwtZHNRZ2dxY0taQzBkbG5MV3BLM2JhdzNaQllGbXh2c1VKSnM1bXY1T2p0aDZrbGFoQkxSRTRr?oc=5"
+        },
+        {
+          "title": "Last-minute ABBA Voyage tickets for Mother's Day",
+          "source": "Daily Express",
+          "published_date": "2026-03-13",
+          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWk1PU2NLcFJQcDYwdF96aFl3TDZlZ1kwYlFEUjBhYUp2RHZqSTNxYndOQTg1amZacVIyY1JxdUY3YWkxbFVHWUtfcDBLOHh3LW5FYjZia2ZpVXdXWWhYX19EbHVSZkZKbmtJeFFTeG5uNzhFNlN3VmEyaURUdDVmTzd6UDJFR1XSAYwBQVVfeXFMT1lia2M1dnVLdnpwNjF5aHdvRHV5U1FidWpsVzVzbmpvd0JGQXg1TmYwWjFoQTlnaFpuOGdPbFFwNWFENXNOTGJGVW4tejUyUzdOdkdpQmRtenM3SEF2WmNzUk1WM0hfVWs3LVpZdUZYM3NEOXRNczRQNjFzaFdkb013WDdXekpTYnI4aEE?oc=5"
+        },
+        {
+          "title": "ABBA tribute concert coming to theatre",
+          "source": "Herts Advertiser",
+          "published_date": "2026-03-11",
+          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNbzRRbVJxMGhiQmNEaVd3UUlVWUVpR3BjcjFPUTNiRjBaZC1VdHQ3Mm9WaVNHc2R0Z1A2cHVDa0tJUG5FN3R3bjFIMzd0ZXFreFZFMk9xcFk5alhuVU9SV2d5c3BrckhUNzdpMVlTYlVmYWxoU1V4TWsxaXo3SnBPRE5LOUNuV2RTVnBR?oc=5"
+        },
+        {
+          "title": "ABBA’s Fan-Favorite Album Finally Dances To No. 1",
+          "source": "Forbes",
+          "published_date": "2026-01-15",
+          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNZTJkQ3pLMEZ1elhWcWVwRVRtcm93YUtsMzNtWmlRWm1XdndPSTQycC1sOVFPYnd4WG02ZjI3V2F2X09ZVW4xWGwyOTkwX0hEdFNFZVZEYzd0b3dlenowQ0VCZmhDbXRhYTh5V2tSNEVmbFlubUZXdVEzNjV0QTgwYmJnQVM2bEJ3SW5BaHNrRFFHZ0k0N0FhMVU5WHdQbE9QTkI4?oc=5"
+        },
+        {
+          "title": "Abba star in exclusive interview with Faith Matters",
+          "source": "Independent Catholic News",
+          "published_date": "2025-12-10",
+          "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE8xNGZzV25OdHFVc0VsSGVRWDczZHhJSFRWa2JuRUlLd1c5Vl9GU1RyZ0RISzhDeHRoTjNROUhrRTd0bmlHMF8yRDBudjdmMjM4TjQ4Mw?oc=5"
+        },
+        {
+          "title": "Greta Thunberg's flotilla blasted with ABBA music",
+          "source": "9News",
+          "published_date": "2025-09-25",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQXBNMFdUaW1mLXZHS215TlJBbFdJNlp4aTB2V3VlTXIxQVk1NFJ6WW03MGxnOWwxb3NvQW1oei1jd2NMVHdCRmp2WFhlb3A1SHBNNncxTm1vMjlScDdYNk1fTFl6a09ZSm1haTMyT3FwZ3NKQktGR0ZGVFZ5enVaSFJPQ2p5d0hhSUJGTGI0bGxVb2dwRU5xR3Ixa25QVVQtQjZoM3I2N3dsWThZelU0b3JkOHphaTTSAXhBVV95cUxOdXNHUVI1aHhBN3JPNDU2ME9HNlpJazhrTml0ZmNhbnRTN0tSVUhuMHJTNXVMSFVJRGlFWFY0UTJSMy1iUnlQc1VsV3FkbWg4bnBxNDEybEhERFkyc1FlOEFLNFFvZXFRZlFEa3FpWjRISk03d2xpNkc?oc=5"
+        },
+        {
+          "title": "All 9 ABBA Albums, Ranked Worst to Best",
+          "source": "Collider",
+          "published_date": "2025-09-15",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1tU0ZuX25FZTBYSFN0LTFGenBWQjE5V3FWLWNQWjJucXBZb1FIRnBWTTJIVFZSS2E4SHVBQkxvMDQ3d3VMVE1QSlV5clFQTzlEQUVXRG14Smo?oc=5"
+        },
+        {
+          "title": "ABBA Voyage’s Australian hopes fade as Melbourne bid collapses",
+          "source": "West End Theatre",
+          "published_date": "2025-07-25",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNNzVvUXFPT2w1M3pNd0F0VjR3NGRQb0hCV2RUa25rYVVhYTdJLUZoTDJPaHI4ZnExdm1UVXVLM1Q3WnhtNENtTzU5dFdXRC1vQVhGTTN1NGpfTG9Wb3hzWW1xRGUtUG5XX0xYYVU2dnVsczRNSUJuNUN2dTVmQ1NjemdYUzM0TVNlZGI4M3lFUlJuai11ZVhUenpSdW5HS2R5aERyb1V0SGhlT0RFQldvd1dnc2VtQQ?oc=5"
         }
       ]
     },
@@ -1294,6 +1362,74 @@
       ]
     },
     {
+      "artist_id": 140,
+      "artist_name": "Cat Stevens",
+      "item_count": 10,
+      "last_checked": "2026-04-23T19:03:55Z",
+      "items": [
+        {
+          "title": "Yusuf/Cat Stevens Cancels North American Book Tour After Visas Arrive Too Late",
+          "source": "Rolling Stone",
+          "published_date": "2025-12-04",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZzFLam9XXzBZLXFOTF9tWEd6dHFRS3lFN2l6WHh3NHZXM3Z5OXNteTg1VnltSV81THM2WWFoN080ZWlvUy1uYktvaHRxbGpZbkhnaTZtbW1aR0JiYVZtaUstbDVycHEtLTNMSkJRWmd1N0VoWFRoRmJfcjlaT2FsODI2NnpUWnEyQjh2Ni10QS13ZTd6VW1mVUhoY043UU5kdk44Vm1XU2ZIZXdYQ2JxQlNheWc?oc=5"
+        },
+        {
+          "title": "Neil Young, Yusuf/Cat Stevens, Van Morrison – BST Hyde Park, London, July 11, 2025",
+          "source": "UNCUT",
+          "published_date": "2025-07-12",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPdWZpb1RtLTFEVnIxcy1iZnRKNkRZNi1wV1p3UVFETldtWmVPbFZSYjJiNmJzUmtvelpqeTYwNHFERFd5aWpWNFRmQ0ZzellFVXVDVld0ak45eFprYWJEUW5PUkMyMjRZcG1PWFZDQ0pGMWMxX0txZkY0akJsZHQ4OEFQMlRFbmhwSzVndi1lVlVReUplNW5DX2JDYS0tUG9mS1Z1cWFUMXZZaDZuU3VMY1N0SkZuV3pGWWVHYw?oc=5"
+        },
+        {
+          "title": "Yusuf/Cat Stevens Will Drop a Greatest Hits Compilation Ahead of Memoir and Book Tour",
+          "source": "Rolling Stone",
+          "published_date": "2025-07-10",
+          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNaFNQX3pGVXgxWTBfMnlCWDFWQmpRaWR5ZWdCbU1Nbk5pNlFUNjFaMzBqQmliVmo4VFFpYndQZVY3N09UaG1wSktmRy1rQ3p6b01DY29NajcwZ2RNcFpVTnhuTHZsR3dEa2tYRUpVSV8zMm4zWmJ3Vi1HLW9HRjdLQmFreEpFdmE4eGMxMmdzZWJNWTE4ZG9vZS1xLWRiSXNpeVVj?oc=5"
+        },
+        {
+          "title": "Yusuf/Cat Stevens announces first UK tour for 9 years",
+          "source": "UNCUT",
+          "published_date": "2025-05-20",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNeHp6MUdrSHF5TVRKenFYeW1GTTBqYWdSZ3dHZmhrWS0xaDRnSUQ1cWFVTzN5X3F1VUpNNm5SczVPdmpZbTl1emp4QzBKSmtNR1JockVMQzR0anBfT2stQ1VmNHhLQ3VOQjAwTG5LYVhHQngwUzZuTHE3UHJ1Z2toSkhFS1NHTHBlb0lYUXZDMXh6b0Ra?oc=5"
+        },
+        {
+          "title": "Cat Stevens Postpones North American Tour Citing Visa Issues: ‘I Am Really Upset!’",
+          "source": "Billboard",
+          "published_date": "2025-09-30",
+          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOaUlNc1NNdnY1ZS05M2F5MWZsSU1kSTZwMDdVeTAzWWl6YVRKbXQtTjQ4UlpEMFNyaGlYcFd4eDBvWGJCX183S1loa3hTaF9UcFBKaGVLR0lrUHljMlM4TmhYSWNCVWg3ZmVZRE5xaGt5WjJUa2pSWjh1dDVmVTZDYzE3Y3E3QlBDa3lGZW9IekdIdlViOEVyUzNzQUVIZkNzcmc5a09fUzc?oc=5"
+        },
+        {
+          "title": "Tour news: Dolly Parton, Ghost, The Wonder Years, Yusef/Cat Stevens, Good Luck, more",
+          "source": "BrooklynVegan",
+          "published_date": "2025-09-29",
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNSHVvakJGaUtEdTBCcDA1b3daTW1SVXlPZXpCOFdCZUsySzBmNHFHZDhyRVdobHppZm9KZHFkT0ZzaUpWLUc4SUN1QW5GeFVPZUd5dVR0TWE4R01sV3hVTkdrc2xqc24xMm9yMFJkbGJGWGpjU1hDM2pNRVBiejhUSFFMUnJWNDJ0cVFOWXRxNzl3ZEhNVFNTdzNYZUYzSHN3SWtzS19RckVnRjA1UUE?oc=5"
+        },
+        {
+          "title": "Yusuf/Cat Stevens Schedules Book Tour for Upcoming Memoir ‘Cat on the Road to Findout’",
+          "source": "Rolling Stone",
+          "published_date": "2025-05-20",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNb3FLX3VlWm53bXZGSWFILTRZT0RCbVJUUmRqZGNjQnQtVnM3TTMyWDNXYmtKUTBSOE1VdFYzQnN3MzNzNWV3SFVzNExDVDhGd1UzSlJtUzliTnEwck1rWVVmWWhEZ3d2V05EZ3ZDTV9WTjNnam85S0R4RTIzWXVJX3V1UUtYLUEtbl9YeFpYMHN3UGNDZjR2NzkyZGVNYW9zWko2Qzduam9vMTNRMVk0YUhR?oc=5"
+        },
+        {
+          "title": "Cat Stevens postpones US book tour dates over visa issues",
+          "source": "MSN",
+          "published_date": "2026-04-22",
+          "url": "https://news.google.com/rss/articles/CBMivwJBVV95cUxPSVM2cndsLWlyeE5ZWXVBSDdDN1kzNFFSY0oxTllqWFUzX1ZSVXRIaWlscF9TejZPdU9uQVZNQmw3LUhQaUNjZXN2S0g4aVBtQ3lmQjFWYjhfSjdWblZYbGFRYUhkdHdfRk9BeDlvZG1HWTdMX3FyRnFoZ2VnTlhZbjAzNTlDSnU1aHVXVVRmSlFaWC1pRFdFY2NBRElBQk5xVHhKRTUweTRBWFhZYXp0bGNXaGlCZGRaNHFtQUlMUWlfS1NNQ0V2OGFCSmNqaEZkamk3aFlxX0tEUkhKeEhZMmREd1ZLd1RmUklZSzJaUzFhUUt1ZGZJMVRPWnJCcjJaTUZ5QzRJTzhGdjRGdDFoTl9GQndjM1dTTHJiWHRIZkZDZWpUUldxajJGLTV0aTR4TkQ0OUlRNlNhRGFjVVdV?oc=5"
+        },
+        {
+          "title": "Cat Stevens Gave This 1971 Hit Away Before Recording It Himself",
+          "source": "American Songwriter",
+          "published_date": "2026-03-27",
+          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNMmtidGk5VE1adHlKdmlUTUJ6S3lhRmRDZktlSDVrSUVRNUdCR21vbUhUajduVzZoN0NjR1dNQ0YwUWJCQWxRWGxLbm04T2xSTW9ySU5rQm1hTjRSYnhzcDMyc18tVE14c0plZ0lXMG1YQm83VzdRR0VIdi1hMmRBM3NUemRyTUtuYno2dEZiVEVuTFNLVmlHY0xsWQ?oc=5"
+        },
+        {
+          "title": "Cat Stevens Regales a Life of Musics and Mystics",
+          "source": "Houston Press",
+          "published_date": "2025-10-27",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNejhmdzV6QjlpeXdiMDdGY1BzVFZsU3hKdE02UElhM2lUUmZMMEFuS2dNZmV6RHRpcVZBdXZNakNNWHBUdzQ3bTVhWWY5SHZoVU00MUtXYXpJUjBCT3BUZjAzaGhzcjZuQ0FDVHZQanlTWFo1REh0LU5qUjJzVElXcjByZVJWSFVBTVJXdw?oc=5"
+        }
+      ]
+    },
+    {
       "artist_id": 19,
       "artist_name": "Cheap Trick",
       "item_count": 10,
@@ -1358,6 +1494,74 @@
           "source": "Louder",
           "published_date": "2024-03-06",
           "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5EdVk4TTd5MFJMMHBmN3BaQW1LWHgxMFF0NW51ZmZIYzlsRzVvWUV5VElmRll6OUNsbXpZakRCRU1zNEd0Q180bk1RUG16bEtDSHZOY2xBaUNlbkdCMmV1Q0ZwNU1FOXRvWExv?oc=5"
+        }
+      ]
+    },
+    {
+      "artist_id": 138,
+      "artist_name": "Cher",
+      "item_count": 10,
+      "last_checked": "2026-04-23T19:03:55Z",
+      "items": [
+        {
+          "title": "What happened when Gregg Allman appeared on Cher's TV show",
+          "source": "Louder",
+          "published_date": "2026-04-23",
+          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9YUDJCVmUtaVZ1ZHJVOFFpSzYxYjQ2WGpYZ2p2M1B2akhHR2pBdVhkLXdHY3h5WTRBZjBPeFlTV1otRDJqaG5DNks3SWsxX0RPaDd4YVZfYnFNaXVpT2tyLTN6SWs2VllQLTRBLWZTd1lHb1AyejhmSFpEY1F1TXc?oc=5"
+        },
+        {
+          "title": "CHER Once Again Asking The Courts For Financial Conservatorship Of Her Son, ELIJAH BLUE ALLMAN (DEADSY)",
+          "source": "Metal Injection",
+          "published_date": "2026-04-19",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQX2lLNkNxSUdtV3BzVU1ibnEwZU9sRFk5c2RTd1BONXZHTXhSTUNhSTJwekRkZGJMZ19heHVXdEVxM25zTUxqY01XWVF6ZjhSU3QtS1B1V3BlaDBNU1NNQlg0TFVJMGU5YVRZU3k3ZkVzYTc2eFJfRzEwNkxTTjAtVl9INTNlSENVenIwbFNQR2NFU2l2R0o2VGNSY2FjWWhZMV9WNV9HV2diLUZnS2tBM3k0V215T2J6RFI5TTBEYmRFa1dGbWs5b2I1X1ZMOENxR2M3eEhDTQ?oc=5"
+        },
+        {
+          "title": "Cher again files for conservatorship over son Elijah following multiple arrests",
+          "source": "NME",
+          "published_date": "2026-04-18",
+          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPRVJZWG0yLXFoNGMyd3lqRVR6cl8zbVdkcUVERUN2R2NlQ0lIak02TTh4NDBYaGhTY0ZNWk9YcG9rOTBmcmNLSmVGLW1IcGhMbXJsNFFINTJCaDNCTTFodTk0bmRqaUJSY0c5UEpveEtpYjZBYmFTeUlqWmFKZHZ2Tkg4b2pOR3VDbzgybXhzUnFBYWJXaHV3dTZuYjcxQ2owQUtxdWpUNnpaLWM2RkdQUG5uZXFzc0R0Wmc?oc=5"
+        },
+        {
+          "title": "SZA Defends Cher Following Grammys Flub: ‘She Probably Really Knew Luther Vandross’",
+          "source": "Rolling Stone",
+          "published_date": "2026-02-02",
+          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOdFc0djlTeHBQRTJyemRUbG4ydHlmWmFmLTh4MUFKMER0YlUwZmxsX0dmaEMwXy1aZEpUS1psTDlLejBkRXIzUERocVo5Nnc2OGZ3VzhFUjc3ZGlBWDVSZl90Y0VjaGJ4VkJQNGVVYldrNFc2WFZ6OXVTU2FMdHNPNHk3LVVyeXNCdjFweWcyWjFSNzRxN19CUy1tZkVVRXdWeWhjZEhxRkJiZw?oc=5"
+        },
+        {
+          "title": "‘SNL’: Watch Cher Perform ‘DJ Play a Christmas Song,’ ‘Run Rudolph Run’",
+          "source": "Rolling Stone",
+          "published_date": "2025-12-21",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQSDlhVW5yT3RMaU9hWWdQbFNNMl9KR3pTZHU5NEhIc1dUbmRVcXJPeGNFa1JONXVCNzZCc3FiR19lOUt0b21mcEVjVl91c0RYeVRlaG5qQmd4YmFXNXF5VVlDQXY1ekRiU3BEQjVFWGNMXzZ5dmE3bGZ0Ymo2MEt3aGdJbjgxLWIxR1NUaWMxbFBkU2pJaTQ1S0pUQ0RVcWNidE1ETG91M2sySld4MlR1YXdpd0U4QjYtazRn?oc=5"
+        },
+        {
+          "title": "aespa Blows Jennifer Hudson Away With ‘Rich Man’ Performance, Reveals How Cher Inspired the Song",
+          "source": "Billboard",
+          "published_date": "2025-09-24",
+          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQTEU1VzhZeVhJX1ZsOEFjRDdkZTB4eVY0NEM5VWFBQzBEOXhqWVFMLWV5djVBZEtpUzdnaEl0a2NOTmNRSFAwdGYwd0plOC1LZmF2cnFmVnRrYkxUMndXMHNEdFR4b3RUVGduakhVNXRudHIxNTZHakRWU2pLRkd5UThKUF8yV0phU2xHLUpEYnAySTgxVGNBeDVyTmhoSzZhNlM2TldHTV9Tdw?oc=5"
+        },
+        {
+          "title": "Cher and Future’s cringeworthy 2017 Gap advert is going viral on TikTok",
+          "source": "NME",
+          "published_date": "2025-06-01",
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOS09JaFljU3VOTmFraXkxWUZad2VBX0FESUpabzdZV2VncEc4Zm16RHJfQk9jWk5HbVZROEM4SEpOUWxObzhxdnlCeUViUmpHbzZ4elViMXByNlRXc2NXZ3NtWGZUR214N1lUMm9RYzVqRjRRMjcxS05TSFZFeXhXSmU0XzFiV3E4aEx6dDhjd1VUVC15YUtTdThrMDkzNUw4ZUVUTUxESUlpQnpuT0E?oc=5"
+        },
+        {
+          "title": "Cher’s family includes Sonny Bono, Gregg Allman, and even Julie Andrews — here's a rundown of her relations",
+          "source": "Entertainment Weekly",
+          "published_date": "2026-04-22",
+          "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOckVmbFItcTZWNnM3dU5VWV9Vai1lVm9MUTlPSWh3QmxyNXhOcFVTazNtVy1PeC11am5Za25nWkRhT2JOUjJLNWl1TjktZVBDWmJzbTN5SzgwLTNaZm9oWHlyRTE0Q1gzUEwzZ2JTZTdBVm5YUF9DVzA5b0hjMG5wdkVYQ0FpUQ?oc=5"
+        },
+        {
+          "title": "'Speechless' Cher discovers she has secret granddaughter from troubled son's past romance",
+          "source": "The National News Desk",
+          "published_date": "2026-04-21",
+          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQUXByeWdtVWl6Y3VTVHIzWG4zeXNtTWJHV1JaQ0sySG9QcUUzMHZQOWlWUGN5ODB5ZVN1TDhJOVNQbGQzZXhKZ2Y0dWF4U2txcGRRZ2Z5SVBsbWh4VHdRVjFhaEpQT2VSb2FjNmlNWWpFdlJEaXNiUjdHOW5RS09EV3pSWXRMRFVTckFwTWtSRTcxX09jOE9RblpMY3hmdnZHcWlGYWFUUTNXWmVwd1BKU1hnZjlVdGdCaVNreV9DaXZkN05zWHdHLTRyWllSZw?oc=5"
+        },
+        {
+          "title": "Maine-educated Son Of Cher Waives Arraignment, Assault Trial Set For June",
+          "source": "The Maine Wire",
+          "published_date": "2026-04-21",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQMGg3UVVzVHZWbWN0M1NHQjRIbGdZcHRkZFplNjFBXzIzeGh5RnU0Uzk2Q3FMcUljeV96Z1hLdlJPNmlHMmNPeS12a2RsWEM2YnNrODJ1SXdMOFFaN0FmV29SQ21OaDZ5Qk1vZlRmOG16RDRTcUMtTmg5MW94ZS1QeldKU1hDZjRkVXluM2xiQ1E1cnNoZVhmZVZKbzNubVFqcnNraXFVYTU4bnJ2c3VJ?oc=5"
         }
       ]
     },
@@ -7886,6 +8090,74 @@
           "source": "Louder",
           "published_date": "2023-08-31",
           "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1mTjl6S2VVeFBMNVlGS0lBaXZHM29XSlczWkx6bVI1VG1uR1k5alhqRUZGY3lDMmZPa1lhNFB4bUZrdU1yS2ZVbF92b05nU3N6dWpsdTVaeGg4ZXBMLXlLQUIyR2Fwb3VzQV9ydW5qRm95VnMwLWtPelRvdkxIWWc?oc=5"
+        }
+      ]
+    },
+    {
+      "artist_id": 137,
+      "artist_name": "The Move",
+      "item_count": 10,
+      "last_checked": "2026-04-23T19:03:55Z",
+      "items": [
+        {
+          "title": "The Move's Looking On signposts better things further down the road",
+          "source": "Louder",
+          "published_date": "2025-05-12",
+          "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9GRTVzQjh0QXVibkNJS3RpVmxiX3ZFbW1IRFFibkM2YU50Qkd1UlFzUGFnRk1abW1ZYmxUZGxvNHdBZ2dOY3lRdG9BaU9EVmo0VDhNcWdreGZmMEhPNlJGSjBaZkhiUQ?oc=5"
+        },
+        {
+          "title": "The Move - Move/Shazam Album Reviews",
+          "source": "Louder",
+          "published_date": "2016-05-06",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE10cnBwdlJHWGlUNGRac3duMncwZm44NnRXOGM3WUFOR1NXX1pDZkZFNFhwcHpxWURheWxkcnFkNGU0ZUdqcTdwS3Mxc1VydmRhQ01kNG0tR3RKZFAyRHlkMmljZlpBTHhCNklnLVhabzRIbWUzWk95SFFB?oc=5"
+        },
+        {
+          "title": "The Move Magnetic Waves Of Sound: The Best Of The Move album review",
+          "source": "Louder",
+          "published_date": "2017-03-05",
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNSURLWmREa3JqYWFIUUFNXzZlcWVXSXZ3TjNXQW9TaWc2eWZRNXRvX2s5QW5Vb1B5WUMtakZFM2czdzFPekxjZzQwbktCSS1SQ2VUeEhZVmFRNEl2ZjdxWUpSM2pCZU0xWWk3RXBjSEkySEl6NXJnWVNQZjVqUldxdTBJcUExdC1EYnhBLW9oSHZWdFpESzlWRWFXQWRJMXVxMUNkag?oc=5"
+        },
+        {
+          "title": "Celebrating One Year of “Seniors On The Move” Fitness Tour",
+          "source": "Dallas City News",
+          "published_date": "2026-04-22",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNSHZjOG81UW1uYUU0TGpzNzBGd2Qxc0c2Z1Q1M0E5OTdDX1Q2anVwY29oNU1uNzlvSnJGRHhIdFEzclhCdThJSzRGeEpKaW44SkFLQk01T1Jab3NtWjZXU1N1Qms3aEZaUVVKVXVYX3JjNnhpWllEMXpvWTNHQk11b01ndVhCQlhaS1B0dUp1UEk?oc=5"
+        },
+        {
+          "title": "Seniors on the Move Fitness Tour Celebrates One-Year Anniversary",
+          "source": "Patch",
+          "published_date": "2026-04-21",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOcTNRRmlVbjJtUEc5b3REeU1ORU15ODlkZld4b3pmeGczcHNPaGdEQWx2OTVaU0JjZEdPUXY2MUVqVno4aklCb1dZZUp2WEkzcnNvX1JaUUxBRzJkUTJyckVWenBsTkdJUnB2N1JPVmR5MWs3ODVzaWVyYXNDYzlvR3JRMnYyUnlPR1ozRXNXZGRuV0lNUUoxTk9sREjSAbcBQVVfeXFMUG9tWHJPTkQtVUhTbUozYzliVHdCXzcwWjVfWG5OTEZfRW9jcW5xeXgwRVh4M2J4ZU55cmxjUFZqMkV0RGk0YkhTVXRjQ1N0R2Z5dlVlY1FOU3c1a1dGOVgwRGYtdGo5Wi1IN0lFaVZJd1pKYzZuTVRRTmNwMk1lYzRNbldMcTdmLTVHWFBrcXZzckY2SkkwVUMwZ2JOcWpFR2ZSQ1hEWUd4TnNpZ2NMTk00ZG51NEVB?oc=5"
+        },
+        {
+          "title": "‘Men on the Move Tour’ visits Alexander Elementary School",
+          "source": "WBBJ TV",
+          "published_date": "2026-03-13",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQZEJkUm1lVy1qUlJRSmp1RWdpNXZEaFNOZzhjZGktQlVnVXBKWmU5SEEyWnBkbkVyS2hhZWlfek9OYXhGdHFIUzRBVUpjRF80U0p0bUk1SEE5bUoyZmk0OWZseEdjWjRzZG15V3kwbEtrYXAxelYwTmt2NHY5MUU5ODhfYU5neU5DY3ZvZFNuSS1RM2lE?oc=5"
+        },
+        {
+          "title": "Truth Club Are On the Move",
+          "source": "Paste Magazine",
+          "published_date": "2023-10-10",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNa2RLNjc3TGlJVUw4SW54MTdRdFIybndNZGZSSkxQem4tWG5wUkxlalJEV0RnVTE4cnhURnNIUHh5ejdUYVNlSnpGZ2JpRGhoVXJYNHpwWTBjNjRwV2ZXbTRiY2xtNm1Zd3ZOVzBjWFBTNW5Oa1c4S0lfdmVwZFFPNUxkS2xvam9NVUFKc0pQSklkR2czX3BmQTBn?oc=5"
+        },
+        {
+          "title": "Exclusive Charlie Hatton Interview – the Move to Trek Factory Racing",
+          "source": "Pinkbike",
+          "published_date": "2018-01-12",
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQYXRiUWtKZVVEdE5KUUdMalVxR01QTm5KTWltM29HbUYwaDRPZkViQzg5WFpNUkEtZ29XdG9LWG1CUTd1VXQ4cFlQSHJpbUEzTVJBMjJPRFA3ajdYS1FVYlFGYmVuSFA1SkdFX1h2UENlQVBnWTZSQnU3RS1jdVB6N3MzUENIS2Z1RWx4LTZxRXFmQVVrdTJ1Zm02MWJJS1dZWjRpeg?oc=5"
+        },
+        {
+          "title": "James Vincent McMorrow, On the Move",
+          "source": "Interview Magazine",
+          "published_date": "2016-08-31",
+          "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5XQV9LWm82eEVWeDlxb1pRUlBXRmw1V3owemlzNTRLdVMzaTZJa1JlbzNocnVQWHl2TDFOa2NwRDdsMkJaZWkyU3dRSXNqWHZhdFFnbFBnSnVkem00eEd5SjJOZmFQb1kyOXVELWlESQ?oc=5"
+        },
+        {
+          "title": "U. S. Steel Launches “Steel on the Move” National Tour Featuring 125th Anniversary “Forging Our Future” Exhibit - Eagle-Tribune",
+          "source": "Eagle-Tribune",
+          "published_date": "2026-04-22",
+          "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxOVmpUR0toY3V4LVZsYTBtVWJmWTk5UUNyYjNidUFONHhsX0NENUh5R09FOEFpTW96OTlXOTNGbEcxaDlOUVBZYUZQa2ZEWHRSWF9hRTRTTURxV2RNdWZ6SGVUQUJ6dzY3VUZ4NVJuZXBjMG1tenV2UFp2TFZUaXU1LVVjRXFmQ3VxaHlIMUx3VDVrWG9LWk12OGR3eVd0VW44dXRONE40cmwxdWxMR0doQWU0eUV3V09TSUh1d3pQaHVSVk1yT1EySU1lNmlzMGRIN29oRE1SVWhnc2dPNG5WTzhWbFlFQnB5c2N2TW5pOUxpdGYzeFRmX1IySlllbGpEU3VDQ0prdw?oc=5"
         }
       ]
     },
