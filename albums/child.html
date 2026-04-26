@@ -556,6 +556,20 @@ body::before{
     return present(currency) ? String(currency).trim().toUpperCase() + " " + formattedAmount : formattedAmount;
   }
 
+  function formatGuideRange(detail){
+    var currency = detail.valuation_currency || "GBP";
+    if(!present(detail.guide_low) && !present(detail.guide_high)) return "";
+    if(present(detail.guide_low) && present(detail.guide_high) && String(detail.guide_low) !== String(detail.guide_high)){
+      return formatPrice(currency, detail.guide_low) + " - " + formatPrice(currency, detail.guide_high);
+    }
+    return formatPrice(currency, present(detail.guide_mid) ? detail.guide_mid : detail.guide_low || detail.guide_high);
+  }
+
+  function humanizeConfidence(value){
+    if(!present(value)) return "";
+    return String(value).replaceAll("_", " ").replace(/\b\w/g, function(letter){ return letter.toUpperCase(); });
+  }
+
   function buildPurchaseSource(detail){
     if(!present(detail.purchase_source_text)) return null;
     if(present(detail.purchase_source_url)){
@@ -712,6 +726,20 @@ body::before{
       price_paid: matchedCopy.price_paid,
       purchase_source_text: purchaseSource.text,
       purchase_source_url: purchaseSource.href,
+      valuation_currency: matchedCopy.valuation_currency,
+      discogs_lowest_price: matchedCopy.discogs_lowest_price,
+      discogs_num_for_sale: matchedCopy.discogs_num_for_sale,
+      discogs_condition_value: matchedCopy.discogs_condition_value,
+      condition_used: matchedCopy.condition_used,
+      guide_low: matchedCopy.guide_low,
+      guide_mid: matchedCopy.guide_mid,
+      guide_high: matchedCopy.guide_high,
+      valuation_source: matchedCopy.valuation_source,
+      valuation_confidence: matchedCopy.valuation_confidence,
+      valuation_checked_at: matchedCopy.valuation_checked_at,
+      valuation_notes: matchedCopy.valuation_notes,
+      manual_override_value: matchedCopy.manual_override_value,
+      manual_override_notes: matchedCopy.manual_override_notes,
       pressing_notes: matchedCopy.pressing_notes,
       notes: matchedCopy.notes,
       siblings: siblings,
@@ -785,9 +813,22 @@ body::before{
       collectorSource ? metaItem("Purchase Source", collectorSource.text, collectorSource.href) : ""
     ].join("");
 
+    var guideHtml = [
+      metaItem("Guide Low / High", formatGuideRange(detail)),
+      metaItem("Guide Mid", formatPrice(detail.valuation_currency || "GBP", detail.manual_override_value || detail.guide_mid)),
+      metaItem("Discogs Lowest", formatPrice(detail.valuation_currency || "GBP", detail.discogs_lowest_price)),
+      metaItem("For Sale", detail.discogs_num_for_sale),
+      metaItem("Condition Used", detail.condition_used),
+      metaItem("Condition Guide", formatPrice(detail.valuation_currency || "GBP", detail.discogs_condition_value)),
+      metaItem("Confidence", humanizeConfidence(detail.valuation_confidence)),
+      metaItem("Last Checked", detail.valuation_checked_at),
+      present(detail.manual_override_value) ? metaItem("Manual Override", formatPrice(detail.valuation_currency || "GBP", detail.manual_override_value)) : ""
+    ].join("");
+
     var rightPanels = [
       panel("Key Metadata", '<div class="meta-grid">' + metadataHtml + '</div>'),
-      panel("Collector Details", '<div class="meta-grid">' + collectorHtml + '</div>')
+      panel("Collector Details", '<div class="meta-grid">' + collectorHtml + '</div>'),
+      panel("Discogs Market Guide", '<div class="meta-grid">' + guideHtml + '</div>')
     ].filter(Boolean).join("");
 
     var backCoverPanel = "";

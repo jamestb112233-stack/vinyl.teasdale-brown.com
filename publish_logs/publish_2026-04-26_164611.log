@@ -1,0 +1,29 @@
+Timestamp: 2026-04-26T16:46:11
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 4
+CHANGED: 10
+DELETED: 0
+
+New Files
+/publish_repo/backgrounds/LP_Vinyl_Symbol_Icon.png
+/publish_repo/media/covers/the-moody-blues-every-good-boy-deserves-favour.jpg
+/publish_repo/media/covers/the-moody-blues-octave.jpg
+/publish_repo/media/covers/the-moody-blues-to-our-children-s-children-s-children.jpg
+
+Changed Files
+/publish_repo/albums/album.html
+/publish_repo/albums/albums.html
+/publish_repo/albums/child.html
+/publish_repo/artist.html
+/publish_repo/dashboard_stats.json
+/publish_repo/data/albums/albums_export.json
+/publish_repo/data/news/artist_news.json
+/publish_repo/index.html
+/publish_repo/library.json
+/publish_repo/stats.html
+
+Deleted Files
+(none)

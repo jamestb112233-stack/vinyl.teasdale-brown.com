@@ -350,6 +350,18 @@ const statsDefinitions = [
       const artists = Number(payload.news_artist_count || 0);
       return artists ? "Across " + artists + " artists in the latest snapshot" : value ? "Latest published news snapshot" : "Not available in the current export";
     }
+  },
+  {
+    key: "collection_purchase_value_total",
+    label: "Purchase Value",
+    money: true,
+    context: function(){ return "What you paid for owned copies"; }
+  },
+  {
+    key: "collection_market_guide_mid_total",
+    label: "Perceived Value",
+    money: true,
+    context: function(){ return "Derived guide mid point"; }
   }
 ];
 
@@ -366,6 +378,13 @@ function formatCount(value){
   return new Intl.NumberFormat().format(Number(value || 0));
 }
 
+function formatMoney(value){
+  return "£" + new Intl.NumberFormat(undefined, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(Number(value || 0));
+}
+
 function formatDateTime(value){
   const date = new Date(value);
   if(Number.isNaN(date.getTime())){
@@ -379,11 +398,12 @@ function renderStats(payload){
     return payload[item.key] !== undefined && payload[item.key] !== null;
   }).map(function(item){
     const value = Number(payload[item.key] || 0);
+    const displayValue = item.money ? formatMoney(value) : formatCount(value);
     const context = typeof item.context === "function" ? item.context(value, payload) : String(item.context || "");
     return (
       '<article class="stat-card">' +
         '<div class="stat-label">' + escapeHtml(item.label) + '</div>' +
-        '<div class="stat-value">' + escapeHtml(formatCount(value)) + '</div>' +
+        '<div class="stat-value">' + escapeHtml(displayValue) + '</div>' +
         '<p class="stat-context">' + escapeHtml(context) + '</p>' +
       '</article>'
     );

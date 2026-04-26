@@ -1299,16 +1299,29 @@ body.touch-mode .hover-detail{
         <select id="artistFilter"></select>
       </div>
       <div class="filter-group">
+        <label class="filter-label" for="priorityFilter">Buying Priority</label>
+        <select id="priorityFilter">
+          <option value="">All</option>
+          <option value="ESSENTIAL">ESSENTIAL</option>
+          <option value="STRONG BUY">STRONG BUY</option>
+          <option value="OPTIONAL">OPTIONAL</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="ownedFilter">Owned</label>
+        <select id="ownedFilter">
+          <option value="">All</option>
+          <option value="owned">Owned</option>
+          <option value="wanted">Wanted</option>
+        </select>
+      </div>
+      <div class="filter-group">
         <label class="filter-label" for="genreFilter">Genre</label>
         <select id="genreFilter"></select>
       </div>
       <div class="filter-group">
         <label class="filter-label" for="eraFilter">Era</label>
         <select id="eraFilter"></select>
-      </div>
-      <div class="filter-group">
-        <label class="filter-label" for="typeFilter">Type</label>
-        <select id="typeFilter"></select>
       </div>
       <div class="filter-actions">
         <button id="resetFilters" class="reset-button" type="button">Reset</button>
@@ -1677,6 +1690,15 @@ fetch("./library.json?v=" + Date.now())
       return present(value) ? String(value).trim() : "";
     }
 
+    function isOwned(value){
+      return (
+        value === 1 ||
+        value === "1" ||
+        value === true ||
+        String(value).toLowerCase() === "true"
+      );
+    }
+
     function artistImageSrc(path){
       if(!present(path)) return "";
       return "media/artists/" + String(path).split("/").pop();
@@ -1740,7 +1762,9 @@ fetch("./library.json?v=" + Date.now())
         artist.curated_albums.push({
           album_id: row.album_id,
           album_title: row.album_title || "",
-          year: row.year
+          year: row.year,
+          buy_priority: row.buy_priority || "",
+          owned: isOwned(row.owned)
         });
       } else if(present(row.ref_title)){
         artist.reference_count += 1;
@@ -1760,9 +1784,10 @@ fetch("./library.json?v=" + Date.now())
 
     var filters = {
       artist: document.getElementById("artistFilter"),
+      priority: document.getElementById("priorityFilter"),
+      owned: document.getElementById("ownedFilter"),
       genre: document.getElementById("genreFilter"),
       era: document.getElementById("eraFilter"),
-      type: document.getElementById("typeFilter"),
       reset: document.getElementById("resetFilters")
     };
 
@@ -1819,27 +1844,52 @@ fetch("./library.json?v=" + Date.now())
       });
     }
 
-    setOptions(filters.artist, artists.map(function(artist){
-      return cleanText(artist.artist_name);
-    }).filter(function(value, index, list){
-      return value && list.indexOf(value) === index;
-    }));
+    function setArtistOptions(select, artistValues){
+      select.innerHTML = "";
+
+      var allOption = document.createElement("option");
+      allOption.value = "";
+      allOption.textContent = "All";
+      select.appendChild(allOption);
+
+      artistValues.forEach(function(artist){
+        if(!present(artist.artist_id)) return;
+        var option = document.createElement("option");
+        option.value = String(artist.artist_id);
+        option.textContent = safe(artist.artist_name);
+        select.appendChild(option);
+      });
+    }
+
+    setArtistOptions(filters.artist, artists);
     setOptions(filters.genre, uniqueOptions("genre"));
     setOptions(filters.era, uniqueOptions("era"));
-    setOptions(filters.type, uniqueOptions("artist_type"));
 
-    filters.artist.value = String(params.get("artist") || "").trim();
+    var requestedArtistId = String(params.get("artist_id") || "").trim();
+    var requestedArtistName = String(params.get("artist") || "").trim();
+    if(!requestedArtistId && requestedArtistName){
+      var requestedArtist = artists.find(function(artist){
+        return cleanText(artist.artist_name) === requestedArtistName;
+      });
+      if(requestedArtist){
+        requestedArtistId = String(requestedArtist.artist_id || "").trim();
+      }
+    }
+
+    filters.artist.value = requestedArtistId;
+    filters.priority.value = String(params.get("buy_priority") || "").trim();
+    filters.owned.value = String(params.get("owned") || "").trim().toLowerCase();
     filters.genre.value = String(params.get("genre") || "").trim();
     filters.era.value = String(params.get("era") || "").trim();
-    filters.type.value = String(params.get("type") || "").trim();
 
     function updateUrl(){
       var next = new URLSearchParams();
 
-      if(filters.artist.value) next.set("artist", filters.artist.value);
+      if(filters.artist.value) next.set("artist_id", filters.artist.value);
+      if(filters.priority.value) next.set("buy_priority", filters.priority.value);
+      if(filters.owned.value) next.set("owned", filters.owned.value);
       if(filters.genre.value) next.set("genre", filters.genre.value);
       if(filters.era.value) next.set("era", filters.era.value);
-      if(filters.type.value) next.set("type", filters.type.value);
 
       var query = next.toString();
       var url = window.location.pathname + (query ? "?" + query : "") + window.location.hash;
@@ -1848,15 +1898,24 @@ fetch("./library.json?v=" + Date.now())
 
     function filteredArtists(){
       var artistValue = filters.artist.value;
+      var priorityValue = filters.priority.value;
+      var ownedValue = filters.owned.value;
       var genreValue = filters.genre.value;
       var eraValue = filters.era.value;
-      var typeValue = filters.type.value;
 
       return artists.filter(function(artist){
-        if(artistValue && cleanText(artist.artist_name) !== artistValue) return false;
+        if(artistValue && String(artist.artist_id) !== artistValue) return false;
+        if(priorityValue && !(artist.curated_albums || []).some(function(album){
+          return String(album.buy_priority || "").trim() === priorityValue;
+        })) return false;
+        if(ownedValue === "owned" && !(artist.curated_albums || []).some(function(album){
+          return isOwned(album.owned);
+        })) return false;
+        if(ownedValue === "wanted" && !(artist.curated_albums || []).some(function(album){
+          return !isOwned(album.owned);
+        })) return false;
         if(genreValue && cleanText(artist.genre) !== genreValue) return false;
         if(eraValue && cleanText(artist.era) !== eraValue) return false;
-        if(typeValue && cleanText(artist.artist_type) !== typeValue) return false;
         return true;
       });
     }
@@ -2012,15 +2071,34 @@ fetch("./library.json?v=" + Date.now())
       });
     }
 
-    [filters.artist, filters.genre, filters.era, filters.type].forEach(function(select){
+    filters.artist.addEventListener("change", function(){
+      var artistId = String(filters.artist.value || "").trim();
+      if(!artistId){
+        renderArtists();
+        return;
+      }
+
+      var selectedArtist = artists.find(function(artist){
+        return String(artist.artist_id) === artistId;
+      });
+      if(selectedArtist){
+        navigateToArtist(selectedArtist);
+        return;
+      }
+
+      renderArtists();
+    });
+
+    [filters.priority, filters.owned, filters.genre, filters.era].forEach(function(select){
       select.addEventListener("change", renderArtists);
     });
 
     filters.reset.addEventListener("click", function(){
       filters.artist.value = "";
+      filters.priority.value = "";
+      filters.owned.value = "";
       filters.genre.value = "";
       filters.era.value = "";
-      filters.type.value = "";
       renderArtists();
     });
 

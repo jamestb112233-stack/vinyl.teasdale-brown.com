@@ -483,11 +483,19 @@ body.filter-hidden .container{
 }
 
 .collection-mark{
-  font-weight:700;
-  letter-spacing:.02em;
-  color:#8fdc8f;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   flex-shrink:0;
-  white-space:nowrap;
+  width:22px;
+  height:22px;
+}
+
+.collection-mark img{
+  display:block;
+  width:22px;
+  height:22px;
+  object-fit:contain;
 }
 
 .card-link{
@@ -1351,7 +1359,16 @@ fetchAlbumExport()
 
         var owned = document.createElement("span");
         owned.className = "collection-mark";
-        owned.textContent = isOwned(album.owned) ? "✓ Owned" : "";
+        if(isOwned(album.owned)){
+          owned.setAttribute("aria-label", "Owned");
+          owned.title = "Owned";
+          var ownedIcon = document.createElement("img");
+          ownedIcon.src = "../backgrounds/LP_Vinyl_Symbol_Icon.png";
+          ownedIcon.alt = "";
+          owned.appendChild(ownedIcon);
+        } else {
+          owned.hidden = true;
+        }
 
         var spotifyHref = spotifyAlbumUrl(album.spotify_album_id);
 
