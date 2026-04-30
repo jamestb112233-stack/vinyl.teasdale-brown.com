@@ -1,0 +1,26 @@
+Timestamp: 2026-04-30T20:13:36
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 7
+CHANGED: 4
+DELETED: 0
+
+New Files
+/publish_repo/media/artists/andrew-gold.jpg
+/publish_repo/media/artists/the-animals.jpg
+/publish_repo/media/covers/andrew-gold-all-this-and-heaven-too.jpg
+/publish_repo/media/covers/asia-live-at-the-budokan-tokyo-1983-mtv-satellite-telecast-to-america-6-december-1983.jpg
+/publish_repo/media/covers/cheap-trick-cheap-trick-at-the-budokan.jpg
+/publish_repo/media/covers/cream-wheels-of-fire-in-the-studio.jpg
+/publish_repo/media/covers/the-animals-the-most-of.jpg
+
+Changed Files
+/publish_repo/dashboard_stats.json
+/publish_repo/data/albums/albums_export.json
+/publish_repo/data/news/artist_news.json
+/publish_repo/library.json
+
+Deleted Files
+(none)
