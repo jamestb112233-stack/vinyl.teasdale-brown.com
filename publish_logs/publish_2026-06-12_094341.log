@@ -1,0 +1,19 @@
+Timestamp: 2026-06-12T09:43:41
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 0
+CHANGED: 3
+DELETED: 0
+
+New Files
+(none)
+
+Changed Files
+/publish_repo/dashboard_stats.json
+/publish_repo/data/albums/albums_export.json
+/publish_repo/data/news/artist_news.json
+
+Deleted Files
+(none)
