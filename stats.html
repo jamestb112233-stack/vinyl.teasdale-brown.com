@@ -224,19 +224,19 @@ body::before{
 
 .visitor-count{
   margin-left:auto;
-  min-width:128px;
-  color:var(--muted);
+  padding:6px 10px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:999px;
+  background:rgba(0,0,0,.28);
+  color:#d8d8d8;
   font-size:12px;
-  text-align:center;
+  line-height:1;
+  white-space:nowrap;
 }
 
-.visitor-count iframe{
-  display:block;
-  width:128px;
-  height:42px;
-  margin:2px auto 0;
-  border:0;
-  opacity:.82;
+#visitorCount{
+  color:#fff;
+  font-weight:700;
 }
 
 @media (max-width: 720px){
@@ -308,9 +308,8 @@ body::before{
 
   <footer class="page-footer">
     <div id="footerMeta">Latest JSON export: waiting for published stats.</div>
-    <div class="visitor-count" aria-label="Website visitor count">
-      Site visits
-      <span id="visitorCount"></span>
+    <div class="visitor-count" aria-label="Website visitor count" title="Total visits to this website">
+      <span id="visitorCount">—</span> site visits
     </div>
     <img src="backgrounds/icon-256.png?v=20260412" alt="">
   </footer>
@@ -321,15 +320,17 @@ const statsGridEl = document.getElementById("statsGrid");
 const statsStatusEl = document.getElementById("statsStatus");
 const footerMetaEl = document.getElementById("footerMeta");
 
-window.addEventListener("load", function(){
-  if (window.goatcounter && typeof window.goatcounter.visit_count === "function") {
-    window.goatcounter.visit_count({
-      append: "#visitorCount",
-      path: "/stats.html",
-      no_branding: true
-    });
-  }
-});
+fetch("https://jamesteasdalebrown.goatcounter.com/counter/TOTAL.json")
+  .then(function(response){
+    if (!response.ok) throw new Error("Visitor count unavailable");
+    return response.json();
+  })
+  .then(function(payload){
+    document.getElementById("visitorCount").textContent = payload.count;
+  })
+  .catch(function(){
+    document.querySelector(".visitor-count").hidden = true;
+  });
 
 const statsDefinitions = [
   {
