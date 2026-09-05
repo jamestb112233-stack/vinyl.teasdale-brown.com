@@ -222,6 +222,23 @@ body::before{
   opacity:.92;
 }
 
+.visitor-count{
+  margin-left:auto;
+  min-width:128px;
+  color:var(--muted);
+  font-size:12px;
+  text-align:center;
+}
+
+.visitor-count iframe{
+  display:block;
+  width:128px;
+  height:42px;
+  margin:2px auto 0;
+  border:0;
+  opacity:.82;
+}
+
 @media (max-width: 720px){
   .app-header{
     padding:0 16px;
@@ -250,6 +267,11 @@ body::before{
   .page-footer{
     flex-direction:column;
     align-items:flex-start;
+  }
+
+  .visitor-count{
+    margin-left:0;
+    text-align:left;
   }
 }
 </style>
@@ -286,6 +308,10 @@ body::before{
 
   <footer class="page-footer">
     <div id="footerMeta">Latest JSON export: waiting for published stats.</div>
+    <div class="visitor-count" aria-label="Website visitor count">
+      Site visits
+      <span id="visitorCount"></span>
+    </div>
     <img src="backgrounds/icon-256.png?v=20260412" alt="">
   </footer>
 </main>
@@ -294,6 +320,16 @@ body::before{
 const statsGridEl = document.getElementById("statsGrid");
 const statsStatusEl = document.getElementById("statsStatus");
 const footerMetaEl = document.getElementById("footerMeta");
+
+window.addEventListener("load", function(){
+  if (window.goatcounter && typeof window.goatcounter.visit_count === "function") {
+    window.goatcounter.visit_count({
+      append: "#visitorCount",
+      path: "/stats.html",
+      no_branding: true
+    });
+  }
+});
 
 const statsDefinitions = [
   {
