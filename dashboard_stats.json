@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-12T09:42:13Z",
+  "updated_at": "2026-09-05T16:35:02Z",
   "artists_total": 141,
   "reference_albums_total": 2571,
   "curated_albums_total": 345,
@@ -9,13 +9,13 @@
   "reference_with_spotify": 751,
   "curated_missing_spotify": 181,
   "owned_copies_with_market_guide": 37,
-  "collection_market_guide_low_total": 355.76,
-  "collection_market_guide_mid_total": 690.75,
-  "collection_market_guide_high_total": 938.81,
+  "collection_market_guide_low_total": 358.76,
+  "collection_market_guide_mid_total": 700.54,
+  "collection_market_guide_high_total": 955.87,
   "collection_purchase_value_total": 657.58,
-  "market_guide_oldest_checked_at": "2026-04-30T20:12:21Z",
-  "market_guide_newest_checked_at": "2026-06-12T09:36:08Z",
+  "market_guide_oldest_checked_at": "2026-09-05T16:25:08Z",
+  "market_guide_newest_checked_at": "2026-09-05T16:25:08Z",
   "news_artist_count": 141,
   "news_article_count": 1410,
-  "news_updated_at": "2026-06-12T09:36:50Z"
+  "news_updated_at": "2026-09-05T16:26:45Z"
 }
