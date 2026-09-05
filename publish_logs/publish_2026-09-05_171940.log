@@ -1,0 +1,23 @@
+Timestamp: 2026-09-05T17:19:40
+Source Root: /app
+Destination Root: /publish_repo
+
+Summary
+NEW: 0
+CHANGED: 7
+DELETED: 0
+
+New Files
+(none)
+
+Changed Files
+/publish_repo/albums/album.html
+/publish_repo/albums/albums.html
+/publish_repo/albums/child.html
+/publish_repo/artist.html
+/publish_repo/index.html
+/publish_repo/news.html
+/publish_repo/stats.html
+
+Deleted Files
+(none)
